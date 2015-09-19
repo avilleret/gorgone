@@ -1,0 +1,6 @@
+[submodule "NIST_VASIR"]
+	path = NIST_VASIR
+	url = https://github.com/avilleret/NIST_VASIR.git
+[submodule "ofxCv"]
+	path = ofxCv
+	url = https://github.com/kylemcdonald/ofxCv.git
