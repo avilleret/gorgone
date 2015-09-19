@@ -1,15 +1,25 @@
-project(ofApp)
-set(APP ofApp)
+project(gorgone)
+set(APP gorgone)
 
 cmake_minimum_required(VERSION 2.8)
 
 include(../of/openFrameworks.cmake)
+add_subdirectory(NIST_VASIR)
+find_package( OpenCV REQUIRED )
 
-#ofxaddon()
+include_directories (
+  ${CMAKE_CURRENT_LIST_DIR}/NIST_VASIR/Analysis
+  ${CMAKE_CURRENT_LIST_DIR}/NIST_VASIR/MasekAlg
+  ${CMAKE_CURRENT_LIST_DIR}/NIST_VASIR/VASIR
+  ${CMAKE_CURRENT_LIST_DIR}/ofxCv/libs/ofxCv/include/
+)
+
+ofxaddon(ofxOpenCv)
+ofxaddon(ofxCv)
 
 set(SOURCES
     src/main.cpp
-    src/ofApp.cpp
+    src/gorgone.cpp
 )
 
 add_executable(
@@ -22,6 +32,10 @@ add_executable(
 target_link_libraries(
     ${APP}
     ${OPENFRAMEWORKS_LIBRARIES}
+    VASIR
+    MasekAlg
+    Analysis
+    ${OpenCV_LIBS}
 )
 
 cotire(${APP})
