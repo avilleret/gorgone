@@ -3,4 +3,4 @@
 	url = https://github.com/avilleret/NIST_VASIR.git
 [submodule "ofxCv"]
 	path = ofxCv
-	url = https://github.com/kylemcdonald/ofxCv.git
+	url = https://github.com/avilleret/ofxCv.git
