@@ -14,12 +14,12 @@ include_directories (
   ${CMAKE_CURRENT_LIST_DIR}/ofxCv/libs/ofxCv/include/
 )
 
-ofxaddon(ofxOpenCv)
 ofxaddon(ofxCv)
 
 set(SOURCES
     src/main.cpp
     src/gorgone.cpp
+    src/gorgoneEyeDetection.cpp
 )
 
 add_executable(
