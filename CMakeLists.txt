@@ -15,7 +15,9 @@ include_directories (
 )
 
 ofxaddon(ofxCv)
-ofxaddon(ofxCvPiCam)
+if ( OF_PLATFORM STREQUAL armv7 )
+    ofxaddon(ofxCvPiCam)
+endif()
 
 set(SOURCES
     src/main.cpp
@@ -38,10 +40,16 @@ target_link_libraries(
     MasekAlg
     Analysis
     ${OpenCV_LIBS}
-    mmal_core
-    mmal_util
-    mmal_vc_client
     ${ofxCvPiCam}
 )
+
+if ( OF_PLATFORM STREQUAL armv7 )
+    target_link_libraries(
+        ${APP}
+        mmal_core
+        mmal_util
+        mmal_vc_client
+    )
+endif()
 
 cotire(${APP})
