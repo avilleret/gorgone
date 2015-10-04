@@ -2,9 +2,9 @@
 
 #include "ofMain.h"
 #include "ofxCv.h"
-#include "ofxCvPiCam.h"
 
 #ifdef TARGET_RASPBERRY_PI
+#include "ofxCvPiCam.h"
 class crossVideoGrabber {
 public:
   void setup();
@@ -23,7 +23,7 @@ private:
 #else
 class crossVideoGrabber : public ofVideoGrabber {
 public:
-  ofVideoGrabber getFrame(){return toCv(this);};
+  cv::Mat getFrame(){return ofxCv::toCv(*this);};
   void setup();
 };
 #endif
