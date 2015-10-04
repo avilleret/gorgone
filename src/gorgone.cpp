@@ -12,23 +12,41 @@ void gorgone::setup()
   eyeFinder.setup("cascade/parojosG_45x11.xml");
   // eyeFinder.setPreset(ofxCv::ObjectFinder::Accurate);
 
-  setupVideoGrabber();
+  vidGrabber.setup();
+  ofSetVerticalSync(true);
 }
 
 void gorgone::update()
 {
   vidGrabber.update();
   if(vidGrabber.isFrameNew()){
-    eyeFinder.update(vidGrabber);
+    cv::Mat origin = vidGrabber.getFrame();
+    cv::Mat frame;
 
-    if ( eyeFinder.size() > 0 ) {
-      eyeFinder.computeScore(vidGrabber);
+    cout << "new frame to process : " << origin.cols << "x" << origin.rows << endl;
+
+    if ( origin.cols > 640 || origin.rows > 480 ){
+      cv::resize(origin,frame,cv::Size(0,0),640./float(origin.cols),640./float(origin.cols));
+    } else {
+      frame = origin;
     }
+
+    cout << "process frame : " << frame.cols << "x" << frame.rows << endl;
+
+    eyeFinder.update(frame);
+/*
+    if ( eyeFinder.size() > 0 ) {
+      eyeFinder.computeScore(frame);
+    }
+*/
+  } else {
+    cout << "no new frame to process" << endl;
   }
 }
 
 void gorgone::draw()
 {
+  cout << ofGetFrameRate() << " fps" << endl;
   vidGrabber.draw(0,0);
   eyeFinder.draw();
   if (eyeFinder.leftEye.isAllocated())  eyeFinder.leftEye.draw(0,0);
@@ -45,27 +63,4 @@ void gorgone::keyReleased(ofKeyEventArgs& key)
 
 void gorgone::messageReceived(ofMessage& message)
 {
-}
-
-void gorgone::setupVideoGrabber()
-{
-  camWidth = 640;  // try to grab at this size.
-  camHeight = 480;
-
-  //we can now get back a list of devices.
-  vector<ofVideoDevice> devices = vidGrabber.listDevices();
-
-  for(int i = 0; i < devices.size(); i++){
-      if(devices[i].bAvailable){
-          // ofLogNotice() << devices[i].id << ": " << devices[i].deviceName;
-      } else {
-          // ofLogNotice() << devices[i].id << ": " << devices[i].deviceName << " - unavailable ";
-      }
-  }
-
-  vidGrabber.setDeviceID(0);
-  vidGrabber.setDesiredFrameRate(60);
-  vidGrabber.initGrabber(camWidth, camHeight);
-
-  ofSetVerticalSync(true);
 }

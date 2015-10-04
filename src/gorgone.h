@@ -4,6 +4,7 @@
 
 #include "ofxCv.h"
 #include "gorgoneEyeDetection.h"
+#include "crossVideoGrabber.h"
 
 #include "EyeDetection.h"
 #include "ImageUtility.h"
@@ -21,7 +22,6 @@ class gorgone : public ofBaseApp
 
     void messageReceived (ofMessage&);
 
-    void setupVideoGrabber();
     void detectEyeRegion(ofImage& input);
     void selectBestEye(IplImage* currentImg, int index, int &bestIndex, IplImage* bestImg, double& bestScore);
     void drawEye();
@@ -30,7 +30,7 @@ class gorgone : public ofBaseApp
 
     EyeDetection* eyeDetection;
 
-    ofVideoGrabber vidGrabber;
+    crossVideoGrabber vidGrabber;
     ofTexture videoTexture;
 
     ofImage         m_colorImg, m_grayImg, m_leftEye, m_rightEye;

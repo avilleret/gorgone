@@ -4,3 +4,6 @@
 [submodule "ofxCv"]
 	path = ofxCv
 	url = https://github.com/avilleret/ofxCv.git
+[submodule "ofxCvPiCam"]
+	path = ofxCvPiCam
+	url = https://github.com/orgicus/ofxCvPiCam

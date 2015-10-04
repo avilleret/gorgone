@@ -15,11 +15,13 @@ include_directories (
 )
 
 ofxaddon(ofxCv)
+ofxaddon(ofxCvPiCam)
 
 set(SOURCES
     src/main.cpp
     src/gorgone.cpp
     src/gorgoneEyeDetection.cpp
+    src/crossVideoGrabber.cpp
 )
 
 add_executable(
@@ -36,6 +38,10 @@ target_link_libraries(
     MasekAlg
     Analysis
     ${OpenCV_LIBS}
+    mmal_core
+    mmal_util
+    mmal_vc_client
+    ${ofxCvPiCam}
 )
 
 cotire(${APP})
