@@ -36,20 +36,15 @@ void gorgone::update()
     accum += eyeFinder.size();
     cout << "find " << accum << " eyes" << endl << endl << endl;
 
-    if ( eyeFinder.size() > 0 ) {
-      eyeFinder.computeScore(frame);
-    }
-
-  } else {
-    cout << "no new frame to process" << endl;
+    eyeFinder.computeScore(frame);
   }
 }
 
 void gorgone::draw()
 {
-  cout << ofGetFrameRate() << " fps" << endl;
-  // vidGrabber.draw(0,0);
-  // eyeFinder.draw();
+  // cout << ofGetFrameRate() << " fps" << endl;
+  //vidGrabber.draw(0,0);
+  //eyeFinder.draw();
   eyeFinder.drawEyes();
 }
 
