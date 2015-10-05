@@ -27,8 +27,9 @@ void gorgoneEyeDetection::computeScore(Mat img){
 
       toOf(img, origin);
 
-      leftEye.cropFrom(origin,rect.x,rect.y,rect.width/3,rect.height);
-      rightEye.cropFrom(origin,rect.x+2*rect.width/3,rect.y,rect.width/3,rect.height);
+      int eyeWidth = rect.width * 0.4;
+      leftEye.cropFrom(origin, rect.x, rect.y, eyeWidth, rect.height);
+      rightEye.cropFrom(origin, rect.x + rect.width - eyeWidth, rect.y, eyeWidth, rect.height);
     }
     bothEyes.cropFrom(origin,rect.x,rect.y,rect.width,rect.height);
   }
