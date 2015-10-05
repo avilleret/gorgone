@@ -43,3 +43,13 @@ void gorgoneEyeDetection::drawEyes(){
   if (rightEye.isAllocated()) rightEye.draw(ofGetWidth()-rightEye.getWidth(),0);
   if (bothEyes.isAllocated()) bothEyes.draw(0,ofGetHeight()-bothEyes.getHeight());
 }
+
+void gorgoneEyeDetection::save(){
+  string basename = ZeroPadNumber(ofGetYear()) + ZeroPadNumber(ofGetMonth()) + ZeroPadNumber(ofGetDay());
+  basename += "-" + ZeroPadNumber(ofGetHours()) + ZeroPadNumber(ofGetMinutes()) + ZeroPadNumber(ofGetSeconds());
+
+  cout << "save eyes to " << basename << endl;
+  if (leftEye.isAllocated()) leftEye.save(basename + "-left.bmp" );
+  if (rightEye.isAllocated()) leftEye.save(basename + "-right.bmp");
+  if (bothEyes.isAllocated()) bothEyes.save(basename + ".bmp");
+}

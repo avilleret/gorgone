@@ -53,12 +53,15 @@ void gorgone::draw()
   eyeFinder.drawEyes();
 }
 
-void gorgone::keyPressed(ofKeyEventArgs& key)
+void gorgone::keyPressed(int key)
 {
-}
-
-void gorgone::keyReleased(ofKeyEventArgs& key)
-{
+  switch (key){
+    case 's':
+      eyeFinder.save();
+      break;
+    default :
+      break;
+  }
 }
 
 void gorgone::messageReceived(ofMessage& message)

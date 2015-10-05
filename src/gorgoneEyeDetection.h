@@ -13,10 +13,18 @@ public:
   void computeScore(cv::Mat img);
   void reset();
   void drawEyes();
+  void save();
 
   ofImage leftEye, rightEye, bothEyes; // save the best left and right eyes
 
 private:
   double bestScore;
+
+  static std::string ZeroPadNumber(int num)
+  {
+      std::ostringstream ss;
+      ss << std::setw( 2 ) << std::setfill( '0' ) << num;
+      return ss.str();
+  }
 
 };

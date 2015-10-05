@@ -17,8 +17,7 @@ class gorgone : public ofBaseApp
     void update ();
     void draw   ();
 
-    void keyPressed      (ofKeyEventArgs&);
-    void keyReleased     (ofKeyEventArgs&);
+    void keyPressed      (int key);
 
     void messageReceived (ofMessage&);
 
