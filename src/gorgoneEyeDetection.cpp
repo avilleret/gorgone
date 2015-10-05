@@ -19,7 +19,7 @@ void gorgoneEyeDetection::computeScore(Mat img){
     Mat sobel, normalized;
     equalizeHist(imgRoi, normalized);
     Sobel(normalized, sobel, -1, 1, 1);
-    double score = norm(sum(normalized)) / normalized.total(); // compute image quality
+    double score = norm(sum(sobel)) / sobel.total(); // compute image quality
 
     cout << "score is : " << score << endl;
     if ( score > bestScore ){
