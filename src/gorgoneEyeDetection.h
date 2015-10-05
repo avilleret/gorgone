@@ -12,7 +12,9 @@ public:
   }
   void computeScore(cv::Mat img);
   void reset();
-  ofImage leftEye, rightEye; // save the best left and right eyes
+  void drawEyes();
+
+  ofImage leftEye, rightEye, bothEyes; // save the best left and right eyes
 
 private:
   double bestScore;
