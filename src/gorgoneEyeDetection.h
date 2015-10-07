@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxCv.h"
+#include "ofxGui.h"
 
 class gorgoneEyeDetection : public ofxCv::ObjectFinder {
 public:
@@ -16,6 +17,8 @@ public:
   void save();
 
   ofImage leftEye, rightEye, bothEyes; // save the best left and right eyes
+  ofxPanel gui;
+  ofParameter<int> x, y, z;
 
 private:
   double bestScore;

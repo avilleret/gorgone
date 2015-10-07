@@ -16,6 +16,7 @@ include_directories (
 
 ofxaddon(ofxCv)
 ofxaddon(ofxArgParser)
+ofxaddon(ofxGui)
 if ( OF_PLATFORM STREQUAL armv7 )
     ofxaddon(ofxCvPiCam)
 endif()

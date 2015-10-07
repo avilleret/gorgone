@@ -5,6 +5,10 @@ using namespace ofxCv;
 
 gorgoneEyeDetection::gorgoneEyeDetection(){
   reset();
+  gui.setup("Eye detection");
+  gui.add(x.set("x",0,0,255));
+  gui.add(y.set("y",0,0,255));
+  gui.add(z.set("z",0,0,255));
 }
 
 void gorgoneEyeDetection::computeScore(Mat img){
@@ -42,6 +46,7 @@ void gorgoneEyeDetection::drawEyes(){
   if (rightEye.isAllocated()) rightEye.draw(ofGetWidth()-rightEye.getWidth(),0);
   if (bothEyes.isAllocated()) bothEyes.draw(0,ofGetHeight()-bothEyes.getHeight());
   ofDrawBitmapStringHighlight(drawString, ofGetWidth()/2, 10);
+  gui.draw();
 }
 
 void gorgoneEyeDetection::save(){
