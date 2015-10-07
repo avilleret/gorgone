@@ -1,21 +1,38 @@
 #include "crossVideoGrabber.h"
 
+void crossVideoGrabber::setup(string filename){
+
+  videoFlag = videoPlayer.load("movies/"+filename);
+  if (videoFlag) {
+    videoPlayer.setLoopState(OF_LOOP_NORMAL);
+    videoPlayer.play();
+  } else {
 #ifdef TARGET_RASPBERRY_PI
-void crossVideoGrabber::setup(){
-  cam.setup(1920,1080,false);
+    cam.setup(1920,1080,false);
+#else
+    cam.initGrabber(640, 480);
+#endif
+  }
 }
 
 void crossVideoGrabber::update(){
-  newFrame = cam.isFrameNew();
-  frame = cam.grab();
-}
-
-void crossVideoGrabber::draw(int x, int y){
-
-}
-
+  if ( videoFlag ) {
+    videoPlayer.update();
+  } else {
+#ifdef TARGET_RASPBERRY_PI
+    newFrame = cam.isFrameNew();
+    frame = cam.grab();
 #else
-void crossVideoGrabber::setup(){
-  initGrabber(640, 480);
-}
+    cam.update();
 #endif
+  }
+}
+void crossVideoGrabber::draw(int x, int y){
+  if ( videoFlag ){
+    videoPlayer.draw(x,y);
+  } else {
+#ifndef TARGET_RASPBERRY_PI
+    cam.draw(x,y);
+#endif
+  }
+}

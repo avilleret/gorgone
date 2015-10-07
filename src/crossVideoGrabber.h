@@ -5,25 +5,34 @@
 
 #ifdef TARGET_RASPBERRY_PI
 #include "ofxCvPiCam.h"
+#endif // TARGET_RASPBERRY_PI
+
 class crossVideoGrabber {
 public:
-  void setup();
+  void setup(){setup("");};
+  void setup(string filename);
   void update();
   void draw(){draw(0,0);};
   void draw(int x, int y);
+#ifdef TARGET_RASPBERRY_PI
   cv::Mat getFrame(){return frame;};
   bool isFrameNew(){return newFrame;};
+  int getWidth(){return 1920;};
+#else
+  cv::Mat getFrame(){if (videoFlag) return ofxCv::toCv(videoPlayer); else return ofxCv::toCv(cam);};
+  bool isFrameNew(){if (videoFlag) return videoPlayer.isFrameNew(); else return cam.isFrameNew(); };
+  int getWidth(){if (videoFlag) return videoPlayer.getWidth(); else return cam.getWidth(); };
+#endif
 
 private:
+#ifdef TARGET_RASPBERRY_PI
   ofxCvPiCam cam;
   cv::Mat frame;
   bool newFrame;
-};
-
 #else
-class crossVideoGrabber : public ofVideoGrabber {
-public:
-  cv::Mat getFrame(){return ofxCv::toCv(*this);};
-  void setup();
-};
+  ofVideoGrabber cam;
 #endif
+
+  bool videoFlag;
+  ofVideoPlayer  videoPlayer;
+};

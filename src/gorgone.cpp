@@ -15,14 +15,13 @@ void gorgone::setup()
     cout << "Error: Failed to load the cascade " << msg << endl;
   }
 
+  vidGrabber.setup(filename);
+
   eyeFinder.setup("cascade/parojosG_45x11.xml");
 #ifdef TARGET_RASPBERRY_PI
   eyeFinder.setRescale(0.1);
 #endif
   // eyeFinder.setPreset(ofxCv::ObjectFinder::Accurate);
-
-  vidGrabber.setup();
-  ofSetVerticalSync(true);
 }
 
 void gorgone::update()
