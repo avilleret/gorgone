@@ -5,6 +5,8 @@ int accum = 0;
 void gorgone::setup()
 {
 
+  parseCmdLineOptions();
+
   cout << "screen resolution : " << ofGetWidth() << "x" << ofGetHeight() << endl;
   string cascadeFilePath = ofFilePath::getAbsolutePath("cascade/parojosG_45x11.xml");
   try {
@@ -61,4 +63,14 @@ void gorgone::keyPressed(int key)
 
 void gorgone::messageReceived(ofMessage& message)
 {
+}
+
+
+void gorgone::parseCmdLineOptions(){
+  vector<string> keys = ofxArgParser::allKeys();
+  for (int i = 0; i < keys.size(); i++) {
+         if ( keys[i] == "f" )   { filename     = ofxArgParser::getValue(keys[i]); }
+
+    cout << "key: " << keys[i] << ", value: " << ofxArgParser::getValue(keys[i]) << endl;
+  }
 }

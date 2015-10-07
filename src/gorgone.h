@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxArgParser.h"
 
 #include "ofxCv.h"
 #include "gorgoneEyeDetection.h"
@@ -21,8 +22,12 @@ class gorgone : public ofBaseApp
 
     void messageReceived (ofMessage&);
 
+private:
     void detectEyeRegion(ofImage& input);
     void selectBestEye(IplImage* currentImg, int index, int &bestIndex, IplImage* bestImg, double& bestScore);
+    void parseCmdLineOptions();
+
+    string filename;
     void drawEye();
 
     int camWidth, camHeight;

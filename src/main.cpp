@@ -1,7 +1,8 @@
 #include "gorgone.h"
 
-int main()
-{
+int main(int argc, const char** argv){
+
+  ofxArgParser::init(argc, argv);
 
 #ifdef TARGET_OPENGLES
   ofGLESWindowSettings settings;
