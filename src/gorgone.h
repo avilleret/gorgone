@@ -28,16 +28,15 @@ private:
     void parseCmdLineOptions();
 
     string filename;
-    void drawEye();
 
     int camWidth, camHeight;
-
-    EyeDetection* eyeDetection;
 
     crossVideoGrabber vidGrabber;
     ofTexture videoTexture;
 
-    ofImage         m_colorImg, m_grayImg, m_leftEye, m_rightEye;
+    cv::Mat frame;
 
-    gorgoneEyeDetection eyeFinder;
+    ofImage m_colorImg, m_grayImg, m_leftEye, m_rightEye;
+
+    gorgoneEyeDetection irisDetector;
 };
