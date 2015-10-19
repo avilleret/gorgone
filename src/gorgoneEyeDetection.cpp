@@ -37,7 +37,7 @@ void gorgoneEyeDetection::update(Mat& img){
 
   for ( int i = 0; i < eyeFinder.size() ; i++ ){
     ofRectangle rect = eyeFinder.getObject(i);
-    if ( rect.width > img.cols/2 ) {
+    if ( rect.width > img.cols/3 ) {
       imgRoi = img(toCv(rect)); // get the region of interest (ROI), i.e. the eyes, from origin image.
 
       int eyeWidth = rect.width * 0.18; // relative width of an eye in the detected eyes pair
@@ -45,6 +45,18 @@ void gorgoneEyeDetection::update(Mat& img){
       int eyeOffset = rect.width * 0.12;
 
       equalizeHist(imgRoi, normalized);
+
+      Mat sobel;
+      Sobel(normalized, sobel, -1, 1, 1);
+      double score = norm(sum(sobel)) / sobel.total(); // compute image quality
+
+      bool best = false;
+
+      cout << "score is : " << score << endl;
+      if ( score >  bestScore ){ // detected rectangle should be at least 1/3 of the image.
+        best=true;
+      } else { return; }
+
       Mat drawing = normalized.clone();
 
       Rect leftRoi =  Rect(eyeOffset,                         (rect.height-eyeHeight)/2, eyeWidth, eyeHeight);
@@ -124,26 +136,6 @@ void gorgoneEyeDetection::update(Mat& img){
 
 
       }
-
-      Mat sobel;
-      Sobel(normalized, sobel, -1, 1, 1);
-      double score = norm(sum(sobel)) / sobel.total(); // compute image quality
-
-      cout << "score is : " << score << endl;
-      if ( rect.width > img.cols / 3 ){ // detected rectangle should be at least 1/3 of the image.
-        bestScore = score;
-
-        // leftEye.cropFrom(origin, rect.x, rect.y, eyeWidth, rect.height);
-        // rightEye.cropFrom(origin, rect.x + rect.width - eyeWidth, rect.y, eyeWidth, rect.height);
-
-        // alignExractEyeImage(imgRoi,imgRoi,1,"bmp",left,right);
-
-        // alignExtractEyeNew(imgRoi, left, right, rect);
-        // leftAligned.update();
-        // rightAligned.update();
-      }
-
-      // bothEyes.cropFrom(origin, rect.x, rect.y, rect.width, rect.height);
     }
   }
 }
