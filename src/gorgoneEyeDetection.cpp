@@ -14,6 +14,7 @@ void gorgoneEyeDetection::setup(const Mat& img){
   gui.setup("Eye detection");
   gui.add(param1.set("Hough 1st parameter",104,0,255));
   gui.add(param2.set("Hough 2nd parameter",12,0,255));
+  gui.add(angle.set("rotation angle", 0, 0, 180));
 
   eyeFinder.setup("cascade/parojosG_45x11.xml");
   eyeFinder.setRescale(200./(float)img.cols);
@@ -105,13 +106,13 @@ void gorgoneEyeDetection::update(Mat& img){
                          rightIris[2] * 2,
                          rightIris[2] * 2);
 
-        alignEye(normalized, leftRoi2, rightRoi2, leftIris, rightIris);
+        leftEyeMat = normalized(leftRoi2);
+        rightEyeMat = normalized(rightRoi2);
 
+        // alignEye(normalized, leftRoi2, rightRoi2, leftIris, rightIris);
 
-        Mat L = normalized(leftRoi2);
-        Mat R = normalized(rightRoi2);
-        leftNoise  = findEyelid(L,  leftPupil,  leftIris);
-        rightNoise = findEyelid(R, rightPupil, rightIris);
+        leftNoise  = findEyelid(leftEyeMat,  leftPupil,  leftIris);
+        rightNoise = findEyelid(rightEyeMat, rightPupil, rightIris);
 
         encodeIris(leftNoise, leftIris, leftPupil, leftCodeMat);
         encodeIris(rightNoise, rightIris, rightPupil, rightCodeMat);
@@ -123,10 +124,7 @@ void gorgoneEyeDetection::update(Mat& img){
         subMat2ofImg( leftCodeMat, leftCodeImg);
         subMat2ofImg(rightCodeMat, rightCodeImg);
 
-        // rotate eye
         subMat2ofImg(drawing,bothEyesNorm);
-        // subMat2ofImg( leftIrisMat, leftEye);
-        // subMat2ofImg(rightIrisMat,rightEye);
 
         printVec (leftIris,  "leftIris");
         printVec (rightIris, "rightIris");
@@ -135,17 +133,14 @@ void gorgoneEyeDetection::update(Mat& img){
         printRect(leftRoi2,  "leftRoi2");
         printRect(rightRoi2, "rightRoi2");
 
-        subMat2ofImg(imgRoi( leftRoi2 ), leftEye);
-        subMat2ofImg(imgRoi( rightRoi2 ), rightEye);
-
-
+        subMat2ofImg(leftEyeMat, leftEye);
+        subMat2ofImg(rightEyeMat, rightEye);
       }
     }
   }
 }
 
 void gorgoneEyeDetection::drawEyes(){
-  string drawString = "score " + ofToString(bestScore);
   //drawMat(bothEyesNorm,0,ofGetHeight()-bothEyesNorm.rows,ofGetWidth(),bothEyesNorm.rows*ofGetWidth()/bothEyesNorm.cols);
   if(leftEye.isAllocated()) leftEye.draw(10,10,200,200);
   if(rightEye.isAllocated()) rightEye.draw(250,10,200,200);
@@ -154,12 +149,18 @@ void gorgoneEyeDetection::drawEyes(){
   int height = bothEyesNorm.getHeight()*ofGetWidth()/bothEyesNorm.getWidth();
   if(bothEyesNorm.isAllocated()) bothEyesNorm.draw(0,ofGetHeight()-height,ofGetWidth(),height);
 
+  if (bestEyesNorm.isAllocated()) bestEyesNorm.draw(500,250,bestEyesNorm.getWidth()*0.4, bestEyesNorm.getHeight()*0.4);
+  string drawString = "best image -- score " + ofToString(bestScore);
+  ofDrawBitmapStringHighlight(drawString, 500, 250);
+
+  drawString = "angle in degree " + ofToString(angle);
+  ofDrawBitmapStringHighlight(drawString, 0, ofGetHeight());
+
   if(leftCodeImg.isAllocated()) leftCodeImg.draw(500,10);
   else { cout << "leftCodeImg is not allocated" << endl;}
-  if(rightCodeImg.isAllocated()) rightCodeImg.draw(500, 250);
+  if(rightCodeImg.isAllocated()) rightCodeImg.draw(500, 100);
   else { cout << "rightCodeImg is not allocated" << endl;}
 
-  ofDrawBitmapStringHighlight(drawString, ofGetWidth()/2, 10);
   gui.draw();
 }
 

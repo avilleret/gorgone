@@ -26,16 +26,16 @@ public:
   void encodeIris(Masek::IMAGE* noiseImage, const Vec3f iris, const Vec3f pupil, Mat& code);
 
   ofxPanel gui;
-  ofParameter<int> param1, param2;
+  ofParameter<int> param1, param2, angle;
 
 private:
   ofxCv::ObjectFinder eyeFinder;
   bool bSetup, flag;
   double bestScore;
-  ofImage bothEyesNorm, leftEye, rightEye, leftProc, rightProc, leftCodeImg, rightCodeImg;
+  ofImage bothEyesNorm, bestEyesNorm, leftEye, rightEye, leftProc, rightProc, leftCodeImg, rightCodeImg;
   Mat normalized, imgRoi;
   Masek::IMAGE *leftNoise, *rightNoise;
-  Mat leftCodeMat, rightCodeMat;
+  Mat leftEyeMat, leftCodeMat, rightEyeMat, rightCodeMat;
 
   static std::string ZeroPadNumber(int num)
   {
