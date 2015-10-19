@@ -11,7 +11,6 @@ using namespace cv;
 using namespace ofxCv;
 
 void gorgoneEyeDetection::setup(const Mat& img){
-  bestScore = 0.;
   gui.setup("Eye detection");
   gui.add(param1.set("Hough 1st parameter",104,0,255));
   gui.add(param2.set("Hough 2nd parameter",12,0,255));
@@ -19,9 +18,14 @@ void gorgoneEyeDetection::setup(const Mat& img){
   eyeFinder.setup("cascade/parojosG_45x11.xml");
   eyeFinder.setRescale(200./(float)img.cols);
   // eyeFinder.setPreset(ofxCv::ObjectFinder::Accurate);
+  reset();
 
+}
+
+void gorgoneEyeDetection::reset(){
   bSetup = true;
   flag = false;
+  bestScore = 0.;
 }
 
 void gorgoneEyeDetection::update(Mat& img){

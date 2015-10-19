@@ -46,6 +46,9 @@ void gorgone::keyPressed(int key)
     case 's':
       irisDetector.save();
       break;
+    case ' ':
+      irisDetector.reset();
+      break;
     default :
       break;
   }

@@ -16,6 +16,7 @@ public:
   }
   void update(cv::Mat& img);
   void setup(const cv::Mat& img);
+  void reset();
   void drawEyes();
   void save();
   void alignEye(Mat src_gray, const Rect leftRoi, const Rect rightRoi, Vec3f leftIris, Vec3f rightIris);
