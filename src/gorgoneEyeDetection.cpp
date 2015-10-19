@@ -84,6 +84,10 @@ void gorgoneEyeDetection::update(Mat& img){
         if ( norm(a-a2) > leftPupil[2] || norm(b-b2) > rightPupil[2] ){
           cout << "iris center outside pupil : wrong detection" << endl;
           return;
+        } else {
+          // image could be considered as "best" only if it is focused enough AND pupil are successfully detected
+          bestScore = score;
+          subMat2ofImg(normalized,bestEyesNorm);
         }
 
         a += Point ( leftRoi.x,   leftRoi.y);
