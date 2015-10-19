@@ -180,6 +180,26 @@ void gorgoneEyeDetection::save(){
 void gorgoneEyeDetection::alignEye(Mat src_gray, const Rect leftRoi, const Rect rightRoi, Vec3f leftIris, Vec3f rightIris)
 {
   // rotate eyeImg according to angle between two eyes
+  Point A = Point (leftIris[0], leftIris[1]);
+  Point B = Point (rightIris[0], rightIris[1]);
+
+  // angle = atan( (A.y-B.y) / (A.x-B.x) ) * 180 / PI;
+
+  cout << "rotation angle " << angle << endl;
+
+  Mat rot_matL = getRotationMatrix2D(A, angle, 1.);
+  Mat rot_matR = getRotationMatrix2D(B + rightRoi.tl(), angle, 1.);
+
+  warpAffine(src_gray(leftRoi), leftEyeMat, rot_matL, leftRoi.size());
+  warpAffine(src_gray(rightRoi),rightEyeMat, rot_matR, rightRoi.size());
+
+/*
+  Mat tmp;
+  warpAffine(src_gray, tmp, rot_matL, src_gray.size());
+  leftEyeMat = tmp(leftRoi).clone();
+  warpAffine(src_gray,tmp, rot_matR, src_gray.size());
+  rightEyeMat = tmp(rightRoi).clone();
+*/
 }
 
 bool gorgoneEyeDetection::findIris(Mat& roiImg, Vec3f& iris){
