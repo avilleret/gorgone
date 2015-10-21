@@ -259,7 +259,13 @@ bool gorgoneEyeDetection::findPupil(Mat& src_gray, const Vec3f& iris, Vec3f& pup
   cout << "r " << r << endl;
   Rect pupilRoi = Rect(iris[0] - r, iris[1] - r, r * 2, r * 2);
   printRect(pupilRoi, "pupilRoi");
-  Mat roiImg = src_gray(pupilRoi).clone();
+  Mat roiImg;
+  try {
+    roiImg = src_gray(pupilRoi).clone();
+  } catch (int e) {
+    return false;
+  }
+
   equalizeHist(roiImg, roiImg);
 
   cv::threshold(roiImg, roiImg, 240, 0, THRESH_TOZERO_INV);
