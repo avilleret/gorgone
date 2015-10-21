@@ -5,6 +5,7 @@
 
 #ifdef TARGET_RASPBERRY_PI
 #include "ofxCvPiCam.h"
+#include "brightPi.h"
 #endif // TARGET_RASPBERRY_PI
 
 class crossVideoGrabber {
@@ -29,6 +30,7 @@ private:
   ofxCvPiCam cam;
   cv::Mat frame;
   bool newFrame;
+  brightPi led;
 #else
   ofVideoGrabber cam;
 #endif

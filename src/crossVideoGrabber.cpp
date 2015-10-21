@@ -9,6 +9,7 @@ void crossVideoGrabber::setup(string filename){
   } else {
 #ifdef TARGET_RASPBERRY_PI
     cam.setup(1920,1080,false);
+    led.switchOnIR();
 #else
     cam.initGrabber(640, 480);
 #endif
