@@ -49,6 +49,18 @@ void gorgone::keyPressed(int key)
     case ' ':
       irisDetector.reset();
       break;
+    case 'i':
+      vidGrabber.led.switchOnIR();
+      break;
+    case 'o':
+      vidGrabber.led.switchOffIR();
+      break;
+    case 'w':
+      vidGrabber.led.switchOnWhite();
+      break;
+    case 'x':
+      vidGrabber.led.switchOffWhite();
+      break;
     default :
       break;
   }

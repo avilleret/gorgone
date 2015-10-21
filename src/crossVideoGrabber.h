@@ -19,6 +19,7 @@ public:
   cv::Mat getFrame(){return frame;};
   bool isFrameNew(){return newFrame;};
   int getWidth(){return 1920;};
+  brightPi led;
 #else
   cv::Mat getFrame(){if (videoFlag) return ofxCv::toCv(videoPlayer); else return ofxCv::toCv(cam);};
   bool isFrameNew(){if (videoFlag) return videoPlayer.isFrameNew(); else return cam.isFrameNew(); };
@@ -30,7 +31,6 @@ private:
   ofxCvPiCam cam;
   cv::Mat frame;
   bool newFrame;
-  brightPi led;
 #else
   ofVideoGrabber cam;
 #endif

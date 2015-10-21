@@ -9,8 +9,10 @@ public:
   };
 
   void switchOnIR(){
-    printf("switchOnIR\n");
-    i2c.send(0x00, (unsigned char) 0xa5); // turn on all IR LED
+    unsigned char status;
+    i2c.receive(0x00, &status, 1);
+    status |= 0xa5;
+    i2c.send(0x00, (unsigned char) status); // turn on all IR LED
     i2c.send(0x09, (unsigned char) 0x0f); // push global brightness to full
     i2c.send(0x01, (unsigned char) 0x32); // then turn brightness of each IR LED to full
     i2c.send(0x03, (unsigned char) 0x32);
@@ -19,11 +21,23 @@ public:
   };
 
   void switchOffIR(){
-    i2c.send(0x00,0x00);
+    unsigned char status;
+    i2c.receive(0x00, &status, 1);
+    status &= 0x5a;
+    i2c.send(0x00, status);
   };
 
   void switchOnWhite(){
-    printf("switchOnWhite\n");
-    i2c.send(0x00, (unsigned char) 0x5a);
+    unsigned char status;
+    i2c.receive(0x00, &status, 1);
+    status |= 0x5a;
+    i2c.send(0x00, status);
+  }
+
+  void switchOffWhite(){
+    unsigned char status;
+    i2c.receive(0x00, &status, 1);
+    status &= 0xa5;
+    i2c.send(0x00, status);
   }
 };
