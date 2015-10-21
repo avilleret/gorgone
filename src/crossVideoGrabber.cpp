@@ -9,6 +9,7 @@ void crossVideoGrabber::setup(string filename){
   } else {
 #ifdef TARGET_RASPBERRY_PI
     cam.setup(1920,1080,false);
+    //cam.setup(2592, 1944, false);
     led.switchOnIR();
 #else
     cam.initGrabber(640, 480);
@@ -34,6 +35,8 @@ void crossVideoGrabber::draw(int x, int y){
   } else {
 #ifndef TARGET_RASPBERRY_PI
     cam.draw(x,y);
+#else
+    ofxCv::drawMat(frame,0,0,ofGetWidth(), ofGetHeight());
 #endif
   }
 }

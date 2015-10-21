@@ -35,7 +35,7 @@ void gorgone::update()
 void gorgone::draw()
 {
   // cout << ofGetFrameRate() << " fps" << endl;
-  // vidGrabber.draw(0,0);
+  vidGrabber.draw(0,0);
   // drawMat(frame,0,0);
   irisDetector.drawEyes();
 }
