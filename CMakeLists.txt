@@ -17,9 +17,6 @@ include_directories (
 ofxaddon(ofxCv)
 ofxaddon(ofxArgParser)
 ofxaddon(ofxGui)
-if ( OF_PLATFORM STREQUAL armv7 )
-    ofxaddon(ofxCvPiCam)
-endif()
 
 set(SOURCES
     src/main.cpp
@@ -27,6 +24,13 @@ set(SOURCES
     src/gorgoneEyeDetection.cpp
     src/crossVideoGrabber.cpp
 )
+
+if ( OF_PLATFORM STREQUAL armv7 )
+    ofxaddon(ofxCvPiCam)
+    list(APPEND SOURCES src/gnublin.cpp)
+endif()
+
+
 
 add_executable(
     ${APP}
