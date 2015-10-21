@@ -139,7 +139,7 @@ public:
   int send(unsigned char RegisterAddress, unsigned char *TxBuf, int length);
   int send(unsigned char value);
   int send(unsigned char registerAddress, unsigned char value){
-    send(registerAddress, &value, 1);
+    return send(registerAddress, &value, 1);
   };
 };
 //***** NEW BLOCK *****
