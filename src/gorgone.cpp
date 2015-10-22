@@ -49,6 +49,7 @@ void gorgone::keyPressed(int key)
     case ' ':
       irisDetector.reset();
       break;
+#ifdef TARGET_RASPBERRY_PI
     case 'i':
       vidGrabber.led.switchOnIR();
       break;
@@ -61,6 +62,7 @@ void gorgone::keyPressed(int key)
     case 'x':
       vidGrabber.led.switchOffWhite();
       break;
+#endif
     default :
       break;
   }
@@ -74,8 +76,7 @@ void gorgone::messageReceived(ofMessage& message)
 void gorgone::parseCmdLineOptions(){
   vector<string> keys = ofxArgParser::allKeys();
   for (int i = 0; i < keys.size(); i++) {
-         if ( keys[i] == "f" )   { filename     = ofxArgParser::getValue(keys[i]); }
-
+    if ( keys[i] == "f" )   filename   = ofxArgParser::getValue(keys[i]);
     cout << "key: " << keys[i] << ", value: " << ofxArgParser::getValue(keys[i]) << endl;
   }
 }
