@@ -181,25 +181,47 @@ bool gorgoneEyeDetection::findPupil(Mat& img, Vec3f& iris){
     cout << "can't find any iris circle" << endl;
     return false;
   }
+  double lowestBrightness = 255.;
+  int darkestCircle = -1;
 
   for( size_t i = 0; i < circles.size(); i++ )
   {
-
+    Rect roi = Rect(circles[i][0] - circles[i][2], circles[i][1] - circles[i][2], circles[i][2] * 2, circles[i][2] * 2);
+    printRect(roi, "roi");
+    // if ( roi.x > 0 && roi.y > 0 && roi.width >  2 && roi.height > 2 ) {
+    try {
+      Mat subMat = img(roi);
+      Mat mask = Mat(subMat.size(), CV_8UC1, Scalar(0,0,0));
+      circle(mask, Point(mask.cols/2, mask.rows/2), mask.cols/2, Scalar(255,255,255), -1, 8, 0);
+      Mat masked;
+      subMat.copyTo(masked, mask);
+      double brightness = sum(subMat)[0] / subMat.total();
+      if ( brightness < lowestBrightness ){
+        darkestCircle = i;
+        lowestBrightness = brightness;
+      }
+    } catch ( cv::Exception ) {
+      cout << "invalid Roi" << endl;
+    }
   }
 
-  /// Draw the circles detected
-  for( size_t i = 0; i < circles.size(); i++ )
-  {
-      Point center(round(circles[i][0] * scale), round(circles[i][1] * scale));
-      int radius = round(circles[i][2] * scale);
-      // circle center
-
-      circle( img, center, 3, Scalar(255,255,255), -1, 8, 0 );
-      // circle outline
-      circle( img, center, radius, Scalar(255,255,255), 1, 8, 0 );
-
-      //iris += circles[i];
+  if ( darkestCircle < 0 ){
+    cout << "no valid roi found" << endl;
   }
+  cout << "lowestBrightness : " << lowestBrightness << " darkestCircle : " << darkestCircle << endl;
+
+  int i = darkestCircle;
+
+  Point center(round(circles[i][0] * scale), round(circles[i][1] * scale));
+  int radius = round(circles[i][2] * scale);
+  // circle center
+
+  circle( img, center, 3, Scalar(255,255,255), -1, 8, 0 );
+  // circle outline
+  circle( img, center, radius, Scalar(255,255,255), 1, 8, 0 );
+
+  //iris += circles[i];
+
   //iris /= (double)circles.size();
 
   iris[0] = circles[0][0];
