@@ -19,23 +19,21 @@ public:
   void reset();
   void drawEyes();
   void save();
-  void alignEye(Mat src_gray, const Rect leftRoi, const Rect rightRoi, Vec3f leftIris, Vec3f rightIris);
-  bool findIris(Mat& src_gray, Vec3f& iris);
-  bool findPupil(Mat& src_gray, const Vec3f& iris, Vec3f& pupil);
+  bool findPupil(Mat& src_gray, Vec3f& iris);
+  bool findIris(Mat& src_gray, const Vec3f& iris, Vec3f& pupil);
   Masek::IMAGE* findEyelid(Mat& img, const Vec3f& pupil, const Vec3f& iris);
   void encodeIris(Masek::IMAGE* noiseImage, const Vec3f iris, const Vec3f pupil, Mat& code);
 
   ofxPanel gui;
-  ofParameter<int> param1, param2, angle;
+  ofParameter<int> param1, param2, paramThresh;
 
 private:
-  ofxCv::ObjectFinder eyeFinder;
-  bool bSetup, flag;
-  double bestScore;
-  ofImage bothEyesNorm, bestEyesNorm, leftEye, rightEye, leftProc, rightProc, leftCodeImg, rightCodeImg;
+  bool bSetup, flag, eyeCloseUp;
+  double bestScore, scale;
+  ofImage bothEyesNorm, bestEyesNorm, eye, eyeProc, codeImg;
   Mat normalized, imgRoi;
-  Masek::IMAGE *leftNoise, *rightNoise;
-  Mat leftEyeMat, leftCodeMat, rightEyeMat, rightCodeMat;
+  Masek::IMAGE *noise;
+  Mat eyeMat, codeMat;
 
   static std::string ZeroPadNumber(int num)
   {

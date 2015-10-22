@@ -14,13 +14,10 @@ void gorgoneEyeDetection::setup(const Mat& img){
   gui.setup("Eye detection");
   gui.add(param1.set("Hough 1st parameter",104,0,255));
   gui.add(param2.set("Hough 2nd parameter",12,0,255));
-  gui.add(angle.set("rotation angle", 0, 0, 180));
+  gui.add(paramThresh.set("rotation threshold", 0, 0, 180));
+  scale=1.;
 
-  eyeFinder.setup("cascade/parojosG_45x11.xml");
-  eyeFinder.setRescale(200./(float)img.cols);
-  // eyeFinder.setPreset(ofxCv::ObjectFinder::Accurate);
   reset();
-
 }
 
 void gorgoneEyeDetection::reset(){
@@ -31,135 +28,120 @@ void gorgoneEyeDetection::reset(){
 
 void gorgoneEyeDetection::update(Mat& img){
 
+  Mat drawing;
+  Mat eyeRoiMat;
+  Vec3f iris, pupil;
+  Rect eyeRoi;
+
   cout << "---------- UPDATE ----------" << endl;
   if(!bSetup) setup(img);
+    imgRoi = img;
+    /*
+    Ptr<CLAHE> clahe = createCLAHE();
+    clahe->setClipLimit(4);
+    clahe->apply(imgRoi,normalized);
+    **/
+    equalizeHist(imgRoi, normalized);
+    drawing = normalized.clone();
+    // Rect roi = Rect(img.cols/4,img.rows/4, img.cols/2,img.rows/2);
+    cout << "drawing size : " << drawing.cols << "x" << drawing.rows << endl;
+    eyeRoi = Rect( (img.cols - img.rows )/2, 0, img.rows, img.rows); // take only the center square into account
 
-  eyeFinder.update(img);
+    findPupil(drawing, pupil);
+    subMat2ofImg(drawing,bothEyesNorm);
 
-  for ( int i = 0; i < eyeFinder.size() ; i++ ){
-    ofRectangle rect = eyeFinder.getObject(i);
-    if ( rect.width > img.cols/3 ) {
-      imgRoi = img(toCv(rect)); // get the region of interest (ROI), i.e. the eyes, from origin image.
+    Mat sobel;
+    Sobel(normalized, sobel, -1, 1, 1);
+    double score = norm(sum(sobel)) / sobel.total(); // compute image quality
 
-      int eyeWidth = rect.width * 0.18; // relative width of an eye in the detected eyes pair
-      int eyeHeight = rect.height * 0.75;
-      int eyeOffset = rect.width * 0.12;
+    bool best = false;
 
-      equalizeHist(imgRoi, normalized);
+    cout << "score is : " << score << endl;
+    if ( score >  bestScore ){
+      best=true;
+    } else { return; }
+    /*
+    if ( findIris (leftRoiMat, leftIris)
+         && findPupil(leftRoiMat,  leftIris, leftPupil)
+         && findIris (rightRoiMat, rightIris)
+         && findPupil(rightRoiMat, rightIris, rightPupil))
+    {
 
-      Mat sobel;
-      Sobel(normalized, sobel, -1, 1, 1);
-      double score = norm(sum(sobel)) / sobel.total(); // compute image quality
+      Point a = Point ( leftIris[0],   leftIris[1]);
+      Point a2 = Point ( leftPupil[0], leftPupil[1]);
+      Point b = Point (rightIris[0],  rightIris[1]);
+      Point b2 = Point (rightPupil[0], rightPupil[1]);
 
-      bool best = false;
-
-      cout << "score is : " << score << endl;
-      if ( score >  bestScore ){ // detected rectangle should be at least 1/3 of the image.
-        best=true;
-      } else { return; }
-
-      Mat drawing = normalized.clone();
-
-      Rect leftRoi =  Rect(eyeOffset,                         (rect.height-eyeHeight)/2, eyeWidth, eyeHeight);
-      Rect rightRoi = Rect(rect.width - eyeOffset - eyeWidth, (rect.height-eyeHeight)/2, eyeWidth, eyeHeight);
-
-      Rect leftRoi2, rightRoi2;
-      Vec3f leftIris, rightIris, leftPupil, rightPupil;
-
-      cout << "drawing size : " << drawing.cols << "x" << drawing.rows << endl;
-
-      Mat leftRoiMat = drawing(leftRoi);
-      Mat rightRoiMat = drawing(rightRoi);
-
-      if ( findIris (leftRoiMat, leftIris) &&
-           findPupil(leftRoiMat,  leftIris, leftPupil) &&
-           findIris (rightRoiMat, rightIris) &&
-           findPupil(rightRoiMat, rightIris, rightPupil))
-      {
-
-        Point a = Point ( leftIris[0],   leftIris[1]);
-        Point a2 = Point ( leftPupil[0], leftPupil[1]);
-        Point b = Point (rightIris[0],  rightIris[1]);
-        Point b2 = Point (rightPupil[0], rightPupil[1]);
-
-        if ( norm(a-a2) > leftPupil[2] || norm(b-b2) > rightPupil[2] ){
-          cout << "iris center outside pupil : wrong detection" << endl;
-          return;
-        } else {
-          // image could be considered as "best" only if it is focused enough AND pupil are successfully detected
-          bestScore = score;
-          subMat2ofImg(normalized,bestEyesNorm);
-        }
-
-        a += Point ( leftRoi.x,   leftRoi.y);
-        b += Point ( rightRoi.x, rightRoi.y);
-        line(drawing, a, b, 255);
-
-
-        leftRoi2  = Rect( leftIris[0] - leftIris[2] + leftRoi.x,
-                          leftIris[1] - leftIris[2] + leftRoi.y,
-                          leftIris[2] * 2,
-                          leftIris[2] * 2);
-
-        rightRoi2 = Rect(rightIris[0] - rightIris[2] + rightRoi.x,
-                         rightIris[1] - rightIris[2] + rightRoi.y,
-                         rightIris[2] * 2,
-                         rightIris[2] * 2);
-
-        leftEyeMat = normalized(leftRoi2);
-        rightEyeMat = normalized(rightRoi2);
-
-        // alignEye(normalized, leftRoi2, rightRoi2, leftIris, rightIris);
-
-        leftNoise  = findEyelid(leftEyeMat,  leftPupil,  leftIris);
-        rightNoise = findEyelid(rightEyeMat, rightPupil, rightIris);
-
-        encodeIris(leftNoise, leftIris, leftPupil, leftCodeMat);
-        encodeIris(rightNoise, rightIris, rightPupil, rightCodeMat);
-
-        freeMasekImage(leftNoise);
-        freeMasekImage(rightNoise);
-
-        cout << "leftCode : " << leftCodeMat.cols << "x" << leftCodeMat.rows << endl;
-        subMat2ofImg( leftCodeMat, leftCodeImg);
-        subMat2ofImg(rightCodeMat, rightCodeImg);
-
-        subMat2ofImg(drawing,bothEyesNorm);
-
-        printVec (leftIris,  "leftIris");
-        printVec (rightIris, "rightIris");
-        printRect(leftRoi,   "leftRoi");
-        printRect(rightRoi,  "rightRoi");
-        printRect(leftRoi2,  "leftRoi2");
-        printRect(rightRoi2, "rightRoi2");
-
-        subMat2ofImg(leftEyeMat, leftEye);
-        subMat2ofImg(rightEyeMat, rightEye);
+      if ( norm(a-a2) > leftPupil[2] || norm(b-b2) > rightPupil[2] ){
+        cout << "iris center outside pupil : wrong detection" << endl;
+        return;
+      } else {
+        // image could be considered as "best" only if it is focused enough AND pupil are successfully detected
+        bestScore = score;
+        subMat2ofImg(normalized,bestEyesNorm);
       }
+
+      a += Point ( leftRoi.x,   leftRoi.y);
+      b += Point ( rightRoi.x, rightRoi.y);
+      line(drawing, a, b, 255);
+
+
+      leftRoi2  = Rect( leftIris[0] - leftIris[2] + leftRoi.x,
+                        leftIris[1] - leftIris[2] + leftRoi.y,
+                        leftIris[2] * 2,
+                        leftIris[2] * 2);
+
+      rightRoi2 = Rect(rightIris[0] - rightIris[2] + rightRoi.x,
+                       rightIris[1] - rightIris[2] + rightRoi.y,
+                       rightIris[2] * 2,
+                       rightIris[2] * 2);
+
+      leftEyeMat = normalized(leftRoi2);
+      rightEyeMat = normalized(rightRoi2);
+
+      // alignEye(normalized, leftRoi2, rightRoi2, leftIris, rightIris);
+
+      leftNoise  = findEyelid(leftEyeMat,  leftPupil,  leftIris);
+      rightNoise = findEyelid(rightEyeMat, rightPupil, rightIris);
+
+      encodeIris(leftNoise, leftIris, leftPupil, leftCodeMat);
+      encodeIris(rightNoise, rightIris, rightPupil, rightCodeMat);
+
+      freeMasekImage(leftNoise);
+      freeMasekImage(rightNoise);
+
+      cout << "leftCode : " << leftCodeMat.cols << "x" << leftCodeMat.rows << endl;
+      subMat2ofImg( leftCodeMat, leftCodeImg);
+      subMat2ofImg(rightCodeMat, rightCodeImg);
+
+      printVec (leftIris,  "leftIris");
+      printVec (rightIris, "rightIris");
+      printRect(leftRoi,   "leftRoi");
+      printRect(rightRoi,  "rightRoi");
+      printRect(leftRoi2,  "leftRoi2");
+      printRect(rightRoi2, "rightRoi2");
+
+      subMat2ofImg(leftEyeMat, leftEye);
+      subMat2ofImg(rightEyeMat, rightEye);
     }
-  }
+    */
 }
 
 void gorgoneEyeDetection::drawEyes(){
   //drawMat(bothEyesNorm,0,ofGetHeight()-bothEyesNorm.rows,ofGetWidth(),bothEyesNorm.rows*ofGetWidth()/bothEyesNorm.cols);
-  if(leftEye.isAllocated()) leftEye.draw(10,10,200,200);
-  if(rightEye.isAllocated()) rightEye.draw(250,10,200,200);
-  if(leftProc.isAllocated()) leftProc.draw(10,250,200,200);
-  if(rightProc.isAllocated()) rightProc.draw(250,250,200,200);
+  if(eye.isAllocated()) eye.draw(10,10,200,200);
+  if(eyeProc.isAllocated()) eyeProc.draw(10,250,200,200);
   int height = bothEyesNorm.getHeight()*ofGetWidth()/bothEyesNorm.getWidth();
   if(bothEyesNorm.isAllocated()) bothEyesNorm.draw(0,ofGetHeight()-height,ofGetWidth(),height);
 
-  if (bestEyesNorm.isAllocated()) bestEyesNorm.draw(500,250,bestEyesNorm.getWidth()*0.4, bestEyesNorm.getHeight()*0.4);
+  // if (bestEyesNorm.isAllocated()) bestEyesNorm.draw(500,250,bestEyesNorm.getWidth()*0.4, bestEyesNorm.getHeight()*0.4);
   string drawString = "best image -- score " + ofToString(bestScore);
   ofDrawBitmapStringHighlight(drawString, 500, 250);
 
-  drawString = "angle in degree " + ofToString(angle);
   ofDrawBitmapStringHighlight(drawString, 0, ofGetHeight());
 
-  if(leftCodeImg.isAllocated()) leftCodeImg.draw(500,10);
-  else { cout << "leftCodeImg is not allocated" << endl;}
-  if(rightCodeImg.isAllocated()) rightCodeImg.draw(500, 100);
-  else { cout << "rightCodeImg is not allocated" << endl;}
+  if(codeImg.isAllocated()) codeImg.draw(500,10);
+  else { cout << "codeImg is not allocated" << endl;}
 
   gui.draw();
 }
@@ -169,53 +151,30 @@ void gorgoneEyeDetection::save(){
   basename += "-" + ZeroPadNumber(ofGetHours()) + ZeroPadNumber(ofGetMinutes()) + ZeroPadNumber(ofGetSeconds());
 
   cout << "save eyes to " << basename << endl;
-  //imwrite(basename + "-left.bmp", leftEye);
-  //imwrite(basename + "-right.bmp", rightEye);
-  //imwrite(basename + ".bmp", bothEyesNorm);
-  leftEye .save(basename + "-left.bmp" );
-  rightEye.save(basename + "-right.bmp");
+  eye .save(basename + "-crop.bmp" );
   bothEyesNorm.save(basename + ".bmp");
 }
 
-//Align the left and right eye position using pupil information and then extract the eye region
-void gorgoneEyeDetection::alignEye(Mat src_gray, const Rect leftRoi, const Rect rightRoi, Vec3f leftIris, Vec3f rightIris)
-{
-  // rotate eyeImg according to angle between two eyes
-  Point A = Point (leftIris[0], leftIris[1]);
-  Point B = Point (rightIris[0], rightIris[1]);
-
-  // angle = atan( (A.y-B.y) / (A.x-B.x) ) * 180 / PI;
-
-  cout << "rotation angle " << angle << endl;
-
-  Mat rot_matL = getRotationMatrix2D(A, angle, 1.);
-  Mat rot_matR = getRotationMatrix2D(B + rightRoi.tl(), angle, 1.);
-
-  warpAffine(src_gray(leftRoi), leftEyeMat, rot_matL, leftRoi.size());
-  warpAffine(src_gray(rightRoi),rightEyeMat, rot_matR, rightRoi.size());
-
-/*
-  Mat tmp;
-  warpAffine(src_gray, tmp, rot_matL, src_gray.size());
-  leftEyeMat = tmp(leftRoi).clone();
-  warpAffine(src_gray,tmp, rot_matR, src_gray.size());
-  rightEyeMat = tmp(rightRoi).clone();
-*/
-}
-
-bool gorgoneEyeDetection::findIris(Mat& roiImg, Vec3f& iris){
+bool gorgoneEyeDetection::findPupil(Mat& img, Vec3f& iris){
   // assume src is grayscale
 
   vector<Vec3f> circles;
+  Mat thresh;
+  // threshold(img,thresh,paramThresh);
+  Mat img_scaled = img;
 
+  int minRad, maxRad, minDist;
   Mat blurred;
+  blur( img_scaled, blurred, Size(3,3) );
 
-  blur( roiImg, blurred, Size(3,3) );
 
-  int minRad = 0.06 / 0.18 * roiImg.cols; // relative ratio of pupil computed from the extracted eyepair
-  int maxRad = 0.07 / 0.18 * roiImg.cols;
+  minRad = 75;
+  maxRad = 200;
+  minDist = 500;
 
-  HoughCircles( blurred, circles, CV_HOUGH_GRADIENT, 1, roiImg.rows/8, param1, param2, minRad, maxRad );
+  cout << "minRad : " << minRad << " maxRad : " << maxRad << endl;
+
+  HoughCircles( blurred, circles, CV_HOUGH_GRADIENT, 2, minDist, param1, param2, minRad, maxRad );
   // cout << circles.size() << " cirlces found" << endl;
 
   if ( circles.empty() ){
@@ -223,16 +182,21 @@ bool gorgoneEyeDetection::findIris(Mat& roiImg, Vec3f& iris){
     return false;
   }
 
+  for( size_t i = 0; i < circles.size(); i++ )
+  {
+
+  }
+
   /// Draw the circles detected
   for( size_t i = 0; i < circles.size(); i++ )
   {
-      Point center(round(circles[i][0]), round(circles[i][1]));
-      int radius = round(circles[i][2]);
+      Point center(round(circles[i][0] * scale), round(circles[i][1] * scale));
+      int radius = round(circles[i][2] * scale);
       // circle center
 
-      circle( roiImg, center, 3, Scalar(255,255,255), -1, 8, 0 );
+      circle( img, center, 3, Scalar(255,255,255), -1, 8, 0 );
       // circle outline
-      circle( roiImg, center, radius, Scalar(255,255,255), 1, 8, 0 );
+      circle( img, center, radius, Scalar(255,255,255), 1, 8, 0 );
 
       //iris += circles[i];
   }
@@ -251,7 +215,7 @@ bool gorgoneEyeDetection::findIris(Mat& roiImg, Vec3f& iris){
   return true;
 }
 
-bool gorgoneEyeDetection::findPupil(Mat& src_gray, const Vec3f& iris, Vec3f& pupil){
+bool gorgoneEyeDetection::findIris(Mat& src_gray, const Vec3f& iris, Vec3f& pupil){
 
   vector<Vec3f> circles;
   // now find the pupil in a square inside the iris
@@ -262,7 +226,8 @@ bool gorgoneEyeDetection::findPupil(Mat& src_gray, const Vec3f& iris, Vec3f& pup
   Mat roiImg;
   try {
     roiImg = src_gray(pupilRoi).clone();
-  } catch (int e) {
+  } catch (cv::Exception e) {
+    cout << "pupilRoi seems to be wrong" << endl;
     return false;
   }
 
@@ -296,9 +261,6 @@ bool gorgoneEyeDetection::findPupil(Mat& src_gray, const Vec3f& iris, Vec3f& pup
   pupil[2] = circles[0][2];
 
   cout << "pupil " << pupil[0] << ";" << pupil[1] << " " << pupil[2] << endl;
-
-  flag = !flag;
-  subMat2ofImg(roiImg, flag ? leftProc : rightProc);
 
   return true;
 }
