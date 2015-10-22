@@ -31,7 +31,7 @@ void crossVideoGrabber::update(){
 }
 void crossVideoGrabber::draw(int x, int y){
   if ( videoFlag ){
-    videoPlayer.draw(x,y);
+    videoPlayer.draw(x,y,ofGetWidth(), ofGetHeight());
   } else {
 #ifndef TARGET_RASPBERRY_PI
     cam.draw(x,y);
