@@ -8,3 +8,5 @@ debug/*
 bin/*
 !bin/data/
 *.bmp
+*.mov
+*.avi
