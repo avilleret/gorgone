@@ -12,10 +12,15 @@ using namespace ofxCv;
 
 void gorgoneEyeDetection::setup(const Mat& img){
   gui.setup("Eye detection");
-  gui.add(param1.set("Hough 1st parameter",104,0,255));
-  gui.add(param2.set("Hough 2nd parameter",12,0,255));
-  gui.add(paramThresh.set("rotation threshold", 0, 0, 180));
+  gui.add(param1.set("Hough 1st parameter",14,0,255));
+  gui.add(param2.set("Hough 2nd parameter",6,0,255));
+  gui.add(paramThresh.set("threshold", 0, 0, 180));
+  gui.add(paramMarging.set("marging", 5, 0, 50));
+  gui.add(paramScore.set("focus",0,0,1));
   scale=1.;
+
+  eyeFinder.setup("cascade/haarcascade_eye_tree_eyeglasses.xml");
+  eyeFinder.setRescale(50./(float)img.rows);
 
   reset();
 }
@@ -28,19 +33,55 @@ void gorgoneEyeDetection::reset(){
 
 void gorgoneEyeDetection::update(Mat& img){
 
-  Mat drawing;
+  Mat drawing, subMat;
   Mat eyeRoiMat;
   Vec3f iris, pupil;
   Rect eyeRoi;
 
+
   cout << "---------- UPDATE ----------" << endl;
   if(!bSetup) setup(img);
+
+
+  eyeFinder.update(img);
+
+  cout << "found eyes : " << eyeFinder.size() << endl;
+
+  if ( eyeFinder.size() == 0) return;
+
+  for ( int i = 0; i < eyeFinder.size() ; i++ ){
+    ofRectangle rect = eyeFinder.getObject(i);
+    double marging = paramMarging / 100.;
+    rect.x -= rect.width * marging;
+    rect.y -= rect.height * marging;
+    rect.width *= 1 + 2 * marging;
+    rect.height *= 1 + 2 * marging;
+    Vec3f pupil;
+    try {
+      Rect pupilRect;
+      pupilRect.x = rect.x + rect.width*0.05;
+      pupilRect.y = rect.y + rect.height*0.05;
+      pupilRect.width = rect.width * 0.9;
+      pupilRect.height = rect.height * 0.9;
+      subMat = img(toCv(rect));
+      Mat pupilMat = img(pupilRect);
+      findPupil(pupilMat, pupil);
+    } catch ( cv::Exception ) {
+      cout << "oups wrong ROI" << endl;
+    }
+
+    double score = computeFocus(subMat);
+    paramScore = score;
+    cout << "eye focus : " << score << endl;
+  }
+  subMat2ofImg(subMat, eye);
+/*
     imgRoi = img;
-    /*
-    Ptr<CLAHE> clahe = createCLAHE();
-    clahe->setClipLimit(4);
-    clahe->apply(imgRoi,normalized);
-    **/
+
+    //Ptr<CLAHE> clahe = createCLAHE();
+    //clahe->setClipLimit(4);
+    //clahe->apply(imgRoi,normalized);
+
     equalizeHist(imgRoi, normalized);
     drawing = normalized.clone();
     // Rect roi = Rect(img.cols/4,img.rows/4, img.cols/2,img.rows/2);
@@ -60,6 +101,7 @@ void gorgoneEyeDetection::update(Mat& img){
     if ( score >  bestScore ){
       best=true;
     } else { return; }
+
     /*
     if ( findIris (leftRoiMat, leftIris)
          && findPupil(leftRoiMat,  leftIris, leftPupil)
@@ -128,6 +170,7 @@ void gorgoneEyeDetection::update(Mat& img){
 }
 
 void gorgoneEyeDetection::drawEyes(){
+
   //drawMat(bothEyesNorm,0,ofGetHeight()-bothEyesNorm.rows,ofGetWidth(),bothEyesNorm.rows*ofGetWidth()/bothEyesNorm.cols);
   if(eye.isAllocated()) eye.draw(10,10,200,200);
   if(eyeProc.isAllocated()) eyeProc.draw(10,250,200,200);
@@ -146,6 +189,14 @@ void gorgoneEyeDetection::drawEyes(){
   gui.draw();
 }
 
+double gorgoneEyeDetection::computeFocus(Mat& mat){
+    Mat sobel;
+    Sobel(mat, sobel, -1, 1, 1);
+    double score = norm(sum(sobel)) / sobel.total(); // compute image quality
+
+    return score;
+}
+
 void gorgoneEyeDetection::save(){
   string basename = "images/" + ZeroPadNumber(ofGetYear()) + ZeroPadNumber(ofGetMonth()) + ZeroPadNumber(ofGetDay());
   basename += "-" + ZeroPadNumber(ofGetHours()) + ZeroPadNumber(ofGetMinutes()) + ZeroPadNumber(ofGetSeconds());
@@ -161,15 +212,16 @@ bool gorgoneEyeDetection::findPupil(Mat& img, Vec3f& iris){
   vector<Vec3f> circles;
   Mat thresh;
   // threshold(img,thresh,paramThresh);
-  Mat img_scaled = img;
+  Mat img_thresh;
 
   int minRad, maxRad, minDist;
   Mat blurred;
-  blur( img_scaled, blurred, Size(3,3) );
+  cv::threshold(img,img_thresh, 230, 0, THRESH_TOZERO_INV);
+  blur( img_thresh, blurred, Size(3,3) );
 
 
   minRad = 75;
-  maxRad = 200;
+  maxRad = 210;
   minDist = 500;
 
   cout << "minRad : " << minRad << " maxRad : " << maxRad << endl;
@@ -183,6 +235,17 @@ bool gorgoneEyeDetection::findPupil(Mat& img, Vec3f& iris){
   }
   double lowestBrightness = 255.;
   int darkestCircle = -1;
+
+  for( size_t i = 0; i < circles.size(); i++ )
+  {
+      Point center(round(circles[i][0]), round(circles[i][1]));
+      int radius = round(circles[i][2]);
+      // circle center
+      circle( img, Point(circles[i][0], circles[i][1]), radius, 128, 1, 8, 0);
+      // circle outline
+      circle( img, center, radius, Scalar(255,255,255), -1, 8, 0 );
+  }
+  return true;
 
   for( size_t i = 0; i < circles.size(); i++ )
   {

@@ -23,11 +23,13 @@ public:
   bool findIris(Mat& src_gray, const Vec3f& iris, Vec3f& pupil);
   Masek::IMAGE* findEyelid(Mat& img, const Vec3f& pupil, const Vec3f& iris);
   void encodeIris(Masek::IMAGE* noiseImage, const Vec3f iris, const Vec3f pupil, Mat& code);
+  double computeFocus(cv::Mat& mat);
 
   ofxPanel gui;
-  ofParameter<int> param1, param2, paramThresh;
-
+  ofParameter<int> param1, param2, paramThresh, paramMarging;
+  ofParameter<float> paramScore;
 private:
+  ofxCv::ObjectFinder eyeFinder;
   bool bSetup, flag, eyeCloseUp;
   double bestScore, scale;
   ofImage bothEyesNorm, bestEyesNorm, eye, eyeProc, codeImg;
