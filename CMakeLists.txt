@@ -17,12 +17,14 @@ include_directories (
 ofxaddon(ofxCv)
 ofxaddon(ofxArgParser)
 ofxaddon(ofxGui)
+ofxaddon(ofxSvg)
 
 set(SOURCES
     src/main.cpp
     src/gorgone.cpp
     src/gorgoneEyeDetection.cpp
     src/crossVideoGrabber.cpp
+    src/svgInterpolation.cpp
 )
 
 if ( OF_PLATFORM STREQUAL armv7 )
