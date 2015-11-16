@@ -49,6 +49,9 @@ void gorgone::keyPressed(int key)
     case ' ':
       irisDetector.reset();
       break;
+    case 'c':
+      irisDetector.computeCode();
+      break;
 #ifdef TARGET_RASPBERRY_PI
     case 'i':
       vidGrabber.led.switchOnIR();
