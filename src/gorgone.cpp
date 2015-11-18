@@ -50,7 +50,7 @@ void gorgone::update()
         p=img.ptr<uchar>(i);
         for (int j = 0; j < img.cols; j++ ){
           avg+=p[j] / 255.;
-          v.push_back(p[j]);
+          v.push_back(TTBoolean (p[j]>0));
         }
         avg/=img.cols;
         svgInterp.coeff.push_back(avg);
