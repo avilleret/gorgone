@@ -79,13 +79,15 @@ void svgInterpolation::draw(){
   for (int j = 0; j < interpolatedLine.size(); j++){
     ofVertex(interpolatedLine[j]);
   }
-  ofVertex(interpolatedLine[0]);
+  if ( interpolatedLine.size() ) ofVertex(interpolatedLine[0]);
   ofEndShape();
 
 	ofPopMatrix();
 }
 
 void svgInterpolation::multiInterpolation(){
+
+  cout << "compute shape interpolation" << endl;
 
   interpolatedLine.clear();
 

@@ -8,7 +8,7 @@ void gorgone::setup()
   parseCmdLineOptions();
   vidGrabber.setup(filename);
   svgInterp.setup();
-  jamoma.setup();
+  jamoma.setup((void*) this);
 }
 
 void gorgone::update()
@@ -33,13 +33,31 @@ void gorgone::update()
     irisDetector.update(gray);
   }
 
+  if (bComputeCode) {
+    irisDetector.computeCode();
+    bComputeCode=false;
+    jamoma.mComputeIrisCodeParameter.set("value", bComputeCode);
+
+/*
+// desactivated because Max doesn't handle list longer than 256 item, yes this still happens in 2015...
+    TTValue v;
+    Mat code = irisDetector.getIrisCode();
+    v.push_back(code.cols);
+    v.push_back(code.rows);
+    uchar* p;
+    for (int i = 0; i < code.rows; i++ ){
+      p=code.ptr<uchar>(i);
+      for (int j = 0; j < code.cols; j++ ){
+        v.push_back((int) p[j]);
+      }
+    }
+    cout << "v size : " << v.size() << endl;
+    jamoma.mTrackingIrisCodeReturn.set("value",v);
+*/
+  }
+
   Mat img = irisDetector.getIrisCode();
   if( bDisplaying && irisDetector.newCode && img.total() > 0 ) {
-    TTValue v;
-    // v.resize(img.rows*img.cols + 2);
-    v.push_back(TTAddress("/iris_code"));
-    v.push_back(img.cols);
-    v.push_back(img.rows);
 
     if ( irisDetector.newCode ){
       svgInterp.coeff.clear();
@@ -50,22 +68,22 @@ void gorgone::update()
         p=img.ptr<uchar>(i);
         for (int j = 0; j < img.cols; j++ ){
           avg+=p[j] / 255.;
-          v.push_back(TTBoolean (p[j]>0));
         }
         avg/=img.cols;
         svgInterp.coeff.push_back(avg);
       }
       irisDetector.newCode = false;
     }
-    cout << "v size : " << v.size() << endl;
-    jamoma.mApplicationRemote.send("ObjectSend", v);
 
+    TTValue v;
     cout << "average : " << endl;
     for (int i = 0; i<svgInterp.coeff.size(); i++){
       cout << i << " : " << svgInterp.coeff[i] << endl;
+      v.push_back(svgInterp.coeff[i]);
     }
     cout << endl;
     svgInterp.multiInterpolation();
+    jamoma.mDrawingCoeffParameter.set("value", v);
   }
 }
 
@@ -90,7 +108,7 @@ void gorgone::keyPressed(int key)
       irisDetector.reset();
       break;
     case 'c':
-      irisDetector.computeCode();
+      bComputeCode=true;
       break;
     case 't':
       bTracking = !bTracking;

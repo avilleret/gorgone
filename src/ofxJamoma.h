@@ -8,7 +8,7 @@ TTErr DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& v);
 class ofxJamoma
 {
   public:
-    void setup  ();
+    void setup  (void* parent);
     void exit   ();
 
   // private:
@@ -24,11 +24,13 @@ class ofxJamoma
     TTObject mProtocolWebSocket;
 
         // Declare publicly all datas of our application to retreive them from the callback function
-    TTObject mDataDecimalParameter;     // a parameter is relative to the state of our application
-    TTObject mDataStringParameter;      // a parameter is relative to the state of our application
-    TTObject mDataBoolParameter;        // a parameter is relative to the state of our application
-    TTObject mDataMessage;              // a message is a kind of command to send to our application
-    TTObject mDataReturn;               // a return is a kind of notification sent by our application
+    TTObject mTrackEnableParameter;     // a parameter is relative to the state of our application
+    TTObject mDrawingEnableParameter;   // a parameter is relative to the state of our application
+    TTObject mComputeIrisCodeParameter; // a parameter is relative to the state of our application
+    TTObject mDrawingCoeffParameter; // drawing coefficient
+    TTObject mTrackingIrisCodeReturn; // iris code return
+
+    TTPtr mParent;
 
     void setupJamomaApp();
     void registerJamomaParam();

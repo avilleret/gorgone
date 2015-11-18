@@ -24,6 +24,9 @@ class gorgone : public ofBaseApp
     void keyPressed      (int key);
 
     void messageReceived (ofMessage&);
+    ofxJamoma jamoma;
+    bool bTracking, bDisplaying, bComputeCode;
+    svgInterpolation svgInterp;
 
 private:
     void detectEyeRegion(ofImage& input);
@@ -38,12 +41,8 @@ private:
     ofTexture videoTexture;
 
     cv::Mat frame;
-    ofxJamoma jamoma;
 
     ofImage m_colorImg, m_grayImg, m_leftEye, m_rightEye;
 
     gorgoneEyeDetection irisDetector;
-    svgInterpolation svgInterp;
-
-    bool bTracking, bDisplaying;
 };

@@ -1,7 +1,9 @@
 #include "ofxJamoma.h"
+#include "gorgone.h"
 
-void ofxJamoma::setup()
+void ofxJamoma::setup(void* parent)
 {
+  mParent = TTPtr(parent);
   mAppLocalName = "gorgone-1";
   mAppRemoteName = "master";
   setupJamomaApp();
@@ -116,79 +118,158 @@ void ofxJamoma::registerJamomaParam(){
     /////////////////////////////////////////////////////////
 
     // Create a decimal parameter data and set its callback function and baton and some attributes
-    mDataDecimalParameter = TTObject("Data", "parameter");
+    mTrackEnableParameter = TTObject("Data", "parameter");
 
     // Setup the callback mechanism to get the value back
-    args = TTValue(TTPtr(this), mDataDecimalParameter);
-    mDataDecimalParameter.set("baton", args);
-    mDataDecimalParameter.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+    args = TTValue(mParent, mTrackEnableParameter);
+    mTrackEnableParameter.set("baton", args);
+    mTrackEnableParameter.set("function", TTPtr(&DemoAppDataReturnValueCallback));
 
     // Setup the data attributes depending of its use inside the application
-    mDataDecimalParameter.set("type", "decimal");
-    mDataDecimalParameter.set("rangeBounds", TTValue(-1., 1.));
-    mDataDecimalParameter.set("rangeClipmode", "both");
-    mDataDecimalParameter.set("rampDrive", "System");
-    mDataDecimalParameter.set("description", "this parameter is useful for demo purpose");
-    mDataDecimalParameter.set("valueDefault", 0);
-    mDataDecimalParameter.set("value", 0.9);
+    mTrackEnableParameter.set("type", "boolean");
+    mTrackEnableParameter.set("description", "start/stop tracking");
 
     // Register the parameter data into gorgone-1 at an address
-    args = TTValue("/myParameterDecimal", mDataDecimalParameter);
+    args = TTValue("/tracking/enable", mTrackEnableParameter);
     err = mApplicationLocal.send("ObjectRegister", args, out);
 
     if (err)
-        TTLogError("Error : can't register data at /myParameterDecimal address \n");
+        TTLogError("Error : can't register data at /tracking/enable address \n");
 
     else {
         address = out[0];
-        TTLogMessage("\n /myParameterDecimal : effective registration address is %s \n", address.c_str());
+        TTLogMessage("\n /tracking/enable : effective registration address is %s \n", address.c_str());
     }
 
+        // Create a decimal parameter data and set its callback function and baton and some attributes
+    mDrawingEnableParameter = TTObject("Data", "parameter");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mDrawingEnableParameter);
+    mDrawingEnableParameter.set("baton", args);
+    mDrawingEnableParameter.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mDrawingEnableParameter.set("type", "boolean");
+    mDrawingEnableParameter.set("description", "start/stop drawing");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/drawing/enable", mDrawingEnableParameter);
+    err = mApplicationLocal.send("ObjectRegister", args, out);
+
+    if (err)
+        TTLogError("Error : can't register data at /drawing/enable address \n");
+
+    else {
+        address = out[0];
+        TTLogMessage("\n /drawing/enable : effective registration address is %s \n", address.c_str());
+    }
+
+    // Create a new boolean parameter
+    mComputeIrisCodeParameter = TTObject("Data", "parameter");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mComputeIrisCodeParameter);
+    mComputeIrisCodeParameter.set("baton", args);
+    mComputeIrisCodeParameter.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mComputeIrisCodeParameter.set("type", "boolean");
+    mComputeIrisCodeParameter.set("description", "start/stop drawing");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/tracking/computecode", mComputeIrisCodeParameter);
+    err = mApplicationLocal.send("ObjectRegister", args, out);
+
+    if (err)
+        TTLogError("Error : can't register data at /tracking/computecode address \n");
+
+    else {
+        address = out[0];
+        TTLogMessage("\n /tracking/computecode : effective registration address is %s \n", address.c_str());
+    }
+
+    // Create a new array parameter
+    mDrawingCoeffParameter = TTObject("Data", "parameter");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mDrawingCoeffParameter);
+    mDrawingCoeffParameter.set("baton", args);
+    mDrawingCoeffParameter.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mDrawingCoeffParameter.set("type", "array");
+    mDrawingCoeffParameter.set("description", "shape coefficient");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/drawing/coeff", mDrawingCoeffParameter);
+    err = mApplicationLocal.send("ObjectRegister", args, out);
+
+    if (err)
+        TTLogError("Error : can't register data at /drawing/coeff address \n");
+
+    else {
+        address = out[0];
+        TTLogMessage("\n /drawing/coeff : effective registration address is %s \n", address.c_str());
+    }
+
+
+    // Create a new array return for iris code
+    mTrackingIrisCodeReturn = TTObject("Data", "return");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mTrackingIrisCodeReturn);
+    mTrackingIrisCodeReturn.set("baton", args);
+    mTrackingIrisCodeReturn.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mTrackingIrisCodeReturn.set("type", "array");
+    mTrackingIrisCodeReturn.set("description", "iris code");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/tracking/iriscode", mTrackingIrisCodeReturn);
+    err = mApplicationLocal.send("ObjectRegister", args, out);
+
+    if (err)
+        TTLogError("Error : can't register data at /tracking/iriscode address \n");
+
+    else {
+        address = out[0];
+        TTLogMessage("\n /tracking/iriscode : effective registration address is %s \n", address.c_str());
+    }
 }
 
 
 TTErr
 DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
 {
-    ofxJamoma*    demoApp = (ofxJamoma*)TTPtr(baton[0]);
+    gorgone*  gorgoneApp = (gorgone*)TTPtr(baton[0]);
     TTObject    anObject = baton[1];
 
     std::cout << "received value size : " << value.size() << std::endl;
 
   // Reteive which data has been updated
-    if (anObject.instance() == demoApp->mDataDecimalParameter.instance()) {
+    if (anObject.instance() == gorgoneApp->jamoma.mTrackEnableParameter.instance()) {
 
-        // print the returned value
-        TTLogMessage("/myParameterDecimal has been updated to %s \n", value.toString().data());
-        // demoApp->param2 = value[0];
+        gorgoneApp->bTracking = value[0];
         return kTTErrNone;
     }
 
-    if (anObject.instance() == demoApp->mDataStringParameter.instance()) {
-
-        // print the returned value
-        TTLogMessage("/myParameterString has been updated to %s \n", value.toString().data());
+    if (anObject.instance() == gorgoneApp->jamoma.mDrawingEnableParameter.instance()) {
+        gorgoneApp->bDisplaying = value[0];
         return kTTErrNone;
     }
 
-    if (anObject.instance() == demoApp->mDataBoolParameter.instance()) {
-
-        // print the returned value
-        TTLogMessage("/myParameterBool has been updated to %s \n", value.toString().data());
+    if (anObject.instance() == gorgoneApp->jamoma.mComputeIrisCodeParameter.instance()) {
+        gorgoneApp->bComputeCode = value[0];
         return kTTErrNone;
     }
 
-    if (anObject.instance() == demoApp->mDataMessage.instance()) {
-
-        // print the returned value
-        TTLogMessage("/myMessage has been updated to %s \n", value.toString().data());
-        return kTTErrNone;
-    }
-
-    if (anObject.instance() == demoApp->mDataReturn.instance()) {
-
-        // print the returned value
-        TTLogMessage("/myReturn has been updated to %s \n", value.toString().data());
+    if (anObject.instance() == gorgoneApp->jamoma.mDrawingCoeffParameter.instance()) {
+        gorgoneApp->svgInterp.coeff.clear();
+        for (int i = 0; i < value.size(); i++)
+            gorgoneApp->svgInterp.coeff.push_back(value[i]);
+        gorgoneApp->svgInterp.multiInterpolation();
         return kTTErrNone;
     }
 
