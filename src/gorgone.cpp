@@ -7,13 +7,15 @@ void gorgone::setup()
 {
   parseCmdLineOptions();
   vidGrabber.setup(filename);
+  svgInterp.setup();
+  jamoma.setup();
 }
 
 void gorgone::update()
 {
   vidGrabber.update();
 
-  if(vidGrabber.isFrameNew()){
+  if( bTracking && vidGrabber.isFrameNew()){
 
     frame = vidGrabber.getFrame();
 
@@ -29,15 +31,53 @@ void gorgone::update()
     cout << "new frame to process : " << gray.cols << "x" << gray.rows << endl;
 
     irisDetector.update(gray);
-   }
- }
+  }
+
+  Mat img = irisDetector.getIrisCode();
+  if( bDisplaying && irisDetector.newCode && img.total() > 0 ) {
+    TTValue v;
+    // v.resize(img.rows*img.cols + 2);
+    v.push_back(TTAddress("/iris_code"));
+    v.push_back(img.cols);
+    v.push_back(img.rows);
+
+    if ( irisDetector.newCode ){
+      svgInterp.coeff.clear();
+      cout << "code image resolution : " << img.cols << "x" << img.rows << endl;
+      uchar* p;
+      for (int i = 0; i < img.rows; i++ ){
+        float avg=0;
+        p=img.ptr<uchar>(i);
+        for (int j = 0; j < img.cols; j++ ){
+          avg+=p[j] / 255.;
+          v.push_back(p[j]);
+        }
+        avg/=img.cols;
+        svgInterp.coeff.push_back(avg);
+      }
+      irisDetector.newCode = false;
+    }
+    cout << "v size : " << v.size() << endl;
+    jamoma.mApplicationRemote.send("ObjectSend", v);
+
+    cout << "average : " << endl;
+    for (int i = 0; i<svgInterp.coeff.size(); i++){
+      cout << i << " : " << svgInterp.coeff[i] << endl;
+    }
+    cout << endl;
+    svgInterp.multiInterpolation();
+  }
+}
 
 void gorgone::draw()
 {
   // cout << ofGetFrameRate() << " fps" << endl;
   vidGrabber.draw(0,0);
   // drawMat(frame,0,0);
-  irisDetector.drawEyes();
+  if ( bTracking )
+    irisDetector.drawEyes();
+  if ( bDisplaying )
+    svgInterp.draw();
 }
 
 void gorgone::keyPressed(int key)
@@ -48,6 +88,20 @@ void gorgone::keyPressed(int key)
       break;
     case ' ':
       irisDetector.reset();
+      break;
+    case 'c':
+      irisDetector.computeCode();
+      break;
+    case 't':
+      bTracking = !bTracking;
+      if ( bTracking ) irisDetector.reset();
+#ifdef TARGET_RASPBERRY_PI
+      if ( bTracking ) vidGrabber.led.switchOnIR();
+      else vidGrabber.led.switchOffIR();
+#endif
+      break;
+    case 'd':
+      bDisplaying = !bDisplaying;
       break;
 #ifdef TARGET_RASPBERRY_PI
     case 'i':

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="22.369282mm"
+   height="20.376785mm"
+   viewBox="0 0 79.261235 72.201207"
+   id="svg3593"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="dessin04.svg">
+  <defs
+     id="defs3595" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="-525.36938"
+     inkscape:cy="-278.18511"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1014"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3598">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-271.79795,-181.97588)">
+    <polyline
+       transform="translate(-72.720844,152.96406)"
+       style="fill:none;stroke:#3953a4;stroke-width:0.34310001;stroke-miterlimit:10"
+       points="383.627,62.162 423.583,58.665    383.608,62.149 383.627,62.162 347.277,79.111 383.608,62.149 383.627,62.162 360.624,29.312 383.627,62.162 344.829,52.116    383.627,62.162 347.277,79.111 383.627,62.162 366.58,98.511 383.627,62.162 394.01,100.902 383.627,62.162 423.583,58.665    383.627,62.162 383.627,62.162 383.627,62.162 412.09,33.72 383.627,62.162 360.624,29.312 344.829,52.116 347.277,79.111    366.58,98.511 394.01,100.902 423.583,58.665 412.09,33.72 383.608,62.149 394.01,100.902 347.277,79.111 360.624,29.312    412.09,33.72 383.608,62.149 366.58,98.511 344.829,52.116 383.627,62.162  "
+       id="polyline74" />
+  </g>
+</svg>

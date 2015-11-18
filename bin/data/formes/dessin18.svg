@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="22.378637mm"
+   height="22.46069mm"
+   viewBox="0 0 79.294384 79.58512"
+   id="svg4277"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="dessin18.svg">
+  <defs
+     id="defs4279" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="-531.06709"
+     inkscape:cy="-183.06458"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1014"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata4282">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-277.49566,-269.71251)">
+    <polyline
+       transform="translate(-66.216093,33.379247)"
+       style="fill:none;stroke:#3953a4;stroke-width:0.34310001;stroke-miterlimit:10"
+       points="386.188,236.714 422.682,273.172    403.905,291.415 386.188,236.714 346.375,293.618 403.905,291.415 386.853,292.068 359.722,243.82 375.761,307.32 343.928,266.624    360.054,287.24 346.375,293.618 375.761,307.32 365.679,313.018 388.944,299.871 393.108,315.409 403.905,291.415 422.682,273.172    395.118,264.285 386.188,236.714 369.3,260.853 411.188,248.227 386.188,236.714 359.722,243.82 343.928,266.624 346.375,293.618    365.679,313.018 393.108,315.409 422.682,273.172 411.188,248.227 403.905,291.415 393.108,315.409 346.375,293.618    359.722,243.82 411.188,248.227 403.905,291.415 365.679,313.018 343.928,266.624 386.188,236.714  "
+       id="polyline52" />
+  </g>
+</svg>
