@@ -10,3 +10,6 @@
 [submodule "ofxArgParser"]
 	path = ofxArgParser
 	url = https://github.com/satoruhiga/ofxArgParser.git
+[submodule "ofxPd"]
+	path = ofxPd
+	url = https://github.com/danomatika/ofxPd.git

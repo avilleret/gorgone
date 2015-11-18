@@ -14,17 +14,22 @@ include_directories (
   ${CMAKE_CURRENT_LIST_DIR}/ofxCv/libs/ofxCv/include/
 )
 
+# Jamoma specific directory
+INCLUDE_DIRECTORIES("/usr/local/jamoma/include/jamoma/")
+LINK_DIRECTORIES("/usr/local/jamoma/lib/")
+
 ofxaddon(ofxCv)
 ofxaddon(ofxArgParser)
 ofxaddon(ofxGui)
 ofxaddon(ofxSvg)
 
 set(SOURCES
-    src/main.cpp
     src/gorgone.cpp
     src/gorgoneEyeDetection.cpp
     src/crossVideoGrabber.cpp
     src/svgInterpolation.cpp
+    src/ofxJamoma.cpp
+    src/main.cpp
 )
 
 if ( OF_PLATFORM STREQUAL armv7 )
@@ -49,6 +54,12 @@ target_link_libraries(
     Analysis
     ${OpenCV_LIBS}
     ${ofxCvPiCam}
+)
+
+target_link_libraries(
+  ${APP}
+  JamomaModular
+  JamomaFoundation
 )
 
 if ( OF_PLATFORM STREQUAL armv7 )
