@@ -1,13 +1,13 @@
 #include "svgInterpolation.h"
 
 //--------------------------------------------------------------
-void ofApp::setup(){
+void svgInterpolation::setup(){
 	ofSetVerticalSync(true);
 
 	ofBackground(0);
 	ofSetColor(255);
 
-  dir.listDir("");
+  dir.listDir("formes/");
   dir.sort(); // in linux the file system doesn't return file lists ordered in alphabetical order
 
   //allocate the vector to have as many ofImages as files
@@ -52,7 +52,7 @@ void ofApp::setup(){
 
 
 //--------------------------------------------------------------
-void ofApp::update(){
+void svgInterpolation::update(){
 	step += 0.001;
 	if (step > 1) {
 		step -= 1;
@@ -60,89 +60,40 @@ void ofApp::update(){
 }
 
 //--------------------------------------------------------------
-void ofApp::draw(){
+void svgInterpolation::draw(){
 	ofDrawBitmapString(ofToString(ofGetFrameRate()),20,20);
 	ofPushMatrix();
-	ofTranslate(ofGetWidth() / 2, ofGetHeight() / 2);
+	// ofTranslate(ofGetWidth() / 4, ofGetHeight() / 4);
 	// ofRotate(mouseX);
 	// float scale = ofMap(mouseY, 0, ofGetHeight(), .5, 10);
-	// ofScale(4., 4., 4.);
-  ofPoint center = centers[0];
-	ofTranslate(-center.x, -center.y);
+	ofScale(0.25, 0.25, 0.25);
+  /// ofPoint center = centers[0];
+	// ofTranslate(-ofGetWidth(), -ofGetHeight());
 	ofNoFill();
 
   double index = outliness.size() * step;
   vector<ofPolyline> outlinesA = outliness[(int) index];
   vector<ofPolyline> outlinesB = outliness[(int) fmod((index+1),outliness.size())];
 
-  for (int i = 0; i < min( (int)outlinesA.size(), (int)outlinesB.size()); i++){
-    ofPolyline & lineA = outlinesA[i];
-    ofPolyline & lineB = outlinesB[i];
-
-    ofBeginShape();
-    for (int j = 0; j < lineSize; j++){
-      ofVec3f pt = lineA[j].getInterpolated(lineB[j], fmod(index,1.));
-      ofVertex(pt);
-    }
-    ofVec3f pt = lineA[0].getInterpolated(lineB[0], fmod(index,1.));
-    ofVertex(pt);
-    ofEndShape();
+  ofBeginShape();
+  for (int j = 0; j < interpolatedLine.size(); j++){
+    ofVertex(interpolatedLine[j]);
   }
+  ofVertex(interpolatedLine[0]);
+  ofEndShape();
 
 	ofPopMatrix();
 }
 
-//--------------------------------------------------------------
-void ofApp::keyPressed(int key){
+void svgInterpolation::multiInterpolation(){
 
-}
+  interpolatedLine.clear();
 
-//--------------------------------------------------------------
-void ofApp::keyReleased(int key){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseEntered(int x, int y){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseExited(int x, int y){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::windowResized(int w, int h){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){
-
+  for (int i = 0; i < lineSize; i++){
+    ofVec3f pt;
+    for (int j = 0; j < min(outliness.size(), coeff.size()); j++){
+      pt += coeff[j] * outliness[j][0][i]; // [0] assumes that there is only one line on each ofPolyLine
+    }
+    interpolatedLine.push_back(pt);
+  }
 }

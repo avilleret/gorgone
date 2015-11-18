@@ -1,10 +1,13 @@
 #pragma once
 
+#include "ofxJamoma.h"
+
 #include "ofMain.h"
 #include "ofxArgParser.h"
 
 #include "ofxCv.h"
 #include "gorgoneEyeDetection.h"
+#include "svgInterpolation.h"
 #include "crossVideoGrabber.h"
 
 #include "EyeDetection.h"
@@ -35,8 +38,12 @@ private:
     ofTexture videoTexture;
 
     cv::Mat frame;
+    ofxJamoma jamoma;
 
     ofImage m_colorImg, m_grayImg, m_leftEye, m_rightEye;
 
     gorgoneEyeDetection irisDetector;
+    svgInterpolation svgInterp;
+
+    bool bTracking, bDisplaying;
 };

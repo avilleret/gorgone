@@ -11,6 +11,7 @@ using namespace cv;
 using namespace ofxCv;
 
 void gorgoneEyeDetection::setup(const Mat& img){
+  cout << "---------- SETUP----------" << endl;
   gui.setup("Eye detection", "settings.xml", ofGetWidth() - 200, 10);
   gui.add(param1.set("Hough 1st parameter",104,0,255));
   gui.add(param2.set("Hough 2nd parameter",12,0,255));
@@ -23,12 +24,14 @@ void gorgoneEyeDetection::setup(const Mat& img){
   eyeFinder.setRescale(50./(float)img.rows);
 
   reset();
+  bSetup = true;
 }
 
 void gorgoneEyeDetection::reset(){
-  bSetup = true;
+  bSetup = false;
   flag = false;
   bestScore = 0.;
+  newCode = false;
 }
 
 void gorgoneEyeDetection::update(Mat& img){
@@ -41,7 +44,6 @@ void gorgoneEyeDetection::update(Mat& img){
 
   cout << "---------- UPDATE ----------" << endl;
   if(!bSetup) setup(img);
-
 
   eyeFinder.update(img);
 
@@ -85,17 +87,20 @@ void gorgoneEyeDetection::update(Mat& img){
   cout << "eye focus : " << score << endl;
 }
 
+Mat gorgoneEyeDetection::getIrisCode(){
+  return codeMat;
+}
+
 void gorgoneEyeDetection::drawEyes(){
 
   if(eye.isAllocated()) eye.draw(10,10,200,200);
   if(eyeProc.isAllocated()) eyeProc.draw(10,250,200,200);
+  if(irisProc.isAllocated()) irisProc.draw(10,500,200,200);
   int height = bestEyeNorm.getHeight()*ofGetWidth()/bestEyeNorm.getWidth();
   if(bestEyeNorm.isAllocated()) bestEyeNorm.draw(0,ofGetHeight()-height,ofGetWidth(),height);
 
   string drawString = "best image -- score " + ofToString(bestScore);
-  ofDrawBitmapStringHighlight(drawString, 500, 250);
-
-  ofDrawBitmapStringHighlight(drawString, 0, ofGetHeight());
+  ofDrawBitmapStringHighlight(drawString, 10, 750);
 
   if(codeImg.isAllocated()) codeImg.draw(500,10);
   else { cout << "codeImg is not allocated" << endl;}
@@ -129,14 +134,14 @@ bool gorgoneEyeDetection::findIris(Mat& roiImg, Vec3f& iris){
 
   blur( roiImg, blurred, Size(3,3) );
 
-  int minRad = 0.5 * roiImg.cols / 2.; // relative ratio of pupil computed from the extracted eyepair
-  int maxRad = 0.9 * roiImg.cols / 2.;
+  int minRad = 0.65 * roiImg.cols / 2.; // relative ratio of pupil computed from the extracted eyepair
+  int maxRad = 0.87 * roiImg.cols / 2.;
 
   HoughCircles( blurred, circles, CV_HOUGH_GRADIENT, 1, roiImg.rows/2, param1, param2, minRad, maxRad );
   // cout << circles.size() << " cirlces found" << endl;
 
-  if ( circles.empty() ){
-    cout << "can't find any iris circle" << endl;
+  if ( circles.size() != 1 ){
+    cout << "can't find any iris circle or too many" << endl;
     return false;
   }
 
@@ -182,6 +187,8 @@ if ( idx >= 0 ){
 
   cout << "iris " << iris[0] << ";" << iris[1] << " " << iris[2] << endl;
 
+  subMat2ofImg(roiImg, irisProc);
+
   return rtn;
 }
 
@@ -209,7 +216,7 @@ bool gorgoneEyeDetection::findPupil(Mat& src_gray, const Vec3f& iris, Vec3f& pup
   blur(roiImg,roiImg, Size(3,3));
 
   //blur( roiImg, blurred, Size(3,3) );
-  HoughCircles( roiImg, circles, CV_HOUGH_GRADIENT, 1, roiImg.cols, param1, param2, 0, iris[2]/3);
+  HoughCircles( roiImg, circles, CV_HOUGH_GRADIENT, 1, roiImg.cols, param1, param2, iris[2]*0.15, iris[2]*0.8);
 
   if ( circles.empty() ){
     cout << "can't find any pupil circle" << endl;
@@ -299,6 +306,7 @@ Masek::IMAGE* gorgoneEyeDetection::findEyelid(Mat& img, const Vec3f& pupil, cons
 
 void gorgoneEyeDetection::computeCode()
 {
+  if ( !bestEye.total() > 0 ) return;
   noise  = findEyelid(bestEye,  bestPupil,  bestIris);
 
   encodeIris(noise, bestIris, bestPupil, codeMat);
@@ -307,6 +315,7 @@ void gorgoneEyeDetection::computeCode()
 
   cout << "leftCode : " << codeMat.cols << "x" << codeMat.rows << endl;
   subMat2ofImg(codeMat, codeImg);
+  newCode=true;
 }
 
 void gorgoneEyeDetection::encodeIris(Masek::IMAGE* noiseImage, const Vec3f iris, const Vec3f pupil, Mat& codeMat){

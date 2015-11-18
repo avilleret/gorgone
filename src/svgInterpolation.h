@@ -3,31 +3,21 @@
 #include "ofMain.h"
 #include "ofxSvg.h"
 
-class ofApp : public ofBaseApp{
+class svgInterpolation : public ofBaseApp {
 
 public:
     void setup();
     void update();
     void draw();
-
-    void keyPressed  (int key);
-    void keyReleased(int key);
-    void mouseMoved(int x, int y );
-    void mouseDragged(int x, int y, int button);
-    void mousePressed(int x, int y, int button);
-    void mouseReleased(int x, int y, int button);
-    void mouseEntered(int x, int y);
-    void mouseExited(int x, int y);
-    void windowResized(int w, int h);
-    void dragEvent(ofDragInfo dragInfo);
-    void gotMessage(ofMessage msg);
+    void multiInterpolation();
 
     vector<ofxSVG> svgs;
     float step;
     vector<ofPoint> centers;
     vector<vector<ofPolyline>> outliness;
+    vector<float> coeff; // interpolation coefficient
+    vector<ofVec3f> interpolatedLine; // forme interpolée
     int lineSize;
 
     ofDirectory dir;
-
 };

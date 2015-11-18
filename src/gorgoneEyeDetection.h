@@ -29,11 +29,14 @@ public:
   ofxPanel gui;
   ofParameter<int> param1, param2, paramThresh, paramMarging;
   ofParameter<float> paramScore;
+  Mat getIrisCode();
+  bool newCode;
+
 private:
   ofxCv::ObjectFinder eyeFinder;
   bool bSetup, flag, eyeCloseUp;
   double bestScore, scale;
-  ofImage bestEyeNorm, eye, eyeProc, codeImg;
+  ofImage bestEyeNorm, eye, eyeProc, irisProc, codeImg;
   Vec3f bestPupil, bestIris;
   Mat normalized, imgRoi;
   Masek::IMAGE *noise;
