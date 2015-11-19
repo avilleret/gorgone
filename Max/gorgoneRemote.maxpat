@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 231.0, 144.0, 809.0, 653.0 ],
+		"rect" : [ 179.0, 163.0, 903.0, 653.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -25,7 +25,7 @@
 		"toptoolbarpinned" : 0,
 		"righttoolbarpinned" : 0,
 		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 0,
+		"toolbars_unpinned_last_save" : 2,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
 		"enablehscroll" : 1,
@@ -37,6 +37,68 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-23",
+					"linecount" : 74,
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 544.0, 571.0, 50.0, 1001.0 ],
+					"style" : "",
+					"text" : "416.958069 553.502014 774.164978 370.194672 777.132812 777.237488 675.426453 341.095917 647.210449 478.543671 626.348267 785.03 635.654541 1060.762451 632.202271 1019.584839 628.283203 535.81665 615.709473 317.77 614.118896 375.670532 317.77 325.596863 472.062897 821.649414 1079.915527 1176.214844 535.81665 346.588196 770.530579 1176.214844 836.294434 277.955292 307.618225 793.142334 1129.537842 472.062897 326.33"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-24",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "" ],
+					"patching_rect" : [ 544.0, 540.0, 206.0, 22.0 ],
+					"style" : "",
+					"text" : "j.remote gorgone-1:/drawing/shape/y"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"annotation" : "none",
+					"args" : [ "laser-1:" ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-20",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "laser.view.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 64.5, 409.0, 188.0, 135.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-12",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 748.0, 275.0, 271.0, 33.0 ],
+					"style" : "",
+					"text" : "Envoi 1 pour déclencher le calcul de l'iris code.\nRetourne 0 quand le calcul est terminé."
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-6",
 					"maxclass" : "button",
@@ -51,50 +113,14 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-14",
+					"linecount" : 74,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 588.0, 508.0, 50.0, 22.0 ],
-					"style" : ""
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-9",
-					"maxclass" : "button",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 501.0, 581.0, 24.0, 24.0 ],
-					"style" : ""
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-5",
-					"maxclass" : "number",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 501.0, 551.0, 50.0, 22.0 ],
-					"style" : ""
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-1",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 501.0, 522.0, 39.0, 22.0 ],
+					"patching_rect" : [ 466.0, 491.0, 50.0, 1001.0 ],
 					"style" : "",
-					"text" : "zl len"
+					"text" : "638.189392 1070.789551 890.766602 631.244934 229.38063 927.721313 606.235535 468.081787 609.954712 223.585938 599.577576 196.840408 606.857178 406.51 612.96698 759.48 619.9 1201.919556 615.828369 629.824158 603.862732 910.105164 629.824158 466.858093 103.863007 133.908417 397.527496 793.438232 1201.919556 955.109436 920.233459 793.438232 102.501007 402.02 953.719177 929.459351 374.255951 103.863007 621.013489"
 				}
 
 			}
@@ -107,7 +133,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 130.0, 466.0, 50.0, 22.0 ],
+					"patching_rect" : [ 782.0, 563.0, 50.0, 22.0 ],
 					"style" : ""
 				}
 
@@ -119,7 +145,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 192.0, 466.0, 120.0, 22.0 ],
+					"patching_rect" : [ 844.0, 563.0, 120.0, 22.0 ],
 					"style" : "",
 					"text" : "j.remote laser-1:/test"
 				}
@@ -132,9 +158,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 466.0, 460.0, 205.0, 22.0 ],
+					"patching_rect" : [ 466.0, 460.0, 206.0, 22.0 ],
 					"style" : "",
-					"text" : "j.remote gorgone-1:/tracking/iriscode"
+					"text" : "j.remote gorgone-1:/drawing/shape/x"
 				}
 
 			}
@@ -148,7 +174,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 466.0, 365.0, 382.0, 76.0 ],
 					"style" : "",
-					"text" : "0.473077 0.473077 0.473077 0.473077 0.567308 0.551923 0.532692 0.546154 0.548077 0.546154 0.565385 0.546154 0.559615 0.555769 0.540385 0.532692 0.525 0.525 0.530769 0.525 0.501923 0.498077 0.488462 0.546154 0.55 0.540385 0.517308 0.503846 0.519231 0.501923 0.498077 0.503846 0.519231 0.519231"
+					"text" : "0.501923 0.501923 0.496154 0.476923 0.482692 0.478846 0.498077 0.484615 0.448077 0.417308 0.473077 0.476923 0.490385 0.525 0.546154 0.525 0.488462 0.463462 0.5 0.519231 0.505769 0.511538 0.484615 0.503846 0.498077 0.526923 0.476923 0.469231 0.475 0.471154 0.463462 0.5 0.501923 0.465385"
 				}
 
 			}
@@ -269,7 +295,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 65.5, 143.0, 179.0, 211.0 ],
+					"patching_rect" : [ 64.5, 143.0, 188.0, 256.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -318,6 +344,19 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-18",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 354.0, 394.489746, 396.0, 22.0 ],
+									"style" : "",
+									"text" : "protocol/setup ip 192.168.2.2, protocol/setup port 9998, name gorgone-1"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"comment" : "",
 									"id" : "obj-14",
@@ -372,9 +411,9 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 690.0, 428.0, 87.0, 22.0 ],
+									"patching_rect" : [ 690.0, 428.0, 135.0, 22.0 ],
 									"style" : "",
-									"text" : "print j.modular"
+									"text" : "print \"j.modular laser-1\""
 								}
 
 							}
@@ -411,9 +450,9 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 690.0, 343.989746, 378.0, 22.0 ],
+									"patching_rect" : [ 690.0, 343.989746, 397.0, 22.0 ],
 									"style" : "",
-									"text" : "protocol/setup ip 192.168.2.3, protocol/setup port 9999, name laser-1"
+									"text" : "protocol/setup ip gorgone-1.local, protocol/setup port 9999, name laser-1"
 								}
 
 							}
@@ -704,6 +743,15 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-44", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-18", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-37", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -841,15 +889,6 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-1", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-13", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -913,6 +952,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-23", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-24", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-16", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -922,28 +970,10 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-9", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-5", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-42", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-6", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-7", 1 ]
 				}
 
 			}
@@ -968,7 +998,13 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "gorgone.view.maxpat",
-				"bootpath" : "~/gorgone/patch",
+				"bootpath" : "~/gorgone/Max",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "laser.view.maxpat",
+				"bootpath" : "~/gorgone/Max",
 				"type" : "JSON",
 				"implicit" : 1
 			}
