@@ -8,7 +8,7 @@ TTErr DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& v);
 class ofxJamoma
 {
   public:
-    void setup  (void* parent);
+    void setup  (void* parent, string name);
     void exit   ();
 
   // private:

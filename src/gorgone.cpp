@@ -8,7 +8,7 @@ void gorgone::setup()
   parseCmdLineOptions();
   vidGrabber.setup(filename);
   svgInterp.setup();
-  jamoma.setup((void*) this);
+  jamoma.setup((void*) this, appName);
 }
 
 void gorgone::update()
@@ -149,6 +149,7 @@ void gorgone::parseCmdLineOptions(){
   vector<string> keys = ofxArgParser::allKeys();
   for (int i = 0; i < keys.size(); i++) {
     if ( keys[i] == "f" )   filename   = ofxArgParser::getValue(keys[i]);
+    if ( keys[i] == "name" )appName =  ofxArgParser::getValue(keys[i]);
     cout << "key: " << keys[i] << ", value: " << ofxArgParser::getValue(keys[i]) << endl;
   }
 }

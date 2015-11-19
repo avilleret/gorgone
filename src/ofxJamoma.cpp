@@ -1,10 +1,10 @@
 #include "ofxJamoma.h"
 #include "gorgone.h"
 
-void ofxJamoma::setup(void* parent)
+void ofxJamoma::setup(void* parent, string name)
 {
   mParent = TTPtr(parent);
-  mAppLocalName = "gorgone-1";
+  mAppLocalName = name;
   mAppRemoteName = "master";
   setupJamomaApp();
   registerJamomaParam();

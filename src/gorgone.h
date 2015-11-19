@@ -34,7 +34,7 @@ private:
     void selectBestEye(IplImage* currentImg, int index, int &bestIndex, IplImage* bestImg, double& bestScore);
     void parseCmdLineOptions();
 
-    string filename;
+    string filename, appName;
 
     int camWidth, camHeight;
 
