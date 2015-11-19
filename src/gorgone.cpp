@@ -5,10 +5,12 @@ int accum = 0;
 
 void gorgone::setup()
 {
+  masterIp = "Mac-Pro-de-10-52.local";
+  appName = "gorgone-1";
   parseCmdLineOptions();
   vidGrabber.setup(filename);
   svgInterp.setup();
-  jamoma.setup((void*) this, appName);
+  jamoma.setup((void*) this, appName, masterIp);
 }
 
 void gorgone::update()
@@ -149,7 +151,8 @@ void gorgone::parseCmdLineOptions(){
   vector<string> keys = ofxArgParser::allKeys();
   for (int i = 0; i < keys.size(); i++) {
     if ( keys[i] == "f" )   filename   = ofxArgParser::getValue(keys[i]);
-    if ( keys[i] == "name" )appName =  ofxArgParser::getValue(keys[i]);
+    if ( keys[i] == "name" ) appName =  ofxArgParser::getValue(keys[i]);
+    if ( keys[i] == "masterIp" ) masterIp =  ofxArgParser::getValue(keys[i]);
     cout << "key: " << keys[i] << ", value: " << ofxArgParser::getValue(keys[i]) << endl;
   }
 }

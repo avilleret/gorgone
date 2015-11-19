@@ -1,11 +1,13 @@
 #include "ofxJamoma.h"
 #include "gorgone.h"
 
-void ofxJamoma::setup(void* parent, string name)
+void ofxJamoma::setup(void* parent, string name, string masterIp)
 {
   mParent = TTPtr(parent);
   mAppLocalName = name;
   mAppRemoteName = "master";
+  mAppRemoteName2 = "laser-1";
+  mAppRemoteIp = masterIp;
   setupJamomaApp();
   registerJamomaParam();
 }
@@ -34,8 +36,8 @@ void ofxJamoma::setupJamomaApp(){
 
     // Create a local application called "gorgone-1" and get it back
     mApplicationLocal = mApplicationManager.send("ApplicationInstantiateLocal", mAppLocalName.c_str());
-
     mApplicationRemote = mApplicationManager.send("ApplicationInstantiateDistant", mAppRemoteName.c_str());
+    mApplicationRemote2 = mApplicationManager.send("ApplicationInstantiateDistant", mAppRemoteName2.c_str());
 
 
     // Get registered application names
@@ -76,10 +78,15 @@ void ofxJamoma::setupJamomaApp(){
     mProtocolMinuit.set("port", 9998);
     mProtocolMinuit.set("ip", "127.0.0.1");
 
+    // Select gorgone-1 to set its protocol parameters
+    mProtocolMinuit.send("ApplicationSelect", mAppRemoteName2.c_str(), out);
+    mProtocolMinuit.set("port", 9999);
+    mProtocolMinuit.set("ip", "127.0.0.1");
+
     // Select myRemoteApp to set its protocol parameters
     mProtocolMinuit.send("ApplicationSelect", mAppRemoteName.c_str(), out);
     mProtocolMinuit.set("port", 13579);
-    mProtocolMinuit.set("ip", "192.168.2.1");
+    mProtocolMinuit.set("ip", mAppRemoteIp);
 
     // Get Minuit parameters for each registered application
     mProtocolMinuit.get("applicationNames", out);
