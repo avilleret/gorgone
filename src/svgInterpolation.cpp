@@ -19,26 +19,21 @@ void svgInterpolation::setup(){
 
   for(int i = 0; i < (int)dir.size(); i++){
     svgs[i].load(dir.getPath(i));
-    cout << "load : " << dir.getPath(i) << endl;
   	ofPolyline centroidLine;
     ofxSVG svg = svgs[i];
-    cout << "with " << svg.getNumPath() << " paths" << endl;
     vector<ofPolyline> outlines;
   	for (int j = 0; j < svg.getNumPath(); j++){
   		ofPath p = svg.getPathAt(j);
   		// svg defaults to non zero winding which doesn't look so good as contours
   		p.setPolyWindingMode(OF_POLY_WINDING_ODD);
   		vector<ofPolyline>& lines = const_cast<vector<ofPolyline>&>(p.getOutline());
-      cout << "number of line in the path : " << lines.size() << endl;
   		for(int k=0;k<(int)lines.size();k++){
-        cout << "number of point in this line : " << lines[k].size() << endl;
         lineSize = min(lineSize, (int) lines[k].size());
   			outlines.push_back(lines[k]);
         centroidLine.addVertex(lines[k].getCentroid2D());
         ofPolyline line=lines[k];
         for(int n=0;n<line.size();n++){
           ofVec3f pt = line[n];
-          cout << " point " << n << " : " << pt.x << ";" << pt.y << endl;
         }
       }
   	}
@@ -46,7 +41,6 @@ void svgInterpolation::setup(){
 
   	ofPoint center = centroidLine.getCentroid2D();
     centers.push_back(center);
-  	cout << "center " << center.x << " ; " << center.y << endl;
   }
 }
 
