@@ -376,6 +376,18 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
         for (int i = 0; i < value.size(); i++)
             gorgoneApp->svgInterp.coeff.push_back(value[i]);
         gorgoneApp->svgInterp.multiInterpolation();
+
+        TTValue x,y;
+        vector<ofVec3f> line = gorgoneApp->svgInterp.interpolatedLine;
+
+        for (int i=0; i<line.size(); i++){
+          x.push_back(line[i].x);
+          y.push_back(line[i].y);
+        }
+
+        gorgoneApp->jamoma.mDrawingShapeXReturn.set("value", x);
+        gorgoneApp->jamoma.mDrawingShapeYReturn.set("value", y);
+
         return kTTErrNone;
     }
 
