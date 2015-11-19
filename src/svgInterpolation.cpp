@@ -81,8 +81,6 @@ void svgInterpolation::draw(){
 
 void svgInterpolation::multiInterpolation(){
 
-  cout << "compute shape interpolation" << endl;
-
   interpolatedLine.clear();
 
   for (int i = 0; i < lineSize; i++){

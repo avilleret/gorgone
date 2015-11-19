@@ -272,8 +272,6 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
     gorgone*  gorgoneApp = (gorgone*)TTPtr(baton[0]);
     TTObject    anObject = baton[1];
 
-    std::cout << "received value size : " << value.size() << std::endl;
-
   // Reteive which data has been updated
     if (anObject.instance() == gorgoneApp->jamoma.mTrackEnableParameter.instance()) {
 
