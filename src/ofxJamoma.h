@@ -15,9 +15,9 @@ class ofxJamoma
     // Declare the application manager, our application and another one
     TTObject mApplicationManager;
     TTObject mApplicationLocal;
-    TTObject mApplicationRemote;
+    TTObject mApplicationRemote, mApplicationRemote2;
 
-    TTString mAppLocalName, mAppRemoteName;
+    TTString mAppLocalName, mAppRemoteName, mAppRemoteName2, mAppRemoteIp;
 
     // Declare protocol units to use
     TTObject mProtocolMinuit;
