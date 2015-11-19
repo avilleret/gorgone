@@ -72,6 +72,7 @@ void ofxJamoma::setupJamomaApp(){
     // Register mymyRemoteAppApp and myRemoteApp to the Minuit protocol
     mProtocolMinuit.send("ApplicationRegister", mAppLocalName.c_str(), out);
     mProtocolMinuit.send("ApplicationRegister", mAppRemoteName.c_str(), out);
+    mProtocolMinuit.send("ApplicationRegister", mAppRemoteName2.c_str(), out);
 
     // Select gorgone-1 to set its protocol parameters
     mProtocolMinuit.send("ApplicationSelect", mAppLocalName.c_str(), out);
@@ -86,7 +87,7 @@ void ofxJamoma::setupJamomaApp(){
     // Select myRemoteApp to set its protocol parameters
     mProtocolMinuit.send("ApplicationSelect", mAppRemoteName.c_str(), out);
     mProtocolMinuit.set("port", 13579);
-    mProtocolMinuit.set("ip", mAppRemoteIp);
+    mProtocolMinuit.set("ip", mAppRemoteIp.c_str());
 
     // Get Minuit parameters for each registered application
     mProtocolMinuit.get("applicationNames", out);
