@@ -77,15 +77,22 @@ void gorgone::update()
       irisDetector.newCode = false;
     }
 
-    TTValue v;
-    cout << "average : " << endl;
+    TTValue v,x,y;
     for (int i = 0; i<svgInterp.coeff.size(); i++){
-      cout << i << " : " << svgInterp.coeff[i] << endl;
       v.push_back(svgInterp.coeff[i]);
     }
-    cout << endl;
-    svgInterp.multiInterpolation();
     jamoma.mDrawingCoeffParameter.set("value", v);
+    svgInterp.multiInterpolation();
+
+    vector<ofVec3f> line = svgInterp.interpolatedLine;
+
+    for (int i=0; i<line.size(); i++){
+      x.push_back(line[i].x);
+      y.push_back(line[i].y);
+    }
+
+    jamoma.mDrawingShapeXReturn.set("value", x);
+    jamoma.mDrawingShapeYReturn.set("value", y);
   }
 }
 

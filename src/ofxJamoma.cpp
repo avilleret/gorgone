@@ -246,6 +246,54 @@ void ofxJamoma::registerJamomaParam(){
         TTLogMessage("\n /tracking/iriscode : effective registration address is %s \n", address.c_str());
     }
 
+        // Create a new array return for drawing shape
+    mDrawingShapeXReturn = TTObject("Data", "return");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mDrawingShapeXReturn);
+    mDrawingShapeXReturn.set("baton", args);
+    mDrawingShapeXReturn.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mDrawingShapeXReturn.set("type", "array");
+    mDrawingShapeXReturn.set("description", "drawing shape X");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/drawing/shape/x", mDrawingShapeXReturn);
+    err = mApplicationLocal.send("ObjectRegister", args, out);
+
+    if (err)
+        TTLogError("Error : can't register data at /drawing/shape/x address \n");
+
+    else {
+        address = out[0];
+        TTLogMessage("\n /drawing/shape/x : effective registration address is %s \n", address.c_str());
+    }
+
+            // Create a new array return for drawing shape
+    mDrawingShapeYReturn = TTObject("Data", "return");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mDrawingShapeYReturn);
+    mDrawingShapeYReturn.set("baton", args);
+    mDrawingShapeYReturn.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mDrawingShapeYReturn.set("type", "array");
+    mDrawingShapeYReturn.set("description", "Drawing shape Y");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/drawing/shape/y", mDrawingShapeYReturn);
+    err = mApplicationLocal.send("ObjectRegister", args, out);
+
+    if (err)
+        TTLogError("Error : can't register data at /drawing/shape/y address \n");
+
+    else {
+        address = out[0];
+        TTLogMessage("\n /drawing/shape/y : effective registration address is %s \n", address.c_str());
+    }
+
     // Create a new brightness parameter
     mTrackingLedBrightness = TTObject("Data", "parameter");
 

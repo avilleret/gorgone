@@ -30,6 +30,7 @@ class ofxJamoma
     TTObject mDrawingCoeffParameter; // drawing coefficient
     TTObject mTrackingIrisCodeReturn; // iris code return
     TTObject mTrackingLedBrightness; // IR led brightness
+    TTObject mDrawingShapeXReturn, mDrawingShapeYReturn; // drawing shape return
 
     TTPtr mParent;
 
