@@ -52,14 +52,7 @@ void ofxJamoma::setupJamomaApp(){
     ////////////////////////////////////////////////////////////////////////
 
     // Create a Minuit protocol unit
-    err = mApplicationManager.send("ProtocolInstantiate", "Minuit", out);
-
-    if (err) {
-        TTLogError("Error : can't create Minuit protocol unit \n");
-        return;
-    }
-    else
-        mProtocolMinuit = out[0];
+    mProtocolMinuit = mApplicationManager.send("ProtocolInstantiate", "Minuit");
 
     // Get Minuit Protocol attribute names and types
     mProtocolMinuit.get("parameterNames", out);
@@ -70,22 +63,22 @@ void ofxJamoma::setupJamomaApp(){
     }
 
     // Register mymyRemoteAppApp and myRemoteApp to the Minuit protocol
-    mProtocolMinuit.send("ApplicationRegister", mAppLocalName.c_str(), out);
-    mProtocolMinuit.send("ApplicationRegister", mAppRemoteName.c_str(), out);
-    mProtocolMinuit.send("ApplicationRegister", mAppRemoteName2.c_str(), out);
+    mProtocolMinuit.send("ApplicationRegister", mAppLocalName.c_str());
+    mProtocolMinuit.send("ApplicationRegister", mAppRemoteName.c_str());
+    mProtocolMinuit.send("ApplicationRegister", mAppRemoteName2.c_str());
 
     // Select gorgone-1 to set its protocol parameters
-    mProtocolMinuit.send("ApplicationSelect", mAppLocalName.c_str(), out);
+    mProtocolMinuit.send("ApplicationSelect", mAppLocalName.c_str());
     mProtocolMinuit.set("port", 9998);
     mProtocolMinuit.set("ip", "127.0.0.1");
 
     // Select gorgone-1 to set its protocol parameters
-    mProtocolMinuit.send("ApplicationSelect", mAppRemoteName2.c_str(), out);
+    mProtocolMinuit.send("ApplicationSelect", mAppRemoteName2.c_str());
     mProtocolMinuit.set("port", 9999);
     mProtocolMinuit.set("ip", "127.0.0.1");
 
     // Select myRemoteApp to set its protocol parameters
-    mProtocolMinuit.send("ApplicationSelect", mAppRemoteName.c_str(), out);
+    mProtocolMinuit.send("ApplicationSelect", mAppRemoteName.c_str());
     mProtocolMinuit.set("port", 13579);
     mProtocolMinuit.set("ip", mAppRemoteIp.c_str());
 
@@ -94,7 +87,7 @@ void ofxJamoma::setupJamomaApp(){
     for (TTElementIter it = out.begin() ; it != out.end() ; it++) {
         TTSymbol name = TTElement(*it);
 
-        mProtocolMinuit.send("ApplicationSelect", name, out);
+        mProtocolMinuit.send("ApplicationSelect", name);
         TTLogMessage("Minuit setup for %s application : \n", name.c_str());
 
         mProtocolMinuit.get("ip", v);
@@ -111,7 +104,7 @@ void ofxJamoma::setupJamomaApp(){
 
     TTLogMessage("\n*** Current Protocol Setup ***\n");
     // Get protocol names
-    mApplicationManager.get("protocolNames", out);
+    mApplicationManager.get("protocolNames",out);
     for (TTElementIter it = out.begin() ; it != out.end() ; it++) {
         TTSymbol name = TTElement(*it);
         TTLogMessage("%s protocol is well registered into the application manager \n", name.c_str());
@@ -139,15 +132,9 @@ void ofxJamoma::registerJamomaParam(){
 
     // Register the parameter data into gorgone-1 at an address
     args = TTValue("/tracking/enable", mTrackEnableParameter);
-    err = mApplicationLocal.send("ObjectRegister", args, out);
-
-    if (err)
-        TTLogError("Error : can't register data at /tracking/enable address \n");
-
-    else {
-        address = out[0];
-        TTLogMessage("\n /tracking/enable : effective registration address is %s \n", address.c_str());
-    }
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n /tracking/enable : effective registration address is %s \n", address.c_str());
 
         // Create a decimal parameter data and set its callback function and baton and some attributes
     mDrawingEnableParameter = TTObject("Data", "parameter");
@@ -163,15 +150,11 @@ void ofxJamoma::registerJamomaParam(){
 
     // Register the parameter data into gorgone-1 at an address
     args = TTValue("/drawing/enable", mDrawingEnableParameter);
-    err = mApplicationLocal.send("ObjectRegister", args, out);
+    out = mApplicationLocal.send("ObjectRegister", args);
 
-    if (err)
-        TTLogError("Error : can't register data at /drawing/enable address \n");
+    address = out[0];
+    TTLogMessage("\n /drawing/enable : effective registration address is %s \n", address.c_str());
 
-    else {
-        address = out[0];
-        TTLogMessage("\n /drawing/enable : effective registration address is %s \n", address.c_str());
-    }
 
     // Create a new boolean parameter
     mComputeIrisCodeParameter = TTObject("Data", "parameter");
@@ -187,15 +170,9 @@ void ofxJamoma::registerJamomaParam(){
 
     // Register the parameter data into gorgone-1 at an address
     args = TTValue("/tracking/computecode", mComputeIrisCodeParameter);
-    err = mApplicationLocal.send("ObjectRegister", args, out);
-
-    if (err)
-        TTLogError("Error : can't register data at /tracking/computecode address \n");
-
-    else {
-        address = out[0];
-        TTLogMessage("\n /tracking/computecode : effective registration address is %s \n", address.c_str());
-    }
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n /tracking/computecode : effective registration address is %s \n", address.c_str());
 
     // Create a new array parameter
     mDrawingCoeffParameter = TTObject("Data", "parameter");
@@ -211,16 +188,9 @@ void ofxJamoma::registerJamomaParam(){
 
     // Register the parameter data into gorgone-1 at an address
     args = TTValue("/drawing/coeff", mDrawingCoeffParameter);
-    err = mApplicationLocal.send("ObjectRegister", args, out);
-
-    if (err)
-        TTLogError("Error : can't register data at /drawing/coeff address \n");
-
-    else {
-        address = out[0];
-        TTLogMessage("\n /drawing/coeff : effective registration address is %s \n", address.c_str());
-    }
-
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n /drawing/coeff : effective registration address is %s \n", address.c_str());
 
     // Create a new array return for iris code
     mTrackingIrisCodeReturn = TTObject("Data", "return");
@@ -236,15 +206,9 @@ void ofxJamoma::registerJamomaParam(){
 
     // Register the parameter data into gorgone-1 at an address
     args = TTValue("/tracking/iriscode", mTrackingIrisCodeReturn);
-    err = mApplicationLocal.send("ObjectRegister", args, out);
-
-    if (err)
-        TTLogError("Error : can't register data at /tracking/iriscode address \n");
-
-    else {
-        address = out[0];
-        TTLogMessage("\n /tracking/iriscode : effective registration address is %s \n", address.c_str());
-    }
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n /tracking/iriscode : effective registration address is %s \n", address.c_str());
 
         // Create a new array return for drawing shape
     mDrawingShapeXReturn = TTObject("Data", "return");
@@ -260,17 +224,11 @@ void ofxJamoma::registerJamomaParam(){
 
     // Register the parameter data into gorgone-1 at an address
     args = TTValue("/drawing/shape/x", mDrawingShapeXReturn);
-    err = mApplicationLocal.send("ObjectRegister", args, out);
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n /drawing/shape/x : effective registration address is %s \n", address.c_str());
 
-    if (err)
-        TTLogError("Error : can't register data at /drawing/shape/x address \n");
-
-    else {
-        address = out[0];
-        TTLogMessage("\n /drawing/shape/x : effective registration address is %s \n", address.c_str());
-    }
-
-            // Create a new array return for drawing shape
+    // Create a new array return for drawing shape
     mDrawingShapeYReturn = TTObject("Data", "return");
 
     // Setup the callback mechanism to get the value back
@@ -284,7 +242,7 @@ void ofxJamoma::registerJamomaParam(){
 
     // Register the parameter data into gorgone-1 at an address
     args = TTValue("/drawing/shape/y", mDrawingShapeYReturn);
-    err = mApplicationLocal.send("ObjectRegister", args, out);
+    out = mApplicationLocal.send("ObjectRegister", args);
 
     if (err)
         TTLogError("Error : can't register data at /drawing/shape/y address \n");
@@ -310,15 +268,9 @@ void ofxJamoma::registerJamomaParam(){
 
     // Register the parameter data into gorgone-1 at an address
     args = TTValue("/tracking/ledbrightness", mTrackingLedBrightness);
-    err = mApplicationLocal.send("ObjectRegister", args, out);
-
-    if (err)
-        TTLogError("Error : can't register data at /tracking/ledbrightness address \n");
-
-    else {
-        address = out[0];
-        TTLogMessage("\n /tracking/ledbrightness : effective registration address is %s \n", address.c_str());
-    }
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n /tracking/ledbrightness : effective registration address is %s \n", address.c_str());
 
     // Create a new brightness parameter
     mTrackingLaserBrightness = TTObject("Data", "parameter");
@@ -336,15 +288,9 @@ void ofxJamoma::registerJamomaParam(){
 
     // Register the parameter data into gorgone-1 at an address
     args = TTValue("/drawing/laserbrightness", mTrackingLaserBrightness);
-    err = mApplicationLocal.send("ObjectRegister", args, out);
-
-    if (err)
-        TTLogError("Error : can't register data at /drawing/laserbrightness address \n");
-
-    else {
-        address = out[0];
-        TTLogMessage("\n /drawing/laserbrightness : effective registration address is %s \n", address.c_str());
-    }
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n /drawing/laserbrightness : effective registration address is %s \n", address.c_str());
 }
 
 
