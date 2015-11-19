@@ -335,15 +335,15 @@ void ofxJamoma::registerJamomaParam(){
     mTrackingLaserBrightness.set("rangeClipmode", "both");
 
     // Register the parameter data into gorgone-1 at an address
-    args = TTValue("/tracking/laserbrightness", mTrackingLaserBrightness);
+    args = TTValue("/drawing/laserbrightness", mTrackingLaserBrightness);
     err = mApplicationLocal.send("ObjectRegister", args, out);
 
     if (err)
-        TTLogError("Error : can't register data at /tracking/laserbrightness address \n");
+        TTLogError("Error : can't register data at /drawing/laserbrightness address \n");
 
     else {
         address = out[0];
-        TTLogMessage("\n /tracking/laserbrightness : effective registration address is %s \n", address.c_str());
+        TTLogMessage("\n /drawing/laserbrightness : effective registration address is %s \n", address.c_str());
     }
 }
 
