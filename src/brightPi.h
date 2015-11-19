@@ -37,13 +37,13 @@ public:
   }
 
   void setBrightness(uint brightness){
-    unsigned char global = (brightness >> 6) && 0x0F;
-    unsigned char individual = brightness && 0x3F;
+    uint global = (brightness >> 6) & 0x0F;
+    uint individual = brightness & 0x3F;
     cout << "Brightness global : " << std::hex << global << ", individual : " << std::hex << individual << endl;
-    i2c.send(0x09, (unsigned char) 0x0f); // push global brightness to full
-    i2c.send(0x01, (unsigned char) 0x32); // then turn brightness of each IR LED to full
-    i2c.send(0x03, (unsigned char) 0x32);
-    i2c.send(0x06, (unsigned char) 0x32);
-    i2c.send(0x08, (unsigned char) 0x32);
+    i2c.send(0x09, (unsigned char) global); // push global brightness to full
+    i2c.send(0x01, (unsigned char) individual); // then turn brightness of each IR LED to full
+    i2c.send(0x03, (unsigned char) individual);
+    i2c.send(0x06, (unsigned char) individual);
+    i2c.send(0x08, (unsigned char) individual);
   }
 };
