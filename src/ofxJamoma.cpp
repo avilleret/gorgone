@@ -237,6 +237,32 @@ void ofxJamoma::registerJamomaParam(){
         address = out[0];
         TTLogMessage("\n /tracking/iriscode : effective registration address is %s \n", address.c_str());
     }
+
+    // Create a new brightness parameter
+    mTrackingLedBrightness = TTObject("Data", "parameter");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mTrackingLedBrightness);
+    mTrackingLedBrightness.set("baton", args);
+    mTrackingLedBrightness.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mTrackingLedBrightness.set("type", "integer");
+    mTrackingLedBrightness.set("description", "iris code");
+    mTrackingLedBrightness.set("rangeBounds", TTValue(0, 1023));
+    mTrackingLedBrightness.set("rangeClipmode", "both");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/tracking/ledbrightness", mTrackingLedBrightness);
+    err = mApplicationLocal.send("ObjectRegister", args, out);
+
+    if (err)
+        TTLogError("Error : can't register data at /tracking/ledbrightness address \n");
+
+    else {
+        address = out[0];
+        TTLogMessage("\n /tracking/ledbrightness : effective registration address is %s \n", address.c_str());
+    }
 }
 
 
@@ -272,6 +298,13 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
         gorgoneApp->svgInterp.multiInterpolation();
         return kTTErrNone;
     }
+
+#ifdef TARGET_RASPBERRY_PI
+    if (anObject.instance() == gorgoneApp->jamoma.mTrackingLedBrightness.instance()) {
+        gorgoneApp->vidGrabber.led.setBrightness(value[0]);
+        return kTTErrNone;
+    }
+#endif
 
     return kTTErrGeneric;
 }

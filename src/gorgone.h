@@ -27,6 +27,7 @@ class gorgone : public ofBaseApp
     ofxJamoma jamoma;
     bool bTracking, bDisplaying, bComputeCode;
     svgInterpolation svgInterp;
+    crossVideoGrabber vidGrabber;
 
 private:
     void detectEyeRegion(ofImage& input);
@@ -37,7 +38,6 @@ private:
 
     int camWidth, camHeight;
 
-    crossVideoGrabber vidGrabber;
     ofTexture videoTexture;
 
     cv::Mat frame;
