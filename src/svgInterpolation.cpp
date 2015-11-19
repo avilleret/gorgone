@@ -19,9 +19,11 @@ void svgInterpolation::setup(){
 
   for(int i = 0; i < (int)dir.size(); i++){
     svgs[i].load(dir.getPath(i));
-  	ofPolyline centroidLine;
+    // if ( i == 0 ) cout << "load : " << dir.getPath(i) << endl;
     ofxSVG svg = svgs[i];
-    vector<ofPolyline> outlines;
+    vector<ofVec3f> myLine;
+    ofVec2f ptMin = ofVec2f(1000.,1000.), ptMax = ofVec2f(-1000.,-1000.);
+
   	for (int j = 0; j < svg.getNumPath(); j++){
   		ofPath p = svg.getPathAt(j);
   		// svg defaults to non zero winding which doesn't look so good as contours
@@ -29,18 +31,25 @@ void svgInterpolation::setup(){
   		vector<ofPolyline>& lines = const_cast<vector<ofPolyline>&>(p.getOutline());
   		for(int k=0;k<(int)lines.size();k++){
         lineSize = min(lineSize, (int) lines[k].size());
-  			outlines.push_back(lines[k]);
-        centroidLine.addVertex(lines[k].getCentroid2D());
         ofPolyline line=lines[k];
         for(int n=0;n<line.size();n++){
+
           ofVec3f pt = line[n];
+          pt/=40;
+          pt-=1.;
+          ptMin.x = std::min(pt.x, ptMin.x);
+          ptMin.y = std::min(pt.y, ptMin.y);
+          ptMax.x = std::max(pt.x, ptMax.x);
+          ptMax.y = std::max(pt.y, ptMax.y);
+
+          myLine.push_back(pt);
+
         }
       }
   	}
-    outliness.push_back(outlines);
-
-  	ofPoint center = centroidLine.getCentroid2D();
-    centers.push_back(center);
+    // cout << "min : " << ptMin.x << " " << ptMin.y << endl;
+    // cout << "max : " << ptMax.x << " " << ptMax.y << endl;
+    lines.push_back(myLine);
   }
 }
 
@@ -55,19 +64,13 @@ void svgInterpolation::update(){
 
 //--------------------------------------------------------------
 void svgInterpolation::draw(){
+
 	ofDrawBitmapString(ofToString(ofGetFrameRate()),20,20);
 	ofPushMatrix();
-	// ofTranslate(ofGetWidth() / 4, ofGetHeight() / 4);
-	// ofRotate(mouseX);
-	// float scale = ofMap(mouseY, 0, ofGetHeight(), .5, 10);
-	ofScale(0.25, 0.25, 0.25);
-  /// ofPoint center = centers[0];
-	// ofTranslate(-ofGetWidth(), -ofGetHeight());
-	ofNoFill();
 
-  double index = outliness.size() * step;
-  vector<ofPolyline> outlinesA = outliness[(int) index];
-  vector<ofPolyline> outlinesB = outliness[(int) fmod((index+1),outliness.size())];
+  ofTranslate(ofGetWidth() / 2., ofGetHeight() / 2.);
+	ofScale(20, 20, 1.);
+	ofNoFill();
 
   ofBeginShape();
   for (int j = 0; j < interpolatedLine.size(); j++){
@@ -83,11 +86,47 @@ void svgInterpolation::multiInterpolation(){
 
   interpolatedLine.clear();
 
+  float sum(0.);
+
+  for (float f : coeff)
+    sum += f;
+
+  // cout << "sum : " << sum << endl;
+
+  // cout << "interpolatedLine : " << endl;
+
   for (int i = 0; i < lineSize; i++){
     ofVec3f pt;
-    for (int j = 0; j < min(outliness.size(), coeff.size()); j++){
-      pt += coeff[j] * outliness[j][0][i]; // [0] assumes that there is only one line on each ofPolyLine
+    for (int j = 0; j < min(lines.size(), coeff.size()); j++){
+      pt += coeff[j] * lines[j][i]; // [0] assumes that there is only one line on each ofPolyLine
     }
     interpolatedLine.push_back(pt);
   }
+
+  ofVec3f ptMin(999999. ,999999.);
+  ofVec3f ptMax(-999999.,-999999.);
+  for ( ofVec3f pt : interpolatedLine ){
+    ptMin.x = min(pt.x,ptMin.x);
+    ptMin.y = min(pt.y,ptMin.y);
+    ptMax.x = max(pt.x,ptMax.x);
+    ptMax.y = max(pt.y,ptMax.y);
+  }
+  // cout << "ptMin : " << ptMin.x << " \t " << ptMin.y << endl;
+  // cout << "ptMax : " << ptMax.x << " \t " << ptMax.y << endl;
+
+  ofVec3f offset, diff;
+  float scale;
+  offset = (ptMax + ptMin)/2.;
+  diff = ptMax - ptMin;
+  scale = max(diff.x,diff.y) / 2.;
+
+  // cout << "scale : " << scale << endl;
+  // cout << "offset : " << offset << endl;
+
+  for ( ofVec3f pt : interpolatedLine ){
+    pt -= offset;
+    pt /= scale;
+    cout << pt.x << " \t " << pt.y << endl;
+  }
+
 }

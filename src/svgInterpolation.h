@@ -13,11 +13,13 @@ public:
 
     vector<ofxSVG> svgs;
     float step;
-    vector<ofPoint> centers;
-    vector<vector<ofPolyline>> outliness;
+    vector<vector<ofVec3f>> lines;
     vector<float> coeff; // interpolation coefficient
     vector<ofVec3f> interpolatedLine; // forme interpolée
     int lineSize;
 
     ofDirectory dir;
+private:
+   ofxPanel gui;
+   ofParameter<float> scaleParam, offsetParam;
 };
