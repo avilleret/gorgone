@@ -304,7 +304,7 @@ void ofxJamoma::registerJamomaParam(){
 
     // Setup the data attributes depending of its use inside the application
     mTrackingLedBrightness.set("type", "integer");
-    mTrackingLedBrightness.set("description", "iris code");
+    mTrackingLedBrightness.set("description", "LED brightness");
     mTrackingLedBrightness.set("rangeBounds", TTValue(0, 1023));
     mTrackingLedBrightness.set("rangeClipmode", "both");
 
@@ -318,6 +318,32 @@ void ofxJamoma::registerJamomaParam(){
     else {
         address = out[0];
         TTLogMessage("\n /tracking/ledbrightness : effective registration address is %s \n", address.c_str());
+    }
+
+    // Create a new brightness parameter
+    mTrackingLaserBrightness = TTObject("Data", "parameter");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mTrackingLaserBrightness);
+    mTrackingLaserBrightness.set("baton", args);
+    mTrackingLaserBrightness.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mTrackingLaserBrightness.set("type", "decimal");
+    mTrackingLaserBrightness.set("description", "laser brightness");
+    mTrackingLaserBrightness.set("rangeBounds", TTValue(0., 100.));
+    mTrackingLaserBrightness.set("rangeClipmode", "both");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/tracking/laserbrightness", mTrackingLaserBrightness);
+    err = mApplicationLocal.send("ObjectRegister", args, out);
+
+    if (err)
+        TTLogError("Error : can't register data at /tracking/laserbrightness address \n");
+
+    else {
+        address = out[0];
+        TTLogMessage("\n /tracking/laserbrightness : effective registration address is %s \n", address.c_str());
     }
 }
 
@@ -358,6 +384,12 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
         gorgoneApp->vidGrabber.led.setBrightness(value[0]);
         return kTTErrNone;
     }
+
+    if (anObject.instance() == gorgoneApp->jamoma.mTrackingLaserBrightness.instance()) {
+        gorgoneApp->setPwm(value[0]);
+        return kTTErrNone;
+    }
+
 #endif
 
     return kTTErrGeneric;

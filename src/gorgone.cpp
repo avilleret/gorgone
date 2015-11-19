@@ -163,3 +163,13 @@ void gorgone::parseCmdLineOptions(){
     cout << "key: " << keys[i] << ", value: " << ofxArgParser::getValue(keys[i]) << endl;
   }
 }
+
+
+void gorgone::setPwm(float pc){
+#ifdef TARGET_RASPBERRY_PI
+  ofstream file;
+  file.open("/dev/servoblaster", ios::in);
+  file << "0=" << pc << "%" << endl;
+  file.close();
+#endif
+}

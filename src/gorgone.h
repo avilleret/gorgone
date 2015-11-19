@@ -28,6 +28,7 @@ class gorgone : public ofBaseApp
     bool bTracking, bDisplaying, bComputeCode;
     svgInterpolation svgInterp;
     crossVideoGrabber vidGrabber;
+    void setPwm(float pc);
 
 private:
     void detectEyeRegion(ofImage& input);
