@@ -13,6 +13,13 @@ void gorgone::setup()
   jamoma.setup((void*) this, appName, masterIp);
 }
 
+void gorgone::exit(){
+  setPwm(0);
+#ifdef TARGET_RASPBERRY_PI
+  vidGrabber.led.switchOffIR();
+#endif
+}
+
 void gorgone::update()
 {
   vidGrabber.update();
