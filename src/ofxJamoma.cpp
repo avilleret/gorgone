@@ -367,6 +367,13 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
 
     if (anObject.instance() == gorgoneApp->jamoma.mDrawingEnableParameter.instance()) {
         gorgoneApp->bDisplaying = value[0];
+        if ( value[0] ) {
+            TTValue a;
+            gorgoneApp->jamoma.mTrackingLaserBrightness.set("value",a);
+            gorgoneApp->setPwm(a);
+        } else {
+            gorgoneApp->setPwm(0);
+        }
         return kTTErrNone;
     }
 
