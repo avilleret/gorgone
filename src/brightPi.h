@@ -6,7 +6,13 @@ class brightPi{
 public:
   brightPi(){
     i2c.setAddress(0x70);
+    wled.push_back(0b00000010);
+    wled.push_back(0b00001000);
+    wled.push_back(0b00010000);
+    wled.push_back(0b01000000);
   };
+
+  vector<unsigned char> wled;
 
   void switchOnIR(){
     unsigned char status;
@@ -45,5 +51,16 @@ public:
     i2c.send(0x03, (unsigned char) individual);
     i2c.send(0x06, (unsigned char) individual);
     i2c.send(0x08, (unsigned char) individual);
+  }
+
+  void setWBrightness(vector<unsigned char> b){
+    unsigned char status;
+    i2c.receive(0x00, &status, 1);
+    for ( int i=0; i<min(b.size(),wled.size()); i++ ){
+      if (b[i] > 0) status |= wled[i];
+      else status &= ~wled[i];
+      i2c.send(wled[i], (unsigned char) b[i]);
+    }
+    i2c.send(0x00, status);
   }
 };

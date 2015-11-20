@@ -272,6 +272,27 @@ void ofxJamoma::registerJamomaParam(){
     address = out[0];
     TTLogMessage("\n /tracking/ledbrightness : effective registration address is %s \n", address.c_str());
 
+        // Create a new brightness parameter
+    mWhiteLedBrightness = TTObject("Data", "parameter");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mWhiteLedBrightness);
+    mWhiteLedBrightness.set("baton", args);
+    mWhiteLedBrightness.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mWhiteLedBrightness.set("type", "array");
+    mWhiteLedBrightness.set("description", "white LED brightness");
+    mWhiteLedBrightness.set("rangeBounds", TTValue(0, 64));
+    mWhiteLedBrightness.set("size", 4);
+    mWhiteLedBrightness.set("rangeClipmode", "both");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/wled/brightness", mWhiteLedBrightness);
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n /wled/brightness : effective registration address is %s \n", address.c_str());
+
     // Create a new brightness parameter
     mTrackingLaserBrightness = TTObject("Data", "parameter");
 
@@ -345,6 +366,11 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
 
     if (anObject.instance() == gorgoneApp->jamoma.mTrackingLaserBrightness.instance()) {
         gorgoneApp->setPwm(value[0]);
+        return kTTErrNone;
+    }
+
+    if (anObject.instance() == gorgoneApp->jamoma.mWhiteLedBrightness.instance()) {
+        gorgoneApp->vidGrabber.led.setWBrightness(value[0]);
         return kTTErrNone;
     }
 
