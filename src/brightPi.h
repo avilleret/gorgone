@@ -10,9 +10,14 @@ public:
     wled.push_back(0b00001000);
     wled.push_back(0b00010000);
     wled.push_back(0b01000000);
+
+    wadd.push_back(0x02);
+    wadd.push_back(0x04);
+    wadd.push_back(0x05);
+    wadd.push_back(0x07);
   };
 
-  vector<unsigned char> wled;
+  vector<unsigned char> wled, wadd;
 
   void switchOnIR(){
     unsigned char status;
@@ -54,14 +59,12 @@ public:
   }
 
   void setWBrightness(vector<unsigned char> b){
-    cout << "setWBrightness received " << b.size() << " values" << endl;
     unsigned char status;
     i2c.receive(0x00, &status, 1);
     for ( int i=0; i<min(b.size(),wled.size()); i++ ){
       if (b[i] > 0) status |= wled[i];
       else status &= ~wled[i];
-      cout << "set led " << i << " at address " << std::hex << static_cast<unsigned>(wled[i]) << " to " << static_cast<unsigned>(b[i]) << endl;
-      i2c.send(wled[i], (unsigned char) b[i]);
+      i2c.send(wadd[i], (unsigned char) b[i]);
     }
     i2c.send(0x00, status);
   }
