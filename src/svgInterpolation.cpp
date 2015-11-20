@@ -64,7 +64,6 @@ void svgInterpolation::draw(){
 
 	ofDrawBitmapString(ofToString(ofGetFrameRate()),20,20);
 	ofPushMatrix();
-  ofScale(4,4,1);
   ofTranslate(ofGetWidth() / 2., ofGetHeight() / 2.);
 	ofScale(20, 20, 1.);
 	ofNoFill();
