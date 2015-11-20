@@ -370,7 +370,11 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
     }
 
     if (anObject.instance() == gorgoneApp->jamoma.mWhiteLedBrightness.instance()) {
-        gorgoneApp->vidGrabber.led.setWBrightness(value[0]);
+	vector<unsigned char> b;
+	for (int i(0); i<value.size() || i<4; i++){
+	  b.push_back(value[i]);
+	}
+        gorgoneApp->vidGrabber.led.setWBrightness(b);
         return kTTErrNone;
     }
 
