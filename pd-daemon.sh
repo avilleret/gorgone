@@ -2,7 +2,7 @@
 
 ### BEGIN INIT INFO
 # Provides:          pd-daemon
-# Required-Start:    $remote_fs $syslog 
+# Required-Start:    $remote_fs $syslog of-daemon
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
@@ -15,14 +15,14 @@
 
 # Change the next 3 lines to suit where you install your script and what you want to call it
 DIR=$(dirname $(readlink -f $0))
-DAEMON=$DIR/Pd/laser-driver.pd
+DAEMON=/usr/local/bin/pd
 DAEMON_NAME=pd-daemon
 
 #export LD_LIBRARY_PATH=/home/pi/of/lib-linux/release-armv7/
 #export LD_LIBRARY_PATH=/usr/local/jamoma/lib
 
 # Add any command line options for your daemon here
-DAEMON_OPTS="-noadc -nogui"
+DAEMON_OPTS="-noadc -nogui $DIR/Pd/laser-driver.pd"
 
 # This next line detersmines what user the script runs as.
 # Root generally not recommended but necessary if you are using the Raspberry Pi GPIO from Python.
