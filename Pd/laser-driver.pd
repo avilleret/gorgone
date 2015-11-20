@@ -1,4 +1,4 @@
-#N canvas 533 231 1198 848 10;
+#N canvas 495 133 1198 848 10;
 #X declare -lib Jamoma;
 #N canvas 45 707 1068 367 Minuit 0;
 #X obj 60 206 j.modular Minuit @name laser-1;
@@ -129,7 +129,7 @@ offset";
 #X obj 323 588 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 323 606 j.receive gorgone-1:/drawing/enable;
-#X obj 323 632 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 323 632 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X msg 322 651 \$1 10;
 #X obj 322 674 line~;
