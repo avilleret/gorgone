@@ -2,7 +2,7 @@
 
 ### BEGIN INIT INFO
 # Provides:          of-daemon
-# Required-Start:    $remote_fs $syslog fake-ola
+# Required-Start:    $remote_fs $syslog 
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
@@ -14,7 +14,7 @@
 # for reference
 
 # Change the next 3 lines to suit where you install your script and what you want to call it
-DIR=${0%/*}
+DIR=$(dirname $(readlink -f $0))
 DAEMON=$DIR/bin/gorgone
 DAEMON_NAME=of-daemon
 #export LD_LIBRARY_PATH=/home/pi/of/lib-linux/release-armv7/
