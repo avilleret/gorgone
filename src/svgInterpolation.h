@@ -19,6 +19,7 @@ public:
     int lineSize;
 
     ofDirectory dir;
+    bool dirtyFlag;
 private:
    ofxPanel gui;
    ofParameter<float> scaleParam, offsetParam;

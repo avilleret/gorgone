@@ -98,7 +98,7 @@ void gorgone::update()
       v.push_back(svgInterp.coeff[i]);
     }
     jamoma.mDrawingCoeffParameter.set("value", v);
-    svgInterp.multiInterpolation();
+    svgInterp.dirtyFlag = true;
 
     vector<ofVec3f> line = svgInterp.interpolatedLine;
 
@@ -117,6 +117,7 @@ void gorgone::draw()
   // cout << ofGetFrameRate() << " fps" << endl;
   //vidGrabber.draw(0,0);
   drawMat(frame,0,0);
+  svgInterp.update();
   if ( bTracking )
     irisDetector.drawEyes();
   if ( bDisplaying )

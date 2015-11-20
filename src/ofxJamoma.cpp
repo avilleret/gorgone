@@ -386,7 +386,7 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
         gorgoneApp->svgInterp.coeff.clear();
         for (int i = 0; i < value.size(); i++)
             gorgoneApp->svgInterp.coeff.push_back(value[i]);
-        gorgoneApp->svgInterp.multiInterpolation();
+        gorgoneApp->svgInterp.dirtyFlag = true;
 
         TTValue x,y;
         vector<ofVec3f> line = gorgoneApp->svgInterp.interpolatedLine;
