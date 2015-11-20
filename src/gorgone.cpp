@@ -11,6 +11,7 @@ void gorgone::setup()
   vidGrabber.setup(filename);
   svgInterp.setup();
   jamoma.setup((void*) this, appName, masterIp);
+  motionDetector.setup(&jamoma);
 }
 
 void gorgone::exit(){
@@ -26,22 +27,28 @@ void gorgone::update()
 
   vidGrabber.update();
 
-  if( bTracking && vidGrabber.isFrameNew()){
-
+  if ( vidGrabber.isFrameNew() ){
     frame = vidGrabber.getFrame();
 
-    if ( frame.cols == 0 ) return;
-
-    cv::Mat gray;
-    if ( frame.channels() == 1 ){
-      gray = frame.clone();
-    } else {
-      cv::cvtColor(frame, gray, CV_RGB2GRAY);
+    if ( bMotion ){
+      motionDetector.update(frame);
     }
 
-    cout << "new frame to process : " << gray.cols << "x" << gray.rows << endl;
+    if( bTracking ){
 
-    irisDetector.update(gray);
+      if ( frame.cols == 0 ) return;
+
+      cv::Mat gray;
+      if ( frame.channels() == 1 ){
+        gray = frame.clone();
+      } else {
+        cv::cvtColor(frame, gray, CV_RGB2GRAY);
+      }
+
+      cout << "new frame to process : " << gray.cols << "x" << gray.rows << endl;
+
+      irisDetector.update(gray);
+    }
   }
 
   if (bComputeCode) {

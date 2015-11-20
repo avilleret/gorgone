@@ -24,13 +24,14 @@ class ofxJamoma
     TTObject mProtocolWebSocket;
 
         // Declare publicly all datas of our application to retreive them from the callback function
-    TTObject mTrackEnableParameter;     // a parameter is relative to the state of our application
+    TTObject mTrackEnableParameter, mMotionFlowEnableParameter;     // a parameter is relative to the state of our application
     TTObject mDrawingEnableParameter;   // a parameter is relative to the state of our application
     TTObject mComputeIrisCodeParameter; // a parameter is relative to the state of our application
     TTObject mDrawingCoeffParameter; // drawing coefficient
     TTObject mTrackingIrisCodeReturn; // iris code return
     TTObject mTrackingLedBrightness, mTrackingLaserBrightness, mWhiteLedBrightness; // white & IR led and laser brightness
     TTObject mDrawingShapeXReturn, mDrawingShapeYReturn; // drawing shape return
+    TTObject mTrackingFlowReturn; // Motion flow return
 
     TTPtr mParent;
 

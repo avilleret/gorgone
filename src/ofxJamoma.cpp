@@ -155,6 +155,23 @@ void ofxJamoma::registerJamomaParam(){
     address = out[0];
     TTLogMessage("\n /drawing/enable : effective registration address is %s \n", address.c_str());
 
+    // Create a new boolean parameter
+    mMotionFlowEnableParameter = TTObject("Data", "parameter");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mMotionFlowEnableParameter);
+    mMotionFlowEnableParameter.set("baton", args);
+    mMotionFlowEnableParameter.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mMotionFlowEnableParameter.set("type", "boolean");
+    mMotionFlowEnableParameter.set("description", "start/stop motion detection");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/motion/enable", mMotionFlowEnableParameter);
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n /motion/enable : effective registration address is %s \n", address.c_str());
 
     // Create a new boolean parameter
     mComputeIrisCodeParameter = TTObject("Data", "parameter");
@@ -243,14 +260,8 @@ void ofxJamoma::registerJamomaParam(){
     // Register the parameter data into gorgone-1 at an address
     args = TTValue("/drawing/shape/y", mDrawingShapeYReturn);
     out = mApplicationLocal.send("ObjectRegister", args);
-
-    if (err)
-        TTLogError("Error : can't register data at /drawing/shape/y address \n");
-
-    else {
-        address = out[0];
-        TTLogMessage("\n /drawing/shape/y : effective registration address is %s \n", address.c_str());
-    }
+    address = out[0];
+    TTLogMessage("\n /drawing/shape/y : effective registration address is %s \n", address.c_str());
 
     // Create a new brightness parameter
     mTrackingLedBrightness = TTObject("Data", "parameter");
@@ -312,6 +323,25 @@ void ofxJamoma::registerJamomaParam(){
     out = mApplicationLocal.send("ObjectRegister", args);
     address = out[0];
     TTLogMessage("\n /drawing/laserbrightness : effective registration address is %s \n", address.c_str());
+
+    // Create a new array return for drawing shape
+    mTrackingFlowReturn = TTObject("Data", "return");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mTrackingFlowReturn);
+    mTrackingFlowReturn.set("baton", args);
+    mTrackingFlowReturn.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mTrackingFlowReturn.set("type", "decimal");
+    mTrackingFlowReturn.set("description", "Total motion flow");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/motion/flow", mTrackingFlowReturn);
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n /motion/flow : effective registration address is %s \n", address.c_str());
+
 }
 
 
@@ -325,6 +355,13 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
     if (anObject.instance() == gorgoneApp->jamoma.mTrackEnableParameter.instance()) {
 
         gorgoneApp->bTracking = value[0];
+        return kTTErrNone;
+    }
+
+      // Reteive which data has been updated
+    if (anObject.instance() == gorgoneApp->jamoma.mMotionFlowEnableParameter.instance()) {
+
+        gorgoneApp->bMotion = value[0];
         return kTTErrNone;
     }
 

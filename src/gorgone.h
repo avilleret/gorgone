@@ -7,6 +7,7 @@
 
 #include "ofxCv.h"
 #include "gorgoneEyeDetection.h"
+#include "gorgoneMotionDetector.h"
 #include "svgInterpolation.h"
 #include "crossVideoGrabber.h"
 
@@ -26,7 +27,7 @@ class gorgone : public ofBaseApp
 
     void messageReceived (ofMessage&);
     ofxJamoma jamoma;
-    bool bTracking, bDisplaying, bComputeCode;
+    bool bTracking, bDisplaying, bComputeCode, bMotion;
     svgInterpolation svgInterp;
     crossVideoGrabber vidGrabber;
     void setPwm(float pc);
@@ -47,4 +48,5 @@ private:
     ofImage m_colorImg, m_grayImg, m_leftEye, m_rightEye;
 
     gorgoneEyeDetection irisDetector;
+    gorgoneMotionDetector motionDetector;
 };
