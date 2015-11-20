@@ -22,7 +22,7 @@ void gorgone::exit(){
 
 void gorgone::update()
 {
-  cout << ofGetFrameRate() << " fps" << endl;
+  // cout << ofGetFrameRate() << " fps" << endl;
 
   vidGrabber.update();
 
