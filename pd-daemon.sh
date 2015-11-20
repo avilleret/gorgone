@@ -37,6 +37,8 @@ do_start () {
     log_daemon_msg "Setup sound card before starting $DAEMON_NAME daemon"
     amixer cset numid=3 1
     amixer -c 0 -- sset PCM playback -1dB
+    amixer -c 1 -- sset PCM Front -15.5dB
+    amixer -c 1 -- sset PCM Rear 0dB
     log_daemon_msg "Starting system $DAEMON_NAME daemon"
     start-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile --user $DAEMON_USER --chuid $DAEMON_USER --startas $DAEMON -- $DAEMON_OPTS
     log_end_msg $?
