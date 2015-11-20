@@ -22,6 +22,8 @@ void gorgone::exit(){
 
 void gorgone::update()
 {
+  cout << ofGetFrameRate() << " fps" << endl;
+
   vidGrabber.update();
 
   if( bTracking && vidGrabber.isFrameNew()){
@@ -32,7 +34,7 @@ void gorgone::update()
 
     cv::Mat gray;
     if ( frame.channels() == 1 ){
-      gray = frame;
+      gray = frame.clone();
     } else {
       cv::cvtColor(frame, gray, CV_RGB2GRAY);
     }
