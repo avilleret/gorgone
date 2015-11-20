@@ -56,10 +56,7 @@ void svgInterpolation::setup(){
 
 //--------------------------------------------------------------
 void svgInterpolation::update(){
-	step += 0.001;
-	if (step > 1) {
-		step -= 1;
-	}
+  multiInterpolation();
 }
 
 //--------------------------------------------------------------
@@ -67,7 +64,7 @@ void svgInterpolation::draw(){
 
 	ofDrawBitmapString(ofToString(ofGetFrameRate()),20,20);
 	ofPushMatrix();
-
+  ofScale(4,4,1);
   ofTranslate(ofGetWidth() / 2., ofGetHeight() / 2.);
 	ofScale(20, 20, 1.);
 	ofNoFill();
@@ -83,6 +80,10 @@ void svgInterpolation::draw(){
 }
 
 void svgInterpolation::multiInterpolation(){
+
+  if ( !dirtyFlag ) return;
+
+  dirtyFlag=false;
 
   interpolatedLine.clear();
 
