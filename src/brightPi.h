@@ -54,11 +54,13 @@ public:
   }
 
   void setWBrightness(vector<unsigned char> b){
+    cout << "setWBrightness received " << b.size() << " values" << endl;
     unsigned char status;
     i2c.receive(0x00, &status, 1);
     for ( int i=0; i<min(b.size(),wled.size()); i++ ){
       if (b[i] > 0) status |= wled[i];
       else status &= ~wled[i];
+      cout << "set led " << i << " at address " << std::hex << static_cast<unsigned>(wled[i]) << " to " << static_cast<unsigned>(b[i]) << endl;
       i2c.send(wled[i], (unsigned char) b[i]);
     }
     i2c.send(0x00, status);
