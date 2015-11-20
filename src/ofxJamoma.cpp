@@ -294,7 +294,7 @@ void ofxJamoma::registerJamomaParam(){
     // Setup the data attributes depending of its use inside the application
     mWhiteLedBrightness.set("type", "array");
     mWhiteLedBrightness.set("description", "white LED brightness");
-    mWhiteLedBrightness.set("rangeBounds", TTValue(0, 64));
+    mWhiteLedBrightness.set("rangeBounds", TTValue(0, 63));
     mWhiteLedBrightness.set("size", 4);
     mWhiteLedBrightness.set("rangeClipmode", "both");
 
