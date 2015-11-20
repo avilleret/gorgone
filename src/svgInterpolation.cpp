@@ -122,11 +122,12 @@ void svgInterpolation::multiInterpolation(){
 
   // cout << "scale : " << scale << endl;
   // cout << "offset : " << offset << endl;
-
-  for ( ofVec3f pt : interpolatedLine ){
+  cout << "normalized line : " << endl;
+  int i(0);
+  for ( ofVec3f& pt : interpolatedLine ){
     pt -= offset;
     pt /= scale;
-    cout << pt.x << " \t " << pt.y << endl;
+    cout << i++ << " : " << pt.x << " \t " << pt.y << endl;
   }
 
 }
