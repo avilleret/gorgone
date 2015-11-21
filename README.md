@@ -34,3 +34,8 @@ DHCP server should address IP in the subnet 192.168.2.x.
 
 RPi hostname should be set (with raspi-config utility) to gorgone-1, gorgone-2, gorgone-3 and gorgone-4.
 
+Upgrade
+--------
+
+dans un terminal :
+cd ~/gorgone && ./pi-upgrade.sh

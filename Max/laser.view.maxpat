@@ -38,6 +38,52 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"annotation" : "laser brightness",
+					"floatoutput" : 1,
+					"id" : "obj-14",
+					"knobshape" : 5,
+					"maxclass" : "slider",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 126.0, 378.0, 130.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 29.0, 155.0, 128.0, 21.0 ],
+					"size" : 1.0,
+					"style" : "default"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-23",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "" ],
+					"patching_rect" : [ 261.0, 378.0, 113.0, 22.0 ],
+					"style" : "",
+					"text" : "j.remote brightness"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-22",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 126.0, 344.0, 99.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 29.0, 133.0, 99.0, 20.0 ],
+					"style" : "",
+					"text" : "Laser brightness"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-16",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -73,9 +119,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 254.0, 69.0, 153.0, 22.0 ],
+					"patching_rect" : [ 254.0, 69.0, 110.0, 22.0 ],
 					"style" : "",
-					"text" : "j.remote laser-1:/frequency"
+					"text" : "j.remote frequency"
 				}
 
 			}
@@ -158,9 +204,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 254.0, 307.0, 138.0, 22.0 ],
+					"patching_rect" : [ 254.0, 307.0, 95.0, 22.0 ],
 					"style" : "",
-					"text" : "j.remote laser-1:/scale/y"
+					"text" : "j.remote scale/y"
 				}
 
 			}
@@ -187,9 +233,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 254.0, 262.0, 138.0, 22.0 ],
+					"patching_rect" : [ 254.0, 262.0, 95.0, 22.0 ],
 					"style" : "",
-					"text" : "j.remote laser-1:/scale/x"
+					"text" : "j.remote scale/x"
 				}
 
 			}
@@ -216,9 +262,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 254.0, 217.0, 139.0, 22.0 ],
+					"patching_rect" : [ 254.0, 217.0, 96.0, 22.0 ],
 					"style" : "",
-					"text" : "j.remote laser-1:/offset/y"
+					"text" : "j.remote offset/y"
 				}
 
 			}
@@ -245,9 +291,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 254.0, 172.0, 139.0, 22.0 ],
+					"patching_rect" : [ 254.0, 172.0, 96.0, 22.0 ],
 					"style" : "",
-					"text" : "j.remote laser-1:/offset/x"
+					"text" : "j.remote offset/x"
 				}
 
 			}
@@ -337,10 +383,28 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-23", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-14", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-23", 0 ]
 				}
 
 			}
