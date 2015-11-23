@@ -18,7 +18,7 @@ public:
       Mat small;
       cv::resize(img,small,cv::Size(320,240));
       flow.calcOpticalFlow(small);
-      ofVec2f f = flow.getAverageFlow();
+      ofVec2f f = flow.getTotalFlow();
       jamoma->mTrackingFlowReturn.set("value", f.length());
     }
   };
