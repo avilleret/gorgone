@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 228.0, 102.0, 1132.0, 751.0 ],
+		"rect" : [ 469.0, 83.0, 1032.0, 751.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,31 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-70",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 900.0, 492.0, 150.0, 20.0 ],
+					"style" : "",
+					"text" : "Change slider number : "
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-45",
+					"maxclass" : "number",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 899.0, 517.0, 50.0, 22.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-60",
 					"maxclass" : "newobj",
@@ -174,19 +199,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-71",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 962.0, 504.0, 29.5, 22.0 ],
-					"style" : "",
-					"text" : "2"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-64",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -201,25 +213,12 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-65",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 911.0, 504.0, 39.0, 22.0 ],
-					"style" : "",
-					"text" : "zl.len"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-66",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 911.0, 534.0, 49.0, 22.0 ],
+					"patching_rect" : [ 899.0, 543.0, 49.0, 22.0 ],
 					"style" : "",
 					"text" : "size $1"
 				}
@@ -240,6 +239,7 @@
 			}
 , 			{
 				"box" : 				{
+					"contdata" : 1,
 					"id" : "obj-68",
 					"maxclass" : "multislider",
 					"numinlets" : 1,
@@ -250,7 +250,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 41.0, 388.0, 161.0, 89.0 ],
 					"setminmax" : [ 0.0, 1.0 ],
-					"size" : 2,
+					"size" : 12,
 					"style" : ""
 				}
 
@@ -840,7 +840,7 @@
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "laser.view.maxpat",
-					"numinlets" : 1,
+					"numinlets" : 7,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
@@ -883,7 +883,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 466.0, 365.0, 382.0, 22.0 ],
 					"style" : "",
-					"text" : "0.984 0."
+					"text" : "1. 1. 1. 0.696 0.728 0.76 0.792 0.808 0.816 0.856 0.888 0.912"
 				}
 
 			}
@@ -1000,10 +1000,10 @@
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "gorgone.view.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 1,
+					"numinlets" : 8,
+					"numoutlets" : 2,
 					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "" ],
+					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 64.5, 143.0, 186.0, 464.0 ],
 					"viewvisibility" : 1
 				}
@@ -1358,6 +1358,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-66", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-45", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-49", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -1439,10 +1448,10 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-66", 0 ],
+					"destination" : [ "obj-68", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-65", 0 ]
+					"source" : [ "obj-66", 0 ]
 				}
 
 			}
@@ -1467,15 +1476,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-65", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-69", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-67", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -1489,15 +1489,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-7", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-66", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-71", 0 ]
 				}
 
 			}
@@ -1540,19 +1531,19 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "gorgoneMinuitSetup.maxpat",
-				"bootpath" : "~/gorgone/Max",
+				"bootpath" : "~/dev/gorgone/Max",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "gorgone.view.maxpat",
-				"bootpath" : "~/gorgone/Max",
+				"bootpath" : "~/dev/gorgone/Max",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "laser.view.maxpat",
-				"bootpath" : "~/gorgone/Max",
+				"bootpath" : "~/dev/gorgone/Max",
 				"type" : "JSON",
 				"implicit" : 1
 			}
