@@ -7,10 +7,10 @@ class svgInterpolation : public ofBaseApp {
 
 public:
     void setup();
-    void update();
+    bool updateBool();
     void draw();
-    void multiInterpolation();
-    void draw_static();
+    bool multiInterpolation();
+    bool draw_static();
 
     vector<ofxSVG> svgs;
     float step;

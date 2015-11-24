@@ -93,13 +93,22 @@ void gorgone::update()
       irisDetector.newCode = false;
     }
 
-    TTValue v,x,y;
+    TTValue v;
     for (int i = 0; i<svgInterp.coeff.size(); i++){
       v.push_back(svgInterp.coeff[i]);
     }
     jamoma.mDrawingCoeffParameter.set("value", v);
     svgInterp.dirtyFlag = true;
+  }
+}
 
+void gorgone::draw()
+{
+  // cout << ofGetFrameRate() << " fps" << endl;
+  //vidGrabber.draw(0,0);
+  drawMat(frame,0,0);
+  if ( svgInterp.updateBool() ){
+    TTValue x,y;
     vector<ofVec3f> line = svgInterp.interpolatedLine;
 
     for (int i=0; i<line.size(); i++){
@@ -110,14 +119,6 @@ void gorgone::update()
     jamoma.mDrawingShapeXReturn.set("value", x);
     jamoma.mDrawingShapeYReturn.set("value", y);
   }
-}
-
-void gorgone::draw()
-{
-  // cout << ofGetFrameRate() << " fps" << endl;
-  //vidGrabber.draw(0,0);
-  drawMat(frame,0,0);
-  svgInterp.update();
   if ( bTracking )
     irisDetector.drawEyes();
   if ( bDisplaying )

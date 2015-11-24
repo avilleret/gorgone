@@ -96,9 +96,8 @@ void svgInterpolation::setup(){
 
 
 //--------------------------------------------------------------
-void svgInterpolation::update(){
-  multiInterpolation();
-  draw_static();
+bool svgInterpolation::updateBool(){
+  return multiInterpolation() || draw_static();
 }
 
 //--------------------------------------------------------------
@@ -120,9 +119,9 @@ void svgInterpolation::draw(){
 	ofPopMatrix();
 }
 
-void svgInterpolation::multiInterpolation(){
+bool svgInterpolation::multiInterpolation(){
 
-  if ( !dirtyFlag ) return;
+  if ( !dirtyFlag ) return false;
 
   dirtyFlag=false;
 
@@ -171,14 +170,15 @@ void svgInterpolation::multiInterpolation(){
     pt /= scale;
     cout << i++ << " : " << pt.x << " \t " << pt.y << endl;
   }
-
+  return true;
 }
 
-void svgInterpolation::draw_static(){
-  if ( selectedId < 0 ) return;
-  if ( selectedId > (static_lines.size() - 1)) return;
+bool svgInterpolation::draw_static(){
+  if ( selectedId < 0 ) return false;
+  if ( selectedId > (static_lines.size() - 1)) return false;
 
   interpolatedLine.clear();
   interpolatedLine = static_lines[selectedId];
   selectedId = -1;
+  return true;
 }
