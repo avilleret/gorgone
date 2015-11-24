@@ -3,6 +3,8 @@
 //--------------------------------------------------------------
 void svgInterpolation::setup(){
 
+  selectedId = -1;
+
   ofDirectory dir;
   dir.listDir("formes_interpol/");
   dir.sort(); // in linux the file system doesn't return file lists ordered in alphabetical order
@@ -162,11 +164,9 @@ void svgInterpolation::multiInterpolation(){
 
 void svgInterpolation::draw_static(){
   if ( selectedId < 0 ) return;
+  if ( selectedId > (static_lines.size() - 1)) return;
 
   interpolatedLine.clear();
-  vector<ofVec3f> line = static_lines[selectedId];
-  for ( auto pt : line ){
-    interpolatedLine.push_back(pt);
-  }
+  interpolatedLine = static_lines[selectedId];
   selectedId = -1;
 }
