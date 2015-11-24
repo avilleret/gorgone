@@ -26,6 +26,7 @@ void crossVideoGrabber::update(){
 #ifdef TARGET_RASPBERRY_PI
     newFrame = cam.isFrameNew();
     frame = cam.grab();
+    if ( frame.cols != 1920 || frame.rows != 1080 ) setup("");
 #else
     cam.update();
 #endif
