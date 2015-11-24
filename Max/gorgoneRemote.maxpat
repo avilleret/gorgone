@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 469.0, 83.0, 1032.0, 751.0 ],
+		"rect" : [ 469.0, 83.0, 1396.0, 751.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,45 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-76",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 748.0, 320.0, 150.0, 33.0 ],
+					"style" : "",
+					"text" : "Charge une forme brute sans interpolation"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-77",
+					"maxclass" : "number",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 449.5, 320.0, 50.0, 22.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-71",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "" ],
+					"patching_rect" : [ 506.0, 320.0, 231.0, 22.0 ],
+					"style" : "",
+					"text" : "j.remote gorgone-1:/drawing/static_shape"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-78",
 					"maxclass" : "comment",
@@ -578,7 +617,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 470.0, 455.0, 43.0, 22.0 ],
+					"patching_rect" : [ 470.0, 485.0, 43.0, 22.0 ],
 					"style" : "",
 					"text" : "set $1"
 				}
@@ -591,7 +630,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 530.0, 455.0, 43.0, 22.0 ],
+					"patching_rect" : [ 530.0, 485.0, 43.0, 22.0 ],
 					"style" : "",
 					"text" : "set $1"
 				}
@@ -604,7 +643,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 590.0, 455.0, 43.0, 22.0 ],
+					"patching_rect" : [ 590.0, 485.0, 43.0, 22.0 ],
 					"style" : "",
 					"text" : "set $1"
 				}
@@ -617,7 +656,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 650.0, 455.0, 43.0, 22.0 ],
+					"patching_rect" : [ 650.0, 485.0, 43.0, 22.0 ],
 					"style" : "",
 					"text" : "set $1"
 				}
@@ -633,7 +672,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 650.0, 483.0, 50.0, 22.0 ],
+					"patching_rect" : [ 650.0, 513.0, 50.0, 22.0 ],
 					"style" : ""
 				}
 
@@ -648,7 +687,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 590.0, 483.0, 50.0, 22.0 ],
+					"patching_rect" : [ 590.0, 513.0, 50.0, 22.0 ],
 					"style" : ""
 				}
 
@@ -663,7 +702,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 530.0, 483.0, 50.0, 22.0 ],
+					"patching_rect" : [ 530.0, 513.0, 50.0, 22.0 ],
 					"style" : ""
 				}
 
@@ -675,7 +714,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "int", "int", "int", "int" ],
-					"patching_rect" : [ 470.0, 427.0, 199.0, 22.0 ],
+					"patching_rect" : [ 470.0, 457.0, 199.0, 22.0 ],
 					"style" : "",
 					"text" : "unpack 0 0 0 0"
 				}
@@ -691,7 +730,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 470.0, 483.0, 50.0, 22.0 ],
+					"patching_rect" : [ 470.0, 513.0, 50.0, 22.0 ],
 					"style" : ""
 				}
 
@@ -703,7 +742,7 @@
 					"numinlets" : 4,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 470.0, 511.0, 199.0, 22.0 ],
+					"patching_rect" : [ 470.0, 541.0, 199.0, 22.0 ],
 					"style" : "",
 					"text" : "pak 0 0 0 0"
 				}
@@ -716,7 +755,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 470.0, 543.0, 202.0, 22.0 ],
+					"patching_rect" : [ 470.0, 573.0, 202.0, 22.0 ],
 					"style" : "",
 					"text" : "j.remote gorgone-1:/wled/brightness"
 				}
@@ -728,7 +767,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 660.0, 332.0, 359.0, 20.0 ],
+					"patching_rect" : [ 660.0, 377.0, 359.0, 20.0 ],
 					"style" : "",
 					"text" : "Reçoit les coefficient d'interpolation de forme après l'analyse d'iris"
 				}
@@ -923,9 +962,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 466.0, 365.0, 382.0, 22.0 ],
+					"patching_rect" : [ 466.0, 410.0, 382.0, 22.0 ],
 					"style" : "",
-					"text" : "0. 0. 0. 0.81 0. 0. 0. 0. 0. 0. 0. 1."
+					"text" : "1. 0. 0.008 0. 0.784 0. 0. 0. 1. 0. 0. 0."
 				}
 
 			}
@@ -936,7 +975,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 466.0, 332.0, 190.0, 22.0 ],
+					"patching_rect" : [ 466.0, 377.0, 190.0, 22.0 ],
 					"style" : "",
 					"text" : "j.remote gorgone-1:/drawing/coeff"
 				}
@@ -1141,7 +1180,7 @@
 					"destination" : [ "obj-27", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 540.5, 584.0, 456.0, 584.0, 456.0, 417.0, 479.5, 417.0 ],
+					"midpoints" : [ 540.5, 614.0, 456.0, 614.0, 456.0, 447.0, 479.5, 447.0 ],
 					"source" : [ "obj-23", 1 ]
 				}
 
@@ -1546,6 +1585,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-77", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-71", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-73", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -1568,6 +1616,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-75", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-71", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-77", 0 ]
 				}
 
 			}
