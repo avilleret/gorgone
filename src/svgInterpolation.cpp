@@ -46,12 +46,14 @@ void svgInterpolation::setup(){
     lines.push_back(myLine);
   }
 
-  dir.listDir("formes_statiques /");
+  cout << "load SVG from formes_statiques" << endl;
+  dir.listDir("formes_statiques/");
   dir.sort(); // in linux the file system doesn't return file lists ordered in alphabetical order
 
   for(int i = 0; i < (int)dir.size(); i++){
     ofxSVG svg;
     svg.load(dir.getPath(i));
+    cout << "load : " << dir.getPath(i) << endl;
     vector<ofVec3f> myLine;
     ofVec2f ptMin = ofVec2f(1000.,1000.), ptMax = ofVec2f(-1000.,-1000.);
 
@@ -66,16 +68,26 @@ void svgInterpolation::setup(){
         for(int n=0;n<line.size();n++){
 
           ofVec3f pt = line[n];
-          pt/=40;
-          pt-=1.;
           ptMin.x = std::min(pt.x, ptMin.x);
           ptMin.y = std::min(pt.y, ptMin.y);
           ptMax.x = std::max(pt.x, ptMax.x);
           ptMax.y = std::max(pt.y, ptMax.y);
 
           myLine.push_back(pt);
+	  cout << n << " : " << pt.x << ";" << pt.y << endl;
 
         }
+      }
+      cout << "normalize shape" << endl;
+      ofVec2f offset, amplitude;
+      float scale;
+      offset = (ptMin + ptMax) /2.;
+      amplitude = (ptMax - ptMin)/2;
+      scale = max(amplitude.x,amplitude.y);
+      for (auto & pt : myLine){
+	pt-=offset;
+	pt/=scale;
+	cout << pt.x << ";" << pt.y << endl;
       }
     static_lines.push_back(myLine);
     }
