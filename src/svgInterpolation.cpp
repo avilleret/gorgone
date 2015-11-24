@@ -2,25 +2,17 @@
 
 //--------------------------------------------------------------
 void svgInterpolation::setup(){
-	ofSetVerticalSync(true);
 
-	ofBackground(0);
-	ofSetColor(255);
-
-  dir.listDir("formes/");
+  ofDirectory dir;
+  dir.listDir("formes_interpol/");
   dir.sort(); // in linux the file system doesn't return file lists ordered in alphabetical order
-
-  //allocate the vector to have as many ofImages as files
-  if( dir.size() ){
-    svgs.assign(dir.size(), ofxSVG());
-  }
 
   lineSize = 10000;
 
   for(int i = 0; i < (int)dir.size(); i++){
-    svgs[i].load(dir.getPath(i));
     // if ( i == 0 ) cout << "load : " << dir.getPath(i) << endl;
-    ofxSVG svg = svgs[i];
+    ofxSVG svg;
+    svg.load(dir.getPath(i));
     vector<ofVec3f> myLine;
     ofVec2f ptMin = ofVec2f(1000.,1000.), ptMax = ofVec2f(-1000.,-1000.);
 
@@ -51,12 +43,48 @@ void svgInterpolation::setup(){
     // cout << "max : " << ptMax.x << " " << ptMax.y << endl;
     lines.push_back(myLine);
   }
+
+  dir.listDir("formes_statiques /");
+  dir.sort(); // in linux the file system doesn't return file lists ordered in alphabetical order
+
+  for(int i = 0; i < (int)dir.size(); i++){
+    ofxSVG svg;
+    svg.load(dir.getPath(i));
+    vector<ofVec3f> myLine;
+    ofVec2f ptMin = ofVec2f(1000.,1000.), ptMax = ofVec2f(-1000.,-1000.);
+
+    for (int i = 0; i < svg.getNumPath(); i++){
+      ofPath p = svg.getPathAt(i);
+      // svg defaults to non zero winding which doesn't look so good as contours
+      p.setPolyWindingMode(OF_POLY_WINDING_ODD);
+      vector<ofPolyline>& lines = const_cast<vector<ofPolyline>&>(p.getOutline());
+
+      for(int k=0;k<(int)lines.size();k++){
+        ofPolyline line=lines[k];
+        for(int n=0;n<line.size();n++){
+
+          ofVec3f pt = line[n];
+          pt/=40;
+          pt-=1.;
+          ptMin.x = std::min(pt.x, ptMin.x);
+          ptMin.y = std::min(pt.y, ptMin.y);
+          ptMax.x = std::max(pt.x, ptMax.x);
+          ptMax.y = std::max(pt.y, ptMax.y);
+
+          myLine.push_back(pt);
+
+        }
+      }
+    static_lines.push_back(myLine);
+    }
+  }
 }
 
 
 //--------------------------------------------------------------
 void svgInterpolation::update(){
   multiInterpolation();
+  draw_static();
 }
 
 //--------------------------------------------------------------
@@ -130,4 +158,15 @@ void svgInterpolation::multiInterpolation(){
     cout << i++ << " : " << pt.x << " \t " << pt.y << endl;
   }
 
+}
+
+void svgInterpolation::draw_static(){
+  if ( selectedId < 0 ) return;
+
+  interpolatedLine.clear();
+  vector<ofVec3f> line = static_lines[selectedId];
+  for ( auto pt : line ){
+    interpolatedLine.push_back(pt);
+  }
+  selectedId = -1;
 }

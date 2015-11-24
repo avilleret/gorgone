@@ -32,6 +32,7 @@ class ofxJamoma
     TTObject mTrackingLedBrightness, mTrackingLaserBrightness, mWhiteLedBrightness; // white & IR led and laser brightness
     TTObject mDrawingShapeXReturn, mDrawingShapeYReturn; // drawing shape return
     TTObject mTrackingFlowReturn; // Motion flow return
+    TTObject mStaticShapeParameter; // id of static shape to draw
 
     TTPtr mParent;
 
