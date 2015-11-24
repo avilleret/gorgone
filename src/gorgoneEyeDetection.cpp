@@ -34,7 +34,7 @@ void gorgoneEyeDetection::reset(){
   newCode = false;
 }
 
-void gorgoneEyeDetection::update(Mat& img){
+bool gorgoneEyeDetection::updateBool(Mat& img){
 
   Mat drawing, subMat;
   Mat eyeRoiMat;
@@ -49,7 +49,7 @@ void gorgoneEyeDetection::update(Mat& img){
 
   cout << "found eyes : " << eyeFinder.size() << endl;
 
-  if ( eyeFinder.size() == 0) return;
+  if ( eyeFinder.size() == 0) return false;
 
   ofRectangle rect = eyeFinder.getObject(0);
   double marging = paramMarging / 100.;
@@ -69,10 +69,10 @@ void gorgoneEyeDetection::update(Mat& img){
     Mat pupilMat = subMat(pupilRect);
   } catch ( cv::Exception ) {
     cout << "oups wrong ROI" << endl;
-    return;
+    return false;
   }
 
-  if ( score < bestScore ) return;
+  if ( score < bestScore ) return false;
 
   if ( findIris(subMat, iris)
     && findPupil(subMat, iris, pupil) ){
@@ -81,10 +81,13 @@ void gorgoneEyeDetection::update(Mat& img){
     bestPupil = pupil;
     bestScore = score;
     subMat2ofImg(subMat, eye);
+  } else {
+    return false;
   }
 
   paramScore = score;
   cout << "eye focus : " << score << endl;
+  return true;
 }
 
 Mat gorgoneEyeDetection::getIrisCode(){

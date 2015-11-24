@@ -14,7 +14,7 @@ public:
   void computeScore(T& img) {
     computeScore(ofxCv::toCv(img));
   }
-  void update(cv::Mat& img);
+  bool updateBool(cv::Mat& img);
   void setup(const cv::Mat& img);
   void reset();
   void drawEyes();

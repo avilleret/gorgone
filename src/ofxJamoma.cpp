@@ -342,6 +342,24 @@ void ofxJamoma::registerJamomaParam(){
     address = out[0];
     TTLogMessage("\n /motion/flow : effective registration address is %s \n", address.c_str());
 
+    // Create a new array return for drawing shape
+    mEyeDetectedReturn = TTObject("Data", "return");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mEyeDetectedReturn);
+    mEyeDetectedReturn.set("baton", args);
+    mEyeDetectedReturn.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mEyeDetectedReturn.set("type", "none");
+    mEyeDetectedReturn.set("description", "Total motion flow");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/tracking/eye_detected", mEyeDetectedReturn);
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n/tracking/eye_detected : effective registration address is %s \n", address.c_str());
+
     // Create a new brightness parameter
     mStaticShapeParameter = TTObject("Data", "parameter");
 

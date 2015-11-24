@@ -47,7 +47,9 @@ void gorgone::update()
 
       cout << "new frame to process : " << gray.cols << "x" << gray.rows << endl;
 
-      irisDetector.update(gray);
+      if ( irisDetector.updateBool(gray) ){
+        jamoma.mEyeDetectedReturn.set("value", "bang");
+      }
     }
   }
 
