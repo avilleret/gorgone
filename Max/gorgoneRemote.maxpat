@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 250.0, 83.0, 1396.0, 751.0 ],
+		"rect" : [ 98.0, 128.0, 1396.0, 751.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -45,7 +45,6 @@
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 696.0, 718.0, 50.0, 22.0 ],
-					"presentation_rect" : [ 696.0, 718.0, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -978,7 +977,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 466.0, 410.0, 382.0, 22.0 ],
 					"style" : "",
-					"text" : "0. 0. 0. 0. 0.344 0. 0. 0. 0. 0. 0."
+					"text" : "0.384 0. 0. 0. 0. 0. 0. 0. 0. 0. 0."
 				}
 
 			}
@@ -1095,7 +1094,7 @@
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "gorgone.view.maxpat",
-					"numinlets" : 8,
+					"numinlets" : 2,
 					"numoutlets" : 2,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "", "" ],
@@ -1484,6 +1483,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-52", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-52", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-53", 0 ]
 				}
 
 			}
