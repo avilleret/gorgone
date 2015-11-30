@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 201.0, 195.0, 1208.0, 967.0 ],
+		"rect" : [ 132.0, 67.0, 1208.0, 967.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -1429,6 +1429,22 @@
 						"subpatcher_template" : "",
 						"boxes" : [ 							{
 								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 13.0,
+									"id" : "obj-13",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 134.0, 110.0, 188.0, 23.0 ],
+									"presentation_rect" : [ 223.5, 545.0, 0.0, 0.0 ],
+									"style" : "",
+									"text" : "open BleuGorgoneTest TrackB"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-11",
 									"maxclass" : "message",
 									"numinlets" : 2,
@@ -1523,7 +1539,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 508.0, 220.0, 29.5, 22.0 ],
 									"style" : "",
-									"text" : "0"
+									"text" : "6"
 								}
 
 							}
@@ -1845,6 +1861,15 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-30", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-13", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-5", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -1998,6 +2023,15 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-13", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-42", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-3", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -2133,7 +2167,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 384.0, 196.0, 1255.0, 852.0 ],
+						"rect" : [ 135.0, 102.0, 1255.0, 852.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2160,8 +2194,90 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-50",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 414.0, 190.0, 119.0, 20.0 ],
+									"presentation_rect" : [ 416.5, 193.0, 0.0, 0.0 ],
+									"style" : "",
+									"text" : "arrete animation 1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-46",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 715.0, 35.5, 29.5, 22.0 ],
+									"presentation_rect" : [ 672.0, 43.5, 0.0, 0.0 ],
+									"style" : "",
+									"text" : "1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-45",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 715.0, 100.5, 29.5, 22.0 ],
+									"presentation_rect" : [ 646.0, 64.0, 0.0, 0.0 ],
+									"style" : "",
+									"text" : "0"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-42",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 1002.0, 54.5, 271.0, 33.0 ],
+									"style" : "",
+									"text" : "Envoi 1 pour déclencher le calcul de l'iris code.\nRetourne 0 quand le calcul est terminé."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"annotation" : "start/stop drawing",
+									"id" : "obj-43",
+									"maxclass" : "toggle",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "int" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 715.0, 65.5, 24.0, 24.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 163.0, 72.0, 24.0, 24.0 ],
+									"style" : ""
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-44",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 4,
+									"outlettype" : [ "", "", "", "" ],
+									"patching_rect" : [ 757.0, 65.5, 236.0, 22.0 ],
+									"style" : "",
+									"text" : "j.remote gorgone-1:/tracking/computecode"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-49",
 									"maxclass" : "message",
@@ -2169,7 +2285,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 22.0, 65.5, 29.5, 22.0 ],
-									"presentation_rect" : [ 20.0, 66.5, 0.0, 0.0 ],
 									"style" : "",
 									"text" : "1"
 								}
@@ -2183,8 +2298,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 22.0, 15.0, 30.0, 30.0 ],
-									"presentation_rect" : [ 28.0, 12.0, 0.0, 0.0 ],
+									"patching_rect" : [ 22.0, 2.0, 30.0, 30.0 ],
 									"style" : ""
 								}
 
@@ -2360,7 +2474,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 783.0, 250.5, 50.0, 22.0 ],
+									"patching_rect" : [ 786.0, 282.5, 50.0, 22.0 ],
 									"style" : "",
 									"text" : "set 0"
 								}
@@ -4700,7 +4814,7 @@
 													"presentation" : 1,
 													"presentation_rect" : [ 56.0, 403.0, 161.0, 89.0 ],
 													"setminmax" : [ 0.0, 1.0 ],
-													"size" : 6,
+													"size" : 11,
 													"style" : ""
 												}
 
@@ -6275,7 +6389,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 715.0, 169.0, 24.0, 24.0 ],
+									"patching_rect" : [ 718.0, 201.0, 24.0, 24.0 ],
 									"style" : ""
 								}
 
@@ -7929,7 +8043,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 671.0, 208.0, 29.5, 22.0 ],
+									"patching_rect" : [ 685.0, 240.0, 29.5, 22.0 ],
 									"style" : "",
 									"text" : "0"
 								}
@@ -7965,7 +8079,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 909.0, 99.0, 359.0, 20.0 ],
+									"patching_rect" : [ 912.0, 131.0, 359.0, 20.0 ],
 									"style" : "",
 									"text" : "Reçoit les coefficient d'interpolation de forme après l'analyse d'iris"
 								}
@@ -7978,9 +8092,9 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 715.0, 132.0, 382.0, 22.0 ],
+									"patching_rect" : [ 718.0, 164.0, 382.0, 22.0 ],
 									"style" : "",
-									"text" : "0.63248 0.4 0.448 0.592"
+									"text" : "0.592 0.592 0.56 0.544 0.52 0.508 0.496 0.496 0.496 0.504 0."
 								}
 
 							}
@@ -7991,7 +8105,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "" ],
-									"patching_rect" : [ 715.0, 99.0, 190.0, 22.0 ],
+									"patching_rect" : [ 718.0, 131.0, 190.0, 22.0 ],
 									"style" : "",
 									"text" : "j.remote gorgone-1:/drawing/coeff"
 								}
@@ -8028,7 +8142,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 818.0, 208.0, 271.0, 33.0 ],
+									"patching_rect" : [ 821.0, 240.0, 271.0, 33.0 ],
 									"style" : "",
 									"text" : "Envoi 1 pour déclencher le calcul de l'iris code.\nRetourne 0 quand le calcul est terminé."
 								}
@@ -8043,7 +8157,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 774.0, 177.0, 24.0, 24.0 ],
+									"patching_rect" : [ 777.0, 209.0, 24.0, 24.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 163.0, 72.0, 24.0, 24.0 ],
 									"style" : ""
@@ -8057,7 +8171,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "" ],
-									"patching_rect" : [ 814.0, 177.0, 236.0, 22.0 ],
+									"patching_rect" : [ 817.0, 209.0, 236.0, 22.0 ],
 									"style" : "",
 									"text" : "j.remote gorgone-1:/tracking/computecode"
 								}
@@ -8069,7 +8183,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 658.0, 15.0, 323.0, 20.0 ],
+									"patching_rect" : [ 757.0, -1.0, 323.0, 20.0 ],
 									"style" : "",
 									"text" : "génére iris code"
 								}
@@ -8081,7 +8195,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 402.0, 15.0, 150.0, 20.0 ],
+									"patching_rect" : [ 402.0, 2.0, 150.0, 20.0 ],
 									"style" : "",
 									"text" : "calcul iris"
 								}
@@ -8094,7 +8208,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 66.0, 15.0, 154.0, 47.0 ],
+									"patching_rect" : [ 66.0, 2.0, 154.0, 47.0 ],
 									"style" : "",
 									"text" : "ouvre détection iris à la fin de la 1ere voix qui appelle a regarder "
 								}
@@ -8121,7 +8235,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
-									"patching_rect" : [ 613.0, 15.0, 30.0, 30.0 ],
+									"patching_rect" : [ 712.0, -1.0, 30.0, 30.0 ],
 									"style" : ""
 								}
 
@@ -8134,7 +8248,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 363.0, 12.0, 30.0, 30.0 ],
+									"patching_rect" : [ 363.0, -1.0, 30.0, 30.0 ],
 									"style" : ""
 								}
 
@@ -8272,6 +8386,42 @@
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-41", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-44", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-43", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-45", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-43", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-43", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-44", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-43", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-46", 0 ]
 								}
 
 							}
@@ -8434,7 +8584,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 534.0, 12.0, 30.0, 30.0 ],
-									"presentation_rect" : [ 534.0, 12.0, 0.0, 0.0 ],
 									"style" : ""
 								}
 
@@ -13594,7 +13743,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 340.0, 387.0, 382.0, 22.0 ],
 									"style" : "",
-									"text" : "0.63248 0.4 0.448 0.592"
+									"text" : "0.592 0.592 0.56 0.544 0.52 0.508 0.496 0.496 0.496 0.504 0."
 								}
 
 							}
@@ -14117,6 +14266,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-21", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-19", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-30", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -14227,13 +14385,13 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-36::obj-20" : [ "live.gain~[6]", "live.gain~", 0 ],
-			"obj-25::obj-18" : [ "live.gain~[4]", "live.gain~", 0 ],
+			"obj-25::obj-5" : [ "live.gain~[1]", "live.gain~", 0 ],
 			"obj-31::obj-5" : [ "live.gain~[5]", "live.gain~", 0 ],
 			"obj-25::obj-17" : [ "live.gain~[3]", "live.gain~", 0 ],
-			"obj-36::obj-5" : [ "live.gain~", "live.gain~", 0 ],
 			"obj-25::obj-13" : [ "live.gain~[2]", "live.gain~", 0 ],
-			"obj-25::obj-5" : [ "live.gain~[1]", "live.gain~", 0 ]
+			"obj-36::obj-20" : [ "live.gain~[6]", "live.gain~", 0 ],
+			"obj-36::obj-5" : [ "live.gain~", "live.gain~", 0 ],
+			"obj-25::obj-18" : [ "live.gain~[4]", "live.gain~", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{

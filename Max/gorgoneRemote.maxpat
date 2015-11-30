@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 747.0, 66.0, 1852.0, 965.0 ],
+		"rect" : [ 34.0, 45.0, 1612.0, 967.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -700,7 +700,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 783.0, 905.5, 213.0, 22.0 ],
 					"style" : "",
-					"text" : "1. 1. 0.928571 0.511905"
+					"text" : "0."
 				}
 
 			}
@@ -2503,19 +2503,19 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "gorgoneMinuitSetup.maxpat",
-				"bootpath" : "~/dev/gorgone/Max",
+				"bootpath" : "~/gorgone/Max",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "gorgone.view.maxpat",
-				"bootpath" : "~/dev/gorgone/Max",
+				"bootpath" : "~/gorgone/Max",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "laser.view.maxpat",
-				"bootpath" : "~/dev/gorgone/Max",
+				"bootpath" : "~/gorgone/Max",
 				"type" : "JSON",
 				"implicit" : 1
 			}
