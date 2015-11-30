@@ -427,8 +427,6 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
         }
         gorgoneApp->svgInterp.dirtyFlag = true;
 
-        TTValue x,y;
-        vector<ofVec3f> line = gorgoneApp->svgInterp.interpolatedLine;
         return kTTErrNone;
     }
 
