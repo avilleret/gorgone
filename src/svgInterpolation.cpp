@@ -7,10 +7,10 @@ void svgInterpolation::setup(){
 
   ofDirectory dir;
 
-  cout << "load SVG from formes_interpol" << endl;
+  ofLogNotice("svgInterpolation") << "load SVG from formes_interpol" << endl;
   dir.listDir("formes_interpol/");
   dir.sort(); // in linux the file system doesn't return file lists ordered in alphabetical order
-  cout << "found " << (int)dir.size() << " images to load." << endl;
+  ofLogNotice("svgInterpolation") << "found " << (int)dir.size() << " images to load." << endl;
   lineSize = 10000;
 
   for(int i = 0; i < (int)dir.size(); i++){
@@ -43,19 +43,19 @@ void svgInterpolation::setup(){
         }
       }
   	}
-    // cout << "min : " << ptMin.x << " " << ptMin.y << endl;
-    // cout << "max : " << ptMax.x << " " << ptMax.y << endl;
+    ofLogVerbose("svgInterpolation") << "min : " << ptMin.x << " " << ptMin.y << endl;
+    ofLogVerbose("svgInterpolation") << "max : " << ptMax.x << " " << ptMax.y << endl;
     lines.push_back(myLine);
   }
 
-  cout << "load SVG from formes_statiques" << endl;
+  ofLogNotice("svgInterpolation") << "load SVG from formes_statiques" << endl;
   dir.listDir("formes_statiques/");
   dir.sort(); // in linux the file system doesn't return file lists ordered in alphabetical order
 
   for(int i = 0; i < (int)dir.size(); i++){
     ofxSVG svg;
     svg.load(dir.getPath(i));
-    cout << "load : " << dir.getPath(i) << endl;
+    ofLogNotice("svgInterpolation") << "load : " << dir.getPath(i) << endl;
     vector<ofVec3f> myLine;
     ofVec2f ptMin = ofVec2f(1000.,1000.), ptMax = ofVec2f(-1000.,-1000.);
 
@@ -76,11 +76,11 @@ void svgInterpolation::setup(){
           ptMax.y = std::max(pt.y, ptMax.y);
 
           myLine.push_back(pt);
-	  cout << n << " : " << pt.x << ";" << pt.y << endl;
+	  ofLogVerbose("svgInterpolation") << n << " : " << pt.x << ";" << pt.y << endl;
 
         }
       }
-      cout << "normalize shape" << endl;
+      ofLogVerbose("svgInterpolation") << "normalize shape" << endl;
       ofVec2f offset, amplitude;
       float scale;
       offset = (ptMin + ptMax) /2.;
@@ -89,13 +89,13 @@ void svgInterpolation::setup(){
       for (auto & pt : myLine){
       	pt-=offset;
       	pt/=scale;
-      	cout << pt.x << ";" << pt.y << endl;
+      	ofLogVerbose("svgInterpolation") << pt.x << ";" << pt.y << endl;
       }
     static_lines.push_back(myLine);
     }
   }
 
-  cout << "lineSize : " << lineSize << endl;
+  ofLogNotice("svgInterpolation") << "lineSize : " << lineSize << endl;
 }
 
 
@@ -139,9 +139,9 @@ bool svgInterpolation::multiInterpolation(){
   // cout << "sum : " << sum << endl;
 
   // cout << "interpolatedLine : " << endl;
-  cout << "lineSize : " << lineSize << endl;
-  cout << "nombre de formes chargées : " << lines.size() << endl;
-  cout << "taille de coeff : " << coeff.size() << endl;
+  ofLogNotice("svgInterpolation") << "lineSize : " << lineSize << endl;
+  ofLogNotice("svgInterpolation") << "nombre de formes chargées : " << lines.size() << endl;
+  ofLogNotice("svgInterpolation") << "taille de coeff : " << coeff.size() << endl;
 
   for (int i = 0; i < lineSize; i++){
     ofVec3f pt;
@@ -159,8 +159,8 @@ bool svgInterpolation::multiInterpolation(){
     ptMax.x = max(pt.x,ptMax.x);
     ptMax.y = max(pt.y,ptMax.y);
   }
-  // cout << "ptMin : " << ptMin.x << " \t " << ptMin.y << endl;
-  // cout << "ptMax : " << ptMax.x << " \t " << ptMax.y << endl;
+  ofLogVerbose("svgInterpolation") << "ptMin : " << ptMin.x << " \t " << ptMin.y << endl;
+  ofLogVerbose("svgInterpolation") << "ptMax : " << ptMax.x << " \t " << ptMax.y << endl;
 
   ofVec3f offset, diff;
   float scale;
@@ -168,14 +168,14 @@ bool svgInterpolation::multiInterpolation(){
   diff = ptMax - ptMin;
   scale = max(diff.x,diff.y) / 2.;
 
-  // cout << "scale : " << scale << endl;
-  // cout << "offset : " << offset << endl;
-  cout << "normalized line : " << endl;
+  ofLogVerbose("svgInterpolation") << "scale : " << scale << endl;
+  ofLogVerbose("svgInterpolation") << "offset : " << offset << endl;
+  ofLogVerbose("svgInterpolation") << "normalized line : " << endl;
   int i(0);
   for ( ofVec3f& pt : interpolatedLine ){
     pt -= offset;
     pt /= scale;
-    cout << i++ << " : " << pt.x << " \t " << pt.y << endl;
+    ofLogVerbose("svgInterpolation") << i++ << " : " << pt.x << " \t " << pt.y << endl;
   }
   return true;
 }

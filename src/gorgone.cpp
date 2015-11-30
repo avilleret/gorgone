@@ -5,6 +5,7 @@ int accum = 0;
 
 void gorgone::setup()
 {
+  ofSetLogLevel(OF_LOG_NOTICE);
   masterIp = "Mac-Pro-de-10-52.local";
   appName = "gorgone-1";
   parseCmdLineOptions();
@@ -23,7 +24,7 @@ void gorgone::exit(){
 
 void gorgone::update()
 {
-  // cout << ofGetFrameRate() << " fps" << endl;
+  ofLogVerbose("gorgone") << ofGetFrameRate() << " fps" << endl;
 
   vidGrabber.update();
 
@@ -45,7 +46,7 @@ void gorgone::update()
         cv::cvtColor(frame, gray, CV_RGB2GRAY);
       }
 
-      cout << "new frame to process : " << gray.cols << "x" << gray.rows << endl;
+      ofLogVerbose("gorgone") << "new frame to process : " << gray.cols << "x" << gray.rows << endl;
 
       if ( irisDetector.updateBool(gray) ){
         jamoma.mEyeDetectedReturn.set("value", "bang");
@@ -81,7 +82,7 @@ void gorgone::update()
 
     if ( irisDetector.newCode ){
       svgInterp.coeff.clear();
-      cout << "code image resolution : " << img.cols << "x" << img.rows << endl;
+      ofLogVerbose("gorgone") << "code image resolution : " << img.cols << "x" << img.rows << endl;
       uchar* p;
       for (int i = 0; i < img.rows; i++ ){
         float avg=0;
@@ -106,7 +107,6 @@ void gorgone::update()
 
 void gorgone::draw()
 {
-  // cout << ofGetFrameRate() << " fps" << endl;
   //vidGrabber.draw(0,0);
   drawMat(frame,0,0);
   if ( svgInterp.updateBool() ){
@@ -178,9 +178,15 @@ void gorgone::parseCmdLineOptions(){
   vector<string> keys = ofxArgParser::allKeys();
   for (int i = 0; i < keys.size(); i++) {
     if ( keys[i] == "f" )   filename   = ofxArgParser::getValue(keys[i]);
-    if ( keys[i] == "name" ) appName =  ofxArgParser::getValue(keys[i]);
-    if ( keys[i] == "masterIp" ) masterIp =  ofxArgParser::getValue(keys[i]);
-    cout << "key: " << keys[i] << ", value: " << ofxArgParser::getValue(keys[i]) << endl;
+    else if ( keys[i] == "name" ) appName =  ofxArgParser::getValue(keys[i]);
+    else if ( keys[i] == "masterIp" ) masterIp =  ofxArgParser::getValue(keys[i]);
+    else if ( keys[i] == "verbose" ) { // vebose level, value : 0..5, default 1 (OF_LOG_NOTICE)
+      int logLevel;
+      istringstream( ofxArgParser::getValue(keys[i]) ) >> logLevel;
+      ofSetLogLevel((ofLogLevel) logLevel);
+    }
+
+    ofLogNotice("gorgone") << "key: " << keys[i] << ", value: " << ofxArgParser::getValue(keys[i]) << endl;
   }
 }
 

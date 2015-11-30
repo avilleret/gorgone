@@ -420,10 +420,10 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
 
     if (anObject.instance() == gorgoneApp->jamoma.mDrawingCoeffParameter.instance()) {
         gorgoneApp->svgInterp.coeff.clear();
-        cout << "received coeff parameter" << endl;
+        ofLogVerbose("ofxJamoma") << "received coeff parameter" << endl;
         for (int i = 0; i < value.size(); i++) {
             gorgoneApp->svgInterp.coeff.push_back(value[i]);
-            cout << i << " : " << static_cast<float> (value[i]) << endl;
+            ofLogVerbose("ofxJamoma") << i << " : " << static_cast<float> (value[i]) << endl;
         }
         gorgoneApp->svgInterp.dirtyFlag = true;
 

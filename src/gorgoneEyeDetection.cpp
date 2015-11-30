@@ -11,7 +11,7 @@ using namespace cv;
 using namespace ofxCv;
 
 void gorgoneEyeDetection::setup(const Mat& img){
-  cout << "---------- SETUP----------" << endl;
+  ofLogNotice("gorgoneEyeDetection") << "---------- SETUP----------" << endl;
   gui.setup("Eye detection", "settings.xml", ofGetWidth() - 200, 10);
   gui.add(param1.set("Hough 1st parameter",104,0,255));
   gui.add(param2.set("Hough 2nd parameter",12,0,255));
@@ -42,12 +42,12 @@ bool gorgoneEyeDetection::updateBool(Mat& img){
   Rect eyeRoi;
   double score;
 
-  cout << "---------- UPDATE ----------" << endl;
+  ofLogVerbose("gorgoneEyeDetection") << "---------- UPDATE ----------" << endl;
   if(!bSetup) setup(img);
 
   eyeFinder.update(img);
 
-  cout << "found eyes : " << eyeFinder.size() << endl;
+  ofLogVerbose("gorgoneEyeDetection") << "found eyes : " << eyeFinder.size() << endl;
 
   if ( eyeFinder.size() == 0) return false;
 
@@ -68,7 +68,7 @@ bool gorgoneEyeDetection::updateBool(Mat& img){
     equalizeHist(subMat, subMat);
     Mat pupilMat = subMat(pupilRect);
   } catch ( cv::Exception ) {
-    cout << "oups wrong ROI" << endl;
+    ofLogVerbose("gorgoneEyeDetection") << "oups wrong ROI" << endl;
     return false;
   }
 
@@ -86,7 +86,7 @@ bool gorgoneEyeDetection::updateBool(Mat& img){
   }
 
   paramScore = score;
-  cout << "eye focus : " << score << endl;
+  ofLogVerbose("gorgoneEyeDetection") << "eye focus : " << score << endl;
   return true;
 }
 
@@ -106,7 +106,7 @@ void gorgoneEyeDetection::drawEyes(){
   ofDrawBitmapStringHighlight(drawString, 10, 750);
 
   if(codeImg.isAllocated()) codeImg.draw(500,10);
-  else { cout << "codeImg is not allocated" << endl;}
+  else { ofLogVerbose("gorgoneEyeDetection") << "codeImg is not allocated" << endl;}
 #ifdef TARGET_RASPBERRY_PI
   gui.draw();
 #endif
@@ -124,7 +124,7 @@ void gorgoneEyeDetection::save(){
   string basename = "images/" + ZeroPadNumber(ofGetYear()) + ZeroPadNumber(ofGetMonth()) + ZeroPadNumber(ofGetDay());
   basename += "-" + ZeroPadNumber(ofGetHours()) + ZeroPadNumber(ofGetMinutes()) + ZeroPadNumber(ofGetSeconds());
 
-  cout << "save eyes to " << basename << endl;
+  ofLogVerbose("gorgoneEyeDetection") << "save eyes to " << basename << endl;
   eye .save(basename + "-crop.bmp" );
   bestEyeNorm.save(basename + ".bmp");
 }
@@ -145,7 +145,7 @@ bool gorgoneEyeDetection::findIris(Mat& roiImg, Vec3f& iris){
   // cout << circles.size() << " cirlces found" << endl;
 
   if ( circles.size() != 1 ){
-    cout << "can't find any iris circle or too many" << endl;
+    ofLogVerbose("gorgoneEyeDetection") << "can't find any iris circle or too many" << endl;
     return false;
   }
 
@@ -166,7 +166,7 @@ bool gorgoneEyeDetection::findIris(Mat& roiImg, Vec3f& iris){
     //iris += circles[i];
 
     if ( circles[i][2] < 40 ) {
-      cout << "iris too small" << endl;
+      ofLogVerbose("gorgoneEyeDetection") << "iris too small" << endl;
     } else {
 
       double distance = pow((circles[i][0] - roiImg.cols/2) / roiImg.cols,2)
@@ -189,7 +189,7 @@ if ( idx >= 0 ){
   iris[2] = circles[idx][2];
 }
 
-  cout << "iris " << iris[0] << ";" << iris[1] << " " << iris[2] << endl;
+  ofLogVerbose("gorgoneEyeDetection") << "iris " << iris[0] << ";" << iris[1] << " " << iris[2] << endl;
 
   subMat2ofImg(roiImg, irisProc);
 
@@ -202,7 +202,7 @@ bool gorgoneEyeDetection::findPupil(Mat& src_gray, const Vec3f& iris, Vec3f& pup
   vector<Vec3f> circles;
   // now find the pupil in a square inside the iris
   int r = floor( iris[2] / sqrt(2) );
-  cout << "r " << r << endl;
+  ofLogVerbose("gorgoneEyeDetection") << "r " << r << endl;
   Rect pupilRoi = Rect(iris[0] - r, iris[1] - r, r * 2, r * 2);
   printRect(pupilRoi, "pupilRoi");
   Mat roiImg;
@@ -223,7 +223,7 @@ bool gorgoneEyeDetection::findPupil(Mat& src_gray, const Vec3f& iris, Vec3f& pup
   HoughCircles( roiImg, circles, CV_HOUGH_GRADIENT, 1, roiImg.cols, param1, param2, iris[2]*0.15, iris[2]*0.8);
 
   if ( circles.empty() ){
-    cout << "can't find any pupil circle" << endl;
+    ofLogVerbose("gorgoneEyeDetection") << "can't find any pupil circle" << endl;
     return false;
   }
 
@@ -240,7 +240,7 @@ bool gorgoneEyeDetection::findPupil(Mat& src_gray, const Vec3f& iris, Vec3f& pup
       circle( src_gray, center, radius, Scalar(255,255,255), -1, 8, 0 );
 
       if ( circles[i][2] < 40 ) {
-      cout << "iris too small" << endl;
+      ofLogVerbose("gorgoneEyeDetection") << "iris too small" << endl;
     } else {
 
       double distance = pow((circles[i][0] - roiImg.cols/2) / roiImg.cols,2)
@@ -263,7 +263,7 @@ bool gorgoneEyeDetection::findPupil(Mat& src_gray, const Vec3f& iris, Vec3f& pup
     pupil[2] = circles[idx][2];
   }
 
-  cout << "pupil " << pupil[0] << ";" << pupil[1] << " " << pupil[2] << endl;
+  ofLogVerbose("gorgoneEyeDetection") << "pupil " << pupil[0] << ";" << pupil[1] << " " << pupil[2] << endl;
 
   subMat2ofImg(roiImg, eyeProc);
 
@@ -317,7 +317,7 @@ void gorgoneEyeDetection::computeCode()
 
   freeMasekImage(noise);
 
-  cout << "leftCode : " << codeMat.cols << "x" << codeMat.rows << endl;
+  ofLogVerbose("gorgoneEyeDetection") << "leftCode : " << codeMat.cols << "x" << codeMat.rows << endl;
   subMat2ofImg(codeMat, codeImg);
   newCode=true;
 }
