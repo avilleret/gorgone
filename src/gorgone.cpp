@@ -93,14 +93,14 @@ void gorgone::update()
         svgInterp.coeff.push_back(avg);
       }
       irisDetector.newCode = false;
-    }
 
-    TTValue v;
-    for (int i = 0; i<svgInterp.coeff.size(); i++){
-      v.push_back(svgInterp.coeff[i]);
+      TTValue v;
+      for (int i = 0; i<svgInterp.coeff.size(); i++){
+        v.push_back(svgInterp.coeff[i]);
+      }
+      jamoma.mDrawingCoeffParameter.set("value", v);
+      svgInterp.dirtyFlag = true;
     }
-    jamoma.mDrawingCoeffParameter.set("value", v);
-    svgInterp.dirtyFlag = true;
   }
 }
 

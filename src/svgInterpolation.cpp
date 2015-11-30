@@ -6,9 +6,11 @@ void svgInterpolation::setup(){
   selectedId = -1;
 
   ofDirectory dir;
+
+  cout << "load SVG from formes_interpol" << endl;
   dir.listDir("formes_interpol/");
   dir.sort(); // in linux the file system doesn't return file lists ordered in alphabetical order
-
+  cout << "found " << (int)dir.size() << " images to load." << endl;
   lineSize = 10000;
 
   for(int i = 0; i < (int)dir.size(); i++){
@@ -85,13 +87,15 @@ void svgInterpolation::setup(){
       amplitude = (ptMax - ptMin)/2;
       scale = max(amplitude.x,amplitude.y);
       for (auto & pt : myLine){
-	pt-=offset;
-	pt/=scale;
-	cout << pt.x << ";" << pt.y << endl;
+      	pt-=offset;
+      	pt/=scale;
+      	cout << pt.x << ";" << pt.y << endl;
       }
     static_lines.push_back(myLine);
     }
   }
+
+  cout << "lineSize : " << lineSize << endl;
 }
 
 
@@ -135,6 +139,9 @@ bool svgInterpolation::multiInterpolation(){
   // cout << "sum : " << sum << endl;
 
   // cout << "interpolatedLine : " << endl;
+  cout << "lineSize : " << lineSize << endl;
+  cout << "nombre de formes chargées : " << lines.size() << endl;
+  cout << "taille de coeff : " << coeff.size() << endl;
 
   for (int i = 0; i < lineSize; i++){
     ofVec3f pt;
