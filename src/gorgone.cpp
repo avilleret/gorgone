@@ -50,9 +50,7 @@ void gorgone::update()
 
       ofLogVerbose("gorgone") << "new frame to process : " << gray.cols << "x" << gray.rows << endl;
 
-      if ( irisDetector.updateBool(gray) ){
-        jamoma.mIrisDetectedReturn.set("value", "bang");
-      }
+      irisDetector.updateBool(gray);
     }
   }
 

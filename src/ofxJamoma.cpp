@@ -370,13 +370,50 @@ void ofxJamoma::registerJamomaParam(){
 
     // Setup the data attributes depending of its use inside the application
     mIrisDetectedReturn.set("type", "none");
-    mIrisDetectedReturn.set("description", "Total motion flow");
+    mIrisDetectedReturn.set("description", "Return true if iris is well recognized");
 
     // Register the parameter data into gorgone-1 at an address
     args = TTValue("/tracking/detected/iris", mIrisDetectedReturn);
     out = mApplicationLocal.send("ObjectRegister", args);
     address = out[0];
     TTLogMessage("\n/tracking/detected/iris : effective registration address is %s \n", address.c_str());
+
+    // Create a new array return for drawing shape
+    mFocusDetectedReturn = TTObject("Data", "return");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mFocusDetectedReturn);
+    mFocusDetectedReturn.set("baton", args);
+    mFocusDetectedReturn.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mFocusDetectedReturn.set("type", "decimal");
+    mFocusDetectedReturn.set("description", "Return eye focus");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/tracking/detected/focus", mFocusDetectedReturn);
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n/tracking/detected/focus : effective registration address is %s \n", address.c_str());
+
+
+    // Create a new array return for drawing shape
+    mPupilDetectedReturn = TTObject("Data", "return");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mPupilDetectedReturn);
+    mPupilDetectedReturn.set("baton", args);
+    mPupilDetectedReturn.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mPupilDetectedReturn.set("type", "boolean");
+    mPupilDetectedReturn.set("description", "Return eye focus");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/tracking/detected/pupil", mPupilDetectedReturn);
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n/tracking/detected/pupil : effective registration address is %s \n", address.c_str());
 
     // Create a new brightness parameter
     mStaticShapeParameter = TTObject("Data", "parameter");

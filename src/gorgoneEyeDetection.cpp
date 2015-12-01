@@ -71,18 +71,21 @@ bool gorgoneEyeDetection::updateBool(Mat& img){
     return false;
   }
 
+  jamoma->mFocusDetectedReturn.set("value", score);
   if ( score < bestScore ) return false;
 
-  if ( findIris(subMat, iris)
-    && findPupil(subMat, iris, pupil) ){
-    bestEye = subMat.clone();
-    bestIris = iris;
-    bestPupil = pupil;
-    bestScore = score;
-    subMat2ofImg(subMat, eye);
-  } else {
-    return false;
-  }
+  bool _iris = findIris(subMat, iris);
+  jamoma->mIrisDetectedReturn.set("value", _iris);
+  if (!_iris) return false;
+  bool _pupil = findPupil(subMat, iris, pupil);
+  jamoma->mPupilDetectedReturn.set("value", _pupil);
+  if (!_pupil) return false;
+
+  bestEye = subMat.clone();
+  bestIris = iris;
+  bestPupil = pupil;
+  bestScore = score;
+  subMat2ofImg(subMat, eye);
 
   paramScore = score;
   ofLogVerbose("gorgoneEyeDetection") << "eye focus : " << score << endl;

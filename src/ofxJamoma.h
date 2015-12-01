@@ -33,7 +33,7 @@ class ofxJamoma
     TTObject mDrawingShapeXReturn, mDrawingShapeYReturn, mShapeSizeParameter; // drawing shape return
     TTObject mTrackingFlowReturn; // Motion flow return
     TTObject mStaticShapeParameter; // id of static shape to draw
-    TTObject mEyeDetectedReturn, mIrisDetectedReturn; // send a bang when an eye is detected
+    TTObject mEyeDetectedReturn, mIrisDetectedReturn, mFocusDetectedReturn, mPupilDetectedReturn; // send a bang when an eye is detected
 
     TTPtr mParent;
 
