@@ -361,7 +361,7 @@ void ofxJamoma::registerJamomaParam(){
     TTLogMessage("\n/tracking/detected/eye : effective registration address is %s \n", address.c_str());
 
     // Create a new array return for drawing shape
-    mEyeDetectedReturn = TTObject("Data", "return");
+    mIrisDetectedReturn = TTObject("Data", "return");
 
     // Setup the callback mechanism to get the value back
     args = TTValue(mParent, mIrisDetectedReturn);
