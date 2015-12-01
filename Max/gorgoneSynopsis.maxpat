@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 132.0, 67.0, 1208.0, 967.0 ],
+		"rect" : [ 34.0, 104.0, 1208.0, 967.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -1437,7 +1437,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 134.0, 110.0, 188.0, 23.0 ],
-									"presentation_rect" : [ 223.5, 545.0, 0.0, 0.0 ],
 									"style" : "",
 									"text" : "open BleuGorgoneTest TrackB"
 								}
@@ -2167,7 +2166,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 135.0, 102.0, 1255.0, 852.0 ],
+						"rect" : [ 596.0, 142.0, 1418.0, 946.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2201,7 +2200,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 414.0, 190.0, 119.0, 20.0 ],
-									"presentation_rect" : [ 416.5, 193.0, 0.0, 0.0 ],
 									"style" : "",
 									"text" : "arrete animation 1"
 								}
@@ -2215,7 +2213,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 715.0, 35.5, 29.5, 22.0 ],
-									"presentation_rect" : [ 672.0, 43.5, 0.0, 0.0 ],
 									"style" : "",
 									"text" : "1"
 								}
@@ -2229,7 +2226,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 715.0, 100.5, 29.5, 22.0 ],
-									"presentation_rect" : [ 646.0, 64.0, 0.0, 0.0 ],
 									"style" : "",
 									"text" : "0"
 								}
@@ -2452,18 +2448,6 @@
 									"patching_rect" : [ 22.0, 712.0, 106.0, 22.0 ],
 									"style" : "",
 									"text" : "r voix-protocole_1"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-17",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 56.0, 332.0, 271.0, 20.0 ],
-									"style" : "",
-									"text" : "ne fonctionne pas "
 								}
 
 							}
@@ -14385,30 +14369,30 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-25::obj-5" : [ "live.gain~[1]", "live.gain~", 0 ],
-			"obj-31::obj-5" : [ "live.gain~[5]", "live.gain~", 0 ],
-			"obj-25::obj-17" : [ "live.gain~[3]", "live.gain~", 0 ],
-			"obj-25::obj-13" : [ "live.gain~[2]", "live.gain~", 0 ],
-			"obj-36::obj-20" : [ "live.gain~[6]", "live.gain~", 0 ],
 			"obj-36::obj-5" : [ "live.gain~", "live.gain~", 0 ],
-			"obj-25::obj-18" : [ "live.gain~[4]", "live.gain~", 0 ]
+			"obj-25::obj-18" : [ "live.gain~[4]", "live.gain~", 0 ],
+			"obj-25::obj-17" : [ "live.gain~[3]", "live.gain~", 0 ],
+			"obj-36::obj-20" : [ "live.gain~[6]", "live.gain~", 0 ],
+			"obj-31::obj-5" : [ "live.gain~[5]", "live.gain~", 0 ],
+			"obj-25::obj-13" : [ "live.gain~[2]", "live.gain~", 0 ],
+			"obj-25::obj-5" : [ "live.gain~[1]", "live.gain~", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{
 				"name" : "gorgoneMinuitSetup.maxpat",
-				"bootpath" : "~/gorgone/Max",
+				"bootpath" : "~/Documents/WORK/ARTWORK/projets-encours/Bleu-Gorgone-2/technique/dev/Max",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "gorgone.view.maxpat",
-				"bootpath" : "~/gorgone/Max",
+				"bootpath" : "~/Documents/WORK/ARTWORK/projets-encours/Bleu-Gorgone-2/technique/dev/Max",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "laser.view.maxpat",
-				"bootpath" : "~/gorgone/Max",
+				"bootpath" : "~/Documents/WORK/ARTWORK/projets-encours/Bleu-Gorgone-2/technique/dev/Max",
 				"type" : "JSON",
 				"implicit" : 1
 			}
