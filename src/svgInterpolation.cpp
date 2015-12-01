@@ -131,14 +131,6 @@ bool svgInterpolation::multiInterpolation(){
 
   interpolatedLine.clear();
 
-  float sum(0.);
-
-  for (float f : coeff)
-    sum += f;
-
-  // cout << "sum : " << sum << endl;
-
-  // cout << "interpolatedLine : " << endl;
   ofLogNotice("svgInterpolation") << "lineSize : " << lineSize << endl;
   ofLogNotice("svgInterpolation") << "nombre de formes chargées : " << lines.size() << endl;
   ofLogNotice("svgInterpolation") << "taille de coeff : " << coeff.size() << endl;
