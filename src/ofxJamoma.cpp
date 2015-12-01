@@ -396,6 +396,25 @@ void ofxJamoma::registerJamomaParam(){
     address = out[0];
     TTLogMessage("\n /drawing/static_shape: effective registration address is %s \n", address.c_str());
 
+
+        // Create a new brightness parameter
+    mShapeSizeParameter = TTObject("Data", "parameter");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mShapeSizeParameter);
+    mShapeSizeParameter.set("baton", args);
+    mShapeSizeParameter.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mShapeSizeParameter.set("type", "integer");
+    mShapeSizeParameter.set("description", "static shape selection");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/drawing/shape/size", mShapeSizeParameter);
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n /drawing/shape/size: effective registration address is %s \n", address.c_str());
+
 }
 
 
@@ -450,6 +469,12 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
 
     if (anObject.instance() == gorgoneApp->jamoma.mStaticShapeParameter.instance()) {
         gorgoneApp->svgInterp.selectedId = value[0];
+        return kTTErrNone;
+    }
+
+
+    if (anObject.instance() == gorgoneApp->jamoma.mShapeSizeParameter.instance()) {
+        gorgoneApp->svgInterp.shapeSize = value[0];
         return kTTErrNone;
     }
 

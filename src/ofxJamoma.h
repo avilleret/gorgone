@@ -30,7 +30,7 @@ class ofxJamoma
     TTObject mDrawingCoeffParameter; // drawing coefficient
     TTObject mTrackingIrisCodeReturn; // iris code return
     TTObject mTrackingLedBrightness, mTrackingLaserBrightness, mWhiteLedBrightness; // white & IR led and laser brightness
-    TTObject mDrawingShapeXReturn, mDrawingShapeYReturn; // drawing shape return
+    TTObject mDrawingShapeXReturn, mDrawingShapeYReturn, mShapeSizeParameter; // drawing shape return
     TTObject mTrackingFlowReturn; // Motion flow return
     TTObject mStaticShapeParameter; // id of static shape to draw
     TTObject mEyeDetectedReturn, mIrisDetectedReturn; // send a bang when an eye is detected

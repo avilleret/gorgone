@@ -114,7 +114,7 @@ void gorgone::draw()
   if ( svgInterp.updateBool() ){
     TTValue x,y;
     ofPolyline line = svgInterp.interpolatedLine;
-
+    ofLogNotice("gorgone") << "update drawing with " << line.size() << "points" << endl;
     for (int i=0; i<line.size(); i++){
       x.push_back(line[i].x);
       y.push_back(line[i].y);
