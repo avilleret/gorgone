@@ -99,8 +99,7 @@ void gorgone::update()
       for (int i = 0; i<svgInterp.coeff.size(); i++){
         v.push_back(svgInterp.coeff[i]);
       }
-      jamoma.mDrawingCoeffParameter.set("value", v);
-      svgInterp.dirtyFlag = true;
+      jamoma.mTrackingIrisCodeReturn.set("value", v);
     }
   }
 }
