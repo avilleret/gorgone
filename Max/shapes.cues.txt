@@ -1,51 +1,95 @@
-- cue "shape_000"
+- cue "shape_00007"
 - description "something about this cue"
 # ###########################################
 # 
 # 
-master:/coeff 1.000000 0.000000 1.000000 0.000000
+# 
+master:/degrade~/samplerate_ratio 1.000000
+master:/degrade~/bitdepth 24
+master:/degrade~/audio/bypass 0
+master:/degrade~/audio/gain 0.000000
+master:/degrade~/audio/mix 100.000000
+master:/degrade~/audio/mute 0
+# 
+master:/equalizer~/bands 4
+master:/equalizer~/audio/bypass 0
+master:/equalizer~/audio/gain 0.000000
+master:/equalizer~/audio/mix 100.000000
+master:/equalizer~/audio/mute 0
+master:/equalizer~/filter.1/type lowshelf
+master:/equalizer~/filter.1/frequency 75.000000
+master:/equalizer~/filter.1/gain 0.000000
+master:/equalizer~/filter.1/octave_bandwidth 1.000000
+master:/equalizer~/filter.2/type peaknotch
+master:/equalizer~/filter.2/frequency 300.000000
+master:/equalizer~/filter.2/gain 0.000000
+master:/equalizer~/filter.2/octave_bandwidth 1.000000
+master:/equalizer~/filter.3/type peaknotch
+master:/equalizer~/filter.3/frequency 1000.000000
+master:/equalizer~/filter.3/gain 0.000000
+master:/equalizer~/filter.3/octave_bandwidth 1.000000
+master:/equalizer~/filter.4/type highshelf
+master:/equalizer~/filter.4/frequency 5000.000000
+master:/equalizer~/filter.4/gain 0.000000
+master:/equalizer~/filter.4/octave_bandwidth 1.000000
+# 
+master:/mouse/active 1
+master:/mouse/reference screen
 # 
 # 
+gorgone-1:/drawing/coeff 0.575000 0.467308 0.461538 0.463462
 # 
 # ###########################################
 
-- cue "shape_001"
+- cue "shape_00001"
 - description "something about this cue"
 # ###########################################
 # 
 # 
-master:/coeff 0.000000 0.944000 0.000000 0.728000
+# 
+master:/degrade~/samplerate_ratio 1.000000
+master:/degrade~/bitdepth 24
+master:/degrade~/audio/bypass 0
+master:/degrade~/audio/gain 0.000000
+master:/degrade~/audio/mix 100.000000
+master:/degrade~/audio/mute 0
+# 
+master:/equalizer~/bands 4
+master:/equalizer~/audio/bypass 0
+master:/equalizer~/audio/gain 0.000000
+master:/equalizer~/audio/mix 100.000000
+master:/equalizer~/audio/mute 0
+master:/equalizer~/filter.1/type lowshelf
+master:/equalizer~/filter.1/frequency 75.000000
+master:/equalizer~/filter.1/gain 0.000000
+master:/equalizer~/filter.1/octave_bandwidth 1.000000
+master:/equalizer~/filter.2/type peaknotch
+master:/equalizer~/filter.2/frequency 300.000000
+master:/equalizer~/filter.2/gain 0.000000
+master:/equalizer~/filter.2/octave_bandwidth 1.000000
+master:/equalizer~/filter.3/type peaknotch
+master:/equalizer~/filter.3/frequency 1000.000000
+master:/equalizer~/filter.3/gain 0.000000
+master:/equalizer~/filter.3/octave_bandwidth 1.000000
+master:/equalizer~/filter.4/type highshelf
+master:/equalizer~/filter.4/frequency 5000.000000
+master:/equalizer~/filter.4/gain 0.000000
+master:/equalizer~/filter.4/octave_bandwidth 1.000000
+# 
+master:/mouse/active 1
+master:/mouse/reference screen
 # 
 # 
+gorgone-1:/drawing/coeff 0.575000 0.467308 0.461538 0.463462
 # 
 # ###########################################
 
-- cue "shape_002"
+- cue "shape_00002"
 - description "something about this cue"
 # ###########################################
 # 
 # 
-master:/coeff 1.000000 0.256000 0.272000 0.272000
-# 
-# 
-# 
-# ###########################################
-
-- cue "shape_00003"
-- description "something about this cue"
-# ###########################################
-# 
-# 
-master:/coeff 0.000000 1.000000 0.000000 0.000000
-# 
-# ###########################################
-
-- cue "shape_00004"
-- description "something about this cue"
-# ###########################################
-# 
-# 
-master:/coeff 1.000000 0.000000 0.000000 0.000000
+gorgone-1:/drawing/coeff 0.551923 0.503846 0.463462 0.394231
 # 
 # ###########################################
 
