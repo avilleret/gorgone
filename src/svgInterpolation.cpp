@@ -17,7 +17,7 @@ void svgInterpolation::setup(){
     // if ( i == 0 ) cout << "load : " << dir.getPath(i) << endl;
     ofxSVG svg;
     svg.load(dir.getPath(i));
-    vector<ofVec3f> myLine;
+    ofPolyline myLine;
     ofVec2f ptMin = ofVec2f(1000.,1000.), ptMax = ofVec2f(-1000.,-1000.);
 
   	for (int j = 0; j < svg.getNumPath(); j++){
@@ -38,7 +38,7 @@ void svgInterpolation::setup(){
           ptMax.x = std::max(pt.x, ptMax.x);
           ptMax.y = std::max(pt.y, ptMax.y);
 
-          myLine.push_back(pt);
+          myLine.addVertex(pt);
 
         }
       }
@@ -56,7 +56,7 @@ void svgInterpolation::setup(){
     ofxSVG svg;
     svg.load(dir.getPath(i));
     ofLogNotice("svgInterpolation") << "load : " << dir.getPath(i) << endl;
-    vector<ofVec3f> myLine;
+    ofPolyline myLine;
     ofVec2f ptMin = ofVec2f(1000.,1000.), ptMax = ofVec2f(-1000.,-1000.);
 
     for (int i = 0; i < svg.getNumPath(); i++){
@@ -75,7 +75,7 @@ void svgInterpolation::setup(){
           ptMax.x = std::max(pt.x, ptMax.x);
           ptMax.y = std::max(pt.y, ptMax.y);
 
-          myLine.push_back(pt);
+          myLine.addVertex(pt);
 	  ofLogVerbose("svgInterpolation") << n << " : " << pt.x << ";" << pt.y << endl;
 
         }
@@ -148,7 +148,7 @@ bool svgInterpolation::multiInterpolation(){
     for (int j = 0; j < min(lines.size(), coeff.size()); j++){
       pt += coeff[j] * lines[j][i]; // [0] assumes that there is only one line on each ofPolyLine
     }
-    interpolatedLine.push_back(pt);
+    interpolatedLine.addVertex(pt);
   }
 
   ofVec3f ptMin(999999. ,999999.);

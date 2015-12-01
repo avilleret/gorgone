@@ -111,7 +111,7 @@ void gorgone::draw()
   drawMat(frame,0,0);
   if ( svgInterp.updateBool() ){
     TTValue x,y;
-    vector<ofVec3f> line = svgInterp.interpolatedLine;
+    ofPolyline line = svgInterp.interpolatedLine;
 
     for (int i=0; i<line.size(); i++){
       x.push_back(line[i].x);

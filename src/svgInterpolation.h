@@ -14,9 +14,9 @@ public:
 
     vector<ofxSVG> svgs;
     float step;
-    vector<vector<ofVec3f>> lines, static_lines;
+    vector<ofPolyline> lines, static_lines;
     vector<float> coeff; // interpolation coefficient
-    vector<ofVec3f> interpolatedLine; // forme interpolée
+    ofPolyline interpolatedLine; // forme interpolée
     int lineSize, selectedId;
 
     bool dirtyFlag, dirtyStaticFlag;
