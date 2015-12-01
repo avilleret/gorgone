@@ -78,7 +78,7 @@ void gorgone::update()
   }
 
   Mat img = irisDetector.getIrisCode();
-  if( bDisplaying && irisDetector.newCode && img.total() > 0 ) {
+  if( irisDetector.newCode && img.total() > 0 ) {
 
     if ( irisDetector.newCode ){
       svgInterp.coeff.clear();
