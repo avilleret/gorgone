@@ -129,6 +129,7 @@ void gorgone::draw()
 
 void gorgone::keyPressed(int key)
 {
+  ofLogVerbose("gorgone") << "keypressed : " << key << endl;
   switch (key){
     case 's':
       irisDetector.save();
@@ -138,6 +139,9 @@ void gorgone::keyPressed(int key)
       break;
     case 'c':
       bComputeCode=true;
+      break;
+    case 'm':
+      bMotion = !bMotion;
       break;
     case 't':
       bTracking = !bTracking;

@@ -22,6 +22,7 @@ ofxaddon(ofxCv)
 ofxaddon(ofxArgParser)
 ofxaddon(ofxGui)
 ofxaddon(ofxSvg)
+ofxaddon(ofxBiquadFilter)
 
 set(SOURCES
     src/gorgone.cpp
