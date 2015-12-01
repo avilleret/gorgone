@@ -38,13 +38,14 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-106",
-					"maxclass" : "number",
+					"format" : 6,
+					"id" : "obj-86",
+					"maxclass" : "flonum",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 513.0, 564.0, 50.0, 22.0 ],
+					"patching_rect" : [ 513.0, 566.0, 50.0, 22.0 ],
 					"style" : ""
 				}
 
@@ -95,9 +96,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 513.0, 535.0, 240.0, 22.0 ],
+					"patching_rect" : [ 513.0, 535.0, 243.0, 22.0 ],
 					"style" : "",
-					"text" : "j.receive gorgone-1:/tracking/detected/pupil"
+					"text" : "j.receive gorgone-1:/tracking/detected/focus"
 				}
 
 			}
@@ -2628,7 +2629,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-106", 0 ],
+					"destination" : [ "obj-86", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-95", 0 ]
