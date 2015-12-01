@@ -129,8 +129,6 @@ bool svgInterpolation::multiInterpolation(){
 
   if ( !dirtyFlag ) return false;
 
-  dirtyFlag=false;
-
   interpolatedLine.clear();
 
   float sum(0.);
@@ -182,6 +180,9 @@ bool svgInterpolation::multiInterpolation(){
 
   interpolatedLine = interpolatedLine.getResampledByCount(shapeSize);
   ofLogVerbose("svgInterpolation") << "interpolatedLine.size() : " << interpolatedLine.size() << endl;
+
+  dirtyFlag=false;
+
   return true;
 }
 

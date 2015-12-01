@@ -479,7 +479,7 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
         gorgoneApp->bDisplaying = value[0];
         if ( value[0] ) {
             TTValue a;
-            gorgoneApp->jamoma.mTrackingLaserBrightness.set("value",a);
+            gorgoneApp->jamoma.mTrackingLaserBrightness.get("value",a);
             gorgoneApp->setPwm(a);
         } else {
             gorgoneApp->setPwm(0);
@@ -493,8 +493,10 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
     }
 
     if (anObject.instance() == gorgoneApp->jamoma.mDrawingCoeffParameter.instance()) {
-        gorgoneApp->svgInterp.coeff.clear();
         ofLogVerbose("ofxJamoma") << "received coeff parameter" << endl;
+        if (gorgoneApp->svgInterp.dirtyFlag) return kTTErrNone; // return if already dirty
+        gorgoneApp->svgInterp.coeff.clear();
+
         for (int i = 0; i < value.size(); i++) {
             gorgoneApp->svgInterp.coeff.push_back(value[i]);
             ofLogVerbose("ofxJamoma") << i << " : " << static_cast<float> (value[i]) << endl;
