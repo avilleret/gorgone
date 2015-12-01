@@ -49,4 +49,5 @@ private:
 
     gorgoneEyeDetection irisDetector;
     gorgoneMotionDetector motionDetector;
+    int counter;
 };

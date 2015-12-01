@@ -13,6 +13,7 @@ void gorgone::setup()
   svgInterp.setup();
   jamoma.setup((void*) this, appName, masterIp);
   motionDetector.setup(&jamoma);
+  counter = 0;
 }
 
 void gorgone::exit(){
@@ -168,6 +169,12 @@ void gorgone::keyPressed(int key)
       vidGrabber.led.switchOffWhite();
       break;
 #endif
+    case 357 : // arrow up
+      svgInterp.selectedId = counter++;
+      break;
+    case 359: // arrow down
+      svgInterp.selectedId = counter--;
+      break;
     default :
       break;
   }
