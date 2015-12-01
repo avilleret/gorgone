@@ -177,6 +177,9 @@ bool svgInterpolation::multiInterpolation(){
     pt /= scale;
     ofLogVerbose("svgInterpolation") << i++ << " : " << pt.x << " \t " << pt.y << endl;
   }
+
+  interpolatedLine = interpolatedLine.getResampledByCount(1000);
+  ofLogVerbose("svgInterpolation") << "interpolatedLine.size() : " << interpolatedLine.size() << endl;
   return true;
 }
 
