@@ -21,7 +21,7 @@ void gorgoneEyeDetection::setup(const Mat& img){
   scale=1.;
 
   eyeFinder.setup("cascade/haarcascade_eye_tree_eyeglasses.xml");
-  eyeFinder.setRescale(50./(float)img.rows);
+  eyeFinder.setRescale(100./(float)img.rows);
   reset();
   bSetup = true;
 }
@@ -29,8 +29,13 @@ void gorgoneEyeDetection::setup(const Mat& img){
 void gorgoneEyeDetection::reset(){
   bSetup = false;
   flag = false;
-  bestScore = 0.;
+  bestScore = 1.; // minimum focus to process frame
   newCode = false;
+  if(eye.isAllocated()) eye.clear();
+  if(eyeProc.isAllocated()) eyeProc.clear();
+  if(irisProc.isAllocated()) irisProc.clear();
+  if(bestEyeNorm.isAllocated()) bestEyeNorm.clear();
+  if(codeImg.isAllocated()) codeImg.clear();
 }
 
 bool gorgoneEyeDetection::updateBool(Mat& img){
