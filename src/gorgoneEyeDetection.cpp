@@ -72,11 +72,17 @@ bool gorgoneEyeDetection::updateBool(Mat& img){
     Mat pupilMat = subMat(pupilRect);
   } catch ( cv::Exception ) {
     ofLogVerbose("gorgoneEyeDetection") << "oups wrong ROI" << endl;
+    jamoma->mIrisDetectedReturn.set("value", false);
+    jamoma->mPupilDetectedReturn.set("value", false);
     return false;
   }
 
   jamoma->mFocusDetectedReturn.set("value", score);
-  if ( score < bestScore ) return false;
+  if ( score < bestScore ) {
+    jamoma->mIrisDetectedReturn.set("value", false);
+    jamoma->mPupilDetectedReturn.set("value", false);
+    return false;
+  }
 
   bool _iris = findIris(subMat, iris);
   jamoma->mIrisDetectedReturn.set("value", _iris);

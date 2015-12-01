@@ -21,7 +21,7 @@ public:
   void update(Mat& img){
     if ( img.total() > 0 ){
       Mat small;
-      cv::resize(img,small,cv::Size(320,240));
+      cv::resize(img,small,cv::Size(160,120));
       flow.calcOpticalFlow(small);
       ofVec2f f = flow.getTotalFlow();
       filter.update(f.length());

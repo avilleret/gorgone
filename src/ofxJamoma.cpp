@@ -351,7 +351,7 @@ void ofxJamoma::registerJamomaParam(){
     mEyeDetectedReturn.set("function", TTPtr(&DemoAppDataReturnValueCallback));
 
     // Setup the data attributes depending of its use inside the application
-    mEyeDetectedReturn.set("type", "none");
+    mEyeDetectedReturn.set("type", "boolean");
     mEyeDetectedReturn.set("description", "Total motion flow");
 
     // Register the parameter data into gorgone-1 at an address
@@ -369,7 +369,7 @@ void ofxJamoma::registerJamomaParam(){
     mIrisDetectedReturn.set("function", TTPtr(&DemoAppDataReturnValueCallback));
 
     // Setup the data attributes depending of its use inside the application
-    mIrisDetectedReturn.set("type", "none");
+    mIrisDetectedReturn.set("type", "boolean");
     mIrisDetectedReturn.set("description", "Return true if iris is well recognized");
 
     // Register the parameter data into gorgone-1 at an address
