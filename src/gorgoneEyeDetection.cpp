@@ -48,7 +48,11 @@ bool gorgoneEyeDetection::updateBool(Mat& img){
   jamoma->mEyeDetectedReturn.set("value", eyeFinder.size());
   ofLogVerbose("gorgoneEyeDetection") << "found eyes : " << eyeFinder.size() << endl;
 
-  if ( eyeFinder.size() == 0) return false;
+  if ( eyeFinder.size() == 0) {
+    jamoma->mIrisDetectedReturn.set("value", false);
+    jamoma->mPupilDetectedReturn.set("value", false);
+    return false;
+  }
 
   ofRectangle rect = eyeFinder.getObject(0);
   double marging = paramMarging / 100.;
@@ -76,7 +80,10 @@ bool gorgoneEyeDetection::updateBool(Mat& img){
 
   bool _iris = findIris(subMat, iris);
   jamoma->mIrisDetectedReturn.set("value", _iris);
-  if (!_iris) return false;
+  if (!_iris) {
+    jamoma->mPupilDetectedReturn.set("value", false);
+    return false;
+  }
   bool _pupil = findPupil(subMat, iris, pupil);
   jamoma->mPupilDetectedReturn.set("value", _pupil);
   if (!_pupil) return false;
