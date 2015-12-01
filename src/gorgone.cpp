@@ -120,10 +120,17 @@ void gorgone::draw()
     jamoma.mDrawingShapeXReturn.set("value", x);
     jamoma.mDrawingShapeYReturn.set("value", y);
   }
-  if ( bTracking )
+  if ( bTracking ) {
+    ofDrawBitmapStringHighlight("eye tracking", 10, 400);
     irisDetector.drawEyes();
-  if ( bDisplaying )
+  }
+  if ( bDisplaying ) {
+    ofDrawBitmapStringHighlight("laser drawing", 200, 400);
     svgInterp.draw();
+  }
+  if ( bMotion ){
+    ofDrawBitmapStringHighlight("motion detection", 400, 400);
+  }
 }
 
 void gorgone::keyPressed(int key)
