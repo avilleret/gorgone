@@ -13,6 +13,7 @@ void gorgone::setup()
   svgInterp.setup();
   jamoma.setup((void*) this, appName, masterIp);
   motionDetector.setup(&jamoma);
+  irisDetector.setJamomaRef(&jamoma);
   counter = 0;
 }
 
@@ -50,7 +51,7 @@ void gorgone::update()
       ofLogVerbose("gorgone") << "new frame to process : " << gray.cols << "x" << gray.rows << endl;
 
       if ( irisDetector.updateBool(gray) ){
-        jamoma.mEyeDetectedReturn.set("value", "bang");
+        jamoma.mIrisDetectedReturn.set("value", "bang");
       }
     }
   }

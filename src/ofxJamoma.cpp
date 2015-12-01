@@ -355,10 +355,28 @@ void ofxJamoma::registerJamomaParam(){
     mEyeDetectedReturn.set("description", "Total motion flow");
 
     // Register the parameter data into gorgone-1 at an address
-    args = TTValue("/tracking/eye_detected", mEyeDetectedReturn);
+    args = TTValue("/tracking/detected/eye", mEyeDetectedReturn);
     out = mApplicationLocal.send("ObjectRegister", args);
     address = out[0];
-    TTLogMessage("\n/tracking/eye_detected : effective registration address is %s \n", address.c_str());
+    TTLogMessage("\n/tracking/detected/eye : effective registration address is %s \n", address.c_str());
+
+    // Create a new array return for drawing shape
+    mEyeDetectedReturn = TTObject("Data", "return");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mIrisDetectedReturn);
+    mIrisDetectedReturn.set("baton", args);
+    mIrisDetectedReturn.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mIrisDetectedReturn.set("type", "none");
+    mIrisDetectedReturn.set("description", "Total motion flow");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/tracking/detected/iris", mIrisDetectedReturn);
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n/tracking/detected/iris : effective registration address is %s \n", address.c_str());
 
     // Create a new brightness parameter
     mStaticShapeParameter = TTObject("Data", "parameter");

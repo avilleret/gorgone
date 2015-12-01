@@ -22,7 +22,6 @@ void gorgoneEyeDetection::setup(const Mat& img){
 
   eyeFinder.setup("cascade/haarcascade_eye_tree_eyeglasses.xml");
   eyeFinder.setRescale(50./(float)img.rows);
-
   reset();
   bSetup = true;
 }
@@ -46,7 +45,7 @@ bool gorgoneEyeDetection::updateBool(Mat& img){
   if(!bSetup) setup(img);
 
   eyeFinder.update(img);
-
+  jamoma->mEyeDetectedReturn.set("value", eyeFinder.size());
   ofLogVerbose("gorgoneEyeDetection") << "found eyes : " << eyeFinder.size() << endl;
 
   if ( eyeFinder.size() == 0) return false;
