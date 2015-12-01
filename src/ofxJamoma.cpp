@@ -465,6 +465,9 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
     if (anObject.instance() == gorgoneApp->jamoma.mTrackEnableParameter.instance()) {
 
         gorgoneApp->bTracking = value[0];
+        if ( gorgoneApp->bTracking ){
+            gorgoneApp->irisDetector.reset();
+        }
         return kTTErrNone;
     }
 
