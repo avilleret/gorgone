@@ -1,43 +1,9 @@
-- cue "shape_00007"
+- cue "shape_00000"
 - description "something about this cue"
 # ###########################################
 # 
 # 
-# 
-master:/degrade~/samplerate_ratio 1.000000
-master:/degrade~/bitdepth 24
-master:/degrade~/audio/bypass 0
-master:/degrade~/audio/gain 0.000000
-master:/degrade~/audio/mix 100.000000
-master:/degrade~/audio/mute 0
-# 
-master:/equalizer~/bands 4
-master:/equalizer~/audio/bypass 0
-master:/equalizer~/audio/gain 0.000000
-master:/equalizer~/audio/mix 100.000000
-master:/equalizer~/audio/mute 0
-master:/equalizer~/filter.1/type lowshelf
-master:/equalizer~/filter.1/frequency 75.000000
-master:/equalizer~/filter.1/gain 0.000000
-master:/equalizer~/filter.1/octave_bandwidth 1.000000
-master:/equalizer~/filter.2/type peaknotch
-master:/equalizer~/filter.2/frequency 300.000000
-master:/equalizer~/filter.2/gain 0.000000
-master:/equalizer~/filter.2/octave_bandwidth 1.000000
-master:/equalizer~/filter.3/type peaknotch
-master:/equalizer~/filter.3/frequency 1000.000000
-master:/equalizer~/filter.3/gain 0.000000
-master:/equalizer~/filter.3/octave_bandwidth 1.000000
-master:/equalizer~/filter.4/type highshelf
-master:/equalizer~/filter.4/frequency 5000.000000
-master:/equalizer~/filter.4/gain 0.000000
-master:/equalizer~/filter.4/octave_bandwidth 1.000000
-# 
-master:/mouse/active 1
-master:/mouse/reference screen
-# 
-# 
-gorgone-1:/drawing/coeff 0.575000 0.467308 0.461538 0.463462
+gorgone-1:/drawing/coeff 0.542308 0.548077 0.538462 0.534615
 # 
 # ###########################################
 
@@ -46,41 +12,7 @@ gorgone-1:/drawing/coeff 0.575000 0.467308 0.461538 0.463462
 # ###########################################
 # 
 # 
-# 
-master:/degrade~/samplerate_ratio 1.000000
-master:/degrade~/bitdepth 24
-master:/degrade~/audio/bypass 0
-master:/degrade~/audio/gain 0.000000
-master:/degrade~/audio/mix 100.000000
-master:/degrade~/audio/mute 0
-# 
-master:/equalizer~/bands 4
-master:/equalizer~/audio/bypass 0
-master:/equalizer~/audio/gain 0.000000
-master:/equalizer~/audio/mix 100.000000
-master:/equalizer~/audio/mute 0
-master:/equalizer~/filter.1/type lowshelf
-master:/equalizer~/filter.1/frequency 75.000000
-master:/equalizer~/filter.1/gain 0.000000
-master:/equalizer~/filter.1/octave_bandwidth 1.000000
-master:/equalizer~/filter.2/type peaknotch
-master:/equalizer~/filter.2/frequency 300.000000
-master:/equalizer~/filter.2/gain 0.000000
-master:/equalizer~/filter.2/octave_bandwidth 1.000000
-master:/equalizer~/filter.3/type peaknotch
-master:/equalizer~/filter.3/frequency 1000.000000
-master:/equalizer~/filter.3/gain 0.000000
-master:/equalizer~/filter.3/octave_bandwidth 1.000000
-master:/equalizer~/filter.4/type highshelf
-master:/equalizer~/filter.4/frequency 5000.000000
-master:/equalizer~/filter.4/gain 0.000000
-master:/equalizer~/filter.4/octave_bandwidth 1.000000
-# 
-master:/mouse/active 1
-master:/mouse/reference screen
-# 
-# 
-gorgone-1:/drawing/coeff 0.575000 0.467308 0.461538 0.463462
+gorgone-1:/drawing/coeff 0.471154 0.557692 0.565385 0.557692
 # 
 # ###########################################
 
@@ -89,7 +21,70 @@ gorgone-1:/drawing/coeff 0.575000 0.467308 0.461538 0.463462
 # ###########################################
 # 
 # 
-gorgone-1:/drawing/coeff 0.551923 0.503846 0.463462 0.394231
+gorgone-1:/drawing/coeff 0.532692 0.530769 0.503846 0.494231
+# 
+# ###########################################
+
+- cue "shape_00003"
+- description "something about this cue"
+# ###########################################
+# 
+# 
+gorgone-1:/drawing/coeff 0.478846 0.511538 0.484615 0.488462
+# 
+# ###########################################
+
+- cue "shape_00004"
+- description "something about this cue"
+# ###########################################
+# 
+# 
+gorgone-1:/drawing/coeff 0.525000 0.509615 0.517308 0.546154
+# 
+# ###########################################
+
+- cue "shape_00005"
+- description "something about this cue"
+# ###########################################
+# 
+# 
+gorgone-1:/drawing/coeff 0.601923 0.496154 0.542308 0.601923
+# 
+# ###########################################
+
+- cue "shape_00006"
+- description "something about this cue"
+# ###########################################
+# 
+# 
+gorgone-1:/drawing/coeff 0.542308 0.521154 0.513462 0.515385
+# 
+# ###########################################
+
+- cue "shape_00007"
+- description "something about this cue"
+# ###########################################
+# 
+# 
+gorgone-1:/drawing/coeff 0.000000 0.000000 0.000000 0.000000
+# 
+# ###########################################
+
+- cue "shape_00008"
+- description "something about this cue"
+# ###########################################
+# 
+# 
+gorgone-1:/drawing/coeff 0.471154 0.471154 0.471154 0.471154
+# 
+# ###########################################
+
+- cue "shape_00009"
+- description "something about this cue"
+# ###########################################
+# 
+# 
+gorgone-1:/drawing/coeff 0.523077 0.532692 0.503846 0.505769
 # 
 # ###########################################
 
