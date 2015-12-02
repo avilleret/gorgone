@@ -1,0 +1,1 @@
+ssh -Y pi@gorgone-1.local "killall pd ; /usr/local/bin/pd /home/pi/ofnode/gorgone/Pd/laser-driver.pd"
