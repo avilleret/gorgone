@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<<<<<<< .merge_file_GxgIAE
 <svg version="1.1" id="Layer_5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="640px" height="480px" viewBox="0 0 640 480" enable-background="new 0 0 640 480" xml:space="preserve">
 <polygon fill="none" stroke="#3953A4" stroke-width="0.2642" stroke-miterlimit="10" points="366.07,191.783 358.5,191.783 
@@ -9,4 +10,73 @@
 	281.031,261.377 281.031,268.994 281.031,276.822 296.25,276.822 350.25,276.822 358.375,276.822 366.07,276.822 366.07,269.125 
 	366.07,261.375 366.07,253.625 366.07,245.875 366.07,238.375 366.07,230.25 366.07,222.5 366.07,214.625 366.07,207.375 
 	366.07,199.625 "/>
+=======
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="640px"
+	 height="480px" viewBox="0 0 640 480" enable-background="new 0 0 640 480" xml:space="preserve">
+<g id="Layer_1">
+</g>
+<g id="Layer_5">
+	<polygon fill="none" stroke="#3953A4" stroke-width="0.2642" stroke-miterlimit="10" points="366.07,191.783 358.5,191.783 
+		350.367,191.783 342.875,191.783 335.01,191.783 327.376,191.783 312.125,191.783 304.002,191.783 296.5,191.783 288.625,191.783 
+		281.031,191.783 281.031,199.5 281.031,207.25 281.031,214.996 281.031,222.625 281.031,230.381 281.031,245.875 281.031,253.63 
+		281.031,261.377 281.031,268.994 281.031,276.822 296.25,276.822 350.25,276.822 358.375,276.822 366.07,276.822 366.07,269.125 
+		366.07,261.375 366.07,253.625 366.07,245.875 366.07,238.375 366.07,230.25 366.07,222.5 366.07,214.625 366.07,207.375 
+		366.07,199.625 	"/>
+</g>
+<g id="Layer_4">
+</g>
+<g id="Layer_3" display="none">
+	<g display="inline">
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="274" y1="191.783" x2="373.25" y2="191.783"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="274" y1="199.513" x2="373.25" y2="199.513"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="274" y1="207.245" x2="373.25" y2="207.245"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="274" y1="214.975" x2="373.25" y2="214.975"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="274" y1="222.706" x2="373.25" y2="222.706"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="274" y1="230.437" x2="373.25" y2="230.437"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="274" y1="238.168" x2="373.25" y2="238.168"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="274" y1="245.898" x2="373.25" y2="245.898"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="274" y1="253.629" x2="373.25" y2="253.629"/>
+		<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="274" y1="261.36" x2="373.25" y2="261.36"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="274" y1="269.091" x2="373.25" y2="269.091"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="274" y1="276.822" x2="373.25" y2="276.822"/>
+	</g>
+	<g display="inline">
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="281.031" y1="182.75" x2="281.031" y2="283.25"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="288.761" y1="182.75" x2="288.761" y2="283.25"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="296.493" y1="182.75" x2="296.493" y2="283.25"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="304.223" y1="182.75" x2="304.223" y2="283.25"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="311.954" y1="182.75" x2="311.954" y2="283.25"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="319.686" y1="182.75" x2="319.686" y2="283.25"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="327.416" y1="182.75" x2="327.416" y2="283.25"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="335.146" y1="182.75" x2="335.146" y2="283.25"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="342.878" y1="182.75" x2="342.878" y2="283.25"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="350.608" y1="182.75" x2="350.608" y2="283.25"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="358.34" y1="182.75" x2="358.34" y2="283.25"/>
+		
+			<line fill="none" stroke="#FF01A4" stroke-width="0.2691" stroke-miterlimit="10" x1="366.07" y1="182.75" x2="366.07" y2="283.25"/>
+	</g>
+</g>
+>>>>>>> .merge_file_Af1msZ
 </svg>
