@@ -9,10 +9,10 @@ void svgInterpolation::setup(){
 
   shapeSize = 500;
 
-  ofLogNotice("svgInterpolation") << "load SVG from formes_interpol" << endl;
+  ofLogNotice("svgInterpolation") << "load SVG from formes_interpol";
   dir.listDir("formes_interpol/");
   dir.sort(); // in linux the file system doesn't return file lists ordered in alphabetical order
-  ofLogNotice("svgInterpolation") << "found " << (int)dir.size() << " images to load." << endl;
+  ofLogNotice("svgInterpolation") << "found " << (int)dir.size() << " images to load.";
   lineSize = 10000;
 
   for(int i = 0; i < (int)dir.size(); i++){
@@ -22,11 +22,15 @@ void svgInterpolation::setup(){
     ofPolyline myLine;
     ofVec2f ptMin = ofVec2f(1000.,1000.), ptMax = ofVec2f(-1000.,-1000.);
 
+    ofLogNotice("svgInterpolation") << "shape " << i << " has " << svg.getNumPath() << " paths";
+
   	for (int j = 0; j < svg.getNumPath(); j++){
   		ofPath p = svg.getPathAt(j);
   		// svg defaults to non zero winding which doesn't look so good as contours
   		p.setPolyWindingMode(OF_POLY_WINDING_ODD);
   		vector<ofPolyline>& lines = const_cast<vector<ofPolyline>&>(p.getOutline());
+      ofLogNotice("svgInterpolation") << "path " << j << " has " << lines.size() << " points";
+
   		for(int k=0;k<(int)lines.size();k++){
         lineSize = min(lineSize, (int) lines[k].size());
         ofPolyline line=lines[k];
@@ -46,8 +50,8 @@ void svgInterpolation::setup(){
   	}
     myLine.close();
     lines.push_back(myLine);
-    ofLogVerbose("svgInterpolation") << "min : " << ptMin.x << " " << ptMin.y << endl;
-    ofLogVerbose("svgInterpolation") << "max : " << ptMax.x << " " << ptMax.y << endl;
+    ofLogVerbose("svgInterpolation") << "min : " << ptMin.x << " " << ptMin.y;
+    ofLogVerbose("svgInterpolation") << "max : " << ptMax.x << " " << ptMax.y;
   }
 
   ofLogNotice("svgInterpolation") << "load SVG from formes_statiques" << endl;
