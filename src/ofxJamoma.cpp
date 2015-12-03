@@ -351,14 +351,69 @@ void ofxJamoma::registerJamomaParam(){
     mEyeDetectedReturn.set("function", TTPtr(&DemoAppDataReturnValueCallback));
 
     // Setup the data attributes depending of its use inside the application
-    mEyeDetectedReturn.set("type", "none");
+    mEyeDetectedReturn.set("type", "boolean");
     mEyeDetectedReturn.set("description", "Total motion flow");
 
     // Register the parameter data into gorgone-1 at an address
-    args = TTValue("/tracking/eye_detected", mEyeDetectedReturn);
+    args = TTValue("/tracking/detected/eye", mEyeDetectedReturn);
     out = mApplicationLocal.send("ObjectRegister", args);
     address = out[0];
-    TTLogMessage("\n/tracking/eye_detected : effective registration address is %s \n", address.c_str());
+    TTLogMessage("\n/tracking/detected/eye : effective registration address is %s \n", address.c_str());
+
+    // Create a new array return for drawing shape
+    mIrisDetectedReturn = TTObject("Data", "return");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mIrisDetectedReturn);
+    mIrisDetectedReturn.set("baton", args);
+    mIrisDetectedReturn.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mIrisDetectedReturn.set("type", "boolean");
+    mIrisDetectedReturn.set("description", "Return true if iris is well recognized");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/tracking/detected/iris", mIrisDetectedReturn);
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n/tracking/detected/iris : effective registration address is %s \n", address.c_str());
+
+    // Create a new array return for drawing shape
+    mFocusDetectedReturn = TTObject("Data", "return");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mFocusDetectedReturn);
+    mFocusDetectedReturn.set("baton", args);
+    mFocusDetectedReturn.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mFocusDetectedReturn.set("type", "decimal");
+    mFocusDetectedReturn.set("description", "Return eye focus");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/tracking/detected/focus", mFocusDetectedReturn);
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n/tracking/detected/focus : effective registration address is %s \n", address.c_str());
+
+
+    // Create a new array return for drawing shape
+    mPupilDetectedReturn = TTObject("Data", "return");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mPupilDetectedReturn);
+    mPupilDetectedReturn.set("baton", args);
+    mPupilDetectedReturn.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mPupilDetectedReturn.set("type", "boolean");
+    mPupilDetectedReturn.set("description", "Return eye focus");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/tracking/detected/pupil", mPupilDetectedReturn);
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n/tracking/detected/pupil : effective registration address is %s \n", address.c_str());
 
     // Create a new brightness parameter
     mStaticShapeParameter = TTObject("Data", "parameter");
@@ -378,6 +433,25 @@ void ofxJamoma::registerJamomaParam(){
     address = out[0];
     TTLogMessage("\n /drawing/static_shape: effective registration address is %s \n", address.c_str());
 
+
+        // Create a new brightness parameter
+    mShapeSizeParameter = TTObject("Data", "parameter");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mShapeSizeParameter);
+    mShapeSizeParameter.set("baton", args);
+    mShapeSizeParameter.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mShapeSizeParameter.set("type", "integer");
+    mShapeSizeParameter.set("description", "static shape selection");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/drawing/shape/size", mShapeSizeParameter);
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n /drawing/shape/size: effective registration address is %s \n", address.c_str());
+
 }
 
 
@@ -391,6 +465,9 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
     if (anObject.instance() == gorgoneApp->jamoma.mTrackEnableParameter.instance()) {
 
         gorgoneApp->bTracking = value[0];
+        if ( gorgoneApp->bTracking ){
+            gorgoneApp->irisDetector.reset();
+        }
         return kTTErrNone;
     }
 
@@ -405,7 +482,7 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
         gorgoneApp->bDisplaying = value[0];
         if ( value[0] ) {
             TTValue a;
-            gorgoneApp->jamoma.mTrackingLaserBrightness.set("value",a);
+            gorgoneApp->jamoma.mTrackingLaserBrightness.get("value",a);
             gorgoneApp->setPwm(a);
         } else {
             gorgoneApp->setPwm(0);
@@ -419,8 +496,10 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
     }
 
     if (anObject.instance() == gorgoneApp->jamoma.mDrawingCoeffParameter.instance()) {
-        gorgoneApp->svgInterp.coeff.clear();
         ofLogVerbose("ofxJamoma") << "received coeff parameter" << endl;
+        if (gorgoneApp->svgInterp.dirtyFlag) return kTTErrNone; // return if already dirty
+        gorgoneApp->svgInterp.coeff.clear();
+
         for (int i = 0; i < value.size(); i++) {
             gorgoneApp->svgInterp.coeff.push_back(value[i]);
             ofLogVerbose("ofxJamoma") << i << " : " << static_cast<float> (value[i]) << endl;
@@ -432,6 +511,12 @@ DemoAppDataReturnValueCallback(const TTValue& baton, const TTValue& value)
 
     if (anObject.instance() == gorgoneApp->jamoma.mStaticShapeParameter.instance()) {
         gorgoneApp->svgInterp.selectedId = value[0];
+        return kTTErrNone;
+    }
+
+
+    if (anObject.instance() == gorgoneApp->jamoma.mShapeSizeParameter.instance()) {
+        gorgoneApp->svgInterp.shapeSize = value[0];
         return kTTErrNone;
     }
 

@@ -6,10 +6,13 @@
 	url = https://github.com/avilleret/ofxCv.git
 [submodule "ofxCvPiCam"]
 	path = ofxCvPiCam
-	url = https://github.com/orgicus/ofxCvPiCam
+url=https://github.com/avilleret/ofxCvPiCam
 [submodule "ofxArgParser"]
 	path = ofxArgParser
 	url = https://github.com/satoruhiga/ofxArgParser.git
 [submodule "ofxPd"]
 	path = ofxPd
 	url = https://github.com/danomatika/ofxPd.git
+[submodule "ofxBiquadFilter"]
+	path = ofxBiquadFilter
+	url = https://github.com/dzlonline/ofxBiquadFilter.git

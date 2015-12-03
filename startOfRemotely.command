@@ -1,0 +1,1 @@
+ssh -Y pi@gorgone-1.local "killall gorgone ; /home/pi/ofnode/gorgone/start.sh -verbose 1"

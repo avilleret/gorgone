@@ -31,6 +31,8 @@ class gorgone : public ofBaseApp
     svgInterpolation svgInterp;
     crossVideoGrabber vidGrabber;
     void setPwm(float pc);
+    gorgoneEyeDetection irisDetector;
+
 
 private:
     void detectEyeRegion(ofImage& input);
@@ -47,6 +49,6 @@ private:
 
     ofImage m_colorImg, m_grayImg, m_leftEye, m_rightEye;
 
-    gorgoneEyeDetection irisDetector;
     gorgoneMotionDetector motionDetector;
+    int counter;
 };

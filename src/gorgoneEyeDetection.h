@@ -5,6 +5,8 @@
 #include "ofxGui.h"
 #include "Masek.h"
 
+#include "ofxJamoma.h"
+
 using namespace cv;
 using namespace ofxCv;
 
@@ -25,12 +27,15 @@ public:
   void encodeIris(Masek::IMAGE* noiseImage, const Vec3f iris, const Vec3f pupil, Mat& code);
   double computeFocus(cv::Mat& mat);
   void computeCode();
+  void setJamomaRef(ofxJamoma * j){ jamoma=j; }
+
 
   ofxPanel gui;
   ofParameter<int> param1, param2, paramThresh, paramMarging;
   ofParameter<float> paramScore;
   Mat getIrisCode();
   bool newCode;
+  ofxJamoma * jamoma;
 
 private:
   ofxCv::ObjectFinder eyeFinder;

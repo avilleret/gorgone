@@ -1,0 +1,1 @@
+osascript -e 'tell application "Terminal" to do script "/Users/dixcinquantedeux/gorgone/startOfRemotely.command"'

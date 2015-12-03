@@ -21,8 +21,7 @@ void gorgoneEyeDetection::setup(const Mat& img){
   scale=1.;
 
   eyeFinder.setup("cascade/haarcascade_eye_tree_eyeglasses.xml");
-  eyeFinder.setRescale(50./(float)img.rows);
-
+  eyeFinder.setRescale(100./(float)img.rows);
   reset();
   bSetup = true;
 }
@@ -30,8 +29,13 @@ void gorgoneEyeDetection::setup(const Mat& img){
 void gorgoneEyeDetection::reset(){
   bSetup = false;
   flag = false;
-  bestScore = 0.;
+  bestScore = 1.; // minimum focus to process frame
   newCode = false;
+  if(eye.isAllocated()) eye.clear();
+  if(eyeProc.isAllocated()) eyeProc.clear();
+  if(irisProc.isAllocated()) irisProc.clear();
+  if(bestEyeNorm.isAllocated()) bestEyeNorm.clear();
+  if(codeImg.isAllocated()) codeImg.clear();
 }
 
 bool gorgoneEyeDetection::updateBool(Mat& img){
@@ -46,10 +50,14 @@ bool gorgoneEyeDetection::updateBool(Mat& img){
   if(!bSetup) setup(img);
 
   eyeFinder.update(img);
-
+  jamoma->mEyeDetectedReturn.set("value", eyeFinder.size());
   ofLogVerbose("gorgoneEyeDetection") << "found eyes : " << eyeFinder.size() << endl;
 
-  if ( eyeFinder.size() == 0) return false;
+  if ( eyeFinder.size() == 0) {
+    jamoma->mIrisDetectedReturn.set("value", false);
+    jamoma->mPupilDetectedReturn.set("value", false);
+    return false;
+  }
 
   ofRectangle rect = eyeFinder.getObject(0);
   double marging = paramMarging / 100.;
@@ -69,21 +77,33 @@ bool gorgoneEyeDetection::updateBool(Mat& img){
     Mat pupilMat = subMat(pupilRect);
   } catch ( cv::Exception ) {
     ofLogVerbose("gorgoneEyeDetection") << "oups wrong ROI" << endl;
+    jamoma->mIrisDetectedReturn.set("value", false);
+    jamoma->mPupilDetectedReturn.set("value", false);
     return false;
   }
 
-  if ( score < bestScore ) return false;
-
-  if ( findIris(subMat, iris)
-    && findPupil(subMat, iris, pupil) ){
-    bestEye = subMat.clone();
-    bestIris = iris;
-    bestPupil = pupil;
-    bestScore = score;
-    subMat2ofImg(subMat, eye);
-  } else {
+  jamoma->mFocusDetectedReturn.set("value", score);
+  if ( score < bestScore ) {
+    jamoma->mIrisDetectedReturn.set("value", false);
+    jamoma->mPupilDetectedReturn.set("value", false);
     return false;
   }
+
+  bool _iris = findIris(subMat, iris);
+  jamoma->mIrisDetectedReturn.set("value", _iris);
+  if (!_iris) {
+    jamoma->mPupilDetectedReturn.set("value", false);
+    return false;
+  }
+  bool _pupil = findPupil(subMat, iris, pupil);
+  jamoma->mPupilDetectedReturn.set("value", _pupil);
+  if (!_pupil) return false;
+
+  bestEye = subMat.clone();
+  bestIris = iris;
+  bestPupil = pupil;
+  bestScore = score;
+  subMat2ofImg(subMat, eye);
 
   paramScore = score;
   ofLogVerbose("gorgoneEyeDetection") << "eye focus : " << score << endl;
@@ -107,7 +127,7 @@ void gorgoneEyeDetection::drawEyes(){
 
   if(codeImg.isAllocated()) codeImg.draw(500,10);
   else { ofLogVerbose("gorgoneEyeDetection") << "codeImg is not allocated" << endl;}
-#ifdef TARGET_RASPBERRY_PI
+#ifndef TARGET_RASPBERRY_PI
   gui.draw();
 #endif
 }

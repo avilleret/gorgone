@@ -13,6 +13,8 @@ void gorgone::setup()
   svgInterp.setup();
   jamoma.setup((void*) this, appName, masterIp);
   motionDetector.setup(&jamoma);
+  irisDetector.setJamomaRef(&jamoma);
+  counter = 0;
 }
 
 void gorgone::exit(){
@@ -48,9 +50,7 @@ void gorgone::update()
 
       ofLogVerbose("gorgone") << "new frame to process : " << gray.cols << "x" << gray.rows << endl;
 
-      if ( irisDetector.updateBool(gray) ){
-        jamoma.mEyeDetectedReturn.set("value", "bang");
-      }
+      irisDetector.updateBool(gray);
     }
   }
 
@@ -78,7 +78,7 @@ void gorgone::update()
   }
 
   Mat img = irisDetector.getIrisCode();
-  if( bDisplaying && irisDetector.newCode && img.total() > 0 ) {
+  if( irisDetector.newCode && img.total() > 0 ) {
 
     if ( irisDetector.newCode ){
       svgInterp.coeff.clear();
@@ -99,8 +99,7 @@ void gorgone::update()
       for (int i = 0; i<svgInterp.coeff.size(); i++){
         v.push_back(svgInterp.coeff[i]);
       }
-      jamoma.mDrawingCoeffParameter.set("value", v);
-      svgInterp.dirtyFlag = true;
+      jamoma.mTrackingIrisCodeReturn.set("value", v);
     }
   }
 }
@@ -111,8 +110,8 @@ void gorgone::draw()
   drawMat(frame,0,0);
   if ( svgInterp.updateBool() ){
     TTValue x,y;
-    vector<ofVec3f> line = svgInterp.interpolatedLine;
-
+    ofPolyline line = svgInterp.interpolatedLine;
+    ofLogNotice("gorgone") << "update drawing with " << line.size() << "points" << endl;
     for (int i=0; i<line.size(); i++){
       x.push_back(line[i].x);
       y.push_back(line[i].y);
@@ -121,14 +120,22 @@ void gorgone::draw()
     jamoma.mDrawingShapeXReturn.set("value", x);
     jamoma.mDrawingShapeYReturn.set("value", y);
   }
-  if ( bTracking )
+  if ( bTracking ) {
+    ofDrawBitmapStringHighlight("eye tracking", 10, 400);
     irisDetector.drawEyes();
-  if ( bDisplaying )
+  }
+  if ( bDisplaying ) {
+    ofDrawBitmapStringHighlight("laser drawing", 200, 400);
     svgInterp.draw();
+  }
+  if ( bMotion ){
+    ofDrawBitmapStringHighlight("motion detection", 400, 400);
+  }
 }
 
 void gorgone::keyPressed(int key)
 {
+  ofLogVerbose("gorgone") << "keypressed : " << key << endl;
   switch (key){
     case 's':
       irisDetector.save();
@@ -138,6 +145,9 @@ void gorgone::keyPressed(int key)
       break;
     case 'c':
       bComputeCode=true;
+      break;
+    case 'm':
+      bMotion = !bMotion;
       break;
     case 't':
       bTracking = !bTracking;
@@ -164,6 +174,12 @@ void gorgone::keyPressed(int key)
       vidGrabber.led.switchOffWhite();
       break;
 #endif
+    case 357 : // arrow up
+      svgInterp.selectedId = counter++;
+      break;
+    case 359: // arrow down
+      svgInterp.selectedId = counter--;
+      break;
     default :
       break;
   }
