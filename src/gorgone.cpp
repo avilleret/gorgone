@@ -55,7 +55,8 @@ void gorgone::update()
   }
 
   if (bComputeCode) {
-    irisDetector.computeCode();
+    irisDetector.start();
+    // irisDetector.computeCode();
     bComputeCode=false;
     jamoma.mComputeIrisCodeParameter.set("value", bComputeCode);
 

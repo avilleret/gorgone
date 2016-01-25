@@ -328,7 +328,7 @@ Masek::IMAGE* gorgoneEyeDetection::findEyelid(Mat& img, const Vec3f& pupil, cons
   return noiseImage;
 }
 
-void gorgoneEyeDetection::computeCode()
+void gorgoneEyeDetection::threadedFunction()
 {
   if ( !bestEye.total() > 0 ) return;
   noise  = findEyelid(bestEye,  bestPupil,  bestIris);
