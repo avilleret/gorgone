@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 36.0, 466.0, 1186.0, 685.0 ],
+		"rect" : [ 81.0, 45.0, 1186.0, 685.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -87,7 +87,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
 									"patching_rect" : [ 287.0, 88.0, 24.0, 24.0 ],
-									"presentation_rect" : [ 287.0, 88.0, 0.0, 0.0 ],
 									"style" : ""
 								}
 
@@ -113,7 +112,6 @@
 									"outlettype" : [ "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 267.5, 44.0, 39.0, 32.0 ],
-									"presentation_rect" : [ 323.0, 86.0, 0.0, 0.0 ],
 									"style" : ""
 								}
 
@@ -126,7 +124,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 302.5, 140.0, 61.0, 22.0 ],
-									"presentation_rect" : [ 304.0, 80.0, 0.0, 0.0 ],
 									"style" : "",
 									"text" : "1, 0 1000"
 								}
@@ -231,7 +228,7 @@
 									"outlettype" : [ "int" ],
 									"patching_rect" : [ 577.0, 154.0, 68.0, 22.0 ],
 									"style" : "",
-									"text" : "random 30"
+									"text" : "random 10"
 								}
 
 							}
@@ -244,7 +241,7 @@
 									"outlettype" : [ "int" ],
 									"patching_rect" : [ 482.0, 154.0, 68.0, 22.0 ],
 									"style" : "",
-									"text" : "random 30"
+									"text" : "random 10"
 								}
 
 							}
@@ -19924,7 +19921,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 340.0, 387.0, 382.0, 22.0 ],
 									"style" : "",
-									"text" : "0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.44 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.56 0. 0. 0. 0."
+									"text" : "0. 0.28 0. 0. 0. 0. 0. 0. 0.72 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0."
 								}
 
 							}
@@ -20651,10 +20648,10 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-36::obj-5" : [ "live.gain~", "live.gain~", 0 ],
+			"obj-36::obj-20" : [ "live.gain~[6]", "live.gain~", 0 ],
 			"obj-36::obj-56" : [ "live.gain~[1]", "live.gain~", 0 ],
 			"obj-36::obj-67" : [ "live.gain~[2]", "live.gain~", 0 ],
-			"obj-36::obj-20" : [ "live.gain~[6]", "live.gain~", 0 ]
+			"obj-36::obj-5" : [ "live.gain~", "live.gain~", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{
