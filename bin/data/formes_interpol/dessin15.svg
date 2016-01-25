@@ -2,8 +2,10 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="595.28px" height="841.89px" viewBox="0 0 595.28 841.89" enable-background="new 0 0 595.28 841.89" xml:space="preserve">
-<polyline opacity="0.4" fill="none" stroke="#ED1C26" stroke-width="2.126" stroke-miterlimit="10" points="298.514,452.169 
-	272.28,437.023 298.514,421.878 298.514,421.878 298.514,421.878 298.514,391.585 298.514,421.878 298.514,421.878 298.514,421.878 
-	324.746,437.023 298.514,421.878 298.514,452.169 298.514,452.169 298.514,452.169 298.514,452.169 298.514,452.169 "/>
+	 width="595.279px" height="841.89px" viewBox="0 0 595.279 841.89" enable-background="new 0 0 595.279 841.89"
+	 xml:space="preserve">
+<line opacity="0.4" fill="none" stroke="#F60020" stroke-width="2.126" stroke-miterlimit="10" x1="323.863" y1="405.799" x2="323.863" y2="405.799"/>
+<polyline opacity="0.4" fill="none" stroke="#F60020" stroke-width="2.126" stroke-miterlimit="10" points="297.657,451.221 
+	271.423,436.075 297.657,420.93 297.657,420.93 297.657,420.93 297.657,390.637 297.657,420.93 297.657,420.93 297.657,420.93 
+	323.89,436.075 297.657,420.93 297.657,451.221 297.657,451.221 297.657,451.221 297.657,451.221 297.657,451.221 "/>
 </svg>
