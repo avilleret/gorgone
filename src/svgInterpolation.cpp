@@ -49,7 +49,7 @@ void svgInterpolation::setup(){
       }
   	}
     myLine.close();
-    lines.push_back(myLine);
+    lines.push_back(myLine.getResampledByCount(shapeSize));
     ofLogVerbose("svgInterpolation") << "min : " << ptMin.x << " " << ptMin.y;
     ofLogVerbose("svgInterpolation") << "max : " << ptMax.x << " " << ptMax.y;
   }
@@ -135,9 +135,11 @@ bool svgInterpolation::multiInterpolation(){
 
   interpolatedLine.clear();
 
+/*
   ofLogNotice("svgInterpolation") << "lineSize : " << lineSize << endl;
   ofLogNotice("svgInterpolation") << "nombre de formes chargées : " << lines.size() << endl;
   ofLogNotice("svgInterpolation") << "taille de coeff : " << coeff.size() << endl;
+*/
 
   for (int i = 0; i < lineSize; i++){
     ofVec3f pt;
@@ -149,6 +151,7 @@ bool svgInterpolation::multiInterpolation(){
 
   ofVec3f ptMin(999999. ,999999.);
   ofVec3f ptMax(-999999.,-999999.);
+  // get the bounding box of the shape
   for ( ofVec3f pt : interpolatedLine ){
     ptMin.x = min(pt.x,ptMin.x);
     ptMin.y = min(pt.y,ptMin.y);
@@ -160,6 +163,7 @@ bool svgInterpolation::multiInterpolation(){
 
   ofVec3f offset, diff;
   float scale;
+  // scale and translate shape to center on (0.0;0.0)))))))
   offset = (ptMax + ptMin)/2.;
   diff = ptMax - ptMin;
   scale = max(diff.x,diff.y) / 2.;

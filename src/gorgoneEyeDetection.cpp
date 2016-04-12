@@ -44,7 +44,7 @@ bool gorgoneEyeDetection::updateBool(Mat& img){
   Mat eyeRoiMat;
   Vec3f iris, pupil;
   Rect eyeRoi;
-  double score;
+  double score=0;
 
   ofLogVerbose("gorgoneEyeDetection") << "---------- UPDATE ----------" << endl;
   if(!bSetup) setup(img);
