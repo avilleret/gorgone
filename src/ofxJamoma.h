@@ -28,7 +28,7 @@ class ofxJamoma
     TTObject mDrawingEnableParameter;   // a parameter is relative to the state of our application
     TTObject mComputeIrisCodeParameter; // a parameter is relative to the state of our application
     TTObject mDrawingCoeffParameter; // drawing coefficient
-    TTObject mTrackingIrisCodeReturn; // iris code return
+    TTObject mTrackingIrisCodeReturn, mTrackingIrisBlobAreaReturn; // iris code returns
     TTObject mTrackingLedBrightness, mTrackingLaserBrightness, mWhiteLedBrightness; // white & IR led and laser brightness
     TTObject mDrawingShapeXReturn, mDrawingShapeYReturn, mShapeSizeParameter; // drawing shape return
     TTObject mTrackingFlowReturn; // Motion flow return

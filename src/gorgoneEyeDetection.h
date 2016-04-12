@@ -39,6 +39,7 @@ public:
   ofParameter<float> paramScore;
   Mat getIrisCode();
   bool newCode;
+  int blobArea;
   ofxJamoma * jamoma;
 
 private:

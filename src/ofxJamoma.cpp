@@ -227,6 +227,24 @@ void ofxJamoma::registerJamomaParam(){
     address = out[0];
     TTLogMessage("\n /tracking/iriscode : effective registration address is %s \n", address.c_str());
 
+    // Create a new array return for iris code
+    mTrackingIrisBlobAreaReturn = TTObject("Data", "return");
+
+    // Setup the callback mechanism to get the value back
+    args = TTValue(mParent, mTrackingIrisBlobAreaReturn);
+    mTrackingIrisBlobAreaReturn.set("baton", args);
+    mTrackingIrisBlobAreaReturn.set("function", TTPtr(&DemoAppDataReturnValueCallback));
+
+    // Setup the data attributes depending of its use inside the application
+    mTrackingIrisBlobAreaReturn.set("type", "array");
+    mTrackingIrisBlobAreaReturn.set("description", "iris code");
+
+    // Register the parameter data into gorgone-1 at an address
+    args = TTValue("/tracking/iriscode_blobarea", mTrackingIrisBlobAreaReturn);
+    out = mApplicationLocal.send("ObjectRegister", args);
+    address = out[0];
+    TTLogMessage("\n /tracking/iriscode_blobarea : effective registration address is %s \n", address.c_str());
+
         // Create a new array return for drawing shape
     mDrawingShapeXReturn = TTObject("Data", "return");
 

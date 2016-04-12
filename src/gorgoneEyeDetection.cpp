@@ -127,7 +127,6 @@ void gorgoneEyeDetection::drawEyes(){
 
   drawMat(codeMat, 500, 50);
 
-  if(codeImg.isAllocated()) codeImg.draw(500,10);
 #ifndef TARGET_RASPBERRY_PI
   gui.draw();
 #endif
@@ -331,8 +330,7 @@ Masek::IMAGE* gorgoneEyeDetection::findEyelid(Mat& img, const Vec3f& pupil, cons
 
 void gorgoneEyeDetection::threadedFunction()
 {
-  ofLogVerbose("gorgoneEyeDetection") << "start thread" << endl;
-  cout << "gorgoneEyedection : start thread" << endl;
+  cout << "gorgoneEyedection::threadedFunction start" << endl;
   if ( bestEye.total() < 1 ) return;
   noise  = findEyelid(bestEye,  bestPupil,  bestIris);
 
@@ -340,9 +338,26 @@ void gorgoneEyeDetection::threadedFunction()
 
   freeMasekImage(noise);
 
-  ofLogVerbose("gorgoneEyeDetection") << "leftCode : " << codeMat.cols << "x" << codeMat.rows << endl;
-  cout << "gorgoneEyedection : code dimension : " << codeMat.cols << "x" << codeMat.rows << endl;
-  subMat2ofImg(codeMat, codeImg);
+  cout << "gorgoneEyedection::threadedFunction : code dimension : " << codeMat.cols << "x" << codeMat.rows << endl;
+
+  cv::Mat blurredMat;
+  ofxCv::blur(codeMat,blurredMat, 2);
+
+  ofxCv::ContourFinder finder;
+  finder.setMinAreaRadius(10);
+  finder.setMaxAreaRadius(codeMat.cols*codeMat.rows);
+  finder.setThreshold(128);
+  finder.findContours(blurredMat);
+
+  blobArea = 0;
+  for ( int i = 0; i<finder.size(); i++){
+    if ( finder.getContourArea(i) > blobArea ){
+      blobArea = finder.getContourArea(i);
+    }
+  }
+
+  cout << "gorgoneEyedection::threadedFunction : blobArea " << blobArea << endl;
+
   newCode=true;
 }
 

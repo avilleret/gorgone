@@ -55,7 +55,7 @@ void gorgone::update()
   }
 
   Mat img = irisDetector.getIrisCode();
-  if( irisDetector.newCode && img.total() > 0 ) {
+  if( irisDetector.newCode ) {
     bComputeCode=false;
     jamoma.mComputeIrisCodeParameter.set("value", bComputeCode);
 
@@ -73,11 +73,14 @@ void gorgone::update()
     }
     irisDetector.newCode = false;
 
-    TTValue v;
+    TTValue v, w;
     for (int i = 0; i<svgInterp.coeff.size(); i++){
       v.push_back(svgInterp.coeff[i]);
     }
     jamoma.mTrackingIrisCodeReturn.set("value", v);
+
+    w.push_back(irisDetector.blobArea);
+    jamoma.mTrackingIrisBlobAreaReturn.set("value",w);
   }
 
   if (bComputeCode && !irisDetector.isThreadRunning() ) {
