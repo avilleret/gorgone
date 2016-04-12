@@ -3,13 +3,13 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 7,
-			"minor" : 0,
-			"revision" : 6,
+			"minor" : 1,
+			"revision" : 0,
 			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 59.0, 104.0, 1286.0, 723.0 ],
+		"rect" : [ 595.0, 89.0, 1286.0, 723.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,32 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-20",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 750.0, 337.989746, 378.0, 22.0 ],
+					"style" : "",
+					"text" : "protocol/setup ip 192.168.0.9, protocol/setup port 9999, name laser-1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-19",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 231.5, 366.489746, 396.0, 22.0 ],
+					"style" : "",
+					"text" : "protocol/setup ip 192.168.0.9, protocol/setup port 9998, name gorgone-1"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-21",
 					"maxclass" : "message",
@@ -94,7 +120,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 184.0, 422.0, 153.0, 22.0 ],
+					"patching_rect" : [ 184.0, 452.0, 153.0, 22.0 ],
 					"style" : "",
 					"text" : "print \"j.modular gorgone-1\""
 				}
@@ -130,7 +156,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 708.0, 370.0, 135.0, 22.0 ],
+					"patching_rect" : [ 708.0, 400.0, 135.0, 22.0 ],
 					"style" : "",
 					"text" : "print \"j.modular laser-1\""
 				}
@@ -156,9 +182,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 593.0, 285.989746, 101.0, 22.0 ],
+					"patching_rect" : [ 593.0, 285.989746, 107.0, 22.0 ],
 					"style" : "",
-					"text" : "namespace/build"
+					"text" : "namespace/mirror"
 				}
 
 			}
@@ -182,7 +208,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 708.0, 336.489746, 135.0, 22.0 ],
+					"patching_rect" : [ 708.0, 366.489746, 135.0, 22.0 ],
 					"style" : "",
 					"text" : "j.modular laser-1 Minuit"
 				}
@@ -233,7 +259,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 184.0, 554.489746, 145.0, 22.0 ],
+					"patching_rect" : [ 184.0, 584.489746, 145.0, 22.0 ],
 					"style" : "",
 					"text" : "j.receive /:monitor/out"
 				}
@@ -245,7 +271,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 184.0, 584.489746, 155.0, 22.0 ],
+					"patching_rect" : [ 184.0, 614.489746, 155.0, 22.0 ],
 					"style" : "",
 					"text" : "print monitor/out @popup 1"
 				}
@@ -258,7 +284,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 184.0, 462.489746, 137.0, 22.0 ],
+					"patching_rect" : [ 184.0, 492.489746, 137.0, 22.0 ],
 					"style" : "",
 					"text" : "j.receive /:monitor/in"
 				}
@@ -270,7 +296,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 184.0, 499.489746, 147.0, 22.0 ],
+					"patching_rect" : [ 184.0, 529.489746, 147.0, 22.0 ],
 					"style" : "",
 					"text" : "print monitor/in @popup 1"
 				}
@@ -309,9 +335,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 69.0, 285.989746, 101.0, 22.0 ],
+					"patching_rect" : [ 69.0, 285.989746, 107.0, 22.0 ],
 					"style" : "",
-					"text" : "namespace/build"
+					"text" : "namespace/mirror"
 				}
 
 			}
@@ -336,7 +362,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 184.0, 381.489746, 153.0, 22.0 ],
+					"patching_rect" : [ 184.0, 411.489746, 153.0, 22.0 ],
 					"style" : "",
 					"text" : "j.modular gorgone-1 Minuit"
 				}
@@ -457,10 +483,28 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-44", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-19", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-37", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-13", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-20", 0 ]
 				}
 
 			}
