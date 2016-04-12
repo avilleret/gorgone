@@ -54,54 +54,34 @@ void gorgone::update()
     }
   }
 
-  if (bComputeCode) {
-    irisDetector.start();
-    // irisDetector.computeCode();
+  Mat img = irisDetector.getIrisCode();
+  if( irisDetector.newCode && img.total() > 0 ) {
     bComputeCode=false;
     jamoma.mComputeIrisCodeParameter.set("value", bComputeCode);
 
-/*
-// desactivated because Max doesn't handle list longer than 256 item, yes this still happens in 2015...
-    TTValue v;
-    Mat code = irisDetector.getIrisCode();
-    v.push_back(code.cols);
-    v.push_back(code.rows);
+    svgInterp.coeff.clear();
+    ofLogNotice("gorgone") << "code image resolution : " << img.cols << "x" << img.rows << endl;
     uchar* p;
-    for (int i = 0; i < code.rows; i++ ){
-      p=code.ptr<uchar>(i);
-      for (int j = 0; j < code.cols; j++ ){
-        v.push_back((int) p[j]);
+    for (int i = 0; i < img.rows; i++ ){
+      float avg=0;
+      p=img.ptr<uchar>(i);
+      for (int j = 0; j < img.cols; j++ ){
+        avg+=p[j] / 255.;
       }
+      avg/=img.cols;
+      svgInterp.coeff.push_back(avg);
     }
-    cout << "v size : " << v.size() << endl;
-    jamoma.mTrackingIrisCodeReturn.set("value",v);
-*/
+    irisDetector.newCode = false;
+
+    TTValue v;
+    for (int i = 0; i<svgInterp.coeff.size(); i++){
+      v.push_back(svgInterp.coeff[i]);
+    }
+    jamoma.mTrackingIrisCodeReturn.set("value", v);
   }
 
-  Mat img = irisDetector.getIrisCode();
-  if( irisDetector.newCode && img.total() > 0 ) {
-
-    if ( irisDetector.newCode ){
-      svgInterp.coeff.clear();
-      ofLogVerbose("gorgone") << "code image resolution : " << img.cols << "x" << img.rows << endl;
-      uchar* p;
-      for (int i = 0; i < img.rows; i++ ){
-        float avg=0;
-        p=img.ptr<uchar>(i);
-        for (int j = 0; j < img.cols; j++ ){
-          avg+=p[j] / 255.;
-        }
-        avg/=img.cols;
-        svgInterp.coeff.push_back(avg);
-      }
-      irisDetector.newCode = false;
-
-      TTValue v;
-      for (int i = 0; i<svgInterp.coeff.size(); i++){
-        v.push_back(svgInterp.coeff[i]);
-      }
-      jamoma.mTrackingIrisCodeReturn.set("value", v);
-    }
+  if (bComputeCode && !irisDetector.isThreadRunning() ) {
+    irisDetector.start();
   }
 }
 
@@ -112,7 +92,7 @@ void gorgone::draw()
   if ( svgInterp.updateBool() ){
     TTValue x,y;
     ofPolyline line = svgInterp.interpolatedLine;
-    ofLogNotice("gorgone") << "update drawing with " << line.size() << "points" << endl;
+    // ofLogNotice("gorgone") << "update drawing with " << line.size() << "points" << endl;
     for (int i=0; i<line.size(); i++){
       x.push_back(line[i].x);
       y.push_back(line[i].y);

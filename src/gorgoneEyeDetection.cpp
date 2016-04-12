@@ -44,7 +44,7 @@ bool gorgoneEyeDetection::updateBool(Mat& img){
   Mat eyeRoiMat;
   Vec3f iris, pupil;
   Rect eyeRoi;
-  double score;
+  double score=0;
 
   ofLogVerbose("gorgoneEyeDetection") << "---------- UPDATE ----------" << endl;
   if(!bSetup) setup(img);
@@ -126,7 +126,6 @@ void gorgoneEyeDetection::drawEyes(){
   ofDrawBitmapStringHighlight(drawString, 10, 750);
 
   if(codeImg.isAllocated()) codeImg.draw(500,10);
-  else { ofLogVerbose("gorgoneEyeDetection") << "codeImg is not allocated" << endl;}
 #ifndef TARGET_RASPBERRY_PI
   gui.draw();
 #endif
@@ -330,7 +329,9 @@ Masek::IMAGE* gorgoneEyeDetection::findEyelid(Mat& img, const Vec3f& pupil, cons
 
 void gorgoneEyeDetection::threadedFunction()
 {
-  if ( !bestEye.total() > 0 ) return;
+  ofLogVerbose("gorgoneEyeDetection") << "start thread" << endl;
+  cout << "gorgoneEyedection : start thread" << endl;
+  if ( bestEye.total() < 1 ) return;
   noise  = findEyelid(bestEye,  bestPupil,  bestIris);
 
   encodeIris(noise, bestIris, bestPupil, codeMat);
@@ -338,6 +339,7 @@ void gorgoneEyeDetection::threadedFunction()
   freeMasekImage(noise);
 
   ofLogVerbose("gorgoneEyeDetection") << "leftCode : " << codeMat.cols << "x" << codeMat.rows << endl;
+  cout << "gorgoneEyedection : code dimension : " << codeMat.cols << "x" << codeMat.rows << endl;
   subMat2ofImg(codeMat, codeImg);
   newCode=true;
 }
