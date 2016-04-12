@@ -329,7 +329,8 @@ Masek::IMAGE* gorgoneEyeDetection::findEyelid(Mat& img, const Vec3f& pupil, cons
 
 void gorgoneEyeDetection::threadedFunction()
 {
-  ofLogVerbose("gorgoneEyeDetection") << "start thread" << endl;  
+  ofLogVerbose("gorgoneEyeDetection") << "start thread" << endl;
+  cout << "gorgoneEyedection : start thread" << endl;
   if ( bestEye.total() < 1 ) return;
   noise  = findEyelid(bestEye,  bestPupil,  bestIris);
 
@@ -338,6 +339,7 @@ void gorgoneEyeDetection::threadedFunction()
   freeMasekImage(noise);
 
   ofLogVerbose("gorgoneEyeDetection") << "leftCode : " << codeMat.cols << "x" << codeMat.rows << endl;
+  cout << "gorgoneEyedection : code dimension : " << codeMat.cols << "x" << codeMat.rows << endl;
   subMat2ofImg(codeMat, codeImg);
   newCode=true;
 }
