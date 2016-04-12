@@ -125,6 +125,8 @@ void gorgoneEyeDetection::drawEyes(){
   string drawString = "best image -- score " + ofToString(bestScore);
   ofDrawBitmapStringHighlight(drawString, 10, 750);
 
+  drawMat(codeMat, 500 50);
+
   if(codeImg.isAllocated()) codeImg.draw(500,10);
 #ifndef TARGET_RASPBERRY_PI
   gui.draw();
