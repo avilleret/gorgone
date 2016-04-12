@@ -126,7 +126,6 @@ void gorgoneEyeDetection::drawEyes(){
   ofDrawBitmapStringHighlight(drawString, 10, 750);
 
   if(codeImg.isAllocated()) codeImg.draw(500,10);
-  else { ofLogVerbose("gorgoneEyeDetection") << "codeImg is not allocated" << endl;}
 #ifndef TARGET_RASPBERRY_PI
   gui.draw();
 #endif
