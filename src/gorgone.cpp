@@ -54,7 +54,7 @@ void gorgone::update()
     }
   }
 
-  if (bComputeCode) {
+  if (bComputeCode && !irisDetector.isThreadRunning() ) {
     irisDetector.start();
     // irisDetector.computeCode();
 
