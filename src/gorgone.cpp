@@ -60,7 +60,7 @@ void gorgone::update()
     jamoma.mComputeIrisCodeParameter.set("value", bComputeCode);
 
     svgInterp.coeff.clear();
-    ofLogVerbose("gorgone") << "code image resolution : " << img.cols << "x" << img.rows << endl;
+    ofLogNotice("gorgone") << "code image resolution : " << img.cols << "x" << img.rows << endl;
     uchar* p;
     for (int i = 0; i < img.rows; i++ ){
       float avg=0;
