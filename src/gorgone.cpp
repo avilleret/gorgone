@@ -54,28 +54,6 @@ void gorgone::update()
     }
   }
 
-  if (bComputeCode && !irisDetector.isThreadRunning() ) {
-    irisDetector.start();
-    // irisDetector.computeCode();
-
-/*
-// desactivated because Max doesn't handle list longer than 256 item, yes this still happens in 2015...
-    TTValue v;
-    Mat code = irisDetector.getIrisCode();
-    v.push_back(code.cols);
-    v.push_back(code.rows);
-    uchar* p;
-    for (int i = 0; i < code.rows; i++ ){
-      p=code.ptr<uchar>(i);
-      for (int j = 0; j < code.cols; j++ ){
-        v.push_back((int) p[j]);
-      }
-    }
-    cout << "v size : " << v.size() << endl;
-    jamoma.mTrackingIrisCodeReturn.set("value",v);
-*/
-  }
-
   Mat img = irisDetector.getIrisCode();
   if( irisDetector.newCode && img.total() > 0 ) {
     bComputeCode=false;
@@ -100,6 +78,10 @@ void gorgone::update()
       v.push_back(svgInterp.coeff[i]);
     }
     jamoma.mTrackingIrisCodeReturn.set("value", v);
+  }
+
+  if (bComputeCode && !irisDetector.isThreadRunning() ) {
+    irisDetector.start();
   }
 }
 
