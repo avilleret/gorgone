@@ -135,9 +135,11 @@ bool svgInterpolation::multiInterpolation(){
 
   interpolatedLine.clear();
 
+/*
   ofLogNotice("svgInterpolation") << "lineSize : " << lineSize << endl;
   ofLogNotice("svgInterpolation") << "nombre de formes chargées : " << lines.size() << endl;
   ofLogNotice("svgInterpolation") << "taille de coeff : " << coeff.size() << endl;
+*/
 
   for (int i = 0; i < lineSize; i++){
     ofVec3f pt;
