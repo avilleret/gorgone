@@ -203,11 +203,11 @@ bool gorgoneEyeDetection::findIris(Mat& roiImg, Vec3f& iris){
     }
   }
 
-if ( idx >= 0 ){
-  iris[0] = circles[idx][0];
-  iris[1] = circles[idx][1];
-  iris[2] = circles[idx][2];
-}
+  if ( idx >= 0 ){
+    iris[0] = circles[idx][0];
+    iris[1] = circles[idx][1];
+    iris[2] = circles[idx][2];
+  }
 
   ofLogVerbose("gorgoneEyeDetection") << "iris " << iris[0] << ";" << iris[1] << " " << iris[2] << endl;
 
