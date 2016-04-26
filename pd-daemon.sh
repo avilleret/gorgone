@@ -22,7 +22,7 @@ DAEMON_NAME=pd-daemon
 #export LD_LIBRARY_PATH=/usr/local/jamoma/lib
 
 # Add any command line options for your daemon here
-DAEMON_OPTS="-noadc -nogui $DIR/Pd/laser-driver.pd"
+DAEMON_OPTS='-noadc -nogui -send "hostname symbol $HOSTNAME" $DIR/Pd/laser-driver.pd'
 
 # This next line detersmines what user the script runs as.
 # Root generally not recommended but necessary if you are using the Raspberry Pi GPIO from Python.
