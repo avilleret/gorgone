@@ -38,6 +38,48 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-30",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 26.0, 189.0, 150.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 21.0, 183.0, 150.0, 20.0 ],
+					"style" : "",
+					"text" : "Model address :"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-45",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 126.5, 517.0, 137.0, 22.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 21.0, 205.0, 137.0, 22.0 ],
+					"style" : "",
+					"text" : "/no_model_address"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-28",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "" ],
+					"patching_rect" : [ 126.5, 478.0, 137.0, 22.0 ],
+					"style" : "",
+					"text" : "j.receive model:address"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"comment" : "Laser brightness",
 					"id" : "obj-27",
 					"maxclass" : "inlet",
@@ -45,7 +87,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 410.0, 28.0, 30.0, 30.0 ],
-					"presentation_rect" : [ 410.0, 28.0, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -59,7 +100,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 352.0, 28.0, 30.0, 30.0 ],
-					"presentation_rect" : [ 352.0, 28.0, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -73,7 +113,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 298.0, 28.0, 30.0, 30.0 ],
-					"presentation_rect" : [ 296.5, 28.0, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -87,7 +126,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 244.5, 28.0, 30.0, 30.0 ],
-					"presentation_rect" : [ 244.5, 28.0, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -101,7 +139,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 190.5, 28.0, 30.0, 30.0 ],
-					"presentation_rect" : [ 190.5, 26.0, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -115,7 +152,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 142.5, 28.0, 30.0, 30.0 ],
-					"presentation_rect" : [ 160.0, 23.0, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -134,7 +170,7 @@
 					"patching_rect" : [ 130.0, 435.0, 130.0, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 29.0, 155.0, 128.0, 21.0 ],
-					"size" : 1.0,
+					"size" : 100.0,
 					"style" : "default"
 				}
 
@@ -548,6 +584,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-45", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-28", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-7", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -607,6 +652,10 @@
 			}
 , 			{
 				"name" : "j.remote.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "j.receive.mxo",
 				"type" : "iLaX"
 			}
  ],
