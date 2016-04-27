@@ -54,7 +54,9 @@ void gorgone::update()
     }
   }
 
-  Mat img = irisDetector.getIrisCode();
+  Mat tmp = irisDetector.getIrisCode();
+  Mat img;
+  resize(tmp, img, Size(tmp.cols, tmp.rows/4.));
   if( irisDetector.newCode ) {
     bComputeCode=false;
     jamoma.mComputeIrisCodeParameter.set("value", bComputeCode);
