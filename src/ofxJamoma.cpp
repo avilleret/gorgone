@@ -6,7 +6,7 @@ void ofxJamoma::setup(void* parent, string name, string masterIp)
   mParent = TTPtr(parent);
   mAppLocalName = name;
   mAppRemoteName = "master";
-  mAppRemoteName2 = "laser-1";
+  mAppRemoteName2 = "laser-" + name.substr(8);
   mAppRemoteIp = masterIp;
   setupJamomaApp();
   registerJamomaParam();

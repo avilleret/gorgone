@@ -2,7 +2,7 @@
 
 ### BEGIN INIT INFO
 # Provides:          of-daemon
-# Required-Start:    $remote_fs $syslog networking
+# Required-Start:    $remote_fs $syslog networking hostname
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
@@ -21,7 +21,7 @@ DAEMON_NAME=of-daemon
 export LD_LIBRARY_PATH=/usr/local/jamoma/lib
 
 # Add any command line options for your daemon here
-DAEMON_OPTS="-verbose 5"
+DAEMON_OPTS="-verbose 5 -name `hostname`"
 
 # This next line detersmines what user the script runs as.
 # Root generally not recommended but necessary if you are using the Raspberry Pi GPIO from Python.
