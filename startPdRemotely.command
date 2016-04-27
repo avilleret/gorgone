@@ -1,1 +1,1 @@
-ssh -Y pi@gorgone-1.local "killall pd ; /usr/local/bin/pd /home/pi/ofnode/gorgone/Pd/laser-driver.pd"
+ssh -Y $1 "sudo killall pd ; /usr/local/bin/pd -noadc -nogui /home/pi/ofnode/gorgone/Pd/laser-driver.pd" && exit 0
