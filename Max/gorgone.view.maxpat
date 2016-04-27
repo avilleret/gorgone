@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 437.0, 302.0, 253.0, 536.0 ],
+		"rect" : [ 437.0, 302.0, 839.0, 710.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,48 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-51",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 27.0, 538.0, 150.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 11.0, 526.0, 150.0, 20.0 ],
+					"style" : "",
+					"text" : "Model address :"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-45",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 277.0, 621.0, 137.0, 22.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 10.0, 548.0, 137.0, 22.0 ],
+					"style" : "",
+					"text" : "/no_model_address"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "" ],
+					"patching_rect" : [ 277.0, 582.0, 137.0, 22.0 ],
+					"style" : "",
+					"text" : "j.receive model:address"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-40",
 					"linecount" : 2,
@@ -244,7 +286,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 259.0, 87.0, 30.0, 30.0 ],
+					"patching_rect" : [ 259.0, 132.0, 30.0, 30.0 ],
 					"style" : ""
 				}
 
@@ -299,7 +341,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 196.0, 87.0, 50.0, 22.0 ],
+					"patching_rect" : [ 196.0, 132.0, 50.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 96.0, 7.0, 50.0, 22.0 ],
 					"style" : "",
@@ -314,7 +356,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 196.0, 57.0, 119.0, 22.0 ],
+					"patching_rect" : [ 196.0, 102.0, 119.0, 22.0 ],
 					"style" : "",
 					"text" : "j.receive motion/flow"
 				}
@@ -326,7 +368,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 13.0, 132.0, 141.0, 20.0 ],
+					"patching_rect" : [ 13.0, 177.0, 141.0, 20.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 2,
 					"presentation_rect" : [ 8.0, 7.0, 96.0, 33.0 ],
@@ -344,7 +386,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 156.0, 130.0, 24.0, 24.0 ],
+					"patching_rect" : [ 156.0, 175.0, 24.0, 24.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 148.0, 7.0, 24.0, 24.0 ],
 					"style" : ""
@@ -358,7 +400,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 196.0, 130.0, 133.0, 22.0 ],
+					"patching_rect" : [ 196.0, 175.0, 133.0, 22.0 ],
 					"style" : "",
 					"text" : "j.remote motion/enable"
 				}
@@ -631,25 +673,11 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-39",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 19.0, 222.0, 135.0, 20.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 11.0, 68.0, 135.0, 20.0 ],
-					"style" : "",
-					"text" : "Laser drawing ON/OFF"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-38",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 29.0, 177.0, 125.0, 20.0 ],
+					"patching_rect" : [ 29.0, 222.0, 125.0, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 21.0, 42.0, 125.0, 20.0 ],
 					"style" : "",
@@ -688,35 +716,6 @@
 			}
 , 			{
 				"box" : 				{
-					"annotation" : "start/stop drawing",
-					"id" : "obj-17",
-					"maxclass" : "toggle",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 156.0, 220.0, 24.0, 24.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 148.0, 66.0, 24.0, 24.0 ],
-					"style" : ""
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-18",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 4,
-					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 196.0, 220.0, 139.0, 22.0 ],
-					"style" : "",
-					"text" : "j.remote drawing/enable"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"annotation" : "start/stop tracking",
 					"id" : "obj-16",
 					"maxclass" : "toggle",
@@ -724,7 +723,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 156.0, 175.0, 24.0, 24.0 ],
+					"patching_rect" : [ 156.0, 220.0, 24.0, 24.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 148.0, 40.0, 24.0, 24.0 ],
 					"style" : ""
@@ -738,7 +737,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 196.0, 175.0, 139.0, 22.0 ],
+					"patching_rect" : [ 196.0, 220.0, 139.0, 22.0 ],
 					"style" : "",
 					"text" : "j.remote tracking/enable"
 				}
@@ -792,6 +791,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-45", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-13", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-19", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -805,24 +813,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-16", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-18", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-17", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-17", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-18", 0 ]
 				}
 
 			}
@@ -1053,7 +1043,21 @@
 				}
 
 			}
- ]
+ ],
+		"dependency_cache" : [ 			{
+				"name" : "j.remote.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "j.view.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "j.receive.mxo",
+				"type" : "iLaX"
+			}
+ ],
+		"embedsnapshot" : 0
 	}
 
 }
