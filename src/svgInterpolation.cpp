@@ -19,17 +19,18 @@ void svgInterpolation::setup(){
     // if ( i == 0 ) cout << "load : " << dir.getPath(i) << endl;
     ofxSVG svg;
     svg.load(dir.getPath(i));
+    ofLogNotice("svgInterpolation") << "loading : " << dir.getPath(i);
     ofPolyline myLine;
     ofVec2f ptMin = ofVec2f(1000.,1000.), ptMax = ofVec2f(-1000.,-1000.);
 
-    ofLogNotice("svgInterpolation") << "shape " << i << " has " << svg.getNumPath() << " paths";
+    ofLogVerbose("svgInterpolation") << "shape " << i << " has " << svg.getNumPath() << " paths";
 
   	for (int j = 0; j < svg.getNumPath(); j++){
   		ofPath p = svg.getPathAt(j);
   		// svg defaults to non zero winding which doesn't look so good as contours
   		p.setPolyWindingMode(OF_POLY_WINDING_ODD);
   		vector<ofPolyline>& lines = const_cast<vector<ofPolyline>&>(p.getOutline());
-      ofLogNotice("svgInterpolation") << "path " << j << " has " << lines.size() << " points";
+        ofLogVerbose("svgInterpolation") << "path " << j << " has " << lines.size() << " points";
 
   		for(int k=0;k<(int)lines.size();k++){
         lineSize = min(lineSize, (int) lines[k].size());
