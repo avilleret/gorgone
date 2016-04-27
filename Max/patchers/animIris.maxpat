@@ -438,11 +438,6 @@
 , 							{
 								"name" : "jpink",
 								"default" : 								{
-									"accentcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
-									"textcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
-									"elementcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
-									"bgcolor" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
-									"selectioncolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
 									"patchlinecolor" : [ 0.65, 0.65, 0.65, 1.0 ],
 									"clearcolor" : [ 0.113725, 0.607843, 0.607843, 1.0 ],
 									"bgfillcolor" : 									{
@@ -455,7 +450,12 @@
 										"autogradient" : 0
 									}
 ,
-									"color" : [ 0.619608, 0.0, 0.360784, 1.0 ]
+									"bgcolor" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+									"textcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+									"accentcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+									"elementcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+									"color" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+									"selectioncolor" : [ 0.619608, 0.0, 0.360784, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -520,7 +520,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 59.0, 104.0, 640.0, 480.0 ],
+						"rect" : [ 59.0, 104.0, 749.0, 621.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -548,6 +548,33 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-7",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 480.0, 142.0, 115.0, 20.0 ],
+									"presentation_rect" : [ 480.0, 141.0, 0.0, 0.0 ],
+									"style" : "",
+									"text" : "qu'interpole t on ?",
+									"textcolor" : [ 1.0, 0.0, 0.229991, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-4",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 165.0, 183.0, 115.0, 20.0 ],
+									"style" : "",
+									"text" : "que scale t on ?",
+									"textcolor" : [ 1.0, 0.0, 0.229991, 1.0 ]
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-28",
 									"maxclass" : "message",
@@ -684,7 +711,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 294.5, 155.0, 49.0, 22.0 ],
+									"patching_rect" : [ 333.0, 178.0, 49.0, 22.0 ],
 									"style" : "",
 									"text" : "size $1"
 								}
@@ -697,7 +724,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 294.5, 114.0, 137.0, 22.0 ],
+									"patching_rect" : [ 333.0, 137.0, 137.0, 22.0 ],
 									"style" : "",
 									"text" : "r image/interpol/number"
 								}

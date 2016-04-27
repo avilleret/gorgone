@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 669.0, 225.0, 977.0, 681.0 ],
+		"rect" : [ 186.0, 372.0, 977.0, 681.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,80 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-16",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 337.5, 478.0, 115.0, 33.0 ],
+					"presentation_rect" : [ 338.0, 479.5, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "on recommence le tracking?",
+					"textcolor" : [ 1.0, 0.0, 0.229991, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-15",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 816.5, 109.0, 193.0, 47.0 ],
+					"presentation_rect" : [ 816.5, 110.0, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "comprend pas \nà quoi çà sert???\net comment çà marche?",
+					"textcolor" : [ 1.0, 0.0, 0.229991, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"linecount" : 4,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 663.0, 447.5, 115.0, 60.0 ],
+					"presentation_rect" : [ 661.0, 444.5, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "a quoi çà sert?\npourquoi ne pas le mettre dans le return .?",
+					"textcolor" : [ 1.0, 0.0, 0.229991, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-11",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 523.5, 252.0, 193.0, 47.0 ],
+					"presentation_rect" : [ 827.0, 121.0, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "A mettre dans dessin?\nQuand le laser s'arrete t il à la fin  de la detection??",
+					"textcolor" : [ 1.0, 0.0, 0.229991, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 235.0, 324.0, 115.0, 20.0 ],
+					"presentation_rect" : [ 236.0, 324.0, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "Pourquoi return ???",
+					"textcolor" : [ 1.0, 0.0, 0.229991, 1.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-33",
 					"maxclass" : "newobj",
@@ -182,7 +256,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 159.0, 415.0, 814.0, 585.0 ],
+						"rect" : [ 195.0, 148.0, 814.0, 585.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -210,6 +284,35 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-7",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 509.5, 245.5, 121.0, 33.0 ],
+									"presentation_rect" : [ 511.0, 247.0, 0.0, 0.0 ],
+									"style" : "",
+									"text" : "ou est le numéro du dessin N°2",
+									"textcolor" : [ 1.0, 0.0, 0.229991, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-5",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 234.0, 236.0, 121.0, 33.0 ],
+									"style" : "",
+									"text" : "ou est le numéro du dessin??",
+									"textcolor" : [ 1.0, 0.0, 0.229991, 1.0 ]
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-29",
 									"linecount" : 3,
@@ -938,7 +1041,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 374.0, 167.0, 546.0, 584.0 ],
+						"rect" : [ 150.0, 167.0, 546.0, 584.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -966,6 +1069,20 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-11",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 107.0, 294.0, 115.0, 47.0 ],
+									"style" : "",
+									"text" : "puis on recommence ou on abandonne?",
+									"textcolor" : [ 1.0, 0.0, 0.229991, 1.0 ]
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-12",
 									"linecount" : 3,
@@ -1409,6 +1526,20 @@
 						"subpatcher_template" : "",
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-11",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 20.5, 44.0, 115.0, 33.0 ],
+									"style" : "",
+									"text" : "on detect la pupille \navant l'iris non?",
+									"textcolor" : [ 1.0, 0.0, 0.229991, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-7",
 									"linecount" : 3,
 									"maxclass" : "comment",
@@ -1417,18 +1548,6 @@
 									"patching_rect" : [ 225.0, 320.0, 150.0, 47.0 ],
 									"style" : "",
 									"text" : "on fait un bip quand on détecte un iris et une pupille"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-4",
-									"maxclass" : "button",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 267.0, 32.0, 24.0, 24.0 ],
-									"style" : ""
 								}
 
 							}
@@ -2083,24 +2202,6 @@
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-3", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-21", 0 ],
-									"disabled" : 0,
-									"hidden" : 0,
-									"source" : [ "obj-4", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-5", 0 ],
-									"disabled" : 0,
-									"hidden" : 0,
-									"source" : [ "obj-4", 0 ]
 								}
 
 							}
