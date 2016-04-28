@@ -6,7 +6,7 @@ int accum = 0;
 void gorgone::setup()
 {
   ofSetLogLevel(OF_LOG_NOTICE);
-  masterIp = "Mac-Pro-de-10-52.local";
+  masterIp = "gorgone-master.local";
   appName = "gorgone-1";
   parseCmdLineOptions();
   vidGrabber.setup(filename);
