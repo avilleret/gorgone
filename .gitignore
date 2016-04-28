@@ -10,3 +10,7 @@ bin/*
 *.bmp
 *.mov
 *.avi
+*.aif
+*.wav
+*.aiff
+*.h264
