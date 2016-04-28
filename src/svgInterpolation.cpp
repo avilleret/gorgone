@@ -25,14 +25,13 @@ void svgInterpolation::setup(){
 
     ofLogVerbose("svgInterpolation") << "shape " << i << " has " << svg.getNumPath() << " paths";
 
-  	for (int j = 0; j < svg.getNumPath(); j++){
-  		ofPath p = svg.getPathAt(j);
-  		// svg defaults to non zero winding which doesn't look so good as contours
-  		p.setPolyWindingMode(OF_POLY_WINDING_ODD);
-  		vector<ofPolyline>& lines = const_cast<vector<ofPolyline>&>(p.getOutline());
-        ofLogVerbose("svgInterpolation") << "path " << j << " has " << lines.size() << " points";
+    for (int j = 0; j < svg.getNumPath(); j++){
+      ofPath p = svg.getPathAt(j);
+      // svg defaults to non zero winding which doesn't look so good as contours
+      p.setPolyWindingMode(OF_POLY_WINDING_ODD);
+      vector<ofPolyline>& lines = const_cast<vector<ofPolyline>&>(p.getOutline());
 
-  		for(int k=0;k<(int)lines.size();k++){
+      for(int k=0;k<(int)lines.size();k++){
         lineSize = min(lineSize, (int) lines[k].size());
         ofPolyline line=lines[k];
         for(int n=0;n<line.size();n++){
@@ -48,9 +47,9 @@ void svgInterpolation::setup(){
           myLine.addVertex(pt);
         }
       }
-  	}
+    }
     myLine.close();
-    lines.push_back(myLine.getResampledByCount(shapeSize));
+    lines.push_back(myLine);
     ofLogVerbose("svgInterpolation") << "min : " << ptMin.x << " " << ptMin.y;
     ofLogVerbose("svgInterpolation") << "max : " << ptMax.x << " " << ptMax.y;
   }
@@ -83,7 +82,6 @@ void svgInterpolation::setup(){
           ptMax.y = std::max(pt.y, ptMax.y);
 
           myLine.addVertex(pt);
-	        ofLogVerbose("svgInterpolation") << n << " : " << pt.x << ";" << pt.y << endl;
         }
       }
       ofLogVerbose("svgInterpolation") << "normalize shape" << endl;
@@ -114,11 +112,11 @@ bool svgInterpolation::updateBool(){
 //--------------------------------------------------------------
 void svgInterpolation::draw(){
 
-	ofDrawBitmapString(ofToString(ofGetFrameRate()),20,20);
-	ofPushMatrix();
+  ofDrawBitmapString(ofToString(ofGetFrameRate()),20,20);
+  ofPushMatrix();
   ofTranslate(ofGetWidth() / 2., ofGetHeight() / 2.);
-	ofScale(ofGetHeight() / 3., ofGetHeight() / 3., 1.);
-	ofNoFill();
+  ofScale(ofGetHeight() / 3., ofGetHeight() / 3., 1.);
+  ofNoFill();
 
   ofBeginShape();
   for (int j = 0; j < interpolatedLine.size(); j++){
@@ -127,7 +125,7 @@ void svgInterpolation::draw(){
   if ( interpolatedLine.size() ) ofVertex(interpolatedLine[0]);
   ofEndShape();
 
-	ofPopMatrix();
+  ofPopMatrix();
 }
 
 bool svgInterpolation::multiInterpolation(){
