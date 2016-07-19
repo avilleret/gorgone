@@ -38,14 +38,27 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 3,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "" ],
+					"patching_rect" : [ 120.0, 412.0, 53.0, 22.0 ],
+					"style" : "",
+					"text" : "buddy 3"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-33",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 451.0, 332.0, 225.0, 22.0 ],
+					"patching_rect" : [ 451.0, 332.0, 248.0, 22.0 ],
 					"style" : "",
-					"text" : "sprintf symout %s/../../start-pd.command"
+					"text" : "sprintf symout %s/../../start-pd-Gui.command"
 				}
 
 			}
@@ -96,7 +109,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 207.0, 256.489746, 30.0, 30.0 ],
+					"patching_rect" : [ 120.0, 448.0, 30.0, 30.0 ],
 					"style" : ""
 				}
 
@@ -120,7 +133,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 265.0, 286.0, 53.0, 22.0 ],
+					"patching_rect" : [ 265.0, 256.0, 53.0, 22.0 ],
 					"style" : "",
 					"text" : "connect"
 				}
@@ -133,7 +146,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 265.0, 248.0, 63.0, 22.0 ],
+					"patching_rect" : [ 265.0, 218.0, 63.0, 22.0 ],
 					"style" : "",
 					"text" : "del 15000"
 				}
@@ -183,7 +196,8 @@
 					"id" : "obj-5",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
@@ -222,6 +236,56 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-6",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "bang", "bang" ],
+									"patching_rect" : [ 71.0, 149.0, 34.0, 22.0 ],
+									"style" : "",
+									"text" : "t b b"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-1",
+									"maxclass" : "outlet",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 71.0, 484.0, 30.0, 30.0 ],
+									"style" : ""
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-21",
+									"maxclass" : "button",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 137.0, -16.0, 24.0, 24.0 ],
+									"style" : ""
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-18",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 76.0, -16.0, 53.0, 22.0 ],
+									"style" : "",
+									"text" : "connect"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-14",
 									"maxclass" : "newobj",
@@ -483,6 +547,24 @@
 									"destination" : [ "obj-14", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"source" : [ "obj-18", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-14", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-21", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-14", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
 									"source" : [ "obj-4", 0 ]
 								}
 
@@ -512,6 +594,24 @@
 									"hidden" : 0,
 									"midpoints" : [ 392.5, 277.489746, 136.5, 277.489746 ],
 									"source" : [ "obj-5", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-1", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-6", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-15", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-6", 1 ]
 								}
 
 							}
@@ -553,7 +653,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-15", 0 ],
+									"destination" : [ "obj-6", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-9", 0 ]
@@ -582,7 +682,8 @@
 					"id" : "obj-3",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
@@ -593,7 +694,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 59.0, 104.0, 1021.0, 631.0 ],
+						"rect" : [ 134.0, 171.0, 1084.0, 556.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -622,12 +723,62 @@
 						"subpatcher_template" : "",
 						"boxes" : [ 							{
 								"box" : 								{
+									"comment" : "",
+									"id" : "obj-4",
+									"maxclass" : "outlet",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 43.0, 312.0, 30.0, 30.0 ],
+									"style" : ""
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-1",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "bang", "bang" ],
+									"patching_rect" : [ 43.0, 183.0, 34.0, 22.0 ],
+									"style" : "",
+									"text" : "t b b"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-21",
+									"maxclass" : "button",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 129.0, 18.0, 24.0, 24.0 ],
+									"style" : ""
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-18",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 68.0, 18.0, 53.0, 22.0 ],
+									"style" : "",
+									"text" : "connect"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-14",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 22.0, 24.0, 83.0, 22.0 ],
+									"patching_rect" : [ 22.0, 54.0, 83.0, 22.0 ],
 									"style" : "",
 									"text" : "route connect"
 								}
@@ -640,7 +791,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 112.0, 118.0, 57.0, 22.0 ],
+									"patching_rect" : [ 112.0, 148.0, 57.0, 22.0 ],
 									"style" : "",
 									"text" : "del 1000"
 								}
@@ -653,7 +804,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "bang", "bang" ],
-									"patching_rect" : [ 112.0, 71.0, 34.0, 22.0 ],
+									"patching_rect" : [ 112.0, 101.0, 34.0, 22.0 ],
 									"style" : "",
 									"text" : "t b b"
 								}
@@ -665,7 +816,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 651.0, 358.0, 74.0, 22.0 ],
+									"patching_rect" : [ 651.0, 388.0, 74.0, 22.0 ],
 									"style" : "",
 									"text" : "print laser-2"
 								}
@@ -677,7 +828,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 127.0, 410.0, 92.0, 22.0 ],
+									"patching_rect" : [ 127.0, 440.0, 92.0, 22.0 ],
 									"style" : "",
 									"text" : "print gorgone-2"
 								}
@@ -690,7 +841,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 43.0, 188.0, 24.0, 24.0 ],
+									"patching_rect" : [ 58.0, 223.0, 24.0, 24.0 ],
 									"style" : ""
 								}
 
@@ -702,7 +853,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 536.0, 248.489746, 107.0, 22.0 ],
+									"patching_rect" : [ 536.0, 278.489746, 107.0, 22.0 ],
 									"style" : "",
 									"text" : "namespace/mirror"
 								}
@@ -716,7 +867,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 651.0, 157.489746, 361.0, 35.0 ],
+									"patching_rect" : [ 651.0, 187.489746, 361.0, 35.0 ],
 									"style" : "",
 									"text" : "protocol/setup ip gorgone-2.local, protocol/setup port 9999, name laser-2"
 								}
@@ -729,7 +880,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 651.0, 322.489746, 135.0, 22.0 ],
+									"patching_rect" : [ 651.0, 352.489746, 135.0, 22.0 ],
 									"style" : "",
 									"text" : "j.modular laser-2 Minuit"
 								}
@@ -742,7 +893,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 403.5, 520.489746, 218.0, 22.0 ],
+									"patching_rect" : [ 403.5, 445.489746, 218.0, 22.0 ],
 									"style" : ""
 								}
 
@@ -754,7 +905,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 403.5, 475.489746, 151.0, 22.0 ],
+									"patching_rect" : [ 403.5, 400.489746, 151.0, 22.0 ],
 									"style" : "",
 									"text" : "j.receive gorgone-2:/return"
 								}
@@ -767,7 +918,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 383.0, 248.489746, 107.0, 22.0 ],
+									"patching_rect" : [ 383.0, 278.489746, 107.0, 22.0 ],
 									"style" : "",
 									"text" : "namespace/mirror"
 								}
@@ -780,7 +931,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 127.0, 157.489746, 415.0, 22.0 ],
+									"patching_rect" : [ 127.0, 187.489746, 415.0, 22.0 ],
 									"style" : "",
 									"text" : "protocol/setup ip gorgone-2.local, protocol/setup port 9998, name gorgone-2"
 								}
@@ -793,7 +944,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 127.0, 369.0, 153.0, 22.0 ],
+									"patching_rect" : [ 127.0, 399.0, 153.0, 22.0 ],
 									"style" : "",
 									"text" : "j.modular gorgone-2 Minuit"
 								}
@@ -807,7 +958,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 22.0, -16.0, 30.0, 30.0 ],
+									"patching_rect" : [ 22.0, 14.0, 30.0, 30.0 ],
 									"style" : ""
 								}
 
@@ -815,10 +966,28 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
+									"destination" : [ "obj-15", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-1", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-4", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-1", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-13", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 545.5, 277.489746, 660.5, 277.489746 ],
+									"midpoints" : [ 545.5, 307.489746, 660.5, 307.489746 ],
 									"source" : [ "obj-10", 0 ]
 								}
 
@@ -882,6 +1051,24 @@
 									"destination" : [ "obj-14", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"source" : [ "obj-18", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-14", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-21", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-14", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
 									"source" : [ "obj-22", 0 ]
 								}
 
@@ -909,7 +1096,7 @@
 									"destination" : [ "obj-44", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 392.5, 277.489746, 136.5, 277.489746 ],
+									"midpoints" : [ 392.5, 307.489746, 136.5, 307.489746 ],
 									"source" : [ "obj-5", 0 ]
 								}
 
@@ -952,7 +1139,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-15", 0 ],
+									"destination" : [ "obj-1", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-9", 0 ]
@@ -993,7 +1180,8 @@
 					"id" : "obj-24",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
@@ -1033,12 +1221,62 @@
 						"subpatcher_template" : "",
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-17",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "bang", "bang" ],
+									"patching_rect" : [ 25.0, 200.489746, 34.0, 22.0 ],
+									"style" : "",
+									"text" : "t b b"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-16",
+									"maxclass" : "outlet",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 54.0, 530.0, 30.0, 30.0 ],
+									"style" : ""
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-1",
+									"maxclass" : "button",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 127.0, 27.0, 24.0, 24.0 ],
+									"style" : ""
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-6",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 66.0, 27.0, 53.0, 22.0 ],
+									"style" : "",
+									"text" : "connect"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-14",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 22.0, 24.0, 83.0, 22.0 ],
+									"patching_rect" : [ 20.0, 67.0, 83.0, 22.0 ],
 									"style" : "",
 									"text" : "route connect"
 								}
@@ -1052,7 +1290,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 22.0, -16.0, 30.0, 30.0 ],
+									"patching_rect" : [ 20.0, 12.0, 30.0, 30.0 ],
 									"style" : ""
 								}
 
@@ -1064,7 +1302,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 112.0, 118.0, 57.0, 22.0 ],
+									"patching_rect" : [ 110.0, 161.0, 57.0, 22.0 ],
 									"style" : "",
 									"text" : "del 1000"
 								}
@@ -1077,7 +1315,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "bang", "bang" ],
-									"patching_rect" : [ 112.0, 71.0, 34.0, 22.0 ],
+									"patching_rect" : [ 110.0, 114.0, 34.0, 22.0 ],
 									"style" : "",
 									"text" : "t b b"
 								}
@@ -1089,7 +1327,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 651.0, 358.0, 74.0, 22.0 ],
+									"patching_rect" : [ 649.0, 401.0, 74.0, 22.0 ],
 									"style" : "",
 									"text" : "print laser-1"
 								}
@@ -1101,7 +1339,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 127.0, 410.0, 92.0, 22.0 ],
+									"patching_rect" : [ 125.0, 453.0, 92.0, 22.0 ],
 									"style" : "",
 									"text" : "print gorgone-1"
 								}
@@ -1114,7 +1352,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 688.0, 259.989746, 378.0, 22.0 ],
+									"patching_rect" : [ 686.0, 302.989746, 378.0, 22.0 ],
 									"style" : "",
 									"text" : "protocol/setup ip 192.168.0.9, protocol/setup port 9999, name laser-1"
 								}
@@ -1127,7 +1365,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 174.5, 322.489746, 396.0, 22.0 ],
+									"patching_rect" : [ 172.5, 365.489746, 396.0, 22.0 ],
 									"style" : "",
 									"text" : "protocol/setup ip 192.168.0.9, protocol/setup port 9998, name gorgone-1"
 								}
@@ -1140,7 +1378,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 673.0, 229.989746, 378.0, 22.0 ],
+									"patching_rect" : [ 671.0, 272.989746, 378.0, 22.0 ],
 									"style" : "",
 									"text" : "protocol/setup ip 192.168.2.2, protocol/setup port 9999, name laser-1"
 								}
@@ -1153,7 +1391,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 158.5, 292.489746, 396.0, 22.0 ],
+									"patching_rect" : [ 156.5, 335.489746, 396.0, 22.0 ],
 									"style" : "",
 									"text" : "protocol/setup ip 192.168.2.2, protocol/setup port 9998, name gorgone-1"
 								}
@@ -1166,7 +1404,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 43.0, 188.0, 24.0, 24.0 ],
+									"patching_rect" : [ 40.0, 234.0, 27.0, 27.0 ],
 									"style" : ""
 								}
 
@@ -1178,7 +1416,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 536.0, 248.489746, 107.0, 22.0 ],
+									"patching_rect" : [ 534.0, 291.489746, 107.0, 22.0 ],
 									"style" : "",
 									"text" : "namespace/mirror"
 								}
@@ -1192,7 +1430,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 651.0, 157.489746, 216.0, 35.0 ],
+									"patching_rect" : [ 649.0, 200.489746, 216.0, 35.0 ],
 									"style" : "",
 									"text" : "protocol/setup ip gorgone-1.local, protocol/setup port 9999, name laser-1"
 								}
@@ -1205,7 +1443,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 651.0, 322.489746, 135.0, 22.0 ],
+									"patching_rect" : [ 649.0, 365.489746, 135.0, 22.0 ],
 									"style" : "",
 									"text" : "j.modular laser-1 Minuit"
 								}
@@ -1218,7 +1456,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 403.5, 520.489746, 218.0, 22.0 ],
+									"patching_rect" : [ 401.5, 563.489746, 218.0, 22.0 ],
 									"style" : ""
 								}
 
@@ -1230,7 +1468,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 403.5, 475.489746, 151.0, 22.0 ],
+									"patching_rect" : [ 401.5, 518.489746, 151.0, 22.0 ],
 									"style" : "",
 									"text" : "j.receive gorgone-1:/return"
 								}
@@ -1243,7 +1481,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 383.0, 248.489746, 107.0, 22.0 ],
+									"patching_rect" : [ 381.0, 291.489746, 107.0, 22.0 ],
 									"style" : "",
 									"text" : "namespace/mirror"
 								}
@@ -1257,7 +1495,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 127.0, 157.489746, 238.0, 35.0 ],
+									"patching_rect" : [ 125.0, 200.489746, 238.0, 35.0 ],
 									"style" : "",
 									"text" : "protocol/setup ip gorgone-1.local, protocol/setup port 9998, name gorgone-1"
 								}
@@ -1270,7 +1508,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 127.0, 369.0, 153.0, 22.0 ],
+									"patching_rect" : [ 125.0, 412.0, 153.0, 22.0 ],
 									"style" : "",
 									"text" : "j.modular gorgone-1 Minuit"
 								}
@@ -1279,10 +1517,19 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
+									"destination" : [ "obj-14", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-1", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-13", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 545.5, 277.489746, 660.5, 277.489746 ],
+									"midpoints" : [ 543.5, 320.489746, 658.5, 320.489746 ],
 									"source" : [ "obj-10", 0 ]
 								}
 
@@ -1338,6 +1585,24 @@
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-15", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-15", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-17", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-16", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-17", 0 ]
 								}
 
 							}
@@ -1409,8 +1674,17 @@
 									"destination" : [ "obj-44", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 392.5, 277.489746, 136.5, 277.489746 ],
+									"midpoints" : [ 390.5, 320.489746, 134.5, 320.489746 ],
 									"source" : [ "obj-5", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-14", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-6", 0 ]
 								}
 
 							}
@@ -1452,7 +1726,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-15", 0 ],
+									"destination" : [ "obj-17", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-9", 0 ]
@@ -1668,15 +1942,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-15", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-11", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-19", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -1767,6 +2032,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-24", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-33", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -1780,6 +2054,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-26", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-3", 0 ]
 				}
 
 			}
@@ -1852,6 +2135,24 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 2 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-15", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-8", 0 ]
 				}
 
 			}
