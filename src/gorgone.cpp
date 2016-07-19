@@ -85,8 +85,9 @@ void gorgone::update()
     jamoma.mTrackingIrisBlobAreaReturn.set("value",w);
   }
 
-  if (bComputeCode ) {
+  if ( bComputeCode ) {
     irisDetector.computeIrisCode();
+    bComputeCode = false;
   }
 }
 

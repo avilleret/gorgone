@@ -49,6 +49,7 @@ bool gorgoneEyeDetection::updateBool(Mat& img){
   ofLogVerbose("gorgoneEyeDetection") << "---------- UPDATE ----------" << endl;
   if(!bSetup) setup(img);
 
+  // find eye in image
   eyeFinder.update(img);
   jamoma->mEyeDetectedReturn.set("value", eyeFinder.size());
   ofLogVerbose("gorgoneEyeDetection") << "found eyes : " << eyeFinder.size() << endl;
@@ -61,14 +62,19 @@ bool gorgoneEyeDetection::updateBool(Mat& img){
 
   ofRectangle rect = eyeFinder.getObject(0);
   double marging = paramMarging / 100.;
+  // ofRectangle and CV don't use same coordinate system (and it sucks)
+  // so we need some preprocessing...
   rect.x -= rect.width * marging;
   rect.y -= rect.height * marging;
+  // OK get a bigger area
   rect.width *= 1 + 2 * marging;
   rect.height *= 1 + 2 * marging;
   try {
     Rect pupilRect;
+    // pupil is assume to be centered inside eye submat
     pupilRect.x = rect.width*0.05;
     pupilRect.y = rect.height*0.05;
+    // reduce the area in which we search a circle
     pupilRect.width = rect.width * 0.9;
     pupilRect.height = rect.height * 0.9;
     subMat = img(toCv(rect));
@@ -96,10 +102,11 @@ bool gorgoneEyeDetection::updateBool(Mat& img){
     return false;
   }
   bool _pupil = findPupil(subMat, iris, pupil);
+  bestEye = subMat.clone();
+  if (bestEye.total() < 1) return false;
   jamoma->mPupilDetectedReturn.set("value", _pupil);
   if (!_pupil) return false;
 
-  bestEye = subMat.clone();
   bestIris = iris;
   bestPupil = pupil;
   bestScore = score;
