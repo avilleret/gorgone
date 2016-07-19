@@ -328,9 +328,9 @@ Masek::IMAGE* gorgoneEyeDetection::findEyelid(Mat& img, const Vec3f& pupil, cons
   return noiseImage;
 }
 
-void gorgoneEyeDetection::threadedFunction()
+void gorgoneEyeDetection::computeIrisCode()
 {
-  cout << "gorgoneEyedection::threadedFunction start" << endl;
+  cout << "gorgoneEyedection::computeIrisCode start" << endl;
   if ( bestEye.total() < 1 ) return;
   noise  = findEyelid(bestEye,  bestPupil,  bestIris);
 
@@ -338,7 +338,7 @@ void gorgoneEyeDetection::threadedFunction()
 
   freeMasekImage(noise);
 
-  cout << "gorgoneEyedection::threadedFunction : code dimension : " << codeMat.cols << "x" << codeMat.rows << endl;
+  cout << "gorgoneEyedection::computeIrisCode : code dimension : " << codeMat.cols << "x" << codeMat.rows << endl;
 
   cv::Mat blurredMat;
   ofxCv::blur(codeMat,blurredMat, 2);
