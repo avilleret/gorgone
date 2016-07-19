@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofThread.h"
 #include "ofxCv.h"
 #include "ofxGui.h"
 #include "Masek.h"
@@ -11,7 +10,7 @@
 using namespace cv;
 using namespace ofxCv;
 
-class gorgoneEyeDetection : public ofThread {
+class gorgoneEyeDetection {
 public:
   template <class T>
   void computeScore(T& img) {
@@ -27,12 +26,8 @@ public:
   Masek::IMAGE* findEyelid(Mat& img, const Vec3f& pupil, const Vec3f& iris);
   void encodeIris(Masek::IMAGE* noiseImage, const Vec3f iris, const Vec3f pupil, Mat& code);
   double computeFocus(cv::Mat& mat);
-  void threadedFunction();
+  void computeIrisCode();
   void setJamomaRef(ofxJamoma * j){ jamoma=j; }
-
-  void start(){ startThread(); }
-  void stop (){ stopThread(); }
-
 
   ofxPanel gui;
   ofParameter<int> param1, param2, paramThresh, paramMarging;
