@@ -7,7 +7,7 @@ void svgInterpolation::setup(){
 
   ofDirectory dir;
 
-  shapeSize = 100;
+  shapeSize = 500;
 
   ofLogNotice("svgInterpolation") << "load SVG from formes_interpol";
   dir.listDir("formes_interpol/");
@@ -34,9 +34,9 @@ void svgInterpolation::setup(){
       for(int k=0;k<(int)lines.size();k++){
         lineSize = min(lineSize, (int) lines[k].size());
         ofPolyline line=lines[k];
-        for(int m=1-line.size();m<line.size();m++){
+        for(int n=0;n<line.size();n++){
 
-          ofVec3f pt = line[abs(m)];
+          ofVec3f pt = line[n];
           pt/=40;
           pt-=1.;
           ptMin.x = std::min(pt.x, ptMin.x);
