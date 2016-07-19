@@ -22,7 +22,7 @@ void svgInterpolation::setup(){
     ofPolyline myLine;
     ofVec2f ptMin = ofVec2f(1000.,1000.), ptMax = ofVec2f(-1000.,-1000.);
 
-    ofLogVerbose("svgInterpolation") << "shape " << i << " has " << svg.getNumPath() << " paths";
+    ofLogNotice("svgInterpolation") << "shape " << i << " has " << svg.getNumPath() << " paths";
 
     for (int j = 0; j < svg.getNumPath(); j++){
       ofPath p = svg.getPathAt(j);
