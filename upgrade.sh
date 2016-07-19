@@ -1,4 +1,7 @@
 sudo mount -o remount,rw /
+sudo service of-daemon stop 
+sudo killell pd 
+
 cd ${0%/*}
 git pull
 git submodule update --init
