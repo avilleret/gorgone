@@ -31,12 +31,13 @@ void svgInterpolation::setup(){
       p.setPolyWindingMode(OF_POLY_WINDING_ODD);
       vector<ofPolyline>& lines = const_cast<vector<ofPolyline>&>(p.getOutline());
 
-      for(int k=0;k<(int)lines.size();k++){
-        lineSize = min(lineSize, (int) lines[k].size());
-        ofPolyline line=lines[k];
-        for(int m=1-line.size();m<line.size();m++){
+      for(int k= -(int)lines.size() + 1 ; k<(int)lines.size() ; k++){
+        int l=abs(k);
+        lineSize = min(lineSize, (int) (2 * lines[l].size() - 1));
+        ofPolyline line=lines[l];
+        for(int n=0;n<line.size();n++){
 
-          ofVec3f pt = line[abs(m)];
+          ofVec3f pt = line[n];
           pt/=40;
           pt-=1.;
           ptMin.x = std::min(pt.x, ptMin.x);
