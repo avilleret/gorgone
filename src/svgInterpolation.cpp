@@ -25,16 +25,15 @@ void svgInterpolation::setup(){
 
     ofLogNotice("svgInterpolation") << "shape " << i << " has " << svg.getNumPath() << " paths";
 
-    for (int j = 0; j < svg.getNumPath(); j++){
-      ofPath p = svg.getPathAt(j);
+    for (int j = -svg.getNumPath()+1; j < svg.getNumPath(); j++){
+      ofPath p = svg.getPathAt(abs(j));
       // svg defaults to non zero winding which doesn't look so good as contours
       p.setPolyWindingMode(OF_POLY_WINDING_ODD);
       vector<ofPolyline>& lines = const_cast<vector<ofPolyline>&>(p.getOutline());
 
-      for(int k= -(int)lines.size() + 1 ; k<(int)lines.size() ; k++){
-        int l=abs(k);
-        lineSize = min(lineSize, (int) (2 * lines[l].size() - 1));
-        ofPolyline line=lines[l];
+      for(int k=0;k<(int)lines.size();k++){
+        lineSize = min(lineSize, (int) lines[k].size());
+        ofPolyline line=lines[k];
         for(int n=0;n<line.size();n++){
 
           ofVec3f pt = line[n];
