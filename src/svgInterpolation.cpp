@@ -7,7 +7,7 @@ void svgInterpolation::setup(){
 
   ofDirectory dir;
 
-  shapeSize = 100;
+  shapeSize = 500;
 
   ofLogNotice("svgInterpolation") << "load SVG from formes_interpol";
   dir.listDir("formes_interpol/");
@@ -25,8 +25,8 @@ void svgInterpolation::setup(){
 
     ofLogNotice("svgInterpolation") << "shape " << i << " has " << svg.getNumPath() << " paths";
 
-    for (int j = -svg.getNumPath()+1; j < svg.getNumPath(); j++){
-      ofPath p = svg.getPathAt(abs(j));
+    for (int j = 0; j < svg.getNumPath(); j++){
+      ofPath p = svg.getPathAt(j);
       // svg defaults to non zero winding which doesn't look so good as contours
       p.setPolyWindingMode(OF_POLY_WINDING_ODD);
       vector<ofPolyline>& lines = const_cast<vector<ofPolyline>&>(p.getOutline());
