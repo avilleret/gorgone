@@ -6,6 +6,6 @@ cd ${0%/*}
 git pull
 git submodule update --init
 cd build
-ninja
+ninja -j 3
 sudo reboot
 
