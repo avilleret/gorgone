@@ -17,7 +17,7 @@ public:
     vector<ofPolyline> lines, static_lines;
     vector<float> coeff; // interpolation coefficient
     ofPolyline interpolatedLine; // forme interpolée
-    int selectedId, shapeSize;
+    int lineSize, selectedId, shapeSize;
 
     bool dirtyFlag, dirtyStaticFlag;
 private:
