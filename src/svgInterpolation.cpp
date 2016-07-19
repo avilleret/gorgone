@@ -13,7 +13,6 @@ void svgInterpolation::setup(){
   dir.listDir("formes_interpol/");
   dir.sort(); // in linux the file system doesn't return file lists ordered in alphabetical order
   ofLogNotice("svgInterpolation") << "found " << (int)dir.size() << " images to load.";
-  lineSize = 10000;
 
   for(int i = 0; i < (int)dir.size(); i++){
     // if ( i == 0 ) cout << "load : " << dir.getPath(i) << endl;
@@ -32,7 +31,6 @@ void svgInterpolation::setup(){
       vector<ofPolyline>& lines = const_cast<vector<ofPolyline>&>(p.getOutline());
 
       for(int k=0;k<(int)lines.size();k++){
-        lineSize = min(lineSize, (int) lines[k].size());
         ofPolyline line=lines[k];
         for(int n=0;n<line.size();n++){
 
@@ -99,8 +97,6 @@ void svgInterpolation::setup(){
     static_lines.push_back(myLine);
     }
   }
-
-  ofLogNotice("svgInterpolation") << "lineSize : " << lineSize << endl;
 }
 
 
@@ -135,12 +131,11 @@ bool svgInterpolation::multiInterpolation(){
   interpolatedLine.clear();
 
 /*
-  ofLogNotice("svgInterpolation") << "lineSize : " << lineSize << endl;
   ofLogNotice("svgInterpolation") << "nombre de formes chargées : " << lines.size() << endl;
   ofLogNotice("svgInterpolation") << "taille de coeff : " << coeff.size() << endl;
 */
 
-  for (int i = 0; i < lineSize; i++){
+  for (int i = 0; i < shapeSize; i++){
     ofVec3f pt;
     for (int j = 0; j < min(lines.size(), coeff.size()); j++){
       pt += coeff[j] * lines[j][i]; // [0] assumes that there is only one line on each ofPolyLine
