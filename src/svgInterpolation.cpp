@@ -23,7 +23,7 @@ void svgInterpolation::setup(){
     ofPolyline myLine;
     ofVec2f ptMin = ofVec2f(1000.,1000.), ptMax = ofVec2f(-1000.,-1000.);
 
-    ofLogVerbose("svgInterpolation") << "shape " << i << " has " << svg.getNumPath() << " paths";
+    ofLogNotice("svgInterpolation") << "shape " << i << " has " << svg.getNumPath() << " paths";
 
     for (int j = 0; j < svg.getNumPath(); j++){
       ofPath p = svg.getPathAt(j);
@@ -48,8 +48,8 @@ void svgInterpolation::setup(){
         }
       }
     }
-    myLine.close();
-    lines.push_back(myLine);
+    // myLine.close();
+    lines.push_back(myLine.getResampledByCount(shapeSize));
     ofLogVerbose("svgInterpolation") << "min : " << ptMin.x << " " << ptMin.y;
     ofLogVerbose("svgInterpolation") << "max : " << ptMax.x << " " << ptMax.y;
   }
@@ -95,8 +95,9 @@ void svgInterpolation::setup(){
       	pt/=scale;
       	ofLogVerbose("svgInterpolation") << pt.x << ";" << pt.y << endl;
       }
-    myLine.close();
-    static_lines.push_back(myLine);
+    // myLine.close();
+
+    static_lines.push_back(myLine.getResampledByCount(shapeSize));
     }
   }
 
@@ -177,7 +178,7 @@ bool svgInterpolation::multiInterpolation(){
     ofLogVerbose("svgInterpolation") << i++ << " : " << pt.x << " \t " << pt.y << endl;
   }
 
-  interpolatedLine = interpolatedLine.getResampledByCount(shapeSize);
+  // interpolatedLine = interpolatedLine.getResampledByCount(shapeSize);
   ofLogVerbose("svgInterpolation") << "interpolatedLine.size() : " << interpolatedLine.size() << endl;
 
   dirtyFlag=false;
@@ -190,7 +191,7 @@ bool svgInterpolation::draw_static(){
   if ( selectedId > (static_lines.size() - 1)) return false;
 
   interpolatedLine.clear();
-  interpolatedLine = static_lines[selectedId].getResampledByCount(shapeSize);
+  interpolatedLine = static_lines[selectedId];
 
   selectedId = -1;
   return true;
