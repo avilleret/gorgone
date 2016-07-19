@@ -4,9 +4,11 @@
 	 viewBox="22 180.9 640 480" style="enable-background:new 22 180.9 640 480;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:none;stroke:#3953A4;stroke-width:2.1071;stroke-miterlimit:10;}
-	.st1{fill:none;stroke:#3953A4;stroke-width:1.0793;stroke-miterlimit:10;}
 </style>
-<circle class="st0" cx="341.5" cy="435.8" r="92.5"/>
-<line class="st1" x1="341.5" y1="343.3" x2="341.5" y2="528.3"/>
-<line class="st1" x1="434" y1="435.8" x2="249" y2="435.8"/>
+<g>
+	<path class="st0" d="M422.5,449.8c0-51.1-41.4-92.5-92.5-92.5v92.5H422.5z"/>
+	<path class="st0" d="M330,357.3c-51.1,0-92.5,41.4-92.5,92.5H330V357.3z"/>
+	<path class="st0" d="M237.5,449.8c0,51.1,41.4,92.5,92.5,92.5v-92.5H237.5z"/>
+	<path class="st0" d="M330,449.8v92.5c51.1,0,92.5-41.4,92.5-92.5H330z"/>
+</g>
 </svg>

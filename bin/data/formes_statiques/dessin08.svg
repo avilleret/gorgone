@@ -4,8 +4,7 @@
 	 viewBox="22 180.9 640 480" style="enable-background:new 22 180.9 640 480;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:none;stroke:#3953A4;stroke-width:2.1071;stroke-miterlimit:10;}
-	.st1{fill:none;stroke:#3953A4;stroke-width:0.9975;stroke-miterlimit:10;}
 </style>
-<polygon class="st0" points="341.4,508.3 250.1,508.3 295.7,429.3 341.4,350.3 387,429.3 432.6,508.3 "/>
-<line class="st1" x1="341" y1="350.3" x2="341" y2="508.3"/>
+<polygon class="st0" points="342,472.1 301,472.1 250.8,472.1 296.4,393.1 342,314.1 387.6,393.1 433.2,472.1 342,472.1 342,314.1 
+	"/>
 </svg>
