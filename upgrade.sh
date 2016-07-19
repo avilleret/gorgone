@@ -1,6 +1,6 @@
 sudo mount -o remount,rw /
 sudo service of-daemon stop 
-sudo killell pd 
+sudo killall pd 
 
 cd ${0%/*}
 git pull
