@@ -4,6 +4,9 @@
 	 viewBox="22 180.9 640 480" style="enable-background:new 22 180.9 640 480;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:none;stroke:#3953A4;stroke-width:1.4843;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#3953A4;stroke-miterlimit:10;}
 </style>
 <rect x="262.9" y="349.5" class="st0" width="158.8" height="158.8"/>
+<line class="st1" x1="262.9" y1="428.9" x2="421.7" y2="428.9"/>
+<line class="st1" x1="342" y1="349.5" x2="342" y2="508.3"/>
 </svg>
