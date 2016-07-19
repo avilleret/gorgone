@@ -1,5 +1,5 @@
 sudo mount -o remount,rw /
-sudo service of-daemon stop 
+sudo killall gorgone 
 sudo killall pd 
 
 cd ${0%/*}
