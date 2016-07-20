@@ -1,5 +1,12 @@
-#N canvas 188 213 450 300 10;
-#N canvas 0 51 450 300 localApp 0;
+#N canvas 170 291 450 300 10;
+#N canvas 0 132 450 300 localApp 0;
 #X restore 117 87 pd localApp;
-#N canvas 358 153 317 75 remoteApp 0;
+#N canvas 340 231 340 94 remoteApp 0;
 #X restore 117 64 pd remoteApp;
+#X msg 161 172 clear;
+#X obj 161 142 loadbang;
+#X obj 42 210 s pd-remoteApp;
+#X obj 161 210 s pd-localApp;
+#X connect 2 0 4 0;
+#X connect 2 0 5 0;
+#X connect 3 0 2 0;
