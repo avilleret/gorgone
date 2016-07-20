@@ -1,9 +1,9 @@
-#N canvas 457 126 1211 921 10;
+#N canvas 454 124 1211 921 10;
 #X declare -lib Jamoma;
 #X declare -lib zexy;
 #X declare -path abs/;
 #X declare -path ilda;
-#N canvas 0 542 1265 459 Minuit 0;
+#N canvas 0 540 1265 459 Minuit 0;
 #X obj 219 74 loadbang;
 #X obj 219 124 t b b b;
 #X obj 238 100 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -26,11 +26,11 @@
 #X obj 799 84 list fromsymbol;
 #X obj 799 106 list split 8;
 #X obj 839 127 list tosymbol;
-#N canvas 373 163 317 75 remoteApp 0;
+#N canvas 370 161 317 75 remoteApp 0;
 #X restore 1089 45 pd remoteApp;
 #X floatatom 760 141 5 0 0 0 - - -, f 5;
 #X obj 541 237 s remoteApp;
-#N canvas 385 268 317 75 localApp 0;
+#N canvas 382 266 317 75 localApp 0;
 #X restore 1089 65 pd localApp;
 #X msg 751 164 gorgone-\$1;
 #X obj 751 189 print remoteAppName;
