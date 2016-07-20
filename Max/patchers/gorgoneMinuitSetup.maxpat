@@ -148,7 +148,7 @@
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 265.0, 218.0, 63.0, 22.0 ],
 					"style" : "",
-					"text" : "del 15000"
+					"text" : "del 20000"
 				}
 
 			}
