@@ -1,0 +1,5 @@
+#N canvas 188 213 450 300 10;
+#N canvas 0 51 450 300 localApp 0;
+#X restore 117 87 pd localApp;
+#N canvas 358 153 317 75 remoteApp 0;
+#X restore 117 64 pd remoteApp;
