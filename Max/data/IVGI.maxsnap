@@ -1,0 +1,23 @@
+{
+	"filetype" : "C74Snapshot",
+	"version" : 2,
+	"minorversion" : 0,
+	"name" : "IVGI",
+	"origin" : "IVGI.vst",
+	"type" : "VST",
+	"subtype" : "AudioEffect",
+	"embed" : 1,
+	"snapshot" : 	{
+		"pluginname" : "IVGI.vst",
+		"plugindisplayname" : "IVGI",
+		"pluginsavedname" : "IVGI",
+		"pluginsaveduniqueid" : 0,
+		"version" : 1,
+		"isbank" : 0,
+		"isbase64" : 1,
+		"sliderorder" : [ 0, 1, 2, 3, 4, 5, 6, 7 ],
+		"slidervisibility" : [ 1, 1, 1, 1, 1, 1, 1, 1 ],
+		"blob" : "88.CMlaKA....fQ3MzZ....AjjUGkD..bBc....HzB...................................vO.........7C...vO....+....7C..............."
+	}
+
+}
