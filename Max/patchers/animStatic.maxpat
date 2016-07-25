@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 618.0, 201.0, 628.0, 464.0 ],
+		"rect" : [ 618.0, 374.0, 628.0, 464.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -69,7 +69,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
+					"outlettype" : [ "int" ],
 					"patching_rect" : [ 174.0, 50.0, 30.0, 30.0 ],
 					"style" : ""
 				}
@@ -194,7 +194,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 258.0, 192.0, 370.0, 35.0 ],
 									"style" : "",
-									"text" : "0.474525 0.481727 0.493989 0.487534 0.503122 0.477398 0.474284 0.435113"
+									"text" : "0.524887 0.495437 0.483182 0.489412 0.477172 0.501237 0.570151 0.531606"
 								}
 
 							}
@@ -415,8 +415,8 @@
 										"followglobaltempo" : 0,
 										"formantcorrection" : 0,
 										"mode" : "basic",
-										"originallength" : [ 48000.007812, "ticks" ],
-										"originaltempo" : 120.000023,
+										"originallength" : [ 46003.207031, "ticks" ],
+										"originaltempo" : 120.000015,
 										"pitchcorrection" : 0,
 										"quality" : "basic",
 										"timestretch" : [ 0 ]
@@ -662,8 +662,12 @@
 , 							{
 								"name" : "jpink",
 								"default" : 								{
-									"patchlinecolor" : [ 0.65, 0.65, 0.65, 1.0 ],
+									"bgcolor" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+									"accentcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+									"elementcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
 									"color" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+									"selectioncolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+									"patchlinecolor" : [ 0.65, 0.65, 0.65, 1.0 ],
 									"clearcolor" : [ 0.113725, 0.607843, 0.607843, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "color",
@@ -675,11 +679,7 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
-									"accentcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
-									"elementcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
-									"textcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
-									"selectioncolor" : [ 0.619608, 0.0, 0.360784, 1.0 ]
+									"textcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -743,7 +743,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 149.0, 89.0, 967.0, 851.0 ],
+						"rect" : [ 229.0, 89.0, 967.0, 851.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -771,6 +771,18 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-40",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 193.0, 387.0, 150.0, 20.0 ],
+									"style" : "",
+									"text" : "x 3"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-81",
 									"maxclass" : "newobj",
@@ -2359,7 +2371,7 @@
 									"outlettype" : [ "int" ],
 									"patching_rect" : [ 152.0, 387.0, 29.5, 22.0 ],
 									"style" : "",
-									"text" : "* 3"
+									"text" : "* 1"
 								}
 
 							}
@@ -2806,8 +2818,12 @@
 , 											{
 												"name" : "jpink",
 												"default" : 												{
-													"patchlinecolor" : [ 0.65, 0.65, 0.65, 1.0 ],
+													"bgcolor" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+													"accentcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+													"elementcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
 													"color" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+													"selectioncolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+													"patchlinecolor" : [ 0.65, 0.65, 0.65, 1.0 ],
 													"clearcolor" : [ 0.113725, 0.607843, 0.607843, 1.0 ],
 													"bgfillcolor" : 													{
 														"type" : "color",
@@ -2819,11 +2835,7 @@
 														"autogradient" : 0
 													}
 ,
-													"bgcolor" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
-													"accentcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
-													"elementcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
-													"textcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
-													"selectioncolor" : [ 0.619608, 0.0, 0.360784, 1.0 ]
+													"textcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ]
 												}
 ,
 												"parentstyle" : "",
@@ -2957,9 +2969,9 @@
 									"numinlets" : 3,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 152.0, 421.0, 54.0, 22.0 ],
+									"patching_rect" : [ 152.0, 421.0, 49.0, 22.0 ],
 									"style" : "",
-									"text" : "clip 0 11"
+									"text" : "clip 0 2"
 								}
 
 							}
@@ -3023,7 +3035,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 470.0, 144.0, 432.0, 22.0 ],
 									"style" : "",
-									"text" : "0.474525 0.481727 0.493989 0.487534 0.503122 0.477398 0.474284 0.435113"
+									"text" : "0.524887 0.495437 0.483182 0.489412 0.477172 0.501237 0.570151 0.531606"
 								}
 
 							}
@@ -3221,7 +3233,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 152.0, 353.0, 100.0, 22.0 ],
 									"style" : "",
-									"text" : "zmap 0.4 0.6 0 3"
+									"text" : "zmap 0.4 0.6 0 2"
 								}
 
 							}
@@ -3922,8 +3934,12 @@
 , 							{
 								"name" : "jpink",
 								"default" : 								{
-									"patchlinecolor" : [ 0.65, 0.65, 0.65, 1.0 ],
+									"bgcolor" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+									"accentcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+									"elementcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
 									"color" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+									"selectioncolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+									"patchlinecolor" : [ 0.65, 0.65, 0.65, 1.0 ],
 									"clearcolor" : [ 0.113725, 0.607843, 0.607843, 1.0 ],
 									"bgfillcolor" : 									{
 										"type" : "color",
@@ -3935,11 +3951,7 @@
 										"autogradient" : 0
 									}
 ,
-									"bgcolor" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
-									"accentcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
-									"elementcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
-									"textcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
-									"selectioncolor" : [ 0.619608, 0.0, 0.360784, 1.0 ]
+									"textcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -4128,8 +4140,12 @@
 , 			{
 				"name" : "jpink",
 				"default" : 				{
-					"patchlinecolor" : [ 0.65, 0.65, 0.65, 1.0 ],
+					"bgcolor" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+					"accentcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+					"elementcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
 					"color" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+					"selectioncolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
+					"patchlinecolor" : [ 0.65, 0.65, 0.65, 1.0 ],
 					"clearcolor" : [ 0.113725, 0.607843, 0.607843, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "color",
@@ -4141,11 +4157,7 @@
 						"autogradient" : 0
 					}
 ,
-					"bgcolor" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
-					"accentcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
-					"elementcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
-					"textcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ],
-					"selectioncolor" : [ 0.619608, 0.0, 0.360784, 1.0 ]
+					"textcolor" : [ 0.619608, 0.0, 0.360784, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
