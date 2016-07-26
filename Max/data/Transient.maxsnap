@@ -1,0 +1,23 @@
+{
+	"filetype" : "C74Snapshot",
+	"version" : 2,
+	"minorversion" : 0,
+	"name" : "Transient",
+	"origin" : "Transient.vst",
+	"type" : "VST",
+	"subtype" : "AudioEffect",
+	"embed" : 1,
+	"snapshot" : 	{
+		"pluginname" : "Transient.vst",
+		"plugindisplayname" : "Transient",
+		"pluginsavedname" : "Transient",
+		"pluginsaveduniqueid" : 0,
+		"version" : 1,
+		"isbank" : 0,
+		"isbase64" : 1,
+		"sliderorder" : [ 0, 1, 2, 3 ],
+		"slidervisibility" : [ 1, 1, 1, 1 ],
+		"blob" : "72.CMlaKA....fQ3MzZ....APkbg4F..bBD....DTTavQWd..............................vO....+.........vO.B.."
+	}
+
+}

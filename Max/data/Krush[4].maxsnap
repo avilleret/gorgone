@@ -1,0 +1,23 @@
+{
+	"filetype" : "C74Snapshot",
+	"version" : 2,
+	"minorversion" : 0,
+	"name" : "Krush[4]",
+	"origin" : "Krush.vst",
+	"type" : "VST",
+	"subtype" : "MidiEffect",
+	"embed" : 0,
+	"snapshot" : 	{
+		"pluginname" : "Krush.vst",
+		"plugindisplayname" : "Krush",
+		"pluginsavedname" : "Krush",
+		"pluginsaveduniqueid" : 0,
+		"version" : 1,
+		"isbank" : 0,
+		"isbase64" : 1,
+		"sliderorder" : [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22 ],
+		"slidervisibility" : [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ],
+		"blob" : "1372.CMlaKA....fQPMDZ....AP2ZKIG...vY....APTYlEVcrQG..............................T.HVMjLgbQA...OKIWcygFHvwVcmklaEQVZz8lbWkFYzgVOhzRLh.BbrU2Yo4VQjkFcuIGRkk1YnQWOhzRLh.RZy0TZjkVQtElXrUFY8HBLh.RZy0TZjkFTx81YxEVaCgVXtcVYE4VXhwVYj0iHvHBHiMVSoQVZCgVXt0iHvHhO7jjSSQUPNMTQPIUQFM0K9viQR8jVE4DTAIUPMMEHjIWd8HBLh.xckQWOh.iHfHVdvE1byQjb4MUZm4VXr0iHvHBHhkGbgM2bWUFcSk1YtEFa8HBLh.BYxk2UkQGSo41Z8HBLh.BYxklck0iHvHBHjIWZ1UVSuQFQkAGcn0iHvHBHiIWcygVOh.iHfLlb0MGZM8FYDUFbzgVOh.iHfP1a241bg0Fb8HBLh.BYucmayEVav0zajQTYvQGZ8HBLh.hX4AWXyMmQowFckIWOh.iHfXVZrQWYxQUdvUVOh.iHfv1a2AWXyMmQxUVb8HBLh.BaucGbgM2bRU1b8HBLh.BZoAWXyMmQxUVb8HBLh.BZoAWXyMmTkMWOh.iHfXVZrQWYxYjbkEWSuQFQkAGcn0iHvHBHlkFazUlbRU1bM8FYDUFbzgVOh.iHfvlYuMUdtM1SxYjbkUVOh.iHfvlYuYjbkUlTgQWY8HBLh.Bal81T441XkQFTkIWZuQVOh.iHfvlYucUX1UlYuIWa8HBLh7hO7.UPRETSSABYxkWOhPiK3.CLv.CL1XyM0biLvHSLzfCMzHBH2UFc8HBMtfCLv.CLvXiM2TyMx.iLwPCNzPiHfHVdvE1byQjb4MUZm4VXr0iHwHBHhkGbgM2bWUFcSk1YtEFa8HBLh.BYxk2UkQGSo41Z8HRLh.BYxklck0iHyDiK0bCN4PSMwTSN4DiLw.SNybSMh.BYxklck0zajQTYvQGZ8HxLv3hL2DCM3XiL3HyLzfiMyHCNwHiHfLlb0MGZ8HxMy3BLwbSN3HCM3HSNw.SL0XiL0HBHiIWcygVSuQFQkAGcn0iHxHiKyXCNzHSL0TCM0XSMzHSN1fCNh.BYucmayEVav0iH13BL3biMvjyM1bSNwLCNwfyL0jCMh.BYucmayEVav0zajQTYvQGZ8HRNtHSNyfCLyHSL0.iL1fSM0PiM3fiHfHVdvE1byYTZrQWYx0iHwHBHlkFazUlbTkGbk0iHvHBHr81cvE1byYjbkEWOhDiLxXiMtfiMyHCNwHSMh.BaucGbgM2bRU1b8HBLtjCM2LiM3LCNyPCL2TSNxbyMyPCMh.BZoAWXyMmQxUVb8HBMz3hL3jSLwjyMx.CM0fSN3PyL2TiHffVZvE1byIUYy0iHv3xLwTiMxHCN4TSN0XCLyjCMxfyMwHBHlkFazUlbFIWYw0zajQTYvQGZ8HRL43BM3bCLvTiLyLyM1PiMzfCMyfiHfXVZrQWYxIUYy0zajQTYvQGZ8HBNx3hLyXCNzXSNxLCNxfSLxTiHfvlYuMUdtM1SxYjbkUVOh.iHfvlYuYjbkUlTgQWY8HRLtDSMwHyL2jiMzXyLvDiL1jSMyDiHfvlYuMUdtMVYjAUYxk1aj0iHwDiHfvlYucUX1UlYuIWa8HBLh7hO7.UPRETSSwTXyQGSuEFYkQFTxU1bkQGHvIWYyUFc8HhHfPVZxQWd8HRLh7hO7zTRDkTSAAETI4zQu3COMkDQI0TPPAURNcDSgMGcL8VXjUFYPIWYyUFcf.mbkMWYz0iHh.BYoIGc40iHvHxK9vyKKIWcyglO.."
+	}
+
+}
