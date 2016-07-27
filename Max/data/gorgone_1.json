@@ -1,0 +1,159 @@
+{
+	"pattrstorage" : 	{
+		"name" : "gorgone_1",
+		"slots" : 		{
+			"1" : 			{
+				"id" : 1,
+				"data" : 				{
+					"bypassDrySignal" : [ 0.0 ],
+					"bypassFilter" : [ 0.0 ],
+					"bypassWetSignal" : [ 0.0 ],
+					"crush" : [ 0.527778 ],
+					"crushModDepth" : [ 0.842593 ],
+					"downsamp" : [ 0.805263 ],
+					"downsampModDept" : [ 0.175 ],
+					"drive" : [ 0.793573 ],
+					"driveModDepth" : [ 0.0 ],
+					"dry" : [ 0.0 ],
+					"dryWetLink" : [ 0.361111 ],
+					"filterFreqModDe" : [ 0.635088 ],
+					"filterResModDep" : [ 0.764035 ],
+					"filterType" : [ 0.454386 ],
+					"hipassRes" : [ 0.790351 ],
+					"lfoFreeRate" : [ 0.46789 ],
+					"lfoSyncOrFree" : [ 0.680814 ],
+					"lfoSyncedPeriod" : [ 1.0 ],
+					"lfoWaveform" : [ 1.0 ],
+					"lowpassFreq" : [ 0.633772 ],
+					"wet" : [ 0.849673 ],
+					"vst~" : [ 						{
+							"filetype" : "C74Snapshot",
+							"version" : 2,
+							"minorversion" : 0,
+							"name" : "Krush",
+							"origin" : "Krush.vst",
+							"type" : "VST",
+							"subtype" : "MidiEffect",
+							"embed" : 1,
+							"snapshot" : 							{
+								"pluginname" : "Krush.vst",
+								"plugindisplayname" : "Krush",
+								"pluginsavedname" : "Krush",
+								"pluginsaveduniqueid" : 0,
+								"version" : 1,
+								"isbank" : 0,
+								"isbase64" : 1,
+								"blob" : "1350.CMlaKA....fQPMDZ....AP2ZKIG...vY....APTYlEVcrQG..............................TfBVMjLgDPA...OKIWcygFHvwVcmklaEQVZz8lbWkFYzgVOhbCNxHBHvwVcmklaEQVZz8lbHUVZmgFc8HxLy.iHfj1bMkFYoUjagIFakQVOh.iHfj1bMkFYoAkbuclbg01PnElamUVQtElXrUFY8HBLh.xXi0TZjk1PnEla8HBLh3COI4zTTEjSCUDTRUjQS8hO7XjTOoUQNAUPRETSSABYxkWOh.iHfbWYz0iHvHBHhkGbgM2bDIWdSk1YtEFa8HBLh.hX4AWXyM2UkQ2ToclagwVOh.iHfPlb4cUYzwTZtsVOh.iHfPlboYWY8HBLh.BYxklck0zajQTYvQGZ8HBLh.xXxU2bn0iHvHBHiIWcygVSuQFQkAGcn0iHvHBHj81ctMWXsAWOh.iHfP1a241bg0FbM8FYDUFbzgVOh.iHfHVdvE1byYTZrQWYx0iHvHBHlkFazUlbTkGbk0iHvHBHr81cvE1byYjbkEWOh.iHfv1a2AWXyMmTkMWOh.iHffVZvE1byYjbkEWOh.iHffVZvE1byIUYy0iHvHBHlkFazUlbFIWYw0zajQTYvQGZ8HBLh.hYowFckImTkMWSuQFQkAGcn0iHvHBHrY1aSkmai8jbFIWYk0iHvHBHrY1aFIWYkIUXzUVOh.iHfvlYuMUdtMVYjAUYxk1aj0iHvHBHrY1aWElckY1ax0VOh.iHu3COPEjTA0zTfPlb40iHsPCNh.xckQWOhXiKv.CLv.CL4TyL1bCMyDiMz.iMxHBHhkGbgM2bDIWdSk1YtEFa8HBLh.hX4AWXyM2UkQ2ToclagwVOh.iHfPlb4cUYzwTZtsVOh.iHfPlboYWY8HxM43xL0biL4XiLxfCMvfCNwLCM2biHfPlboYWYM8FYDUFbzgVOh.iHfLlb0MGZ8HRMx3xM2byM2jSLvHyLxTCMyjCM0LiHfLlb0MGZM8FYDUFbzgVOhfCMtHSM4HSM4bCLvbyM0DCM1PCNzHBHj81ctMWXsAWOhfCLh.BYucmayEVav0zajQTYvQGZ8HRL23BM4jSN4jyMvDSN2XyM2XSLxLiHfHVdvE1byYTZrQWYx0iHvHBHlkFazUlbTkGbk0iHvHBHr81cvE1byYjbkEWOhDSMv.iHfv1a2AWXyMmTkMWOh.iK1jSN4jSN4fCNvbSNvbSLvPCM4HiHffVZvE1byYjbkEWOhDiL3XiHffVZvE1byIUYy0iHv3xM4.yL0.CN0PyL4XCNx.CL1fyL1HBHlkFazUlbFIWYw0zajQTYvQGZ8HhMy3RMvfyM2HCN0.CLyXiMxDCL4PiHfXVZrQWYxIUYy0zajQTYvQGZ8HxM13BMvLSMw.SM2.SMxXSLxLCLzbiHfvlYuMUdtM1SxYjbkUVOhDiHfvlYuYjbkUlTgQWY8HRLvHBHrY1aSkmaiUFYPUlbo8FY8HxLxHBHrY1aWElckY1ax0VOhLiHu3COPEjTA0zTLE1bzwzagQVYjAkbkMWYzABbxU1bkQWOh7BSoIlbgIWduDDbvwVZiEFco8lafLUcvA2axQ2KzIWZzk1Zurjb0MGZu.mbkMWYzM2KFg2KDk1YoQWXrAxUgQWYx4BcqAmbkMWYzIBHjklbzkWOhDiHu3COMkDQI0TPPAURNczK9vSSIQTRMEDTPkjSGwTXyQGSuEFYkQFTxU1bkQGHvIWYyUFc8HhHfPVZxQWd8HBLh7hO77xRxU2bn4C.&RDÄP√G ÍúCuNPDÄP√GD*ùCâRPDÄP√G”)ùC,TPDÄP√GuÍúCØOPDÄP√G’yùCwmNDÄP√G\rπùCprNDÄP√G^∏ùCtNDÄP√GRyùCoNDÄP√G≤-ûCÍLDÄP√GïlûCŸÖLDÄP√GÏkûCäáLDÄR√G"
+							}
+
+						}
+ ]
+				}
+
+			}
+,
+			"2" : 			{
+				"id" : 2,
+				"data" : 				{
+					"bypassDrySignal" : [ 1.0 ],
+					"bypassFilter" : [ 0.589912 ],
+					"bypassWetSignal" : [ 0.0 ],
+					"crush" : [ 0.694444 ],
+					"crushModDepth" : [ 0.009259 ],
+					"downsamp" : [ 0.122807 ],
+					"downsampModDept" : [ 0.933333 ],
+					"drive" : [ 0.944444 ],
+					"driveModDepth" : [ 0.601852 ],
+					"dry" : [ 0.981481 ],
+					"dryWetLink" : [ 0.546296 ],
+					"filterFreqModDe" : [ 0.75 ],
+					"filterResModDep" : [ 0.661404 ],
+					"filterType" : [ 0.958333 ],
+					"hipassRes" : [ 0.519737 ],
+					"lfoFreeRate" : [ 0.242496 ],
+					"lfoSyncOrFree" : [ 0.366972 ],
+					"lfoSyncedPeriod" : [ 0.204284 ],
+					"lfoWaveform" : [ 0.0 ],
+					"lowpassFreq" : [ 0.756579 ],
+					"wet" : [ 0.0 ],
+					"vst~" : [ 						{
+							"filetype" : "C74Snapshot",
+							"version" : 2,
+							"minorversion" : 0,
+							"name" : "Krush",
+							"origin" : "Krush.vst",
+							"type" : "VST",
+							"subtype" : "MidiEffect",
+							"embed" : 1,
+							"snapshot" : 							{
+								"pluginname" : "Krush.vst",
+								"plugindisplayname" : "Krush",
+								"pluginsavedname" : "Krush",
+								"pluginsaveduniqueid" : 0,
+								"version" : 1,
+								"isbank" : 0,
+								"isbase64" : 1,
+								"blob" : "1405.CMlaKA....fQPMDZ....AP2ZKIG...vY....APTYlEVcrQG..............................TPPVMjLgfSA...OKIWcygFHvwVcmklaEQVZz8lbWkFYzgVOhbCNxHBHvwVcmklaEQVZz8lbHUVZmgFc8HxLy.iHfj1bMkFYoUjagIFakQVOh.iHfj1bMkFYoAkbuclbg01PnElamUVQtElXrUFY8HBLh.xXi0TZjk1PnEla8HBLh3COI4zTTEjSCUDTRUjQS8hO7XjTOoUQNAUPRETSSABYxkWOh.iHfbWYz0iHvHBHhkGbgM2bDIWdSk1YtEFa8HBLh.hX4AWXyM2UkQ2ToclagwVOh.iHfPlb4cUYzwTZtsVOh.iHfPlboYWY8HBLh.BYxklck0zajQTYvQGZ8HBLh.xXxU2bn0iHvHBHiIWcygVSuQFQkAGcn0iHvHBHj81ctMWXsAWOh.iHfP1a241bg0FbM8FYDUFbzgVOh.iHfHVdvE1byYTZrQWYx0iHvHBHlkFazUlbTkGbk0iHvHBHr81cvE1byYjbkEWOh.iHfv1a2AWXyMmTkMWOh.iHffVZvE1byYjbkEWOh.iHffVZvE1byIUYy0iHvHBHlkFazUlbFIWYw0zajQTYvQGZ8HBLh.hYowFckImTkMWSuQFQkAGcn0iHvHBHrY1aSkmai8jbFIWYk0iHvHBHrY1aFIWYkIUXzUVOh.iHfvlYuMUdtMVYjAUYxk1aj0iHvHBHrY1aWElckY1ax0VOh.iHu3COPEjTA0zTfPlb40iHwXiK2byM2bCN0.iMxbCN4jSL1jSNh.xckQWOhDCNh.hX4AWXyMGQxk2ToclagwVOhDiHfHVdvE1bycUYzMUZm4VXr0iHvHBHjIWdWUFcLklaq0iHwHBHjIWZ1UVOhjCMtPCMzPCMwbSN0LCM4DiLw.SNzHBHjIWZ1UVSuQFQkAGcn0iH1.iKwfSMwfCNvTSMvLCNzTiLwPCNh.xXxU2bn0iH1jiKzPCMzPSL2jSMyPSNwHSLvjCMh.xXxU2bn0zajQTYvQGZ8HBLtjiL0jiL0jyLxfiLzXSLwXiMyfiLh.BYucmayEVav0iHwHiKxfCL2.SL3PSM3fCMyHyLwHiHfP1a241bg0FbM8FYDUFbzgVOhjyLtLyLyLyLybyLvXSN2XyLwfyL1HBHhkGbgM2bFkFazUlb8HRLh.hYowFckIGU4AWY8HRLh.BaucGbgM2bFIWYw0iH0jSM33hLwbyM0PiL4PSLzbSL4fCMh.BaucGbgM2bRU1b8HBLtXSN4jSN4jCN3.yM4.yMw.CMzjiLh.BZoAWXyMmQxUVb8HRLxfiMh.BZoAWXyMmTkMWOh.iK0DSN2LiM3HiMzDSN3LCLyHiLxbiHfXVZrQWYxYjbkEWSuQFQkAGcn0iH2TiHfXVZrQWYxIUYy0zajQTYvQGZ8HhM13RLz.yL0LiM2jiM0XSN3HCMxHiHfvlYuMUdtM1SxYjbkUVOh.iHfvlYuYjbkUlTgQWY8HBLtLyMxXyMxPSN0HiL2fSLvjCNzfSLh.Bal81T441XkQFTkIWZuQVOhbiHfvlYucUX1UlYuIWa8HBLh7hO7.UPRETSSwTXyQGSuEFYkQFTxU1bkQGHvIWYyUFc8HxKLklXxElb48RPvAGaoMVXzk1atAxT0AGbuIGcuPmboQWZq8xRxU2bn8BbxU1bkQ2buXDduPTZmkFcgwFHWEFckImKzsFbxU1bkQmHfPVZxQWd8HRLh7hO7zTRDkTSAAETI4zQu3COMkDQI0TPPAURNcDSgMGcL8VXjUFYPIWYyUFcf.mbkMWYz0iHh.BYoIGc40iHvHxK9vyKKIWcyglO.."
+							}
+
+						}
+ ]
+				}
+
+			}
+,
+			"3" : 			{
+				"id" : 3,
+				"data" : 				{
+					"bypassDrySignal" : [ 1.0 ],
+					"bypassFilter" : [ 0.589912 ],
+					"bypassWetSignal" : [ 0.0 ],
+					"crush" : [ 0.949346 ],
+					"crushModDepth" : [ 0.018519 ],
+					"downsamp" : [ 0.102193 ],
+					"downsampModDept" : [ 0.602193 ],
+					"drive" : [ 0.935185 ],
+					"driveModDepth" : [ 0.664488 ],
+					"dry" : [ 0.981481 ],
+					"dryWetLink" : [ 0.546296 ],
+					"filterFreqModDe" : [ 0.75 ],
+					"filterResModDep" : [ 0.661404 ],
+					"filterType" : [ 0.958333 ],
+					"hipassRes" : [ 0.519737 ],
+					"lfoFreeRate" : [ 0.242496 ],
+					"lfoSyncOrFree" : [ 0.366972 ],
+					"lfoSyncedPeriod" : [ 0.970651 ],
+					"lfoWaveform" : [ 0.682596 ],
+					"lowpassFreq" : [ 0.252193 ],
+					"wet" : [ 0.0 ],
+					"vst~" : [ 						{
+							"filetype" : "C74Snapshot",
+							"version" : 2,
+							"minorversion" : 0,
+							"name" : "Krush",
+							"origin" : "Krush.vst",
+							"type" : "VST",
+							"subtype" : "MidiEffect",
+							"embed" : 1,
+							"snapshot" : 							{
+								"pluginname" : "Krush.vst",
+								"plugindisplayname" : "Krush",
+								"pluginsavedname" : "Krush",
+								"pluginsaveduniqueid" : 0,
+								"version" : 1,
+								"isbank" : 0,
+								"isbase64" : 1,
+								"blob" : "1406.CMlaKA....fQPMDZ....AP2ZKIG...vY....APTYlEVcrQG..............................TfPVMjLgjSA...OKIWcygFHvwVcmklaEQVZz8lbWkFYzgVOhbCNxHBHvwVcmklaEQVZz8lbHUVZmgFc8HxLy.iHfj1bMkFYoUjagIFakQVOh.iHfj1bMkFYoAkbuclbg01PnElamUVQtElXrUFY8HBLh.xXi0TZjk1PnEla8HBLh3COI4zTTEjSCUDTRUjQS8hO7XjTOoUQNAUPRETSSABYxkWOh.iHfbWYz0iHvHBHhkGbgM2bDIWdSk1YtEFa8HBLh.hX4AWXyM2UkQ2ToclagwVOh.iHfPlb4cUYzwTZtsVOh.iHfPlboYWY8HBLh.BYxklck0zajQTYvQGZ8HBLh.xXxU2bn0iHvHBHiIWcygVSuQFQkAGcn0iHvHBHj81ctMWXsAWOh.iHfP1a241bg0FbM8FYDUFbzgVOh.iHfHVdvE1byYTZrQWYx0iHvHBHlkFazUlbTkGbk0iHvHBHr81cvE1byYjbkEWOh.iHfv1a2AWXyMmTkMWOh.iHffVZvE1byYjbkEWOh.iHffVZvE1byIUYy0iHvHBHlkFazUlbFIWYw0zajQTYvQGZ8HBLh.hYowFckImTkMWSuQFQkAGcn0iHvHBHrY1aSkmai8jbFIWYk0iHvHBHrY1aFIWYkIUXzUVOh.iHfvlYuMUdtMVYjAUYxk1aj0iHvHBHrY1aWElckY1ax0VOh.iHu3COPEjTA0zTfPlb40iHwXiK2byM2bCN0.iMxbCN4jSL1jSNh.xckQWOhDCNh.hX4AWXyMGQxk2ToclagwVOhDiHfHVdvE1bycUYzMUZm4VXr0iHvHBHjIWdWUFcLklaq0iHwHBHjIWZ1UVOhjyLtTSL3TSL4PCLwTSMvHSNxjiM4HBHjIWZ1UVSuQFQkAGcn0iH1XiKzPCN3.SL2TSM4.SMwTSLyXyMh.xXxU2bn0iH4PiK4LCM1PiLyDCM4DCL3fCN1biLh.xXxU2bn0zajQTYvQGZ8HRLtfSMwfSMwfiM0XCM4HiLyLiL2XiHfP1a241bg0Fb8HRLv3hLwjiL4fyLvLSLxbiL3fCNwfiHfP1a241bg0FbM8FYDUFbzgVOhXCLtHSL4HSN4bSNyHCMyPCL3HCLyHBHhkGbgM2bFkFazUlb8HRLh.hYowFckIGU4AWY8HRLh.BaucGbgM2bFIWYw0iH1jiK4HSNxDSLzjSMz.CMw.yL4bSLh.BaucGbgM2bRU1b8HBLtXSN4jSN4jCN3.yM4.yMw.CMzjiLh.BZoAWXyMmQxUVb8HRLxfiMh.BZoAWXyMmTkMWOh.iK0DSN2LiM3HiMzDSN3LCLyHiLxbiHfXVZrQWYxYjbkEWSuQFQkAGcn0iH2TiHfXVZrQWYxIUYy0zajQTYvQGZ8HhM13RLz.yL0LiM2jiM0XSN3HCMxHiHfvlYuMUdtM1SxYjbkUVOh.iHfvlYuYjbkUlTgQWY8HBLtLyMxXyMxPSN0HiL2fSLvjCNzfSLh.Bal81T441XkQFTkIWZuQVOhLSLh.Bal81UgYWYl8lbs0iHxHxK9vCTAIUPMMESgMGcL8VXjUFYPIWYyUFcf.mbkMWYz0iHuvTZhIWXxk2KAAGbrk1XgQWZu4FHSUGbv8lbz8BcxkFcos1KKIWcyg1KvIWYyUFcy8hQ38BQocVZzEFafbUXzUlbtP2ZvIWYyUFch.BYoIGc40iHwHxK9vSSIQTRMEDTPkjSG8hO7zTRDkTSAAETI4zQLE1bzwzagQVYjAkbkMWYzABbxU1bkQWOhHBHjklbzkWOh.iHu3COurjb0MGZ9.."
+							}
+
+						}
+ ]
+				}
+
+			}
+
+		}
+
+	}
+
+}

@@ -1,0 +1,23 @@
+{
+	"filetype" : "C74Snapshot",
+	"version" : 2,
+	"minorversion" : 0,
+	"name" : "Krush[1]",
+	"origin" : "Krush.vst",
+	"type" : "VST",
+	"subtype" : "MidiEffect",
+	"embed" : 0,
+	"snapshot" : 	{
+		"pluginname" : "Krush.vst",
+		"plugindisplayname" : "Krush",
+		"pluginsavedname" : "Krush",
+		"pluginsaveduniqueid" : 0,
+		"version" : 1,
+		"isbank" : 0,
+		"isbase64" : 1,
+		"sliderorder" : [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22 ],
+		"slidervisibility" : [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ],
+		"blob" : "1428.CMlaKA....fQPMDZ....AP2ZKIG...vY....APTYlEVcrQG..............................T.VVMjLg7TA...OKIWcygFHvwVcmklaEQVZz8lbWkFYzgVOhTCNwHBHvwVcmklaEQVZz8lbHUVZmgFc8HhLzTiHfj1bMkFYoUjagIFakQVOh.iHfj1bMkFYoAkbuclbg01PnElamUVQtElXrUFY8HBLh.xXi0TZjk1PnEla8HBLh3COI4zTTEjSCUDTRUjQS8hO7XjTOoUQNAUPRETSSABYxkWOh.iHfbWYz0iHvHBHhkGbgM2bDIWdSk1YtEFa8HBLh.hX4AWXyM2UkQ2ToclagwVOh.iHfPlb4cUYzwTZtsVOh.iHfPlboYWY8HBLh.BYxklck0zajQTYvQGZ8HBLh.xXxU2bn0iHvHBHiIWcygVSuQFQkAGcn0iHvHBHj81ctMWXsAWOh.iHfP1a241bg0FbM8FYDUFbzgVOh.iHfHVdvE1byYTZrQWYx0iHvHBHlkFazUlbTkGbk0iHvHBHr81cvE1byYjbkEWOh.iHfv1a2AWXyMmTkMWOh.iHffVZvE1byYjbkEWOh.iHffVZvE1byIUYy0iHvHBHlkFazUlbFIWYw0zajQTYvQGZ8HBLh.hYowFckImTkMWSuQFQkAGcn0iHvHBHrY1aSkmai8jbFIWYk0iHvHBHrY1aFIWYkIUXzUVOh.iHfvlYuMUdtMVYjAUYxk1aj0iHvHBHrY1aWElckY1ax0VOh.iHu3COPEjTA0zTfPlb40iHsPCNh.xckQWOhPiK3.CLv.CL1XyM0biLvHSLzfCMzHBHhkGbgM2bDIWdSk1YtEFa8HRLh.hX4AWXyM2UkQ2ToclagwVOhDiHfPlb4cUYzwTZtsVOh.iHfPlboYWY8HBN23xLzDyM2LSN3XCNwXCMvXiL0HBHjIWZ1UVSuQFQkAGcn0iHwbiK4XyLvHCMwLSNz.CMxjiM3bSMh.xXxU2bn0iH2XiK1PCN4.iL3jyLvXiMz.iMxTiHfLlb0MGZM8FYDUFbzgVOhfCNtbCM4DiMvbiM1XCLwTiMxTiHfP1a241bg0Fb8HBNy3RLxbSNwPCMxfyMw.SNybSMh.BYucmayEVav0zajQTYvQGZ8HRLz3RM0XSN1HCLwLiLzPiMxfSNvXiHfHVdvE1byYTZrQWYx0iHwHBHlkFazUlbTkGbk0iHwHBHr81cvE1byYjbkEWOhDCM0fSNtDiL0jyM1TiMxTiHfv1a2AWXyMmTkMWOh.iK3jCM2LiM3HiMzDSN3LCLyHiLxbiHffVZvE1byYjbkEWOhXSN4XiK3jSL1.SL0XiL0HBHnkFbgM2bRU1b8HBLtjSL2biLwTCL4jyLyPyMwXyM4XSNh.hYowFckImQxUVbM8FYDUFbzgVOhXSLtDCNzHCL2jSL1HSM4biM0XiL0HBHlkFazUlbRU1bM8FYDUFbzgVOhfyLtbiM4DSM2PCL4XiM2jiM3bSMh.Bal81T441XOImQxUVY8HBLh.Bal8lQxUVYREFck0iHx3BL1LSN4biL1fiM2XyM0bCNwHSMh.Bal81T441XkQFTkIWZuQVOhDCMh.Bal81UgYWYl8lbs0iHxHxK9vCTAIUPMMESgMGcL8VXjUFYPIWYyUFcf.mbkMWYz0iHuvTZhIWXxk2KAAGbrk1XgQWZu4FHSUGbv8lbz8BcxkFcos1KKIWcyg1KvIWYyUFcy8xPxU2bnklam8BQoIGc4AxPxU2bn4BcqAmbkMWYzIBHjklbzkWOhDiHu3COMkDQI0TPPAURNczK9vSSIQTRMEDTPkjSGwTXyQGSuEFYkQFTxU1bkQGHvIWYyUFc8HhHfPVZxQWd8HBLh7hO77xRxU2bn4C."
+	}
+
+}

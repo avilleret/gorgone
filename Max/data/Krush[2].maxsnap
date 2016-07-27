@@ -1,0 +1,23 @@
+{
+	"filetype" : "C74Snapshot",
+	"version" : 2,
+	"minorversion" : 0,
+	"name" : "Krush[2]",
+	"origin" : "Krush.vst",
+	"type" : "VST",
+	"subtype" : "MidiEffect",
+	"embed" : 0,
+	"snapshot" : 	{
+		"pluginname" : "Krush.vst",
+		"plugindisplayname" : "Krush",
+		"pluginsavedname" : "Krush",
+		"pluginsaveduniqueid" : 0,
+		"version" : 1,
+		"isbank" : 0,
+		"isbase64" : 1,
+		"sliderorder" : [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22 ],
+		"slidervisibility" : [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ],
+		"blob" : "1385.CMlaKA....fQPMDZ....AP2ZKIG...vY....APTYlEVcrQG..............................TPKVMjLgPRA...OKIWcygFHvwVcmklaEQVZz8lbWkFYzgVOhzRLh.BbrU2Yo4VQjkFcuIGRkk1YnQWOhzRLh.RZy0TZjkVQtElXrUFY8HBLh.RZy0TZjkFTx81YxEVaCgVXtcVYE4VXhwVYj0iHvHBHiMVSoQVZCgVXt0iHvHhO7jjSSQUPNMTQPIUQFM0K9viQR8jVE4DTAIUPMMEHjIWd8HBLh.xckQWOh.iHfHVdvE1byQjb4MUZm4VXr0iHvHBHhkGbgM2bWUFcSk1YtEFa8HBLh.BYxk2UkQGSo41Z8HBLh.BYxklck0iHvHBHjIWZ1UVSuQFQkAGcn0iHvHBHiIWcygVOh.iHfLlb0MGZM8FYDUFbzgVOh.iHfP1a241bg0Fb8HBLh.BYucmayEVav0zajQTYvQGZ8HBLh.hX4AWXyMmQowFckIWOh.iHfXVZrQWYxQUdvUVOh.iHfv1a2AWXyMmQxUVb8HBLh.BaucGbgM2bRU1b8HBLh.BZoAWXyMmQxUVb8HBLh.BZoAWXyMmTkMWOh.iHfXVZrQWYxYjbkEWSuQFQkAGcn0iHvHBHlkFazUlbRU1bM8FYDUFbzgVOh.iHfvlYuMUdtM1SxYjbkUVOh.iHfvlYuYjbkUlTgQWY8HBLh.Bal81T441XkQFTkIWZuQVOh.iHfvlYucUX1UlYuIWa8HBLh7hO7.UPRETSSABYxkWOhzRLtfCLv.CLvbCN1bCNwLSLw.yL0HiHfbWYz0iHsDiK3.CLv.CL2fiM2fSLyDSLvLSMxHBHhkGbgM2bDIWdSk1YtEFa8HRLh.hX4AWXyM2UkQ2ToclagwVOh.iHfPlb4cUYzwTZtsVOhDiHfPlboYWY8HRN03BL2fiL3LSMzfyL0TSLvHSMyjiHfPlboYWYM8FYDUFbzgVOhbiLtXiM3HSL3XSLxXyMvfSN3PyL3HBHiIWcygVOhfSNtDyMyfCNyDSN4XSNwbyMxPiMwHBHiIWcygVSuQFQkAGcn0iHwDiK1jiLx.SMvbSLzPSNxbSN2fSMh.BYucmayEVav0iHz.iK1fSLxDyLwPCLzfyM1bCL3jCNh.BYucmayEVav0zajQTYvQGZ8HBNv3xL2DCMxDSM2TSMzXiL1PiMzfiHfHVdvE1byYTZrQWYx0iHwHBHlkFazUlbTkGbk0iHwHBHr81cvE1byYjbkEWOhDSL4TiLtHSNxPCMxfCL2PCM2TSLzHBHr81cvE1byIUYy0iHv3xM3PCNw.SLxTCNxbyM3jyLvXiMzHBHnkFbgM2bFIWYw0iHxTiLx3xLzPyLv.iM1HCM3HSMw.iLh.BZoAWXyMmTkMWOh.iK2jiL1LCNxPiLxPCM2HCLzTCN4fiHfXVZrQWYxYjbkEWSuQFQkAGcn0iH2XiKxjCL3.CMwPyM2HCLyLiM4DCMh.hYowFckImTkMWSuQFQkAGcn0iH0XiKvDiL1XCL4fCLxHCM1.SNybSMh.Bal81T441XOImQxUVY8HBLh.Bal8lQxUVYREFck0iHw3BLwjiM3HiL0PCM1DSL4PCL4LSLh.Bal81T441XkQFTkIWZuQVOhDCNh.Bal81UgYWYl8lbs0iHxHxK9vCTAIUPMMESgMGcL8VXjUFYPIWYyUFcf.mbkMWYz0iHh.BYoIGc40iHwHxK9vSSIQTRMEDTPkjSG8hO7zTRDkTSAAETI4zQLE1bzwzagQVYjAkbkMWYzABbxU1bkQWOhHBHjklbzkWOh.iHu3COurjb0MGZ9..€PÃGhADÉkC€PÃGd>AD®kC€PÃG! ADÉ@kC€PÃGÎÚ@D–ÀiC€PÃG˜ò@DúkiC€PÃG¡ADÖ±iC€PÃG™ò@DêjClHD€PÃG°mÀC@¾D€PÃGeÀCJ¶D€PÃGm“ÀC}ÍD€PÃGƒÀC(ÉD€PÃG´ÆÀC[ÐD€PÃGL¹ÀC[ÐD€PÃGüÀC(ÉD€PÃG“ìÀC}ÍD€P"
+	}
+
+}
