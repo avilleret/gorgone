@@ -1,0 +1,33 @@
+{
+	"filetype" : "C74Snapshot",
+	"version" : 2,
+	"minorversion" : 0,
+	"name" : "PluggoFuzz.amxd",
+	"origin" : "PluggoFuzz.amxd",
+	"type" : "amxd",
+	"subtype" : "Undefined",
+	"embed" : 0,
+	"snapshot" : 	{
+		"name" : "PluggoFuzz.amxd",
+		"origname" : "C74:/packages/Max for Live/patchers/Max Audio Effect/PluggoFuzz/PluggoFuzz.amxd",
+		"valuedictionary" : 		{
+			"parameter_values" : 			{
+				"clip_mode" : 2.0,
+				"input_filter_Q" : 0.01,
+				"input_filter_frequency" : 3668.976318,
+				"input_filter_gain" : 1.03148,
+				"input_filter_mode" : 0.0,
+				"input_gain" : 5.102362,
+				"intensity" : 8.826772,
+				"level" : -2.0,
+				"output_filter_Q" : 0.5,
+				"output_filter_frequency[1]" : 3294.362305,
+				"output_filter_gain" : 0.326858,
+				"output_filter_mode" : 6.0
+			}
+
+		}
+
+	}
+
+}
