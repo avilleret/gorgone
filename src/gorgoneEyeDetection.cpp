@@ -34,7 +34,6 @@ void gorgoneEyeDetection::reset(){
   if(eye.isAllocated()) eye.clear();
   if(eyeProc.isAllocated()) eyeProc.clear();
   if(irisProc.isAllocated()) irisProc.clear();
-  if(bestEyeNorm.isAllocated()) bestEyeNorm.clear();
   if(codeImg.isAllocated()) codeImg.clear();
 }
 
@@ -126,8 +125,6 @@ void gorgoneEyeDetection::drawEyes(){
   if(eye.isAllocated()) eye.draw(10,10,200,200);
   if(eyeProc.isAllocated()) eyeProc.draw(10,250,200,200);
   if(irisProc.isAllocated()) irisProc.draw(10,500,200,200);
-  int height = bestEyeNorm.getHeight()*ofGetWidth()/bestEyeNorm.getWidth();
-  if(bestEyeNorm.isAllocated()) bestEyeNorm.draw(0,ofGetHeight()-height,ofGetWidth(),height);
 
   string drawString = "best image -- score " + ofToString(bestScore);
   ofDrawBitmapStringHighlight(drawString, 10, 750);
@@ -152,11 +149,12 @@ void gorgoneEyeDetection::save(){
   basename += "-" + ZeroPadNumber(ofGetHours()) + ZeroPadNumber(ofGetMinutes()) + ZeroPadNumber(ofGetSeconds());
 
   ofLogVerbose("gorgoneEyeDetection") << "save eyes to " << basename << endl;
-  eye .save(basename + "-iris.bmp" );
-  bestEyeNorm.save(basename + "eye.bmp");
-  ofImage code;
-  ofxCv::toOf(codeMat, code);
-  code.save(basename + "code.bmp");
+
+  eye.save(basename + "-eye.bmp");
+  eyeProc.save(basename + "-eye_processed.bmp");
+  irisProc.save(basename + "-iris_processed.bmp");
+  ofxCv::toOf(codeMat, codeImg);
+  codeImg.save(basename + "-code.bmp");
 
 }
 

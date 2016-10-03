@@ -41,11 +41,10 @@ private:
   ofxCv::ObjectFinder eyeFinder;
   bool bSetup, flag, eyeCloseUp;
   double bestScore, scale;
-  ofImage bestEyeNorm, eye, eyeProc, irisProc, codeImg;
+  ofImage eye, eyeProc, irisProc, codeImg;
   Vec3f bestPupil, bestIris;
-  Mat normalized, imgRoi;
   Masek::IMAGE *noise;
-  Mat bestEye, eyeMat, codeMat;
+  Mat bestEye, codeMat;
 
   static std::string ZeroPadNumber(int num)
   {
