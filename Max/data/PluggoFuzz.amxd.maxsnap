@@ -12,7 +12,7 @@
 		"origname" : "C74:/packages/Max for Live/patchers/Max Audio Effect/PluggoFuzz/PluggoFuzz.amxd",
 		"valuedictionary" : 		{
 			"parameter_values" : 			{
-				"clip_mode" : 2.0,
+				"clip_mode" : 0.0,
 				"input_filter_Q" : 0.01,
 				"input_filter_frequency" : 3668.976318,
 				"input_filter_gain" : 1.03148,
