@@ -152,8 +152,12 @@ void gorgoneEyeDetection::save(){
   basename += "-" + ZeroPadNumber(ofGetHours()) + ZeroPadNumber(ofGetMinutes()) + ZeroPadNumber(ofGetSeconds());
 
   ofLogVerbose("gorgoneEyeDetection") << "save eyes to " << basename << endl;
-  eye .save(basename + "-crop.bmp" );
-  bestEyeNorm.save(basename + ".bmp");
+  eye .save(basename + "-iris.bmp" );
+  bestEyeNorm.save(basename + "eye.bmp");
+  ofImage code;
+  ofxCv::toOf(codeMat, code);
+  code.save(basename + "code.bmp");
+
 }
 
 bool gorgoneEyeDetection::findIris(Mat& roiImg, Vec3f& iris){
@@ -362,6 +366,8 @@ void gorgoneEyeDetection::computeIrisCode()
       blobArea = finder.getContourArea(i);
     }
   }
+
+  save();
 
   cout << "gorgoneEyedection::threadedFunction : blobArea " << blobArea << endl;
 
