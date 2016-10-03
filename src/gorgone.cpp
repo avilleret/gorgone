@@ -15,6 +15,22 @@ void gorgone::setup()
   motionDetector.setup(&jamoma);
   irisDetector.setJamomaRef(&jamoma);
   counter = 0;
+  if ( !csv.load("images/values.txt")){
+      ofxCsvRow row;
+      row.setString(0,"date");
+      row.setString(1,"hour");
+      row.setString(2,"blobarea");
+      row.setString(3,"coeff1");
+      row.setString(4,"coeff2");
+      row.setString(5,"coeff3");
+      row.setString(6,"coeff4");
+      row.setString(7,"coeff5");
+      row.setString(8,"coeff6");
+      row.setString(9,"coeff7");
+      row.setString(10,"coeff8");
+      csv.addRow(row);
+      csv.save("images/values.txt");
+  }
 }
 
 void gorgone::exit(){
@@ -73,12 +89,26 @@ void gorgone::update()
       avg/=img.cols;
       svgInterp.coeff.push_back(avg);
     }
+    ofxCsvRow row;
+    stringstream date;
+    date << std::setw( 2 ) << std::setfill( '0' );
+    date << ofGetYear() << "/" << ofGetMonth() << "/" << ofGetDay();
+    stringstream hour;
+    hour << std::setw( 2 ) << std::setfill( '0' );
+    hour << ofGetHours() + ofGetMinutes() + ofGetSeconds();
+
+    row.setString(0,date.str());
+    row.setString(1,hour.str());
+    row.setFloat(2,irisDetector.blobArea);
     irisDetector.newCode = false;
 
     TTValue v, w;
     for (int i = 0; i<svgInterp.coeff.size(); i++){
       v.push_back(svgInterp.coeff[i]);
+      row.setFloat(i+3,svgInterp.coeff[i]);
     }
+    csv.addRow(row);
+    csv.save("images/values.txt");
     jamoma.mTrackingIrisCodeReturn.set("value", v);
 
     w.push_back(irisDetector.blobArea);

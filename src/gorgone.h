@@ -6,6 +6,8 @@
 #include "ofxArgParser.h"
 
 #include "ofxCv.h"
+#include "ofxCsv.h"
+
 #include "gorgoneEyeDetection.h"
 #include "gorgoneMotionDetector.h"
 #include "svgInterpolation.h"
@@ -48,6 +50,7 @@ private:
     cv::Mat frame;
 
     ofImage m_colorImg, m_grayImg, m_leftEye, m_rightEye;
+    ofxCsv csv;
 
     gorgoneMotionDetector motionDetector;
     int counter;

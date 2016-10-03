@@ -16,3 +16,6 @@ url=https://github.com/avilleret/ofxCvPiCam
 [submodule "ofxBiquadFilter"]
 	path = ofxBiquadFilter
 	url = https://github.com/dzlonline/ofxBiquadFilter.git
+[submodule "ofxCsv"]
+	path = ofxCsv
+	url = https://github.com/paulvollmer/ofxCsv.git
