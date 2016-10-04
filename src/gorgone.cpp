@@ -95,7 +95,7 @@ void gorgone::update()
     date << ofGetYear() << "/" << ofGetMonth() << "/" << ofGetDay();
     stringstream hour;
     hour << std::setw( 2 ) << std::setfill( '0' );
-    hour << ofGetHours() + ofGetMinutes() + ofGetSeconds();
+    hour << ofGetHours() << ":" << ofGetMinutes() << ":" << ofGetSeconds();
 
     row.setString(0,date.str());
     row.setString(1,hour.str());
