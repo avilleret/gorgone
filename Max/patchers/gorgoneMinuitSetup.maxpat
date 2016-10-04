@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 291.0, 228.0, 901.0, 645.0 ],
+		"rect" : [ 294.0, 160.0, 901.0, 645.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -133,9 +133,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 451.0, 437.0, 248.0, 22.0 ],
+					"patching_rect" : [ 451.0, 437.0, 225.0, 22.0 ],
 					"style" : "",
-					"text" : "sprintf symout %s/../../start-pd-Gui.command"
+					"text" : "sprintf symout %s/../../start-pd.command"
 				}
 
 			}
